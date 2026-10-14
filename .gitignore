@@ -1,0 +1,21 @@
+# Local dependencies and caches
+node_modules/
+__pycache__/
+*.pyc
+.cache/
+
+# Local credentials and environment overrides
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Local logs and OS files
+*.log
+.DS_Store
+Thumbs.db
+
+# Temporary asset inspection tools
+/.customer-asset-inspect.ps1
+/.customer-assets-review.html

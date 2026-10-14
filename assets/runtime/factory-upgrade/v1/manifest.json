@@ -1,0 +1,910 @@
+{
+  "schemaVersion": 1,
+  "basePath": "assets/runtime/factory-upgrade/v1/",
+  "runtimePixelRatio": 2,
+  "reference": "assets/reference/concepts/upgrades/v1/factory-upgrade-panel.png",
+  "ui": {
+    "panel-cream": {
+      "source": "assets/source/ui/factory-upgrade/v1/ui/panel-cream.svg",
+      "runtime": "ui/panel-cream.png",
+      "sourceSize": [
+        360,
+        640
+      ],
+      "size": [
+        720,
+        1280
+      ],
+      "sourceBounds": {
+        "x": 1,
+        "y": 2,
+        "width": 358,
+        "height": 636
+      },
+      "cropBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 360,
+        "height": 640
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "nine-slice",
+      "transparent": true,
+      "nineSlice": {
+        "left": 64,
+        "top": 64,
+        "right": 64,
+        "bottom": 72,
+        "borderScaleMode": "shrink-to-fit",
+        "maxBorderScale": 0.5
+      },
+      "nineSliceSize": [
+        720,
+        1280
+      ],
+      "contentInsets": {
+        "left": 32,
+        "top": 32,
+        "right": 32,
+        "bottom": 40
+      },
+      "contentInsetScaleMode": "nine-slice",
+      "bounds": {
+        "x": 2,
+        "y": 4,
+        "width": 716,
+        "height": 1272
+      },
+      "bytes": 37330
+    },
+    "title-sign": {
+      "source": "assets/source/ui/factory-upgrade/v1/ui/title-sign.svg",
+      "runtime": "ui/title-sign.png",
+      "sourceSize": [
+        216,
+        56
+      ],
+      "size": [
+        432,
+        112
+      ],
+      "sourceBounds": {
+        "x": 1,
+        "y": 0,
+        "width": 214,
+        "height": 55
+      },
+      "cropBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 216,
+        "height": 56
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "nine-slice",
+      "transparent": true,
+      "nineSlice": {
+        "left": 48,
+        "top": 40,
+        "right": 48,
+        "bottom": 40,
+        "borderScaleMode": "shrink-to-fit",
+        "maxBorderScale": 0.5
+      },
+      "nineSliceSize": [
+        432,
+        112
+      ],
+      "contentInsets": {
+        "left": 48,
+        "top": 16,
+        "right": 48,
+        "bottom": 20
+      },
+      "contentInsetScaleMode": "nine-slice",
+      "bounds": {
+        "x": 2,
+        "y": 0,
+        "width": 428,
+        "height": 110
+      },
+      "bytes": 8000
+    },
+    "card-mint": {
+      "source": "assets/source/ui/factory-upgrade/v1/ui/card-mint.svg",
+      "runtime": "ui/card-mint.png",
+      "sourceSize": [
+        336,
+        196
+      ],
+      "size": [
+        672,
+        392
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 336,
+        "height": 195
+      },
+      "cropBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 336,
+        "height": 196
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "nine-slice",
+      "transparent": true,
+      "nineSlice": {
+        "left": 44,
+        "top": 136,
+        "right": 44,
+        "bottom": 48,
+        "borderScaleMode": "shrink-to-fit",
+        "maxBorderScale": 0.5
+      },
+      "nineSliceSize": [
+        672,
+        392
+      ],
+      "contentInsets": {
+        "left": 24,
+        "top": 24,
+        "right": 24,
+        "bottom": 28
+      },
+      "contentInsetScaleMode": "nine-slice",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 672,
+        "height": 390
+      },
+      "bytes": 11955
+    },
+    "card-gold": {
+      "source": "assets/source/ui/factory-upgrade/v1/ui/card-gold.svg",
+      "runtime": "ui/card-gold.png",
+      "sourceSize": [
+        336,
+        328
+      ],
+      "size": [
+        672,
+        656
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 336,
+        "height": 327
+      },
+      "cropBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 336,
+        "height": 328
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "nine-slice",
+      "transparent": true,
+      "nineSlice": {
+        "left": 44,
+        "top": 144,
+        "right": 44,
+        "bottom": 48,
+        "borderScaleMode": "shrink-to-fit",
+        "maxBorderScale": 0.5
+      },
+      "nineSliceSize": [
+        672,
+        656
+      ],
+      "contentInsets": {
+        "left": 24,
+        "top": 24,
+        "right": 24,
+        "bottom": 28
+      },
+      "contentInsetScaleMode": "nine-slice",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 672,
+        "height": 654
+      },
+      "bytes": 16263
+    },
+    "inset-cream": {
+      "source": "assets/source/ui/factory-upgrade/v1/ui/inset-cream.svg",
+      "runtime": "ui/inset-cream.png",
+      "sourceSize": [
+        304,
+        64
+      ],
+      "size": [
+        608,
+        128
+      ],
+      "sourceBounds": {
+        "x": 0.5,
+        "y": 0.5,
+        "width": 303,
+        "height": 62
+      },
+      "cropBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 304,
+        "height": 64
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "nine-slice",
+      "transparent": true,
+      "nineSlice": {
+        "left": 28,
+        "top": 28,
+        "right": 28,
+        "bottom": 28,
+        "borderScaleMode": "shrink-to-fit",
+        "maxBorderScale": 0.5
+      },
+      "nineSliceSize": [
+        608,
+        128
+      ],
+      "contentInsets": {
+        "left": 20,
+        "top": 14,
+        "right": 20,
+        "bottom": 16
+      },
+      "contentInsetScaleMode": "nine-slice",
+      "bounds": {
+        "x": 1,
+        "y": 1,
+        "width": 606,
+        "height": 124
+      },
+      "bytes": 3937
+    },
+    "well-mint": {
+      "source": "assets/source/ui/factory-upgrade/v1/ui/well-mint.svg",
+      "runtime": "ui/well-mint.png",
+      "sourceSize": [
+        96,
+        80
+      ],
+      "size": [
+        192,
+        160
+      ],
+      "sourceBounds": {
+        "x": 1,
+        "y": 1,
+        "width": 94,
+        "height": 78
+      },
+      "cropBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 96,
+        "height": 80
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "nine-slice",
+      "transparent": true,
+      "nineSlice": {
+        "left": 32,
+        "top": 32,
+        "right": 32,
+        "bottom": 32,
+        "borderScaleMode": "shrink-to-fit",
+        "maxBorderScale": 0.5
+      },
+      "nineSliceSize": [
+        192,
+        160
+      ],
+      "contentInsets": {
+        "left": 12,
+        "top": 12,
+        "right": 12,
+        "bottom": 12
+      },
+      "contentInsetScaleMode": "nine-slice",
+      "bounds": {
+        "x": 2,
+        "y": 2,
+        "width": 188,
+        "height": 156
+      },
+      "bytes": 3003
+    },
+    "badge-level": {
+      "source": "assets/source/ui/factory-upgrade/v1/ui/badge-level.svg",
+      "runtime": "ui/badge-level.png",
+      "sourceSize": [
+        112,
+        32
+      ],
+      "size": [
+        224,
+        64
+      ],
+      "sourceBounds": {
+        "x": 1,
+        "y": 1,
+        "width": 110,
+        "height": 30
+      },
+      "cropBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 112,
+        "height": 32
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "nine-slice",
+      "transparent": true,
+      "nineSlice": {
+        "left": 36,
+        "top": 24,
+        "right": 36,
+        "bottom": 24,
+        "borderScaleMode": "shrink-to-fit",
+        "maxBorderScale": 0.5
+      },
+      "nineSliceSize": [
+        224,
+        64
+      ],
+      "contentInsets": {
+        "left": 20,
+        "top": 10,
+        "right": 20,
+        "bottom": 10
+      },
+      "contentInsetScaleMode": "nine-slice",
+      "bounds": {
+        "x": 2,
+        "y": 2,
+        "width": 220,
+        "height": 60
+      },
+      "bytes": 1570
+    },
+    "ribbon-mint": {
+      "source": "assets/source/ui/factory-upgrade/v1/ui/ribbon-mint.svg",
+      "runtime": "ui/ribbon-mint.png",
+      "sourceSize": [
+        304,
+        24
+      ],
+      "size": [
+        608,
+        48
+      ],
+      "sourceBounds": {
+        "x": 1,
+        "y": 1,
+        "width": 302,
+        "height": 22
+      },
+      "cropBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 304,
+        "height": 24
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "nine-slice",
+      "transparent": true,
+      "nineSlice": {
+        "left": 20,
+        "top": 16,
+        "right": 20,
+        "bottom": 16,
+        "borderScaleMode": "shrink-to-fit",
+        "maxBorderScale": 0.5
+      },
+      "nineSliceSize": [
+        608,
+        48
+      ],
+      "contentInsets": {
+        "left": 16,
+        "top": 8,
+        "right": 16,
+        "bottom": 8
+      },
+      "contentInsetScaleMode": "nine-slice",
+      "bounds": {
+        "x": 2,
+        "y": 2,
+        "width": 604,
+        "height": 44
+      },
+      "bytes": 1349
+    },
+    "badge-success": {
+      "source": "assets/source/ui/factory-upgrade/v1/ui/badge-success.svg",
+      "runtime": "ui/badge-success.png",
+      "sourceSize": [
+        72,
+        24
+      ],
+      "size": [
+        144,
+        48
+      ],
+      "sourceBounds": {
+        "x": 0.5,
+        "y": 0.5,
+        "width": 71,
+        "height": 23
+      },
+      "cropBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 72,
+        "height": 24
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "nine-slice",
+      "transparent": true,
+      "nineSlice": {
+        "left": 28,
+        "top": 16,
+        "right": 28,
+        "bottom": 16,
+        "borderScaleMode": "shrink-to-fit",
+        "maxBorderScale": 0.5
+      },
+      "nineSliceSize": [
+        144,
+        48
+      ],
+      "contentInsets": {
+        "left": 18,
+        "top": 8,
+        "right": 18,
+        "bottom": 8
+      },
+      "contentInsetScaleMode": "nine-slice",
+      "bounds": {
+        "x": 1,
+        "y": 1,
+        "width": 142,
+        "height": 46
+      },
+      "bytes": 1612
+    },
+    "button-close": {
+      "source": "assets/source/ui/factory-upgrade/v1/ui/button-close.svg",
+      "runtime": "ui/button-close.png",
+      "sourceSize": [
+        40,
+        40
+      ],
+      "size": [
+        80,
+        80
+      ],
+      "sourceBounds": {
+        "x": 2,
+        "y": 1,
+        "width": 36,
+        "height": 38
+      },
+      "cropBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 40,
+        "height": 40
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "contain",
+      "transparent": true,
+      "bounds": {
+        "x": 4,
+        "y": 2,
+        "width": 72,
+        "height": 76
+      },
+      "bytes": 4861
+    },
+    "button-green": {
+      "source": "assets/source/factory/ui/v1/button-green.svg",
+      "runtime": "ui/button-green.png",
+      "sourceSize": [
+        256,
+        96
+      ],
+      "size": [
+        512,
+        192
+      ],
+      "sourceBounds": {
+        "x": 2,
+        "y": 2,
+        "width": 252,
+        "height": 91
+      },
+      "cropBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 96
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "nine-slice",
+      "transparent": true,
+      "nineSlice": {
+        "left": 58,
+        "top": 58,
+        "right": 58,
+        "bottom": 62,
+        "borderScaleMode": "shrink-to-fit",
+        "maxBorderScale": 0.5
+      },
+      "nineSliceSize": [
+        512,
+        192
+      ],
+      "contentInsets": {
+        "left": 42,
+        "top": 32,
+        "right": 42,
+        "bottom": 36
+      },
+      "contentInsetScaleMode": "nine-slice",
+      "bounds": {
+        "x": 4,
+        "y": 4,
+        "width": 504,
+        "height": 182
+      },
+      "bytes": 12946
+    },
+    "button-gold": {
+      "source": "assets/source/factory/ui/v1/button-gold.svg",
+      "runtime": "ui/button-gold.png",
+      "sourceSize": [
+        256,
+        96
+      ],
+      "size": [
+        512,
+        192
+      ],
+      "sourceBounds": {
+        "x": 2,
+        "y": 2,
+        "width": 252,
+        "height": 91
+      },
+      "cropBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 96
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "nine-slice",
+      "transparent": true,
+      "nineSlice": {
+        "left": 58,
+        "top": 58,
+        "right": 58,
+        "bottom": 62,
+        "borderScaleMode": "shrink-to-fit",
+        "maxBorderScale": 0.5
+      },
+      "nineSliceSize": [
+        512,
+        192
+      ],
+      "contentInsets": {
+        "left": 42,
+        "top": 32,
+        "right": 42,
+        "bottom": 36
+      },
+      "contentInsetScaleMode": "nine-slice",
+      "bounds": {
+        "x": 4,
+        "y": 4,
+        "width": 504,
+        "height": 182
+      },
+      "bytes": 12896
+    }
+  },
+  "icons": {
+    "capacity": {
+      "source": "assets/source/ui/factory-upgrade/v1/icons/capacity.svg",
+      "runtime": "icons/capacity.png",
+      "sourceSize": [
+        64,
+        64
+      ],
+      "size": [
+        128,
+        128
+      ],
+      "sourceBounds": {
+        "x": 10,
+        "y": 10.5,
+        "width": 44,
+        "height": 44.5
+      },
+      "cropBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 64
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "contain",
+      "transparent": true,
+      "bounds": {
+        "x": 20,
+        "y": 21,
+        "width": 88,
+        "height": 89
+      },
+      "bytes": 1103
+    },
+    "output-level": {
+      "source": "assets/source/ui/factory-upgrade/v1/icons/output-level.svg",
+      "runtime": "icons/output-level.png",
+      "sourceSize": [
+        64,
+        64
+      ],
+      "size": [
+        128,
+        128
+      ],
+      "sourceBounds": {
+        "x": 5.5,
+        "y": 4.5,
+        "width": 53,
+        "height": 55.5
+      },
+      "cropBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 64
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "contain",
+      "transparent": true,
+      "bounds": {
+        "x": 11,
+        "y": 9,
+        "width": 106,
+        "height": 111
+      },
+      "bytes": 4031
+    },
+    "inventory": {
+      "source": "assets/source/ui/factory-upgrade/v1/icons/inventory.svg",
+      "runtime": "icons/inventory.png",
+      "sourceSize": [
+        64,
+        64
+      ],
+      "size": [
+        128,
+        128
+      ],
+      "sourceBounds": {
+        "x": 7.5,
+        "y": 9,
+        "width": 49,
+        "height": 48
+      },
+      "cropBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 64
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "contain",
+      "transparent": true,
+      "bounds": {
+        "x": 15,
+        "y": 18,
+        "width": 98,
+        "height": 96
+      },
+      "bytes": 2778
+    },
+    "level": {
+      "source": "assets/source/ui/factory-upgrade/v1/icons/level.svg",
+      "runtime": "icons/level.png",
+      "sourceSize": [
+        64,
+        64
+      ],
+      "size": [
+        128,
+        128
+      ],
+      "sourceBounds": {
+        "x": 4,
+        "y": 4,
+        "width": 56,
+        "height": 56
+      },
+      "cropBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 64
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "contain",
+      "transparent": true,
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 112,
+        "height": 112
+      },
+      "bytes": 2131
+    },
+    "arrow-right": {
+      "source": "assets/source/ui/factory-upgrade/v1/icons/arrow-right.svg",
+      "runtime": "icons/arrow-right.png",
+      "sourceSize": [
+        64,
+        64
+      ],
+      "size": [
+        128,
+        128
+      ],
+      "sourceBounds": {
+        "x": 6,
+        "y": 4.5,
+        "width": 50,
+        "height": 53
+      },
+      "cropBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 64
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "contain",
+      "transparent": true,
+      "bounds": {
+        "x": 12,
+        "y": 9,
+        "width": 100,
+        "height": 106
+      },
+      "bytes": 3850
+    },
+    "arrow-right-mint": {
+      "source": "assets/source/ui/factory-upgrade/v1/icons/arrow-right-mint.svg",
+      "runtime": "icons/arrow-right-mint.png",
+      "sourceSize": [
+        64,
+        64
+      ],
+      "size": [
+        128,
+        128
+      ],
+      "sourceBounds": {
+        "x": 6,
+        "y": 4.5,
+        "width": 50,
+        "height": 53
+      },
+      "cropBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 64
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "contain",
+      "transparent": true,
+      "bounds": {
+        "x": 12,
+        "y": 9,
+        "width": 100,
+        "height": 106
+      },
+      "bytes": 3624
+    }
+  },
+  "reusedAssets": [
+    {
+      "type": "existing",
+      "id": "factory/air-popper"
+    },
+    {
+      "type": "existing",
+      "id": "product/original/1"
+    },
+    {
+      "type": "existing",
+      "id": "product/original/2"
+    },
+    {
+      "type": "existing",
+      "id": "icon/coin"
+    }
+  ],
+  "textColors": {
+    "primary": "#5f341c",
+    "secondary": "#8f7656",
+    "positive": "#075731",
+    "onGreen": "#fff8e7",
+    "onGold": "#5f341c"
+  }
+}

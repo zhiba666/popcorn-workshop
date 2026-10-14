@@ -1,0 +1,5290 @@
+{
+  "schemaVersion": 1,
+  "basePath": "assets/runtime/board/v1/",
+  "runtimePixelRatio": 2,
+  "ui": {
+    "background-room": {
+      "source": "assets/source/ui/board-page/v1/ui/background-room.png",
+      "runtime": "ui/background-room.png",
+      "sourceSize": [
+        2172,
+        724
+      ],
+      "size": [
+        1080,
+        360
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 2172,
+        "height": 724
+      },
+      "cropBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 2172,
+        "height": 724
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "cover",
+      "transparent": false,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 360
+      }
+    },
+    "background-table": {
+      "source": "assets/source/ui/board-page/v1/ui/background-table.png",
+      "runtime": "ui/background-table.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "size": [
+        512,
+        512
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1254,
+        "height": 1254
+      },
+      "cropBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1254,
+        "height": 1254
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "cover",
+      "transparent": false,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 512,
+        "height": 512
+      }
+    },
+    "title-sign": {
+      "source": "assets/source/ui/board-page/v1/ui/title-sign.png",
+      "runtime": "ui/title-sign.png",
+      "sourceSize": [
+        1983,
+        793
+      ],
+      "size": [
+        640,
+        269
+      ],
+      "sourceBounds": {
+        "x": 215,
+        "y": 71,
+        "width": 1553,
+        "height": 637
+      },
+      "cropBounds": {
+        "x": 202,
+        "y": 58,
+        "width": 1579,
+        "height": 663
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "contain",
+      "transparent": true,
+      "bounds": {
+        "x": 5,
+        "y": 5,
+        "width": 629,
+        "height": 258
+      },
+      "contentInsets": {
+        "left": 90,
+        "top": 105,
+        "right": 90,
+        "bottom": 38
+      }
+    },
+    "panel-cream": {
+      "source": "assets/source/ui/board-page/v1/ui/panel-cream.png",
+      "runtime": "ui/panel-cream.png",
+      "sourceSize": [
+        1983,
+        793
+      ],
+      "size": [
+        640,
+        156
+      ],
+      "sourceBounds": {
+        "x": 62,
+        "y": 159,
+        "width": 1860,
+        "height": 441
+      },
+      "cropBounds": {
+        "x": 53,
+        "y": 150,
+        "width": 1878,
+        "height": 459
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "nine-slice",
+      "transparent": true,
+      "nineSlice": {
+        "left": 27,
+        "top": 27,
+        "right": 27,
+        "bottom": 27,
+        "borderScaleMode": "shrink-to-fit",
+        "maxBorderScale": 1
+      },
+      "nineSliceSize": [
+        640,
+        156
+      ],
+      "contentInsets": {
+        "left": 18.9,
+        "top": 13.5,
+        "right": 18.9,
+        "bottom": 13.5
+      },
+      "bounds": {
+        "x": 3,
+        "y": 3,
+        "width": 634,
+        "height": 150
+      },
+      "contentInsetScaleMode": "nine-slice"
+    },
+    "portrait-well": {
+      "source": "assets/source/ui/board-page/v1/ui/portrait-well.png",
+      "runtime": "ui/portrait-well.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "size": [
+        256,
+        252
+      ],
+      "sourceBounds": {
+        "x": 159,
+        "y": 174,
+        "width": 934,
+        "height": 917
+      },
+      "cropBounds": {
+        "x": 140,
+        "y": 155,
+        "width": 972,
+        "height": 955
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "nine-slice",
+      "transparent": true,
+      "nineSlice": {
+        "left": 45,
+        "top": 45,
+        "right": 45,
+        "bottom": 45,
+        "borderScaleMode": "shrink-to-fit",
+        "maxBorderScale": 1
+      },
+      "nineSliceSize": [
+        256,
+        252
+      ],
+      "contentInsets": {
+        "left": 31.499999999999996,
+        "top": 22.5,
+        "right": 31.499999999999996,
+        "bottom": 22.5
+      },
+      "bounds": {
+        "x": 5,
+        "y": 5,
+        "width": 246,
+        "height": 242
+      },
+      "contentInsetScaleMode": "nine-slice"
+    },
+    "currency-pill": {
+      "source": "assets/source/ui/board-page/v1/ui/currency-pill.png",
+      "runtime": "ui/currency-pill.png",
+      "sourceSize": [
+        2135,
+        736
+      ],
+      "size": [
+        512,
+        125
+      ],
+      "sourceBounds": {
+        "x": 175,
+        "y": 146,
+        "width": 1785,
+        "height": 423
+      },
+      "cropBounds": {
+        "x": 166,
+        "y": 137,
+        "width": 1803,
+        "height": 441
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "nine-slice",
+      "transparent": true,
+      "nineSlice": {
+        "left": 61,
+        "top": 61,
+        "right": 61,
+        "bottom": 61,
+        "borderScaleMode": "shrink-to-fit",
+        "maxBorderScale": 1
+      },
+      "nineSliceSize": [
+        512,
+        125
+      ],
+      "contentInsets": {
+        "left": 42.699999999999996,
+        "top": 30.5,
+        "right": 42.699999999999996,
+        "bottom": 30.5
+      },
+      "bounds": {
+        "x": 3,
+        "y": 3,
+        "width": 507,
+        "height": 120
+      },
+      "contentInsetScaleMode": "nine-slice"
+    },
+    "board-frame": {
+      "source": "assets/source/ui/board-page/v1/ui/board-frame.png",
+      "runtime": "ui/board-frame.png",
+      "sourceSize": [
+        1106,
+        1422
+      ],
+      "size": [
+        512,
+        665
+      ],
+      "sourceBounds": {
+        "x": 58,
+        "y": 64,
+        "width": 991,
+        "height": 1299
+      },
+      "cropBounds": {
+        "x": 38,
+        "y": 44,
+        "width": 1031,
+        "height": 1339
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "nine-slice",
+      "transparent": true,
+      "nineSlice": {
+        "left": 86,
+        "top": 86,
+        "right": 86,
+        "bottom": 86,
+        "borderScaleMode": "shrink-to-fit",
+        "maxBorderScale": 0.5
+      },
+      "nineSliceSize": [
+        512,
+        665
+      ],
+      "contentInsets": {
+        "left": 42,
+        "top": 42,
+        "right": 42,
+        "bottom": 42
+      },
+      "bounds": {
+        "x": 10,
+        "y": 10,
+        "width": 492,
+        "height": 645
+      },
+      "contentInsetScaleMode": "nine-slice"
+    },
+    "board-cell": {
+      "source": "assets/source/ui/board-page/v1/ui/cell-base.png",
+      "runtime": "ui/cell-base.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "size": [
+        192,
+        188
+      ],
+      "sourceBounds": {
+        "x": 105,
+        "y": 115,
+        "width": 1046,
+        "height": 1023
+      },
+      "cropBounds": {
+        "x": 84,
+        "y": 94,
+        "width": 1088,
+        "height": 1065
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "nine-slice",
+      "transparent": true,
+      "nineSlice": {
+        "left": 36,
+        "top": 36,
+        "right": 36,
+        "bottom": 36,
+        "borderScaleMode": "shrink-to-fit",
+        "maxBorderScale": 1
+      },
+      "nineSliceSize": [
+        192,
+        188
+      ],
+      "contentInsets": {
+        "left": 25.2,
+        "top": 18,
+        "right": 25.2,
+        "bottom": 18
+      },
+      "bounds": {
+        "x": 4,
+        "y": 4,
+        "width": 185,
+        "height": 181
+      },
+      "contentInsetScaleMode": "nine-slice"
+    },
+    "button-teal": {
+      "source": "assets/source/ui/board-page/v1/ui/button-teal.png",
+      "runtime": "ui/button-teal.png",
+      "sourceSize": [
+        1774,
+        887
+      ],
+      "size": [
+        384,
+        168
+      ],
+      "sourceBounds": {
+        "x": 281,
+        "y": 179,
+        "width": 1213,
+        "height": 519
+      },
+      "cropBounds": {
+        "x": 270,
+        "y": 168,
+        "width": 1235,
+        "height": 541
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "nine-slice",
+      "transparent": true,
+      "nineSlice": {
+        "left": 50,
+        "top": 50,
+        "right": 50,
+        "bottom": 50,
+        "borderScaleMode": "shrink-to-fit",
+        "maxBorderScale": 1
+      },
+      "nineSliceSize": [
+        384,
+        168
+      ],
+      "contentInsets": {
+        "left": 35,
+        "top": 25,
+        "right": 35,
+        "bottom": 25
+      },
+      "bounds": {
+        "x": 3,
+        "y": 3,
+        "width": 377,
+        "height": 161
+      },
+      "contentInsetScaleMode": "nine-slice"
+    },
+    "button-red": {
+      "source": "assets/source/ui/board-page/v1/ui/button-red.png",
+      "runtime": "ui/button-red.png",
+      "sourceSize": [
+        1774,
+        887
+      ],
+      "size": [
+        384,
+        169
+      ],
+      "sourceBounds": {
+        "x": 279,
+        "y": 176,
+        "width": 1218,
+        "height": 523
+      },
+      "cropBounds": {
+        "x": 268,
+        "y": 165,
+        "width": 1240,
+        "height": 545
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "nine-slice",
+      "transparent": true,
+      "nineSlice": {
+        "left": 51,
+        "top": 51,
+        "right": 51,
+        "bottom": 51,
+        "borderScaleMode": "shrink-to-fit",
+        "maxBorderScale": 1
+      },
+      "nineSliceSize": [
+        384,
+        169
+      ],
+      "contentInsets": {
+        "left": 35.699999999999996,
+        "top": 25.5,
+        "right": 35.699999999999996,
+        "bottom": 25.5
+      },
+      "bounds": {
+        "x": 3,
+        "y": 3,
+        "width": 377,
+        "height": 162
+      },
+      "contentInsetScaleMode": "nine-slice"
+    },
+    "nav-active": {
+      "source": "assets/source/ui/board-page/v1/ui/nav-active.png",
+      "runtime": "ui/nav-active.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "size": [
+        640,
+        166
+      ],
+      "sourceBounds": {
+        "x": 162,
+        "y": 510,
+        "width": 930,
+        "height": 234
+      },
+      "cropBounds": {
+        "x": 157,
+        "y": 505,
+        "width": 940,
+        "height": 244
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "nine-slice",
+      "transparent": true,
+      "nineSlice": {
+        "left": 53,
+        "top": 53,
+        "right": 53,
+        "bottom": 53,
+        "borderScaleMode": "shrink-to-fit",
+        "maxBorderScale": 1
+      },
+      "nineSliceSize": [
+        640,
+        166
+      ],
+      "contentInsets": {
+        "left": 37.099999999999994,
+        "top": 26.5,
+        "right": 37.099999999999994,
+        "bottom": 26.5
+      },
+      "bounds": {
+        "x": 3,
+        "y": 3,
+        "width": 633,
+        "height": 159
+      },
+      "contentInsetScaleMode": "nine-slice"
+    },
+    "nav-idle": {
+      "source": "assets/source/ui/board-page/v1/ui/nav-idle.png",
+      "runtime": "ui/nav-idle.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "size": [
+        640,
+        167
+      ],
+      "sourceBounds": {
+        "x": 162,
+        "y": 508,
+        "width": 930,
+        "height": 236
+      },
+      "cropBounds": {
+        "x": 157,
+        "y": 503,
+        "width": 940,
+        "height": 246
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "nine-slice",
+      "transparent": true,
+      "nineSlice": {
+        "left": 53,
+        "top": 53,
+        "right": 53,
+        "bottom": 53,
+        "borderScaleMode": "shrink-to-fit",
+        "maxBorderScale": 1
+      },
+      "nineSliceSize": [
+        640,
+        167
+      ],
+      "contentInsets": {
+        "left": 37.099999999999994,
+        "top": 26.5,
+        "right": 37.099999999999994,
+        "bottom": 26.5
+      },
+      "bounds": {
+        "x": 3,
+        "y": 3,
+        "width": 633,
+        "height": 160
+      },
+      "contentInsetScaleMode": "nine-slice"
+    }
+  },
+  "icons": {
+    "coin": {
+      "source": "assets/source/ui/board-page/v1/icons/coin.svg",
+      "runtime": "icons/coin.png",
+      "size": [
+        128,
+        128
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "transparent": true
+    },
+    "popcorn": {
+      "source": "assets/source/ui/board-page/v1/icons/popcorn.svg",
+      "runtime": "icons/popcorn.png",
+      "size": [
+        128,
+        128
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "transparent": true
+    },
+    "star": {
+      "source": "assets/source/ui/board-page/v1/icons/star.svg",
+      "runtime": "icons/star.png",
+      "size": [
+        96,
+        96
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "transparent": true
+    },
+    "check": {
+      "source": "assets/source/ui/board-page/v1/icons/check.svg",
+      "runtime": "icons/check.png",
+      "size": [
+        96,
+        96
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "transparent": true
+    },
+    "trash": {
+      "source": "assets/source/ui/board-page/v1/icons/trash.svg",
+      "runtime": "icons/trash.png",
+      "size": [
+        96,
+        96
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "transparent": true
+    },
+    "arrow-right": {
+      "source": "assets/source/ui/board-page/v1/icons/arrow-right.svg",
+      "runtime": "icons/arrow-right.png",
+      "size": [
+        96,
+        96
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "transparent": true
+    },
+    "factory-active": {
+      "source": "assets/source/ui/board-page/v1/icons/factory.svg",
+      "runtime": "icons/factory-active.png",
+      "size": [
+        96,
+        96
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "transparent": true,
+      "color": "#FFF6E6"
+    },
+    "factory-idle": {
+      "source": "assets/source/ui/board-page/v1/icons/factory.svg",
+      "runtime": "icons/factory-idle.png",
+      "size": [
+        96,
+        96
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "transparent": true,
+      "color": "#AE8B68"
+    },
+    "board-active": {
+      "source": "assets/source/ui/board-page/v1/icons/board.svg",
+      "runtime": "icons/board-active.png",
+      "size": [
+        96,
+        96
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "transparent": true,
+      "color": "#FFF6E6"
+    },
+    "board-idle": {
+      "source": "assets/source/ui/board-page/v1/icons/board.svg",
+      "runtime": "icons/board-idle.png",
+      "size": [
+        96,
+        96
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "transparent": true,
+      "color": "#AE8B68"
+    }
+  },
+  "controlStates": {
+    "normal": {
+      "opacity": 1,
+      "brightness": 1
+    },
+    "pressed": {
+      "opacity": 1,
+      "brightness": 0.92,
+      "offsetY": 1
+    },
+    "disabled": {
+      "opacity": 0.55,
+      "saturation": 0.15
+    }
+  },
+  "badges": {
+    "productLevel": {
+      "fill": "#765238",
+      "text": "#FFF6E6",
+      "radius": 4
+    },
+    "lineNumber": {
+      "fill": "#235E52",
+      "text": "#FFF6E6",
+      "radius": 5
+    },
+    "inventory": {
+      "fill": "#1B5063",
+      "text": "#FFF6E6",
+      "radius": 5
+    }
+  },
+  "typography": {
+    "fontFamilies": [
+      "PingFang SC",
+      "Microsoft YaHei",
+      "sans-serif"
+    ],
+    "text": "#4D2D18",
+    "muted": "#9B7C60",
+    "onAction": "#FFF6E6"
+  },
+  "reusedAssets": [
+    {
+      "source": "assets/source/gameplay/products/v9/original/lv-01.png",
+      "output": "products/original/lv-01.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 97,
+        "y": 87,
+        "width": 318,
+        "height": 338
+      },
+      "cropBounds": {
+        "x": 95,
+        "y": 85,
+        "width": 322,
+        "height": 342
+      },
+      "outputBounds": {
+        "x": 12,
+        "y": 7,
+        "width": 168,
+        "height": 178
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "original",
+      "productIndex": 1,
+      "level": 1
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/original/lv-02.png",
+      "output": "products/original/lv-02.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 64,
+        "y": 80,
+        "width": 383,
+        "height": 351
+      },
+      "cropBounds": {
+        "x": 62,
+        "y": 78,
+        "width": 387,
+        "height": 355
+      },
+      "outputBounds": {
+        "x": 6,
+        "y": 13,
+        "width": 180,
+        "height": 165
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "original",
+      "productIndex": 1,
+      "level": 2
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/original/lv-03.png",
+      "output": "products/original/lv-03.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 32,
+        "y": 80,
+        "width": 447,
+        "height": 352
+      },
+      "cropBounds": {
+        "x": 30,
+        "y": 78,
+        "width": 451,
+        "height": 356
+      },
+      "outputBounds": {
+        "x": 7,
+        "y": 25,
+        "width": 179,
+        "height": 141
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "original",
+      "productIndex": 1,
+      "level": 3
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/original/lv-04.png",
+      "output": "products/original/lv-04.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 33,
+        "y": 56,
+        "width": 446,
+        "height": 400
+      },
+      "cropBounds": {
+        "x": 31,
+        "y": 54,
+        "width": 450,
+        "height": 404
+      },
+      "outputBounds": {
+        "x": 6,
+        "y": 16,
+        "width": 179,
+        "height": 160
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "original",
+      "productIndex": 1,
+      "level": 4
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/original/lv-05.png",
+      "output": "products/original/lv-05.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 32,
+        "y": 52,
+        "width": 447,
+        "height": 408
+      },
+      "cropBounds": {
+        "x": 30,
+        "y": 50,
+        "width": 451,
+        "height": 412
+      },
+      "outputBounds": {
+        "x": 7,
+        "y": 14,
+        "width": 179,
+        "height": 164
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "original",
+      "productIndex": 1,
+      "level": 5
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/original/lv-06.png",
+      "output": "products/original/lv-06.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 33,
+        "y": 49,
+        "width": 446,
+        "height": 413
+      },
+      "cropBounds": {
+        "x": 31,
+        "y": 47,
+        "width": 450,
+        "height": 417
+      },
+      "outputBounds": {
+        "x": 6,
+        "y": 13,
+        "width": 180,
+        "height": 165
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "original",
+      "productIndex": 1,
+      "level": 6
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/original/lv-07.png",
+      "output": "products/original/lv-07.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 61,
+        "y": 33,
+        "width": 390,
+        "height": 446
+      },
+      "cropBounds": {
+        "x": 59,
+        "y": 31,
+        "width": 394,
+        "height": 450
+      },
+      "outputBounds": {
+        "x": 18,
+        "y": 6,
+        "width": 156,
+        "height": 180
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "original",
+      "productIndex": 1,
+      "level": 7
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/original/lv-08.png",
+      "output": "products/original/lv-08.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 54,
+        "y": 31,
+        "width": 404,
+        "height": 450
+      },
+      "cropBounds": {
+        "x": 52,
+        "y": 29,
+        "width": 408,
+        "height": 454
+      },
+      "outputBounds": {
+        "x": 16,
+        "y": 6,
+        "width": 160,
+        "height": 180
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "original",
+      "productIndex": 1,
+      "level": 8
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/original/lv-09.png",
+      "output": "products/original/lv-09.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 28,
+        "y": 56,
+        "width": 456,
+        "height": 400
+      },
+      "cropBounds": {
+        "x": 26,
+        "y": 54,
+        "width": 460,
+        "height": 404
+      },
+      "outputBounds": {
+        "x": 6,
+        "y": 17,
+        "width": 180,
+        "height": 158
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "original",
+      "productIndex": 1,
+      "level": 9
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/original/lv-10.png",
+      "output": "products/original/lv-10.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 24,
+        "y": 35,
+        "width": 464,
+        "height": 440
+      },
+      "cropBounds": {
+        "x": 22,
+        "y": 33,
+        "width": 468,
+        "height": 444
+      },
+      "outputBounds": {
+        "x": 6,
+        "y": 10,
+        "width": 179,
+        "height": 171
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "original",
+      "productIndex": 1,
+      "level": 10
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/caramel/lv-01.png",
+      "output": "products/caramel/lv-01.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 54,
+        "y": 32,
+        "width": 403,
+        "height": 447
+      },
+      "cropBounds": {
+        "x": 52,
+        "y": 30,
+        "width": 407,
+        "height": 451
+      },
+      "outputBounds": {
+        "x": 15,
+        "y": 7,
+        "width": 162,
+        "height": 178
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "caramel",
+      "productIndex": 2,
+      "level": 1
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/caramel/lv-02.png",
+      "output": "products/caramel/lv-02.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 99,
+        "y": 33,
+        "width": 313,
+        "height": 447
+      },
+      "cropBounds": {
+        "x": 97,
+        "y": 31,
+        "width": 317,
+        "height": 451
+      },
+      "outputBounds": {
+        "x": 33,
+        "y": 6,
+        "width": 125,
+        "height": 179
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "caramel",
+      "productIndex": 2,
+      "level": 2
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/caramel/lv-03.png",
+      "output": "products/caramel/lv-03.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 32,
+        "y": 69,
+        "width": 448,
+        "height": 373
+      },
+      "cropBounds": {
+        "x": 30,
+        "y": 67,
+        "width": 452,
+        "height": 377
+      },
+      "outputBounds": {
+        "x": 7,
+        "y": 21,
+        "width": 178,
+        "height": 150
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "caramel",
+      "productIndex": 2,
+      "level": 3
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/caramel/lv-04.png",
+      "output": "products/caramel/lv-04.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 32,
+        "y": 52,
+        "width": 448,
+        "height": 408
+      },
+      "cropBounds": {
+        "x": 30,
+        "y": 50,
+        "width": 452,
+        "height": 412
+      },
+      "outputBounds": {
+        "x": 7,
+        "y": 14,
+        "width": 178,
+        "height": 164
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "caramel",
+      "productIndex": 2,
+      "level": 4
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/caramel/lv-05.png",
+      "output": "products/caramel/lv-05.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 61,
+        "y": 36,
+        "width": 390,
+        "height": 440
+      },
+      "cropBounds": {
+        "x": 59,
+        "y": 34,
+        "width": 394,
+        "height": 444
+      },
+      "outputBounds": {
+        "x": 17,
+        "y": 6,
+        "width": 158,
+        "height": 179
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "caramel",
+      "productIndex": 2,
+      "level": 5
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/caramel/lv-06.png",
+      "output": "products/caramel/lv-06.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 32,
+        "y": 53,
+        "width": 448,
+        "height": 405
+      },
+      "cropBounds": {
+        "x": 30,
+        "y": 51,
+        "width": 452,
+        "height": 409
+      },
+      "outputBounds": {
+        "x": 7,
+        "y": 14,
+        "width": 178,
+        "height": 163
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "caramel",
+      "productIndex": 2,
+      "level": 6
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/caramel/lv-07.png",
+      "output": "products/caramel/lv-07.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 48,
+        "y": 33,
+        "width": 416,
+        "height": 446
+      },
+      "cropBounds": {
+        "x": 46,
+        "y": 31,
+        "width": 420,
+        "height": 450
+      },
+      "outputBounds": {
+        "x": 13,
+        "y": 6,
+        "width": 166,
+        "height": 180
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "caramel",
+      "productIndex": 2,
+      "level": 7
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/caramel/lv-08.png",
+      "output": "products/caramel/lv-08.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 49,
+        "y": 33,
+        "width": 413,
+        "height": 446
+      },
+      "cropBounds": {
+        "x": 47,
+        "y": 31,
+        "width": 417,
+        "height": 450
+      },
+      "outputBounds": {
+        "x": 13,
+        "y": 7,
+        "width": 166,
+        "height": 179
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "caramel",
+      "productIndex": 2,
+      "level": 8
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/caramel/lv-09.png",
+      "output": "products/caramel/lv-09.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 28,
+        "y": 38,
+        "width": 456,
+        "height": 435
+      },
+      "cropBounds": {
+        "x": 26,
+        "y": 36,
+        "width": 460,
+        "height": 439
+      },
+      "outputBounds": {
+        "x": 6,
+        "y": 11,
+        "width": 179,
+        "height": 171
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "caramel",
+      "productIndex": 2,
+      "level": 9
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/caramel/lv-10.png",
+      "output": "products/caramel/lv-10.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 24,
+        "y": 25,
+        "width": 464,
+        "height": 461
+      },
+      "cropBounds": {
+        "x": 22,
+        "y": 23,
+        "width": 468,
+        "height": 465
+      },
+      "outputBounds": {
+        "x": 6,
+        "y": 7,
+        "width": 180,
+        "height": 178
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "caramel",
+      "productIndex": 2,
+      "level": 10
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/popcorn-ball/lv-01.png",
+      "output": "products/popcorn-ball/lv-01.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 114,
+        "y": 87,
+        "width": 283,
+        "height": 338
+      },
+      "cropBounds": {
+        "x": 112,
+        "y": 85,
+        "width": 287,
+        "height": 342
+      },
+      "outputBounds": {
+        "x": 21,
+        "y": 7,
+        "width": 149,
+        "height": 178
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "popcorn-ball",
+      "productIndex": 3,
+      "level": 1
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/popcorn-ball/lv-02.png",
+      "output": "products/popcorn-ball/lv-02.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 64,
+        "y": 69,
+        "width": 383,
+        "height": 374
+      },
+      "cropBounds": {
+        "x": 62,
+        "y": 67,
+        "width": 387,
+        "height": 378
+      },
+      "outputBounds": {
+        "x": 6,
+        "y": 9,
+        "width": 179,
+        "height": 174
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "popcorn-ball",
+      "productIndex": 3,
+      "level": 2
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/popcorn-ball/lv-03.png",
+      "output": "products/popcorn-ball/lv-03.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 42,
+        "y": 70,
+        "width": 427,
+        "height": 372
+      },
+      "cropBounds": {
+        "x": 40,
+        "y": 68,
+        "width": 431,
+        "height": 376
+      },
+      "outputBounds": {
+        "x": 6,
+        "y": 17,
+        "width": 180,
+        "height": 157
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "popcorn-ball",
+      "productIndex": 3,
+      "level": 3
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/popcorn-ball/lv-04.png",
+      "output": "products/popcorn-ball/lv-04.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 60,
+        "y": 33,
+        "width": 391,
+        "height": 446
+      },
+      "cropBounds": {
+        "x": 58,
+        "y": 31,
+        "width": 395,
+        "height": 450
+      },
+      "outputBounds": {
+        "x": 18,
+        "y": 6,
+        "width": 157,
+        "height": 180
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "popcorn-ball",
+      "productIndex": 3,
+      "level": 4
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/popcorn-ball/lv-05.png",
+      "output": "products/popcorn-ball/lv-05.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 32,
+        "y": 62,
+        "width": 448,
+        "height": 387
+      },
+      "cropBounds": {
+        "x": 30,
+        "y": 60,
+        "width": 452,
+        "height": 391
+      },
+      "outputBounds": {
+        "x": 7,
+        "y": 19,
+        "width": 178,
+        "height": 155
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "popcorn-ball",
+      "productIndex": 3,
+      "level": 5
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/popcorn-ball/lv-06.png",
+      "output": "products/popcorn-ball/lv-06.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 35,
+        "y": 32,
+        "width": 442,
+        "height": 447
+      },
+      "cropBounds": {
+        "x": 33,
+        "y": 30,
+        "width": 446,
+        "height": 451
+      },
+      "outputBounds": {
+        "x": 7,
+        "y": 7,
+        "width": 177,
+        "height": 179
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "popcorn-ball",
+      "productIndex": 3,
+      "level": 6
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/popcorn-ball/lv-07.png",
+      "output": "products/popcorn-ball/lv-07.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 52,
+        "y": 33,
+        "width": 407,
+        "height": 446
+      },
+      "cropBounds": {
+        "x": 50,
+        "y": 31,
+        "width": 411,
+        "height": 450
+      },
+      "outputBounds": {
+        "x": 14,
+        "y": 6,
+        "width": 164,
+        "height": 180
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "popcorn-ball",
+      "productIndex": 3,
+      "level": 7
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/popcorn-ball/lv-08.png",
+      "output": "products/popcorn-ball/lv-08.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 32,
+        "y": 44,
+        "width": 449,
+        "height": 423
+      },
+      "cropBounds": {
+        "x": 30,
+        "y": 42,
+        "width": 453,
+        "height": 427
+      },
+      "outputBounds": {
+        "x": 6,
+        "y": 12,
+        "width": 180,
+        "height": 168
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "popcorn-ball",
+      "productIndex": 3,
+      "level": 8
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/popcorn-ball/lv-09.png",
+      "output": "products/popcorn-ball/lv-09.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 36,
+        "y": 28,
+        "width": 440,
+        "height": 456
+      },
+      "cropBounds": {
+        "x": 34,
+        "y": 26,
+        "width": 444,
+        "height": 460
+      },
+      "outputBounds": {
+        "x": 10,
+        "y": 6,
+        "width": 172,
+        "height": 179
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "popcorn-ball",
+      "productIndex": 3,
+      "level": 9
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/popcorn-ball/lv-10.png",
+      "output": "products/popcorn-ball/lv-10.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 24,
+        "y": 36,
+        "width": 464,
+        "height": 440
+      },
+      "cropBounds": {
+        "x": 22,
+        "y": 34,
+        "width": 468,
+        "height": 444
+      },
+      "outputBounds": {
+        "x": 6,
+        "y": 11,
+        "width": 180,
+        "height": 169
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "popcorn-ball",
+      "productIndex": 3,
+      "level": 10
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/crisp-stick/lv-01.png",
+      "output": "products/crisp-stick/lv-01.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 43,
+        "y": 32,
+        "width": 425,
+        "height": 448
+      },
+      "cropBounds": {
+        "x": 41,
+        "y": 30,
+        "width": 429,
+        "height": 452
+      },
+      "outputBounds": {
+        "x": 11,
+        "y": 7,
+        "width": 169,
+        "height": 178
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "crisp-stick",
+      "productIndex": 4,
+      "level": 1
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/crisp-stick/lv-02.png",
+      "output": "products/crisp-stick/lv-02.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 54,
+        "y": 32,
+        "width": 405,
+        "height": 448
+      },
+      "cropBounds": {
+        "x": 52,
+        "y": 30,
+        "width": 409,
+        "height": 452
+      },
+      "outputBounds": {
+        "x": 14,
+        "y": 7,
+        "width": 162,
+        "height": 178
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "crisp-stick",
+      "productIndex": 4,
+      "level": 2
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/crisp-stick/lv-03.png",
+      "output": "products/crisp-stick/lv-03.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 32,
+        "y": 120,
+        "width": 448,
+        "height": 272
+      },
+      "cropBounds": {
+        "x": 30,
+        "y": 118,
+        "width": 452,
+        "height": 276
+      },
+      "outputBounds": {
+        "x": 7,
+        "y": 41,
+        "width": 178,
+        "height": 109
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "crisp-stick",
+      "productIndex": 4,
+      "level": 3
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/crisp-stick/lv-04.png",
+      "output": "products/crisp-stick/lv-04.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 33,
+        "y": 73,
+        "width": 446,
+        "height": 365
+      },
+      "cropBounds": {
+        "x": 31,
+        "y": 71,
+        "width": 450,
+        "height": 369
+      },
+      "outputBounds": {
+        "x": 6,
+        "y": 23,
+        "width": 180,
+        "height": 146
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "crisp-stick",
+      "productIndex": 4,
+      "level": 4
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/crisp-stick/lv-05.png",
+      "output": "products/crisp-stick/lv-05.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 32,
+        "y": 77,
+        "width": 447,
+        "height": 357
+      },
+      "cropBounds": {
+        "x": 30,
+        "y": 75,
+        "width": 451,
+        "height": 361
+      },
+      "outputBounds": {
+        "x": 7,
+        "y": 24,
+        "width": 178,
+        "height": 144
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "crisp-stick",
+      "productIndex": 4,
+      "level": 5
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/crisp-stick/lv-06.png",
+      "output": "products/crisp-stick/lv-06.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 35,
+        "y": 87,
+        "width": 443,
+        "height": 337
+      },
+      "cropBounds": {
+        "x": 33,
+        "y": 85,
+        "width": 447,
+        "height": 341
+      },
+      "outputBounds": {
+        "x": 6,
+        "y": 27,
+        "width": 179,
+        "height": 137
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "crisp-stick",
+      "productIndex": 4,
+      "level": 6
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/crisp-stick/lv-07.png",
+      "output": "products/crisp-stick/lv-07.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 33,
+        "y": 64,
+        "width": 446,
+        "height": 384
+      },
+      "cropBounds": {
+        "x": 31,
+        "y": 62,
+        "width": 450,
+        "height": 388
+      },
+      "outputBounds": {
+        "x": 6,
+        "y": 18,
+        "width": 180,
+        "height": 155
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "crisp-stick",
+      "productIndex": 4,
+      "level": 7
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/crisp-stick/lv-08.png",
+      "output": "products/crisp-stick/lv-08.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 31,
+        "y": 55,
+        "width": 450,
+        "height": 402
+      },
+      "cropBounds": {
+        "x": 29,
+        "y": 53,
+        "width": 454,
+        "height": 406
+      },
+      "outputBounds": {
+        "x": 6,
+        "y": 15,
+        "width": 180,
+        "height": 161
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "crisp-stick",
+      "productIndex": 4,
+      "level": 8
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/crisp-stick/lv-09.png",
+      "output": "products/crisp-stick/lv-09.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 28,
+        "y": 35,
+        "width": 456,
+        "height": 442
+      },
+      "cropBounds": {
+        "x": 26,
+        "y": 33,
+        "width": 460,
+        "height": 446
+      },
+      "outputBounds": {
+        "x": 6,
+        "y": 9,
+        "width": 180,
+        "height": 173
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "crisp-stick",
+      "productIndex": 4,
+      "level": 9
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/crisp-stick/lv-10.png",
+      "output": "products/crisp-stick/lv-10.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 24,
+        "y": 25,
+        "width": 464,
+        "height": 462
+      },
+      "cropBounds": {
+        "x": 22,
+        "y": 23,
+        "width": 468,
+        "height": 466
+      },
+      "outputBounds": {
+        "x": 6,
+        "y": 6,
+        "width": 180,
+        "height": 179
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "crisp-stick",
+      "productIndex": 4,
+      "level": 10
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/wafer/lv-01.png",
+      "output": "products/wafer/lv-01.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 87,
+        "y": 91,
+        "width": 338,
+        "height": 329
+      },
+      "cropBounds": {
+        "x": 85,
+        "y": 89,
+        "width": 342,
+        "height": 333
+      },
+      "outputBounds": {
+        "x": 7,
+        "y": 9,
+        "width": 178,
+        "height": 173
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "wafer",
+      "productIndex": 5,
+      "level": 1
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/wafer/lv-02.png",
+      "output": "products/wafer/lv-02.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 116,
+        "y": 64,
+        "width": 280,
+        "height": 383
+      },
+      "cropBounds": {
+        "x": 114,
+        "y": 62,
+        "width": 284,
+        "height": 387
+      },
+      "outputBounds": {
+        "x": 30,
+        "y": 6,
+        "width": 132,
+        "height": 180
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "wafer",
+      "productIndex": 5,
+      "level": 2
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/wafer/lv-03.png",
+      "output": "products/wafer/lv-03.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 42,
+        "y": 65,
+        "width": 427,
+        "height": 382
+      },
+      "cropBounds": {
+        "x": 40,
+        "y": 63,
+        "width": 431,
+        "height": 386
+      },
+      "outputBounds": {
+        "x": 6,
+        "y": 15,
+        "width": 180,
+        "height": 161
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "wafer",
+      "productIndex": 5,
+      "level": 3
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/wafer/lv-04.png",
+      "output": "products/wafer/lv-04.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 38,
+        "y": 75,
+        "width": 436,
+        "height": 362
+      },
+      "cropBounds": {
+        "x": 36,
+        "y": 73,
+        "width": 440,
+        "height": 366
+      },
+      "outputBounds": {
+        "x": 6,
+        "y": 22,
+        "width": 180,
+        "height": 148
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "wafer",
+      "productIndex": 5,
+      "level": 4
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/wafer/lv-05.png",
+      "output": "products/wafer/lv-05.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 36,
+        "y": 62,
+        "width": 440,
+        "height": 387
+      },
+      "cropBounds": {
+        "x": 34,
+        "y": 60,
+        "width": 444,
+        "height": 391
+      },
+      "outputBounds": {
+        "x": 6,
+        "y": 17,
+        "width": 179,
+        "height": 157
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "wafer",
+      "productIndex": 5,
+      "level": 5
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/wafer/lv-06.png",
+      "output": "products/wafer/lv-06.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 37,
+        "y": 34,
+        "width": 437,
+        "height": 444
+      },
+      "cropBounds": {
+        "x": 35,
+        "y": 32,
+        "width": 441,
+        "height": 448
+      },
+      "outputBounds": {
+        "x": 7,
+        "y": 6,
+        "width": 177,
+        "height": 179
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "wafer",
+      "productIndex": 5,
+      "level": 6
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/wafer/lv-07.png",
+      "output": "products/wafer/lv-07.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 66,
+        "y": 33,
+        "width": 379,
+        "height": 446
+      },
+      "cropBounds": {
+        "x": 64,
+        "y": 31,
+        "width": 383,
+        "height": 450
+      },
+      "outputBounds": {
+        "x": 19,
+        "y": 6,
+        "width": 153,
+        "height": 180
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "wafer",
+      "productIndex": 5,
+      "level": 7
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/wafer/lv-08.png",
+      "output": "products/wafer/lv-08.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 31,
+        "y": 46,
+        "width": 449,
+        "height": 419
+      },
+      "cropBounds": {
+        "x": 29,
+        "y": 44,
+        "width": 453,
+        "height": 423
+      },
+      "outputBounds": {
+        "x": 6,
+        "y": 12,
+        "width": 180,
+        "height": 168
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "wafer",
+      "productIndex": 5,
+      "level": 8
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/wafer/lv-09.png",
+      "output": "products/wafer/lv-09.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 74,
+        "y": 28,
+        "width": 364,
+        "height": 456
+      },
+      "cropBounds": {
+        "x": 72,
+        "y": 26,
+        "width": 368,
+        "height": 460
+      },
+      "outputBounds": {
+        "x": 24,
+        "y": 6,
+        "width": 144,
+        "height": 180
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "wafer",
+      "productIndex": 5,
+      "level": 9
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/wafer/lv-10.png",
+      "output": "products/wafer/lv-10.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 68,
+        "y": 24,
+        "width": 375,
+        "height": 464
+      },
+      "cropBounds": {
+        "x": 66,
+        "y": 22,
+        "width": 379,
+        "height": 468
+      },
+      "outputBounds": {
+        "x": 24,
+        "y": 6,
+        "width": 144,
+        "height": 180
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "wafer",
+      "productIndex": 5,
+      "level": 10
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/sandwich-square/lv-01.png",
+      "output": "products/sandwich-square/lv-01.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 32,
+        "y": 86,
+        "width": 448,
+        "height": 338
+      },
+      "cropBounds": {
+        "x": 30,
+        "y": 84,
+        "width": 452,
+        "height": 342
+      },
+      "outputBounds": {
+        "x": 7,
+        "y": 29,
+        "width": 178,
+        "height": 135
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "sandwich-square",
+      "productIndex": 6,
+      "level": 1
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/sandwich-square/lv-02.png",
+      "output": "products/sandwich-square/lv-02.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 85,
+        "y": 33,
+        "width": 343,
+        "height": 447
+      },
+      "cropBounds": {
+        "x": 83,
+        "y": 31,
+        "width": 347,
+        "height": 451
+      },
+      "outputBounds": {
+        "x": 27,
+        "y": 6,
+        "width": 138,
+        "height": 179
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "sandwich-square",
+      "productIndex": 6,
+      "level": 2
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/sandwich-square/lv-03.png",
+      "output": "products/sandwich-square/lv-03.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 32,
+        "y": 85,
+        "width": 447,
+        "height": 341
+      },
+      "cropBounds": {
+        "x": 30,
+        "y": 83,
+        "width": 451,
+        "height": 345
+      },
+      "outputBounds": {
+        "x": 7,
+        "y": 28,
+        "width": 179,
+        "height": 137
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "sandwich-square",
+      "productIndex": 6,
+      "level": 3
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/sandwich-square/lv-04.png",
+      "output": "products/sandwich-square/lv-04.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 38,
+        "y": 55,
+        "width": 436,
+        "height": 401
+      },
+      "cropBounds": {
+        "x": 36,
+        "y": 53,
+        "width": 440,
+        "height": 405
+      },
+      "outputBounds": {
+        "x": 6,
+        "y": 14,
+        "width": 180,
+        "height": 164
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "sandwich-square",
+      "productIndex": 6,
+      "level": 4
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/sandwich-square/lv-05.png",
+      "output": "products/sandwich-square/lv-05.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 36,
+        "y": 54,
+        "width": 440,
+        "height": 404
+      },
+      "cropBounds": {
+        "x": 34,
+        "y": 52,
+        "width": 444,
+        "height": 408
+      },
+      "outputBounds": {
+        "x": 6,
+        "y": 13,
+        "width": 180,
+        "height": 165
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "sandwich-square",
+      "productIndex": 6,
+      "level": 5
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/sandwich-square/lv-06.png",
+      "output": "products/sandwich-square/lv-06.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 34,
+        "y": 34,
+        "width": 443,
+        "height": 443
+      },
+      "cropBounds": {
+        "x": 32,
+        "y": 32,
+        "width": 447,
+        "height": 447
+      },
+      "outputBounds": {
+        "x": 6,
+        "y": 6,
+        "width": 180,
+        "height": 180
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "sandwich-square",
+      "productIndex": 6,
+      "level": 6
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/sandwich-square/lv-07.png",
+      "output": "products/sandwich-square/lv-07.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 33,
+        "y": 50,
+        "width": 446,
+        "height": 411
+      },
+      "cropBounds": {
+        "x": 31,
+        "y": 48,
+        "width": 450,
+        "height": 415
+      },
+      "outputBounds": {
+        "x": 6,
+        "y": 13,
+        "width": 179,
+        "height": 166
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "sandwich-square",
+      "productIndex": 6,
+      "level": 7
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/sandwich-square/lv-08.png",
+      "output": "products/sandwich-square/lv-08.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 31,
+        "y": 50,
+        "width": 450,
+        "height": 411
+      },
+      "cropBounds": {
+        "x": 29,
+        "y": 48,
+        "width": 454,
+        "height": 415
+      },
+      "outputBounds": {
+        "x": 6,
+        "y": 14,
+        "width": 179,
+        "height": 163
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "sandwich-square",
+      "productIndex": 6,
+      "level": 8
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/sandwich-square/lv-09.png",
+      "output": "products/sandwich-square/lv-09.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 28,
+        "y": 35,
+        "width": 456,
+        "height": 442
+      },
+      "cropBounds": {
+        "x": 26,
+        "y": 33,
+        "width": 460,
+        "height": 446
+      },
+      "outputBounds": {
+        "x": 6,
+        "y": 9,
+        "width": 180,
+        "height": 173
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "sandwich-square",
+      "productIndex": 6,
+      "level": 9
+    },
+    {
+      "source": "assets/source/gameplay/products/v9/sandwich-square/lv-10.png",
+      "output": "products/sandwich-square/lv-10.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "bounds": {
+        "x": 24,
+        "y": 25,
+        "width": 464,
+        "height": 462
+      },
+      "cropBounds": {
+        "x": 22,
+        "y": 23,
+        "width": 468,
+        "height": 466
+      },
+      "outputBounds": {
+        "x": 6,
+        "y": 6,
+        "width": 180,
+        "height": 179
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "product",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "sandwich-square",
+      "productIndex": 6,
+      "level": 10
+    },
+    {
+      "source": "assets/source/gameplay/launchers/v1/original/lv-01.png",
+      "output": "launchers/original/lv-01.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 220,
+        "y": 299,
+        "width": 816,
+        "height": 905
+      },
+      "cropBounds": {
+        "x": 218,
+        "y": 297,
+        "width": 820,
+        "height": 909
+      },
+      "outputBounds": {
+        "x": 15,
+        "y": 6,
+        "width": 162,
+        "height": 180
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "launcher",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "original",
+      "productIndex": 1,
+      "level": 1
+    },
+    {
+      "source": "assets/source/gameplay/launchers/v1/original/lv-02.png",
+      "output": "launchers/original/lv-02.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 172,
+        "y": 232,
+        "width": 907,
+        "height": 972
+      },
+      "cropBounds": {
+        "x": 170,
+        "y": 230,
+        "width": 911,
+        "height": 976
+      },
+      "outputBounds": {
+        "x": 12,
+        "y": 6,
+        "width": 168,
+        "height": 180
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "launcher",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "original",
+      "productIndex": 1,
+      "level": 2
+    },
+    {
+      "source": "assets/source/gameplay/launchers/v1/original/lv-03.png",
+      "output": "launchers/original/lv-03.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 251,
+        "y": 119,
+        "width": 751,
+        "height": 1085
+      },
+      "cropBounds": {
+        "x": 249,
+        "y": 117,
+        "width": 755,
+        "height": 1089
+      },
+      "outputBounds": {
+        "x": 33,
+        "y": 6,
+        "width": 125,
+        "height": 180
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "launcher",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "original",
+      "productIndex": 1,
+      "level": 3
+    },
+    {
+      "source": "assets/source/gameplay/launchers/v1/original/lv-04.png",
+      "output": "launchers/original/lv-04.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 257,
+        "y": 76,
+        "width": 739,
+        "height": 1128
+      },
+      "cropBounds": {
+        "x": 255,
+        "y": 74,
+        "width": 743,
+        "height": 1132
+      },
+      "outputBounds": {
+        "x": 37,
+        "y": 6,
+        "width": 118,
+        "height": 180
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "launcher",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "original",
+      "productIndex": 1,
+      "level": 4
+    },
+    {
+      "source": "assets/source/gameplay/launchers/v1/original/lv-05.png",
+      "output": "launchers/original/lv-05.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 220,
+        "y": 32,
+        "width": 811,
+        "height": 1172
+      },
+      "cropBounds": {
+        "x": 218,
+        "y": 30,
+        "width": 815,
+        "height": 1176
+      },
+      "outputBounds": {
+        "x": 33,
+        "y": 6,
+        "width": 125,
+        "height": 180
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "launcher",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "original",
+      "productIndex": 1,
+      "level": 5
+    },
+    {
+      "source": "assets/source/gameplay/launchers/v1/original/lv-06.png",
+      "output": "launchers/original/lv-06.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 227,
+        "y": 34,
+        "width": 800,
+        "height": 1170
+      },
+      "cropBounds": {
+        "x": 225,
+        "y": 32,
+        "width": 804,
+        "height": 1174
+      },
+      "outputBounds": {
+        "x": 34,
+        "y": 6,
+        "width": 123,
+        "height": 180
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "launcher",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "original",
+      "productIndex": 1,
+      "level": 6
+    },
+    {
+      "source": "assets/source/gameplay/launchers/v1/caramel/lv-01.png",
+      "output": "launchers/caramel/lv-01.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 224,
+        "y": 185,
+        "width": 807,
+        "height": 1018
+      },
+      "cropBounds": {
+        "x": 222,
+        "y": 183,
+        "width": 811,
+        "height": 1022
+      },
+      "outputBounds": {
+        "x": 24,
+        "y": 6,
+        "width": 143,
+        "height": 180
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "launcher",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "caramel",
+      "productIndex": 2,
+      "level": 1
+    },
+    {
+      "source": "assets/source/gameplay/launchers/v1/caramel/lv-02.png",
+      "output": "launchers/caramel/lv-02.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 159,
+        "y": 86,
+        "width": 936,
+        "height": 1118
+      },
+      "cropBounds": {
+        "x": 157,
+        "y": 84,
+        "width": 940,
+        "height": 1122
+      },
+      "outputBounds": {
+        "x": 20,
+        "y": 6,
+        "width": 151,
+        "height": 180
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "launcher",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "caramel",
+      "productIndex": 2,
+      "level": 2
+    },
+    {
+      "source": "assets/source/gameplay/launchers/v1/caramel/lv-03.png",
+      "output": "launchers/caramel/lv-03.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 175,
+        "y": 43,
+        "width": 901,
+        "height": 1161
+      },
+      "cropBounds": {
+        "x": 173,
+        "y": 41,
+        "width": 905,
+        "height": 1165
+      },
+      "outputBounds": {
+        "x": 26,
+        "y": 6,
+        "width": 140,
+        "height": 180
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "launcher",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "caramel",
+      "productIndex": 2,
+      "level": 3
+    },
+    {
+      "source": "assets/source/gameplay/launchers/v1/caramel/lv-04.png",
+      "output": "launchers/caramel/lv-04.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 164,
+        "y": 32,
+        "width": 926,
+        "height": 1172
+      },
+      "cropBounds": {
+        "x": 162,
+        "y": 30,
+        "width": 930,
+        "height": 1176
+      },
+      "outputBounds": {
+        "x": 25,
+        "y": 6,
+        "width": 142,
+        "height": 180
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "launcher",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "caramel",
+      "productIndex": 2,
+      "level": 4
+    },
+    {
+      "source": "assets/source/gameplay/launchers/v1/caramel/lv-05.png",
+      "output": "launchers/caramel/lv-05.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 194,
+        "y": 32,
+        "width": 866,
+        "height": 1172
+      },
+      "cropBounds": {
+        "x": 192,
+        "y": 30,
+        "width": 870,
+        "height": 1176
+      },
+      "outputBounds": {
+        "x": 29,
+        "y": 6,
+        "width": 133,
+        "height": 180
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "launcher",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "caramel",
+      "productIndex": 2,
+      "level": 5
+    },
+    {
+      "source": "assets/source/gameplay/launchers/v1/caramel/lv-06.png",
+      "output": "launchers/caramel/lv-06.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 214,
+        "y": 31,
+        "width": 823,
+        "height": 1173
+      },
+      "cropBounds": {
+        "x": 212,
+        "y": 29,
+        "width": 827,
+        "height": 1177
+      },
+      "outputBounds": {
+        "x": 33,
+        "y": 6,
+        "width": 126,
+        "height": 180
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "launcher",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "caramel",
+      "productIndex": 2,
+      "level": 6
+    },
+    {
+      "source": "assets/source/gameplay/launchers/v1/popcorn-ball/lv-01.png",
+      "output": "launchers/popcorn-ball/lv-01.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 156,
+        "y": 239,
+        "width": 942,
+        "height": 965
+      },
+      "cropBounds": {
+        "x": 154,
+        "y": 237,
+        "width": 946,
+        "height": 969
+      },
+      "outputBounds": {
+        "x": 8,
+        "y": 6,
+        "width": 176,
+        "height": 180
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "launcher",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "popcorn-ball",
+      "productIndex": 3,
+      "level": 1
+    },
+    {
+      "source": "assets/source/gameplay/launchers/v1/popcorn-ball/lv-02.png",
+      "output": "launchers/popcorn-ball/lv-02.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 200,
+        "y": 202,
+        "width": 853,
+        "height": 1002
+      },
+      "cropBounds": {
+        "x": 198,
+        "y": 200,
+        "width": 857,
+        "height": 1006
+      },
+      "outputBounds": {
+        "x": 19,
+        "y": 6,
+        "width": 153,
+        "height": 180
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "launcher",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "popcorn-ball",
+      "productIndex": 3,
+      "level": 2
+    },
+    {
+      "source": "assets/source/gameplay/launchers/v1/popcorn-ball/lv-03.png",
+      "output": "launchers/popcorn-ball/lv-03.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 173,
+        "y": 33,
+        "width": 909,
+        "height": 1171
+      },
+      "cropBounds": {
+        "x": 171,
+        "y": 31,
+        "width": 913,
+        "height": 1175
+      },
+      "outputBounds": {
+        "x": 26,
+        "y": 6,
+        "width": 140,
+        "height": 180
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "launcher",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "popcorn-ball",
+      "productIndex": 3,
+      "level": 3
+    },
+    {
+      "source": "assets/source/gameplay/launchers/v1/popcorn-ball/lv-04.png",
+      "output": "launchers/popcorn-ball/lv-04.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 195,
+        "y": 32,
+        "width": 862,
+        "height": 1172
+      },
+      "cropBounds": {
+        "x": 193,
+        "y": 30,
+        "width": 866,
+        "height": 1176
+      },
+      "outputBounds": {
+        "x": 29,
+        "y": 6,
+        "width": 133,
+        "height": 180
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "launcher",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "popcorn-ball",
+      "productIndex": 3,
+      "level": 4
+    },
+    {
+      "source": "assets/source/gameplay/launchers/v1/popcorn-ball/lv-05.png",
+      "output": "launchers/popcorn-ball/lv-05.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 108,
+        "y": 32,
+        "width": 1038,
+        "height": 1172
+      },
+      "cropBounds": {
+        "x": 106,
+        "y": 30,
+        "width": 1042,
+        "height": 1176
+      },
+      "outputBounds": {
+        "x": 16,
+        "y": 6,
+        "width": 159,
+        "height": 180
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "launcher",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "popcorn-ball",
+      "productIndex": 3,
+      "level": 5
+    },
+    {
+      "source": "assets/source/gameplay/launchers/v1/popcorn-ball/lv-06.png",
+      "output": "launchers/popcorn-ball/lv-06.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 62,
+        "y": 70,
+        "width": 1128,
+        "height": 1134
+      },
+      "cropBounds": {
+        "x": 60,
+        "y": 68,
+        "width": 1132,
+        "height": 1138
+      },
+      "outputBounds": {
+        "x": 6,
+        "y": 6,
+        "width": 179,
+        "height": 180
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "launcher",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "popcorn-ball",
+      "productIndex": 3,
+      "level": 6
+    },
+    {
+      "source": "assets/source/gameplay/launchers/v1/crisp-stick/lv-01.png",
+      "output": "launchers/crisp-stick/lv-01.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 197,
+        "y": 310,
+        "width": 859,
+        "height": 896
+      },
+      "cropBounds": {
+        "x": 195,
+        "y": 308,
+        "width": 863,
+        "height": 900
+      },
+      "outputBounds": {
+        "x": 9,
+        "y": 6,
+        "width": 173,
+        "height": 180
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "launcher",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "crisp-stick",
+      "productIndex": 4,
+      "level": 1
+    },
+    {
+      "source": "assets/source/gameplay/launchers/v1/crisp-stick/lv-02.png",
+      "output": "launchers/crisp-stick/lv-02.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 174,
+        "y": 240,
+        "width": 905,
+        "height": 964
+      },
+      "cropBounds": {
+        "x": 172,
+        "y": 238,
+        "width": 909,
+        "height": 968
+      },
+      "outputBounds": {
+        "x": 11,
+        "y": 6,
+        "width": 169,
+        "height": 180
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "launcher",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "crisp-stick",
+      "productIndex": 4,
+      "level": 2
+    },
+    {
+      "source": "assets/source/gameplay/launchers/v1/crisp-stick/lv-03.png",
+      "output": "launchers/crisp-stick/lv-03.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 238,
+        "y": 137,
+        "width": 778,
+        "height": 1066
+      },
+      "cropBounds": {
+        "x": 236,
+        "y": 135,
+        "width": 782,
+        "height": 1070
+      },
+      "outputBounds": {
+        "x": 30,
+        "y": 6,
+        "width": 132,
+        "height": 180
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "launcher",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "crisp-stick",
+      "productIndex": 4,
+      "level": 3
+    },
+    {
+      "source": "assets/source/gameplay/launchers/v1/crisp-stick/lv-04.png",
+      "output": "launchers/crisp-stick/lv-04.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 202,
+        "y": 49,
+        "width": 850,
+        "height": 1155
+      },
+      "cropBounds": {
+        "x": 200,
+        "y": 47,
+        "width": 854,
+        "height": 1159
+      },
+      "outputBounds": {
+        "x": 29,
+        "y": 6,
+        "width": 133,
+        "height": 180
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "launcher",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "crisp-stick",
+      "productIndex": 4,
+      "level": 4
+    },
+    {
+      "source": "assets/source/gameplay/launchers/v1/crisp-stick/lv-05.png",
+      "output": "launchers/crisp-stick/lv-05.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 148,
+        "y": 42,
+        "width": 957,
+        "height": 1162
+      },
+      "cropBounds": {
+        "x": 146,
+        "y": 40,
+        "width": 961,
+        "height": 1166
+      },
+      "outputBounds": {
+        "x": 22,
+        "y": 6,
+        "width": 148,
+        "height": 180
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "launcher",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "crisp-stick",
+      "productIndex": 4,
+      "level": 5
+    },
+    {
+      "source": "assets/source/gameplay/launchers/v1/crisp-stick/lv-06.png",
+      "output": "launchers/crisp-stick/lv-06.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 154,
+        "y": 32,
+        "width": 945,
+        "height": 1172
+      },
+      "cropBounds": {
+        "x": 152,
+        "y": 30,
+        "width": 949,
+        "height": 1176
+      },
+      "outputBounds": {
+        "x": 23,
+        "y": 6,
+        "width": 145,
+        "height": 180
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "launcher",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "crisp-stick",
+      "productIndex": 4,
+      "level": 6
+    },
+    {
+      "source": "assets/source/gameplay/launchers/v1/wafer/lv-01.png",
+      "output": "launchers/wafer/lv-01.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 138,
+        "y": 388,
+        "width": 977,
+        "height": 816
+      },
+      "cropBounds": {
+        "x": 136,
+        "y": 386,
+        "width": 981,
+        "height": 820
+      },
+      "outputBounds": {
+        "x": 6,
+        "y": 21,
+        "width": 180,
+        "height": 150
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "launcher",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "wafer",
+      "productIndex": 5,
+      "level": 1
+    },
+    {
+      "source": "assets/source/gameplay/launchers/v1/wafer/lv-02.png",
+      "output": "launchers/wafer/lv-02.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 131,
+        "y": 222,
+        "width": 992,
+        "height": 982
+      },
+      "cropBounds": {
+        "x": 129,
+        "y": 220,
+        "width": 996,
+        "height": 986
+      },
+      "outputBounds": {
+        "x": 6,
+        "y": 7,
+        "width": 180,
+        "height": 178
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "launcher",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "wafer",
+      "productIndex": 5,
+      "level": 2
+    },
+    {
+      "source": "assets/source/gameplay/launchers/v1/wafer/lv-03.png",
+      "output": "launchers/wafer/lv-03.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 128,
+        "y": 115,
+        "width": 998,
+        "height": 1089
+      },
+      "cropBounds": {
+        "x": 126,
+        "y": 113,
+        "width": 1002,
+        "height": 1093
+      },
+      "outputBounds": {
+        "x": 13,
+        "y": 6,
+        "width": 165,
+        "height": 180
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "launcher",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "wafer",
+      "productIndex": 5,
+      "level": 3
+    },
+    {
+      "source": "assets/source/gameplay/launchers/v1/wafer/lv-04.png",
+      "output": "launchers/wafer/lv-04.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 124,
+        "y": 108,
+        "width": 1006,
+        "height": 1096
+      },
+      "cropBounds": {
+        "x": 122,
+        "y": 106,
+        "width": 1010,
+        "height": 1100
+      },
+      "outputBounds": {
+        "x": 13,
+        "y": 6,
+        "width": 165,
+        "height": 180
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "launcher",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "wafer",
+      "productIndex": 5,
+      "level": 4
+    },
+    {
+      "source": "assets/source/gameplay/launchers/v1/wafer/lv-05.png",
+      "output": "launchers/wafer/lv-05.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 116,
+        "y": 115,
+        "width": 1020,
+        "height": 1088
+      },
+      "cropBounds": {
+        "x": 114,
+        "y": 113,
+        "width": 1024,
+        "height": 1092
+      },
+      "outputBounds": {
+        "x": 11,
+        "y": 6,
+        "width": 169,
+        "height": 180
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "launcher",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "wafer",
+      "productIndex": 5,
+      "level": 5
+    },
+    {
+      "source": "assets/source/gameplay/launchers/v1/wafer/lv-06.png",
+      "output": "launchers/wafer/lv-06.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 116,
+        "y": 66,
+        "width": 1022,
+        "height": 1138
+      },
+      "cropBounds": {
+        "x": 114,
+        "y": 64,
+        "width": 1026,
+        "height": 1142
+      },
+      "outputBounds": {
+        "x": 15,
+        "y": 6,
+        "width": 162,
+        "height": 180
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "launcher",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "wafer",
+      "productIndex": 5,
+      "level": 6
+    },
+    {
+      "source": "assets/source/gameplay/launchers/v1/sandwich-square/lv-01.png",
+      "output": "launchers/sandwich-square/lv-01.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 162,
+        "y": 318,
+        "width": 930,
+        "height": 886
+      },
+      "cropBounds": {
+        "x": 160,
+        "y": 316,
+        "width": 934,
+        "height": 890
+      },
+      "outputBounds": {
+        "x": 6,
+        "y": 10,
+        "width": 180,
+        "height": 172
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "launcher",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "sandwich-square",
+      "productIndex": 6,
+      "level": 1
+    },
+    {
+      "source": "assets/source/gameplay/launchers/v1/sandwich-square/lv-02.png",
+      "output": "launchers/sandwich-square/lv-02.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 139,
+        "y": 282,
+        "width": 975,
+        "height": 922
+      },
+      "cropBounds": {
+        "x": 137,
+        "y": 280,
+        "width": 979,
+        "height": 926
+      },
+      "outputBounds": {
+        "x": 6,
+        "y": 11,
+        "width": 180,
+        "height": 170
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "launcher",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "sandwich-square",
+      "productIndex": 6,
+      "level": 2
+    },
+    {
+      "source": "assets/source/gameplay/launchers/v1/sandwich-square/lv-03.png",
+      "output": "launchers/sandwich-square/lv-03.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 150,
+        "y": 73,
+        "width": 953,
+        "height": 1131
+      },
+      "cropBounds": {
+        "x": 148,
+        "y": 71,
+        "width": 957,
+        "height": 1135
+      },
+      "outputBounds": {
+        "x": 20,
+        "y": 6,
+        "width": 152,
+        "height": 180
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "launcher",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "sandwich-square",
+      "productIndex": 6,
+      "level": 3
+    },
+    {
+      "source": "assets/source/gameplay/launchers/v1/sandwich-square/lv-04.png",
+      "output": "launchers/sandwich-square/lv-04.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 167,
+        "y": 53,
+        "width": 917,
+        "height": 1150
+      },
+      "cropBounds": {
+        "x": 165,
+        "y": 51,
+        "width": 921,
+        "height": 1154
+      },
+      "outputBounds": {
+        "x": 24,
+        "y": 6,
+        "width": 144,
+        "height": 180
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "launcher",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "sandwich-square",
+      "productIndex": 6,
+      "level": 4
+    },
+    {
+      "source": "assets/source/gameplay/launchers/v1/sandwich-square/lv-05.png",
+      "output": "launchers/sandwich-square/lv-05.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 152,
+        "y": 37,
+        "width": 949,
+        "height": 1167
+      },
+      "cropBounds": {
+        "x": 150,
+        "y": 35,
+        "width": 953,
+        "height": 1171
+      },
+      "outputBounds": {
+        "x": 23,
+        "y": 6,
+        "width": 146,
+        "height": 180
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "launcher",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "sandwich-square",
+      "productIndex": 6,
+      "level": 5
+    },
+    {
+      "source": "assets/source/gameplay/launchers/v1/sandwich-square/lv-06.png",
+      "output": "launchers/sandwich-square/lv-06.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 156,
+        "y": 32,
+        "width": 941,
+        "height": 1172
+      },
+      "cropBounds": {
+        "x": 154,
+        "y": 30,
+        "width": 945,
+        "height": 1176
+      },
+      "outputBounds": {
+        "x": 23,
+        "y": 6,
+        "width": 145,
+        "height": 180
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "launcher",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "productId": "sandwich-square",
+      "productIndex": 6,
+      "level": 6
+    },
+    {
+      "source": "assets/source/characters/customers/v2/rabbit-courier.png",
+      "output": "customers/rabbit-courier.png",
+      "size": [
+        256,
+        256
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 226,
+        "y": 36,
+        "width": 876,
+        "height": 1186
+      },
+      "cropBounds": {
+        "x": 224,
+        "y": 34,
+        "width": 880,
+        "height": 1190
+      },
+      "outputBounds": {
+        "x": 38,
+        "y": 6,
+        "width": 180,
+        "height": 244
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "customer",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "customerId": "rabbit-courier",
+      "customerIndex": 1
+    },
+    {
+      "source": "assets/source/characters/customers/v2/bear-neighbor.png",
+      "output": "customers/bear-neighbor.png",
+      "size": [
+        256,
+        256
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 79,
+        "y": 49,
+        "width": 1094,
+        "height": 1162
+      },
+      "cropBounds": {
+        "x": 77,
+        "y": 47,
+        "width": 1098,
+        "height": 1166
+      },
+      "outputBounds": {
+        "x": 13,
+        "y": 6,
+        "width": 230,
+        "height": 244
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "customer",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "customerId": "bear-neighbor",
+      "customerIndex": 2
+    },
+    {
+      "source": "assets/source/characters/customers/v2/fox-traveler.png",
+      "output": "customers/fox-traveler.png",
+      "size": [
+        256,
+        256
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 172,
+        "y": 26,
+        "width": 966,
+        "height": 1210
+      },
+      "cropBounds": {
+        "x": 170,
+        "y": 24,
+        "width": 970,
+        "height": 1214
+      },
+      "outputBounds": {
+        "x": 30,
+        "y": 6,
+        "width": 195,
+        "height": 244
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "customer",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "customerId": "fox-traveler",
+      "customerIndex": 3
+    },
+    {
+      "source": "assets/source/ui/board-states/v1/cell-blocked.png",
+      "output": "board-states/cell-blocked.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 79,
+        "y": 60,
+        "width": 1128,
+        "height": 1108
+      },
+      "cropBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1254,
+        "height": 1254
+      },
+      "outputBounds": {
+        "x": 12,
+        "y": 9,
+        "width": 173,
+        "height": 170
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "board-state",
+      "alphaThreshold": 8,
+      "padding": 0,
+      "stateId": "cell-blocked"
+    },
+    {
+      "source": "assets/source/ui/board-states/v1/cell-mergeable.png",
+      "output": "board-states/cell-mergeable.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 82,
+        "y": 87,
+        "width": 1091,
+        "height": 1082
+      },
+      "cropBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1254,
+        "height": 1254
+      },
+      "outputBounds": {
+        "x": 12,
+        "y": 13,
+        "width": 168,
+        "height": 166
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "board-state",
+      "alphaThreshold": 8,
+      "padding": 0,
+      "stateId": "cell-mergeable"
+    },
+    {
+      "source": "assets/source/ui/board-states/v1/cell-order-match.png",
+      "output": "board-states/cell-order-match.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 80,
+        "y": 60,
+        "width": 1130,
+        "height": 1110
+      },
+      "cropBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1254,
+        "height": 1254
+      },
+      "outputBounds": {
+        "x": 12,
+        "y": 9,
+        "width": 174,
+        "height": 171
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "board-state",
+      "alphaThreshold": 8,
+      "padding": 0,
+      "stateId": "cell-order-match"
+    },
+    {
+      "source": "assets/source/ui/board-states/v1/cell-selected.png",
+      "output": "board-states/cell-selected.png",
+      "size": [
+        192,
+        192
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 83,
+        "y": 88,
+        "width": 1088,
+        "height": 1079
+      },
+      "cropBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1254,
+        "height": 1254
+      },
+      "outputBounds": {
+        "x": 12,
+        "y": 13,
+        "width": 168,
+        "height": 166
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "board-state",
+      "alphaThreshold": 8,
+      "padding": 0,
+      "stateId": "cell-selected"
+    },
+    {
+      "source": "assets/source/ui/customer-status/v1/badges/max-star.png",
+      "output": "customer-status/badges/max-star.png",
+      "size": [
+        96,
+        96
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 74,
+        "y": 70,
+        "width": 1104,
+        "height": 1105
+      },
+      "cropBounds": {
+        "x": 72,
+        "y": 68,
+        "width": 1108,
+        "height": 1109
+      },
+      "outputBounds": {
+        "x": 6,
+        "y": 6,
+        "width": 84,
+        "height": 84
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "customer-status",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "subtype": "badge",
+      "statusId": "max-star"
+    },
+    {
+      "source": "assets/source/ui/customer-status/v1/badges/new-customer.png",
+      "output": "customer-status/badges/new-customer.png",
+      "size": [
+        96,
+        96
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 64,
+        "y": 79,
+        "width": 1125,
+        "height": 1100
+      },
+      "cropBounds": {
+        "x": 62,
+        "y": 77,
+        "width": 1129,
+        "height": 1104
+      },
+      "outputBounds": {
+        "x": 6,
+        "y": 7,
+        "width": 84,
+        "height": 82
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "customer-status",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "subtype": "badge",
+      "statusId": "new-customer"
+    },
+    {
+      "source": "assets/source/ui/customer-status/v1/silhouettes/rabbit-courier.png",
+      "output": "customer-status/silhouettes/rabbit-courier.png",
+      "size": [
+        256,
+        256
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 230,
+        "y": 40,
+        "width": 873,
+        "height": 1181
+      },
+      "cropBounds": {
+        "x": 228,
+        "y": 38,
+        "width": 877,
+        "height": 1185
+      },
+      "outputBounds": {
+        "x": 37,
+        "y": 6,
+        "width": 181,
+        "height": 244
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "customer-status",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "subtype": "silhouette",
+      "statusId": "rabbit"
+    },
+    {
+      "source": "assets/source/ui/customer-status/v1/silhouettes/bear-neighbor.png",
+      "output": "customer-status/silhouettes/bear-neighbor.png",
+      "size": [
+        256,
+        256
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 80,
+        "y": 47,
+        "width": 1093,
+        "height": 1161
+      },
+      "cropBounds": {
+        "x": 78,
+        "y": 45,
+        "width": 1097,
+        "height": 1165
+      },
+      "outputBounds": {
+        "x": 13,
+        "y": 6,
+        "width": 230,
+        "height": 244
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "customer-status",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "subtype": "silhouette",
+      "statusId": "bear"
+    },
+    {
+      "source": "assets/source/ui/customer-status/v1/silhouettes/fox-traveler.png",
+      "output": "customer-status/silhouettes/fox-traveler.png",
+      "size": [
+        256,
+        256
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "bounds": {
+        "x": 174,
+        "y": 25,
+        "width": 964,
+        "height": 1210
+      },
+      "cropBounds": {
+        "x": 172,
+        "y": 23,
+        "width": 968,
+        "height": 1214
+      },
+      "outputBounds": {
+        "x": 30,
+        "y": 6,
+        "width": 195,
+        "height": 244
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "customer-status",
+      "alphaThreshold": 8,
+      "padding": 6,
+      "subtype": "silhouette",
+      "statusId": "fox"
+    },
+    {
+      "source": "assets/source/effects/merge-feedback/v1/focus-ring.svg",
+      "output": "effects/focus-ring.png",
+      "size": [
+        128,
+        128
+      ],
+      "sourceSize": [
+        128,
+        128
+      ],
+      "bounds": {
+        "x": 2,
+        "y": 3,
+        "width": 124,
+        "height": 123
+      },
+      "cropBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 128,
+        "height": 128
+      },
+      "outputBounds": {
+        "x": 2,
+        "y": 3,
+        "width": 124,
+        "height": 123
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "effect",
+      "alphaThreshold": 8,
+      "padding": 0,
+      "stateId": "focus-ring"
+    },
+    {
+      "source": "assets/source/effects/merge-feedback/v1/invalid-target.svg",
+      "output": "effects/invalid-target.png",
+      "size": [
+        128,
+        128
+      ],
+      "sourceSize": [
+        128,
+        128
+      ],
+      "bounds": {
+        "x": 2,
+        "y": 2,
+        "width": 124,
+        "height": 124
+      },
+      "cropBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 128,
+        "height": 128
+      },
+      "outputBounds": {
+        "x": 2,
+        "y": 2,
+        "width": 124,
+        "height": 124
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "effect",
+      "alphaThreshold": 8,
+      "padding": 0,
+      "stateId": "invalid-target"
+    },
+    {
+      "source": "assets/source/effects/merge-feedback/v1/merge-burst.svg",
+      "output": "effects/merge-burst.png",
+      "size": [
+        128,
+        128
+      ],
+      "sourceSize": [
+        128,
+        128
+      ],
+      "bounds": {
+        "x": 10,
+        "y": 4,
+        "width": 110,
+        "height": 117
+      },
+      "cropBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 128,
+        "height": 128
+      },
+      "outputBounds": {
+        "x": 10,
+        "y": 4,
+        "width": 110,
+        "height": 117
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "effect",
+      "alphaThreshold": 8,
+      "padding": 0,
+      "stateId": "merge-burst"
+    },
+    {
+      "source": "assets/source/effects/merge-feedback/v1/merge-target.svg",
+      "output": "effects/merge-target.png",
+      "size": [
+        128,
+        128
+      ],
+      "sourceSize": [
+        128,
+        128
+      ],
+      "bounds": {
+        "x": 2,
+        "y": 2,
+        "width": 124,
+        "height": 124
+      },
+      "cropBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 128,
+        "height": 128
+      },
+      "outputBounds": {
+        "x": 2,
+        "y": 2,
+        "width": 124,
+        "height": 124
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "effect",
+      "alphaThreshold": 8,
+      "padding": 0,
+      "stateId": "merge-target"
+    },
+    {
+      "source": "assets/source/effects/merge-feedback/v1/sparkle.svg",
+      "output": "effects/sparkle.png",
+      "size": [
+        128,
+        128
+      ],
+      "sourceSize": [
+        64,
+        64
+      ],
+      "bounds": {
+        "x": 4,
+        "y": 4,
+        "width": 56,
+        "height": 56
+      },
+      "cropBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 64
+      },
+      "outputBounds": {
+        "x": 9,
+        "y": 9,
+        "width": 110,
+        "height": 110
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "type": "effect",
+      "alphaThreshold": 8,
+      "padding": 0,
+      "stateId": "sparkle"
+    }
+  ]
+}

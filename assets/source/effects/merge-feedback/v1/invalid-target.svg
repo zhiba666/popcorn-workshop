@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" fill="none">
+  <g id="invalid-target">
+    <rect x="7" y="7" width="114" height="114" rx="18" fill="#CC7B65" fill-opacity=".07"/>
+    <rect x="5" y="5" width="118" height="118" rx="20" stroke="#FFF6E6" stroke-width="6"/>
+    <rect x="5" y="5" width="118" height="118" rx="20" stroke="#B76653" stroke-width="3.5" stroke-dasharray="11 7" stroke-linecap="round"/>
+    <g id="invalid-badge">
+      <circle cx="108" cy="108" r="13" fill="#FFF3E6" stroke="#315E53" stroke-width="2"/>
+      <path d="m103.5 103.5 9 9m0-9-9 9" stroke="#B76653" stroke-width="3" stroke-linecap="round"/>
+    </g>
+  </g>
+</svg>

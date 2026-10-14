@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f1e8">
+  <title>爆米花工坊 · 棋盘展示</title>
+  <link rel="stylesheet" href="./board.css">
+</head>
+<body>
+  <main>
+    <header class="page-heading">
+      <div><p class="eyebrow">爆米花工厂 · 美术预览</p><h1>棋盘展示</h1></div>
+      <span class="board-spec">7 × 9 <span>·</span> 一格一器</span>
+    </header>
+    <nav class="preview-nav" aria-label="预览页面">
+      <a href="/preview/">预览首页</a>
+      <a href="./index.html">游戏试玩</a>
+      <a href="./board.html" aria-current="page">棋盘展示</a>
+    </nav>
+    <div class="preview-layout">
+      <section class="board-panel" aria-label="棋盘预览">
+        <div class="board-heading"><h2>六代合成台</h2><span id="board-caption">六种发射器 · 1级</span></div>
+        <div id="board-scene" class="board-scene">
+          <header class="game-header">
+            <div id="title-skin" class="title-plaque"><img id="title-decoration" alt=""><span>棋盘</span></div>
+            <div id="wallet-skin" class="wallet"><img id="wallet-coin" alt="金币"><strong id="coin-value">2,480</strong></div>
+          </header>
+          <section class="orders" aria-label="顾客订单展示">
+            <article id="order-card" class="order-card">
+              <div id="order-portrait" class="portrait"><img id="customer-image" alt="兔快递员"></div>
+              <div class="order-content">
+                <div class="customer-heading"><strong>兔快递员</strong><img id="customer-star" alt="一星"></div>
+                <div class="order-requirements">
+                  <button class="order-requirement" type="button" data-product="0" aria-label="查看原味五级需求"><span class="requirement-art"><img id="order-original" alt="原味五级"><span class="requirement-level">5</span><img id="original-ready" class="requirement-ready" alt="已备齐" hidden></span><strong id="original-progress">0/1</strong></button>
+                  <button class="order-requirement" type="button" data-product="1" aria-label="查看焦糖五级需求"><span class="requirement-art"><img id="order-caramel" alt="焦糖五级"><span class="requirement-level">5</span><img id="caramel-ready" class="requirement-ready" alt="已备齐" hidden></span><strong id="caramel-progress">0/1</strong></button>
+                </div>
+              </div>
+              <div class="order-reward"><img id="reward-coin" alt="金币"><strong>+180</strong></div>
+              <button id="deliver-button" class="action-button" type="button" disabled title="订单交付将在玩法接入后开放">交付</button>
+            </article>
+            <div id="next-card" class="next-card" aria-hidden="true"><img id="next-arrow" alt=""></div>
+          </section>
+          <div id="board" class="board" role="group" aria-label="7列9行棋盘"></div>
+          <section id="item-info" class="item-info" aria-label="选中对象信息">
+            <div id="item-portrait" class="item-portrait"><img id="item-image" alt=""></div>
+            <div class="item-copy"><strong id="item-name">原味 · 1号线</strong><p id="item-description">出厂 Lv.1 · 库存 8</p></div>
+            <button id="item-details" class="action-button" type="button">详情</button>
+            <button id="discard-button" class="action-button danger" type="button" disabled title="商品丢弃将在玩法接入后开放"><img id="discard-icon" alt="">丢弃</button>
+          </section>
+          <nav class="game-nav" aria-label="主页面">
+            <a id="factory-tab" href="../factory-preview/index.html"><img id="factory-icon" alt=""><span>工厂</span></a>
+            <button id="board-tab" class="active" type="button" aria-current="page"><img id="board-icon" alt=""><span>棋盘</span><img id="nav-decoration" class="nav-decoration" alt=""></button>
+          </nav>
+        </div>
+        <div class="board-footer"><span class="status-dot"></span><span id="status" role="status" aria-live="polite">点击查看发射器，拖动到空格可调整摆位</span></div>
+      </section>
+      <aside class="controls" aria-label="预览设置">
+        <section class="control-section">
+          <h2>发射器等级</h2>
+          <p class="section-hint">同时切换六种发射器，比较升级后的形态。</p>
+          <div id="level-options" class="level-options" role="group" aria-label="统一切换发射器等级"></div>
+        </section>
+        <section class="control-section selected-section">
+          <div class="section-heading"><h2 id="selected-name">原味发射器</h2><span id="selected-level" class="level-tag">1级</span></div>
+          <div class="detail-stage"><div id="detail-sprite" class="detail-sprite"></div></div>
+          <div id="type-options" class="type-options" role="group" aria-label="选择查看的发射器"></div>
+        </section>
+        <section class="control-section scene-settings">
+          <div class="setting-row"><label for="show-products">显示商品</label><input id="show-products" type="checkbox" checked></div>
+          <div class="setting-row"><label for="show-labels">显示等级标记</label><input id="show-labels" type="checkbox" checked></div>
+          <div class="scale-setting"><label for="sprite-scale">格内尺寸 <output id="scale-value" for="sprite-scale">90%</output></label><input id="sprite-scale" type="range" min="70" max="100" value="90" step="5"></div>
+          <button id="reset-layout" class="reset-button" type="button">恢复默认摆位</button>
+        </section>
+        <p class="preview-note">预览棋盘页资源与摆位。选中发射器后可拖动，或点击空格移动；商品与库存为展示样例。</p>
+      </aside>
+    </div>
+  </main>
+  <script type="module" src="./board.js"></script>
+</body>
+</html>

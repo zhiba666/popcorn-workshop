@@ -1,0 +1,45 @@
+// Paths are relative to assets/. Asset IDs are stable; ordering lives in index.
+export const assetCatalog = Object.freeze({
+  schemaVersion: 1,
+  roots: { source: 'source', runtime: 'runtime', reference: 'reference', release: '../douyin-game/assets' },
+  naming: {
+    idPattern: '^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$',
+    filePattern: '^[a-z][a-z0-9]*(?:-[a-z0-9]+)*\\.[a-z0-9]+$',
+    versionPattern: '^v[1-9][0-9]*$',
+    levelPattern: '^lv-[0-9]{2}\\.png$',
+  },
+  catalogs: {
+    board: 'runtime/board/v1/manifest.json',
+    entry: 'runtime/entry/v1/manifest.json',
+    factory: 'runtime/factory/v1/manifest.js',
+    factoryUpgrade: 'runtime/factory-upgrade/v1/manifest.json',
+    decoration: 'runtime/decoration/v1/manifest.js',
+    machineRigs: 'source/gameplay/machines/animation/v1/rigs.js',
+    factoryRigs: 'source/factory/animation/v1/rigs.js',
+  },
+  products: [
+    { id: 'original', index: 1, name: '原味', machine: 'air-popper' },
+    { id: 'caramel', index: 2, name: '焦糖', machine: 'caramel-drum' },
+    { id: 'popcorn-ball', index: 3, name: '爆米花球', machine: 'ball-mold-press' },
+    { id: 'crisp-stick', index: 4, name: '脆棒', machine: 'sheeting-strip-cutter' },
+    { id: 'wafer', index: 5, name: '薄脆', machine: 'flip-wafer-mold' },
+    { id: 'sandwich-square', index: 6, name: '夹心脆方', machine: 'rotary-sandwich-assembler' },
+  ],
+  customers: [
+    { id: 'rabbit-courier', index: 1 },
+    { id: 'bear-neighbor', index: 2 },
+    { id: 'fox-traveler', index: 3 },
+  ],
+  release: {
+    products: [
+      { id: 'original', maxProductLevel: 5, maxLauncherLevel: 2 },
+      { id: 'caramel', maxProductLevel: 5, maxLauncherLevel: 2 },
+    ],
+    customers: ['rabbit-courier'],
+    factoryAssets: [
+      'wall-back', 'wall-left', 'platform', 'supply-complete', 'supply-body-clean', 'supply-motor-cap',
+      'air-popper', 'caramel-drum', 'packer-complete', 'packer-body-clean', 'packer-head',
+      'warehouse', 'buffer-bin', 'loose-popcorn', 'caramel-popcorn',
+    ],
+  },
+});

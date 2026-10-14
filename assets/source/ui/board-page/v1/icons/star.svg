@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="star-gold" x1="21" y1="10" x2="42" y2="56" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF0A5"/>
+      <stop offset=".42" stop-color="#FFD552"/>
+      <stop offset="1" stop-color="#EEA02F"/>
+    </linearGradient>
+  </defs>
+  <path d="m32 9 7.7 13.9 15.1 3c2.5.5 3.2 3.5 1.4 5.3L45.5 42.3l1.8 15.4c.3 2.4-2.2 4-4.3 2.9L32 54.2 21 60.6c-2.1 1.1-4.6-.5-4.3-2.9l1.8-15.4L7.8 31.2C6 29.4 6.7 26.4 9.2 25.9l15.1-3L32 9Z" fill="#99623C" opacity=".14" transform="translate(0 1) scale(1 .88)"/>
+  <path d="m32 7.5 7.6 14.3 15.6 2.4c2.4.4 3.4 3.4 1.6 5.2L45.4 40.6l2.5 15.7c.4 2.6-2.3 4.5-4.5 3.3L32 52.4l-11.4 7.2c-2.2 1.2-4.9-.7-4.5-3.3l2.5-15.7L7.2 29.4c-1.8-1.8-.8-4.8 1.6-5.2l15.6-2.4L32 7.5Z" fill="url(#star-gold)" stroke="#C07824" stroke-width="2.8" stroke-linejoin="round"/>
+  <path d="m29.9 16.6-4.3 8.7-12.1 1.9M19.7 48.4l1.1-7" stroke="#FFF8D7" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="m40.7 51.3 2.6 1.6-1.9-12.7" stroke="#D7922D" stroke-width="2" stroke-linecap="round"/>
+</svg>

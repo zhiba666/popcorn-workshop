@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1220" height="1690" viewBox="0 0 1220 1690">
+  <style>text{font-family:'Microsoft YaHei','Noto Sans CJK SC',sans-serif;font-size:23px;fill:#42494e} .small{font-size:18px;fill:#7c848a} .ui{font-size:18px;fill:#92999f} .title{font-size:34px;font-weight:600} .range{font-size:19px;fill:#66809a}</style>
+  <rect width="1220" height="1690" fill="#fff"/>
+  <text x="80" y="65" class="title">2.5D 体块布局草稿</text>
+  <path d="M80 101h46" stroke="#4d83a8" stroke-width="4"/><text x="139" y="108" class="small">供料</text>
+  <path d="M225 101h46" stroke="#c18b54" stroke-width="4"/><text x="284" y="108" class="small">完成品汇流</text>
+  <polygon points="300,230 967,322 811,1492 144,1400" fill="#f4f5f5" stroke="#d9dddf" stroke-width="1.8"/>
+  <rect x="242" y="182" width="744" height="1022.52" rx="5" fill="none" stroke="#8da4b7" stroke-width="2" stroke-dasharray="10 8"/>
+  <text x="999" y="198" class="range">首屏厂景范围</text><text x="999" y="225" class="small">390 × 536</text>
+  <text x="1030" y="285" class="small">390 × 844</text>
+  <g stroke="#c9cfd3" stroke-width="1.2" fill="none">
+    <rect x="1030" y="305" width="130" height="281.33" rx="3"/>
+    <path d="M1030 321h130 M1030 350.33h130 M1030 529h130 M1030 567.67h130"/>
+  </g>
+  <rect x="1030" y="350.33" width="130" height="178.67" fill="#f7f9fb" stroke="#8da4b7" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="1013" y="318" class="ui" text-anchor="end">信息</text>
+  <text x="1013" y="341" class="ui" text-anchor="end">订单</text>
+  <text x="1013" y="447" class="ui" text-anchor="end">厂景</text>
+  <text x="1013" y="552" class="ui" text-anchor="end">详情</text>
+  <text x="1013" y="585" class="ui" text-anchor="end">导航</text>
+  <path d="M987 355h23" stroke="#8da4b7" stroke-width="1.3" stroke-dasharray="4 4"/>
+<path d="M 534.3,355.5 L 332.8,327.7 L 255.7,906" fill="none" stroke="white" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 534.3,355.5 L 332.8,327.7 L 255.7,906" fill="none" stroke="#4d83a8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 302.7,553.5 L 379.5,564.1" fill="none" stroke="white" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 302.7,553.5 L 379.5,564.1" fill="none" stroke="#4d83a8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 257.2,894.7 L 334,905.3" fill="none" stroke="white" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 257.2,894.7 L 334,905.3" fill="none" stroke="#4d83a8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 588.3,592.9 L 888.5,634.3 L 804.3,1265.8 L 768,1260.8" fill="none" stroke="white" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 588.3,592.9 L 888.5,634.3 L 804.3,1265.8 L 768,1260.8" fill="none" stroke="#c18b54" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 542.8,934.1 L 843,975.5" fill="none" stroke="white" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 542.8,934.1 L 843,975.5" fill="none" stroke="#c18b54" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 519.9,1260.9 L 504.4,1377.2" fill="none" stroke="white" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 519.9,1260.9 L 504.4,1377.2" fill="none" stroke="#c18b54" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="406.7,337.9 419.3,334.6 417.9,344.5" fill="#4d83a8"/>
+<polygon points="316.8,447.7 313.4,435.1 323.3,436.5" fill="#4d83a8"/>
+<polygon points="334.6,557.9 322,561.2 323.3,551.3" fill="#4d83a8"/>
+<polygon points="277.2,744.7 273.8,732.1 283.7,733.5" fill="#4d83a8"/>
+<polygon points="289.1,899.1 276.5,902.4 277.8,892.5" fill="#4d83a8"/>
+<polygon points="823.2,625.3 810.6,628.6 812,618.7" fill="#c18b54"/>
+<polygon points="871.6,761 868.2,748.4 878.1,749.8" fill="#c18b54"/>
+<polygon points="777.7,966.5 765.1,969.8 766.5,959.9" fill="#c18b54"/>
+<polygon points="816.6,1173.5 813.2,1160.9 823.1,1162.3" fill="#c18b54"/>
+<polygon points="513.9,1305.9 510.5,1293.3 520.4,1294.7" fill="#c18b54"/>
+<g stroke="#b7babd" stroke-width="1.7" stroke-linejoin="round">
+    <polygon points="715.7,324 701.2,432.8 701.2,424.4 715.7,315.6" fill="#dce0e1"/>
+    <polygon points="701.2,432.8 491,403.8 491,395.4 701.2,424.4" fill="#e4e7e8"/>
+    <polygon points="505.5,286.6 715.7,315.6 701.2,424.4 491,395.4" fill="#f0f1f2"/>
+  </g>
+<polygon points="551.5,327.5 689.3,346.5 678.8,425.3 541,406.3" fill="#424b53" opacity=".075"/>
+<g stroke="#747b80" stroke-width="1.7" stroke-linejoin="round">
+    <polygon points="677.3,335.5 666.8,414.3 666.8,298.8 677.3,220" fill="#c4c9cd"/>
+    <polygon points="666.8,414.3 529,395.3 529,279.8 666.8,298.8" fill="#dadee1"/>
+    <polygon points="539.5,201 677.3,220 666.8,298.8 529,279.8" fill="#f8f9fa"/>
+  </g>
+<text x="592.675" y="443.75" text-anchor="middle" >公共供料</text>
+<g stroke="#b7babd" stroke-width="1.7" stroke-linejoin="round">
+    <polygon points="634.6,522.1 619.7,633.9 619.7,625.5 634.6,513.7" fill="#dce0e1"/>
+    <polygon points="619.7,633.9 338.5,595.1 338.5,586.7 619.7,625.5" fill="#e4e7e8"/>
+    <polygon points="353.4,474.9 634.6,513.7 619.7,625.5 338.5,586.7" fill="#f0f1f2"/>
+  </g>
+<polygon points="399.3,516.6 608.1,545.4 597.6,624.1 388.8,595.3" fill="#424b53" opacity=".075"/>
+<g stroke="#747b80" stroke-width="1.7" stroke-linejoin="round">
+    <polygon points="596.1,534.4 585.6,613.1 585.6,527 596.1,448.3" fill="#c4c9cd"/>
+    <polygon points="585.6,613.1 376.8,584.3 376.8,498.2 585.6,527" fill="#dadee1"/>
+    <polygon points="387.3,419.5 596.1,448.3 585.6,527 376.8,498.2" fill="#f8f9fa"/>
+  </g>
+<text x="476.00000000000006" y="637.7" text-anchor="middle" >原味 · 1号线</text>
+<polygon points="657.6,595 721.4,603.8 716.8,638.3 653,629.5" fill="#424b53" opacity=".075"/>
+<g stroke="#747b80" stroke-width="1.7" stroke-linejoin="round">
+    <polygon points="709.4,592.8 704.8,627.3 704.8,611.5 709.4,577" fill="#c4c9cd"/>
+    <polygon points="704.8,627.3 641,618.5 641,602.7 704.8,611.5" fill="#dadee1"/>
+    <polygon points="645.6,568.2 709.4,577 704.8,611.5 641,602.7" fill="#f8f9fa"/>
+  </g>
+<text x="669.6999999999999" y="646.85" text-anchor="middle" class="small">本地待包</text>
+<g stroke="#b7babd" stroke-width="1.7" stroke-linejoin="round">
+    <polygon points="589.1,863.4 574.2,975.1 574.2,966.7 589.1,855" fill="#dce0e1"/>
+    <polygon points="574.2,975.1 293,936.3 293,927.9 574.2,966.7" fill="#e4e7e8"/>
+    <polygon points="307.9,816.2 589.1,855 574.2,966.7 293,927.9" fill="#f0f1f2"/>
+  </g>
+<polygon points="353.8,857.8 562.6,886.6 552.1,965.4 343.3,936.6" fill="#424b53" opacity=".075"/>
+<g stroke="#747b80" stroke-width="1.7" stroke-linejoin="round">
+    <polygon points="550.6,875.6 540.1,954.4 540.1,859.9 550.6,781.1" fill="#c4c9cd"/>
+    <polygon points="540.1,954.4 331.3,925.6 331.3,831.1 540.1,859.9" fill="#dadee1"/>
+    <polygon points="341.8,752.3 550.6,781.1 540.1,859.9 331.3,831.1" fill="#f8f9fa"/>
+  </g>
+<text x="430.50000000000006" y="978.95" text-anchor="middle" >焦糖 · 1号线</text>
+<polygon points="612.1,936.2 675.9,945 671.3,979.5 607.5,970.7" fill="#424b53" opacity=".075"/>
+<g stroke="#747b80" stroke-width="1.7" stroke-linejoin="round">
+    <polygon points="663.9,934 659.3,968.5 659.3,952.8 663.9,918.3" fill="#c4c9cd"/>
+    <polygon points="659.3,968.5 595.5,959.7 595.5,944 659.3,952.8" fill="#dadee1"/>
+    <polygon points="600.1,909.5 663.9,918.3 659.3,952.8 595.5,944" fill="#f8f9fa"/>
+  </g>
+<text x="624.1999999999999" y="988.1" text-anchor="middle" class="small">本地待包</text>
+<polygon points="804.6,1065.1 868.4,1073.9 862.2,1120.4 798.4,1111.6" fill="#424b53" opacity=".075"/>
+<g stroke="#747b80" stroke-width="1.7" stroke-linejoin="round">
+    <polygon points="856.4,1062.9 850.2,1109.4 850.2,1093.7 856.4,1047.2" fill="#c4c9cd"/>
+    <polygon points="850.2,1109.4 786.4,1100.6 786.4,1084.9 850.2,1093.7" fill="#dadee1"/>
+    <polygon points="792.6,1038.4 856.4,1047.2 850.2,1093.7 786.4,1084.9" fill="#f8f9fa"/>
+  </g>
+<path d="M862.9,1066.2h30" stroke="#aeb5b9" stroke-width="1.2"/>
+<text x="901.9" y="1072.15" class="small">公共待包</text>
+<g stroke="#b7babd" stroke-width="1.7" stroke-linejoin="round">
+    <polygon points="803,1197.6 787.5,1313.9 787.5,1305.4 803,1189.2" fill="#dce0e1"/>
+    <polygon points="787.5,1313.9 483,1271.9 483,1263.4 787.5,1305.4" fill="#e4e7e8"/>
+    <polygon points="498.5,1147.2 803,1189.2 787.5,1305.4 483,1263.4" fill="#f0f1f2"/>
+  </g>
+<polygon points="542.9,1189.4 786.5,1223 775.5,1305.5 531.9,1271.9" fill="#424b53" opacity=".075"/>
+<g stroke="#747b80" stroke-width="1.7" stroke-linejoin="round">
+    <polygon points="774.5,1212 763.5,1294.5 763.5,1214.7 774.5,1132.2" fill="#c4c9cd"/>
+    <polygon points="763.5,1294.5 519.9,1260.9 519.9,1181.1 763.5,1214.7" fill="#dadee1"/>
+    <polygon points="530.9,1098.6 774.5,1132.2 763.5,1214.7 519.9,1181.1" fill="#f8f9fa"/>
+  </g>
+<text x="636.5" y="1316.7" text-anchor="middle" >公共包装</text>
+<g stroke="#b7babd" stroke-width="1.7" stroke-linejoin="round">
+    <polygon points="710.9,1390.4 700.9,1465.4 700.9,1456.9 710.9,1381.9" fill="#dce0e1"/>
+    <polygon points="700.9,1465.4 271.7,1406.2 271.7,1397.8 700.9,1456.9" fill="#e4e7e8"/>
+    <polygon points="281.7,1322.8 710.9,1381.9 700.9,1456.9 271.7,1397.8" fill="#f0f1f2"/>
+  </g>
+<polygon points="325,1361.8 687.5,1411.8 681.5,1456.8 319,1406.8" fill="#424b53" opacity=".075"/>
+<g stroke="#747b80" stroke-width="1.7" stroke-linejoin="round">
+    <polygon points="675.5,1400.8 669.5,1445.8 669.5,1393.3 675.5,1348.3" fill="#c4c9cd"/>
+    <polygon points="669.5,1445.8 307,1395.8 307,1343.3 669.5,1393.3" fill="#dadee1"/>
+    <polygon points="313,1298.3 675.5,1348.3 669.5,1393.3 307,1343.3" fill="#f8f9fa"/>
+  </g>
+<text x="483.04999999999995" y="1459.75" text-anchor="middle" >统一仓储</text>
+<text x="80" y="1638" class="small">固定斜俯视 · 产线左置 · 灰白体块 · 仅用于空间布局判断</text></svg>

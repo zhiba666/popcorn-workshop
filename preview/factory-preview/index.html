@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>工厂 · 生产演示</title>
+  <link rel="stylesheet" href="./shared.css">
+</head>
+<body>
+  <main class="workbench">
+    <div class="toolbar">
+      <div><span class="eyebrow">爆米花工厂 · 美术装配</span><h1>生产演示</h1></div>
+      <div class="tools"><a href="/preview/">预览首页</a><button id="top-view">首屏</button><button id="warehouse-view">包装与仓储</button><button id="catalog-view" aria-expanded="false">资源一览</button><a href="./expansion.html">扩建演示</a></div>
+    </div>
+    <p class="scope">390 × 844 工序演示 · 物料、动画、缓存与入库同步。时长和容量为美术演示参数，尚未接入正式经营数据。</p>
+    <div class="demo-controls" aria-label="工序演示控制"><label>场景<select id="scenario-select"><option value="normal">正常运行</option><option value="shortage">缺料</option><option value="packaging-backlog">包装积压</option><option value="cache-full">缓存满</option></select></label><button id="play-pause">暂停演示</button><button id="advance-preview">推进1秒</button><button id="reset-preview">重置演示</button><span id="demo-feedback" role="status">点击设备选择，加速仅推进当前工序。</span></div>
+    <div class="comparison">
+      <section class="preview-column">
+        <div class="column-label">实际装配</div>
+        <div id="phone" class="phone">
+          <header class="game-header"><div class="factory-title"><svg class="icon"><use href="../../assets/source/factory/ui/v1/icons.svg#factory"></use></svg><span>工厂</span></div><div class="wallet"><img src="../../assets/source/factory/ui/v1/coin.svg" alt="金币"><strong>2,480</strong></div></header>
+          <div class="orders" aria-label="顾客订单"><article class="order-card"><div id="customer" class="portrait"></div><div class="order-content"><strong>兔快递员</strong><div class="order-products"><div><div id="order-original" class="order-product"></div><span>0/1</span></div><div><div id="order-caramel" class="order-product"></div><span>0/1</span></div></div></div></article><div class="next-card" aria-hidden="true">›</div></div>
+          <div id="scene-viewport" class="scene-viewport" aria-label="工厂场景">
+            <div id="world" class="world"><img class="back-wall" src="../../assets/source/factory/environment/v1/wall-back.png" alt="厂房后墙"><img class="left-wall" src="../../assets/source/factory/environment/v1/wall-left.png" alt="厂房左墙"><svg id="logistics" class="logistics" viewBox="0 0 390 840" aria-label="左侧供料、右侧汇流、公共包装至仓储"></svg><div id="equipment"></div></div>
+          </div>
+          <section id="detail" class="detail" aria-label="设备详情"><div id="detail-sprite" class="detail-sprite"></div><div class="detail-content"><div class="detail-heading"><strong id="detail-name">原味 · 1号线</strong><button id="collapse-detail" aria-label="收起设备详情" aria-expanded="true"><svg class="icon"><use href="../../assets/source/factory/ui/v1/icons.svg#chevron"></use></svg></button></div><div class="detail-stats"><span id="detail-level">出厂 Lv.2</span><span id="detail-stock">库存 24</span></div></div><div class="actions"><button class="blue" disabled><svg class="icon"><use href="../../assets/source/factory/ui/v1/icons.svg#accelerate"></use></svg>加速</button><button class="green" disabled><svg class="icon"><use href="../../assets/source/factory/ui/v1/icons.svg#capacity"></use></svg>提高产能</button><button class="gold" disabled><svg class="icon"><use href="../../assets/source/factory/ui/v1/icons.svg#upgrade"></use></svg>出厂升阶</button></div></section>
+          <nav class="game-nav"><button class="active" aria-current="page"><svg class="icon"><use href="../../assets/source/factory/ui/v1/icons.svg#factory"></use></svg>工厂</button><a href="../game-preview/board.html"><svg class="icon"><use href="../../assets/source/factory/ui/v1/icons.svg#board"></use></svg>棋盘</a></nav>
+        </div>
+      </section>
+      <section class="reference-column"><div class="column-label">工厂页参考图 · 概念目标</div><img class="reference" src="../../assets/reference/concepts/core-pages/v1/factory-page.png" alt="工厂页概念目标"></section>
+    </div>
+    <p id="load-status" role="status">资源载入中…</p>
+    <section id="catalog" class="catalog" hidden aria-label="独立资源一览"></section>
+  </main>
+  <script type="module" src="./production.js"></script>
+</body>
+</html>

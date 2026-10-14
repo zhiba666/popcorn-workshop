@@ -1,0 +1,367 @@
+{
+  "schemaVersion": 1,
+  "basePath": "assets/runtime/entry/v1/",
+  "runtimePixelRatio": 2,
+  "designSize": [
+    390,
+    844
+  ],
+  "reference": "assets/reference/concepts/core-pages/v1/entry-page-v2.png",
+  "assets": {
+    "scene/background-workshop": {
+      "source": "assets/source/ui/entry-page/v1/scene/background-workshop.png",
+      "runtime": "scene/background-workshop.png",
+      "sourceSize": [
+        853,
+        1844
+      ],
+      "size": [
+        780,
+        1688
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 853,
+        "height": 1844
+      },
+      "cropBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 853,
+        "height": 1844
+      },
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 780,
+        "height": 1688
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "cover",
+      "transparent": false,
+      "padding": 0,
+      "alphaThreshold": 16,
+      "layout": {
+        "rect": [
+          0,
+          0,
+          390,
+          844
+        ],
+        "order": 0
+      },
+      "sourceBytes": 1831692,
+      "bytes": 452099
+    },
+    "scene/hero-production": {
+      "source": "assets/source/ui/entry-page/v1/scene/hero-production.png",
+      "runtime": "scene/hero-production.png",
+      "sourceSize": [
+        1179,
+        1334
+      ],
+      "size": [
+        720,
+        799
+      ],
+      "sourceBounds": {
+        "x": 185,
+        "y": 23,
+        "width": 956,
+        "height": 1288
+      },
+      "cropBounds": {
+        "x": 0,
+        "y": 16,
+        "width": 1179,
+        "height": 1308
+      },
+      "bounds": {
+        "x": 113,
+        "y": 5,
+        "width": 584,
+        "height": 786
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "contain",
+      "transparent": true,
+      "padding": 2,
+      "alphaThreshold": 16,
+      "layout": {
+        "rect": [
+          111,
+          248,
+          360,
+          399.5
+        ],
+        "order": 1
+      },
+      "sourceBytes": 1425960,
+      "bytes": 148019
+    },
+    "scene/rabbit-host": {
+      "source": "assets/source/ui/entry-page/v1/scene/rabbit-host.png",
+      "runtime": "scene/rabbit-host.png",
+      "sourceSize": [
+        1024,
+        1536
+      ],
+      "size": [
+        456,
+        687
+      ],
+      "sourceBounds": {
+        "x": 112,
+        "y": 19,
+        "width": 840,
+        "height": 1432
+      },
+      "cropBounds": {
+        "x": 0,
+        "y": 14,
+        "width": 1010,
+        "height": 1522
+      },
+      "bounds": {
+        "x": 50,
+        "y": 2,
+        "width": 380,
+        "height": 647
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "contain",
+      "transparent": true,
+      "padding": 2,
+      "alphaThreshold": 16,
+      "layout": {
+        "rect": [
+          13,
+          356,
+          228,
+          343.5
+        ],
+        "order": 2
+      },
+      "sourceBytes": 1697083,
+      "bytes": 76925
+    },
+    "ui/title-sign": {
+      "source": "assets/source/ui/entry-page/v1/ui/title-sign.png",
+      "runtime": "ui/title-sign.png",
+      "sourceSize": [
+        1774,
+        887
+      ],
+      "size": [
+        780,
+        385
+      ],
+      "sourceBounds": {
+        "x": 126,
+        "y": 0,
+        "width": 1523,
+        "height": 818
+      },
+      "cropBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1754,
+        "height": 865
+      },
+      "bounds": {
+        "x": 56,
+        "y": 0,
+        "width": 677,
+        "height": 364
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "contain",
+      "transparent": true,
+      "padding": 2,
+      "alphaThreshold": 16,
+      "layout": {
+        "rect": [
+          0,
+          22,
+          390,
+          192.5
+        ],
+        "order": 3
+      },
+      "sourceBytes": 1163628,
+      "bytes": 79444,
+      "contentInsets": {
+        "left": 86,
+        "top": 189,
+        "right": 86,
+        "bottom": 46
+      }
+    },
+    "ui/button-enter": {
+      "source": "assets/source/ui/entry-page/v1/ui/button-enter.png",
+      "runtime": "ui/button-enter.png",
+      "sourceSize": [
+        2172,
+        724
+      ],
+      "size": [
+        624,
+        195
+      ],
+      "sourceBounds": {
+        "x": 189,
+        "y": 72,
+        "width": 1792,
+        "height": 571
+      },
+      "cropBounds": {
+        "x": 0,
+        "y": 29,
+        "width": 2154,
+        "height": 673
+      },
+      "bounds": {
+        "x": 54,
+        "y": 12,
+        "width": 520,
+        "height": 166
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "contain",
+      "transparent": true,
+      "padding": 2,
+      "alphaThreshold": 16,
+      "layout": {
+        "rect": [
+          39,
+          695,
+          312,
+          97.5
+        ],
+        "order": 4
+      },
+      "sourceBytes": 1236045,
+      "bytes": 32597,
+      "contentInsets": {
+        "left": 100,
+        "top": 31,
+        "right": 100,
+        "bottom": 31
+      }
+    },
+    "ui/button-settings": {
+      "source": "assets/source/ui/entry-page/v1/ui/button-settings.png",
+      "runtime": "ui/button-settings.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "size": [
+        94,
+        87
+      ],
+      "sourceBounds": {
+        "x": 107,
+        "y": 101,
+        "width": 1037,
+        "height": 1035
+      },
+      "cropBounds": {
+        "x": 0,
+        "y": 39,
+        "width": 1220,
+        "height": 1131
+      },
+      "bounds": {
+        "x": 8,
+        "y": 4,
+        "width": 81,
+        "height": 81
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "contain",
+      "transparent": true,
+      "padding": 2,
+      "alphaThreshold": 16,
+      "layout": {
+        "rect": [
+          338,
+          12,
+          47,
+          43.5
+        ],
+        "order": 5
+      },
+      "sourceBytes": 1111120,
+      "bytes": 5137
+    },
+    "icons/settings": {
+      "source": "assets/source/ui/entry-page/v1/icons/settings.png",
+      "runtime": "icons/settings.png",
+      "sourceSize": [
+        1299,
+        1211
+      ],
+      "size": [
+        56,
+        54
+      ],
+      "sourceBounds": {
+        "x": 175,
+        "y": 152,
+        "width": 949,
+        "height": 919
+      },
+      "cropBounds": {
+        "x": 29,
+        "y": 16,
+        "width": 1174,
+        "height": 1132
+      },
+      "bounds": {
+        "x": 6,
+        "y": 6,
+        "width": 47,
+        "height": 45
+      },
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "contain",
+      "transparent": true,
+      "padding": 2,
+      "alphaThreshold": 16,
+      "layout": {
+        "rect": [
+          347.5,
+          20.5,
+          28,
+          27
+        ],
+        "order": 6
+      },
+      "sourceBytes": 765235,
+      "bytes": 2704
+    }
+  }
+}
