@@ -18,12 +18,17 @@ class Input {
     this.gesture = null;
   }
   dialogBlocksHit(hit) {
+    if (this.renderer.recovery) {
+      return !(this.renderer.recovery.confirm ? ['entry-recovery-confirm', 'entry-recovery-cancel'] :
+        ['entry-recovery-retry', 'entry-recovery-new']).includes(hit.type);
+    }
     if (this.renderer.entryOpen) {
       if (this.renderer.entrySettingsOpen) return !['entry-settings-close', 'entry-motion-toggle'].includes(hit.type);
       return !['entry-enter', 'entry-settings-open'].includes(hit.type);
     }
     if (hit.type.startsWith('entry-')) return true;
-    if (this.renderer.offlineSummaryOpen) return hit.type !== 'offline-close';
+    if (this.renderer.offlineSummaryOpen) return !['offline-close', 'offline-prev', 'offline-next'].includes(hit.type);
+    if (this.renderer.productConstructionDialogOpen) return !['product-construction-close', 'product-construction-buy'].includes(hit.type);
     if (this.renderer.sharedUpgradeDialogOpen) return !['shared-upgrade-close', 'shared-upgrade-buy'].includes(hit.type);
     if (this.renderer.lineExpansionDialogOpen) return !['line-expansion-close', 'line-expansion-buy'].includes(hit.type);
     return this.renderer.upgradeDialogOpen && !['upgrade-close', 'capacity-buy', 'output-buy'].includes(hit.type);
@@ -38,7 +43,7 @@ class Input {
       dragging: false, longPress: false, stopped: false,
       orderArea: ['order-swipe', 'order-prev', 'order-next', 'deliver'].includes(hit.type),
       orderDragging: false, orderDirection: 0,
-      scrolling: false, scrollStart: this.renderer.factoryScroll || 0,
+      scrolling: false, scrollStart: (hit.customerScrollable ? this.renderer.customerScroll : this.renderer.factoryScroll) || 0,
       sourceIndex: hit.type === 'cell' ? hit.index : -1, targetIndex: -1 };
     if (hit.type === 'cell') this.model.select(hit.index);
   }
@@ -57,11 +62,13 @@ class Input {
       g.orderDirection = g.orderDragging && Math.abs(dx) >= ORDER_SWIPE_DISTANCE ? (dx < 0 ? 1 : -1) : 0;
       return;
     }
-    if (g.hit.scrollable) {
+    if (g.hit.scrollable || g.hit.customerScrollable) {
       if (Math.hypot(g.x - g.startX, g.y - g.startY) > DRAG_DISTANCE) g.scrolling = true;
       if (g.scrolling) {
         g.stopped = true;
-        this.renderer.setFactoryScroll(g.scrollStart + (g.startY - g.y) / this.renderer.scale);
+        const scroll = g.scrollStart + (g.startY - g.y) / this.renderer.scale;
+        if (g.hit.customerScrollable) this.renderer.setCustomerScroll(scroll);
+        else this.renderer.setFactoryScroll(scroll);
       }
       return;
     }
@@ -115,6 +122,10 @@ class Input {
         g.hit.level !== endHit.level || this.model.sharedUpgradeOffer(g.hit.service)?.level !== g.hit.level)) return;
     if (g.hit.type.startsWith('entry-')) {
       this.onAction({ ok: true, action: g.hit.type });
+    } else if (g.hit.type.startsWith('customer-')) {
+      if (g.hit.customerId !== endHit.customerId || g.hit.recordKey !== endHit.recordKey) return;
+      if (g.hit.type !== 'customer-scroll') this.onAction({ ok: true, action: g.hit.type,
+        customerId: g.hit.customerId, recordKey: g.hit.recordKey, expanded: g.hit.expanded });
     } else if (g.hit.type === 'cell') {
       if (endHit.index !== g.hit.index) return;
       const item = this.model.state.board[g.hit.index];
@@ -127,6 +138,8 @@ class Input {
       }
     } else if (g.hit.type === 'offline-close') {
       this.onAction({ ok: true, action: 'offline-close' });
+    } else if ((g.hit.type === 'offline-prev' || g.hit.type === 'offline-next') && g.hit.page === endHit.page) {
+      this.onAction({ ok: true, action: g.hit.type, page: g.hit.page });
     } else if (g.hit.type === 'shared-upgrade-open' && g.hit.service === endHit.service) {
       this.onAction({ ok: true, action: 'shared-upgrade-open', service: g.hit.service });
     } else if (g.hit.type === 'shared-upgrade-close') {
@@ -139,6 +152,12 @@ class Input {
       this.onAction({ ok: true, action: 'line-expansion-close' });
     } else if (g.hit.type === 'line-expansion-buy' && g.hit.product === endHit.product) {
       this.onAction(this.model.buyLine(g.hit.product));
+    } else if (g.hit.type === 'product-construction-open' && g.hit.product === endHit.product) {
+      this.onAction({ ok: true, action: 'product-construction-open', product: g.hit.product });
+    } else if (g.hit.type === 'product-construction-close') {
+      this.onAction({ ok: true, action: 'product-construction-close' });
+    } else if (g.hit.type === 'product-construction-buy' && g.hit.product === endHit.product) {
+      this.onAction(this.model.buildProduct(g.hit.product));
     } else if (g.hit.type === 'line' && g.hit.lineId === endHit.lineId) this.onAction(this.model.selectLine(g.hit.lineId));
     else if (g.hit.type === 'accelerate') this.onAction(this.model.accelerate());
     else if (g.hit.type === 'deliver') this.onAction(this.model.deliver(g.hit.orderId));
@@ -149,11 +168,13 @@ class Input {
     else if (g.hit.type === 'output-buy') this.onAction(this.model.upgradeOutput(g.hit.lineId));
   }
   scroll(distance) {
-    if (this.renderer.entryOpen || this.renderer.page !== 'factory' || this.renderer.upgradeDialogOpen ||
+    if (this.renderer.entryOpen || !['factory', 'customers'].includes(this.renderer.page) || this.renderer.upgradeDialogOpen ||
         this.renderer.sharedUpgradeDialogOpen ||
+        this.renderer.productConstructionDialogOpen ||
         this.renderer.lineExpansionDialogOpen || this.renderer.offlineSummaryOpen) return false;
     this.cancel();
-    this.renderer.scrollFactory(distance);
+    if (this.renderer.page === 'customers') this.renderer.setCustomerScroll((this.renderer.customerScroll || 0) + distance / this.renderer.scale);
+    else this.renderer.scrollFactory(distance);
     return true;
   }
   cancel() { this.gesture = null; }

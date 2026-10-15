@@ -15,6 +15,7 @@ class ProductionSession {
     this.lastSaveSucceeded = false;
     this.productionHealthy = true;
     this.pendingSummary = null;
+    this.pendingFirstStockedProducts = [];
     this.onSaveError = onSaveError;
     this.onSaveSuccess = onSaveSuccess;
     this.onProductionError = onProductionError;
@@ -23,9 +24,11 @@ class ProductionSession {
     this.checkpoint();
   }
 
-  get canInteract() { return this.ready && this.visible && this.productionHealthy; }
+  get canInteract() { return this.canWrite && this.ready && this.visible && this.productionHealthy; }
 
   settle(offline) {
+    // A recovery placeholder must neither produce goods nor consume the saved interval.
+    if (!this.canWrite) return { ok: false, reason: 'save-recovery-required' };
     const result = offline ? this.model.resumeProduction(this.now()) : this.model.advanceProduction(this.now());
     const wasHealthy = this.productionHealthy;
     this.productionHealthy = Boolean(result && result.ok);
@@ -36,6 +39,10 @@ class ProductionSession {
     if (!wasHealthy) this.onProductionRecovery();
     if (offline && result.seconds > 0) {
       this.pendingSummary = mergeOfflineSummary(this.pendingSummary, result);
+    } else if (!offline && result.firstStockedProducts?.length) {
+      this.pendingFirstStockedProducts = [...new Set([
+        ...this.pendingFirstStockedProducts, ...result.firstStockedProducts
+      ])];
     }
     return result;
   }
@@ -90,6 +97,12 @@ class ProductionSession {
     this.pendingSummary = null;
     return summary ? { ...summary, saveFailed: !this.lastSaveSucceeded } : null;
   }
+
+  takeFirstStockedProducts() {
+    const products = this.pendingFirstStockedProducts;
+    this.pendingFirstStockedProducts = [];
+    return products;
+  }
 }
 
 function mergeOfflineSummary(previous, next) {
@@ -105,6 +118,9 @@ function mergeOfflineSummary(previous, next) {
     seconds: (previous ? previous.seconds : 0) + next.seconds,
     capped: Boolean((previous && previous.capped) || next.capped),
     producedByLine: [...produced.values()],
+    firstStockedProducts: [...new Set([
+      ...(previous?.firstStockedProducts || []), ...(next.firstStockedProducts || [])
+    ])],
     saveFailed: Boolean((previous && previous.saveFailed) || next.saveFailed),
   };
 }

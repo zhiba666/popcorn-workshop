@@ -9,6 +9,36 @@ const { ProductionSession } = require('../../douyin-game/src/production-session'
 const clone = value => JSON.parse(JSON.stringify(value));
 const unitValue = level => 2 ** (level - 1);
 
+// Preserve the two-product starting scenario used by these existing checks.
+// This is the previous schema-5 opening save, restored through normal migration.
+function twoProductModel() {
+  const board = Array(63).fill(null);
+  const lines = ['original', 'caramel'].map((product, index) => {
+    const id = product + '-1';
+    board[index === 0 ? 8 : 12] = { kind: 'launcher', lineId: id, product, level: 1, id: index + 1 };
+    return { id, product, outputLevel: 1, capacityLevel: 1, inventory: 0, discardedBaseUnits: 0,
+      cacheCapacityBaseUnits: 8, buffer: [], warehouse: [], legacyGroup: null,
+      factory: { phase: index === 0 ? 'supply' : 'waiting-supply', elapsed: 0,
+        duration: index === 0 ? 0.6 : 0, batchId: index === 0 ? 1 : null,
+        outputLevel: 1, capacityLevel: 1, batchUnits: 4, baseUnits: 4 } };
+  });
+  const orders = [
+    { id: 1, requirements: [{ product: 'original', level: 3 }], reward: 60 },
+    { id: 2, requirements: [{ product: 'caramel', level: 3 }], reward: 70 },
+    { id: 3, requirements: [{ product: 'original', level: 3 }, { product: 'caramel', level: 3 }], reward: 150 }
+  ];
+  return new GameModel({ schemaVersion: 5, productionAt: null, nextBatchId: 2,
+    coins: 0, completedOrders: 0, page: 'board', selectedCell: 8, selectedLineId: 'original-1',
+    board, lines, orders, focusedOrderId: 1, nextOrderId: 4, order: orders[0],
+    customerServiceCounts: { 'rabbit-courier': 0 }, nextItemId: 3,
+    shared: {
+      materials: { baseUnits: 0, capacityBaseUnits: 8, elapsed: 0, duration: 2.2,
+        refillBaseUnits: 4, refilledBaseUnits: 0 },
+      supply: { level: 1, lineId: 'original-1', elapsed: 0, duration: 0.6, queue: ['caramel-1'] },
+      packaging: { level: 1, lineId: null, batch: null, elapsed: 0, duration: 0.95, queue: [] }
+    } });
+}
+
 function assertEquivalent(actual, expected, path = 'state') {
   if (typeof actual === 'number' && typeof expected === 'number') {
     assert.ok(Math.abs(actual - expected) < 1e-6, `${path}: ${actual} != ${expected}`);
@@ -40,7 +70,7 @@ function failedPurchase(model, product, reason) {
 }
 
 function allLinesModel() {
-  const model = new GameModel();
+  const model = twoProductModel();
   purchase(model, 'original');
   purchase(model, 'caramel');
   return model;
@@ -52,7 +82,7 @@ function protectedState(model) {
 }
 
 test('buying a second line charges its offer and adds one independent level-one line and launcher', () => {
-  const model = new GameModel();
+  const model = twoProductModel();
   model.update(12);
   assert.equal(model.launch('original-1').ok, true);
   const offer = model.lineExpansionOffer('original');
@@ -87,11 +117,11 @@ test('buying a second line charges its offer and adds one independent level-one 
 });
 
 test('insufficient money, full board, existing second line and invalid products fail atomically', () => {
-  const poor = new GameModel();
+  const poor = twoProductModel();
   failedPurchase(poor, 'original', 'insufficient-coins');
   failedPurchase(poor, 'unknown-product', 'invalid-product');
 
-  const full = new GameModel();
+  const full = twoProductModel();
   full.state.coins = full.lineExpansionOffer('original').cost;
   for (let index = 0; index < full.state.board.length; index += 1) {
     if (!full.state.board[index]) full.state.board[index] = {
@@ -101,7 +131,7 @@ test('insufficient money, full board, existing second line and invalid products 
   assert.equal(full.lineExpansionOffer('original').hasSpace, false);
   failedPurchase(full, 'original', 'board-full');
 
-  const expanded = new GameModel();
+  const expanded = twoProductModel();
   const result = purchase(expanded, 'original');
   expanded.state.coins = result.cost;
   assert.equal(expanded.lineExpansionOffer('original').maxed, true);
@@ -109,7 +139,7 @@ test('insufficient money, full board, existing second line and invalid products 
 });
 
 test('launch uses only the selected line stock and equal goods can merge across lines without loss', () => {
-  const model = new GameModel();
+  const model = twoProductModel();
   const result = purchase(model, 'original');
   const first = model.getLine('original-1');
   const second = model.getLine(result.lineId);
@@ -139,8 +169,8 @@ test('launch uses only the selected line stock and equal goods can merge across 
   }
 });
 
-test('output upgrades isolate inventory and old batches and use the lowest same-product line for old orders', () => {
-  const model = new GameModel();
+test('output upgrades isolate inventory and old batches and preserve existing order targets and rewards', () => {
+  const model = twoProductModel();
   const newLine = purchase(model, 'original');
   const first = model.getLine('original-1');
   const second = model.getLine(newLine.lineId);
@@ -159,20 +189,54 @@ test('output upgrades isolate inventory and old batches and use the lowest same-
   assert.deepEqual(first.legacyGroup.batchIds, [oldBatchId]);
   assert.deepEqual(second, otherLine);
   assert.deepEqual(model.state.board.filter(item => item?.kind === 'product'), boardGoods);
-  assert.deepEqual(model.state.order, beforeOrder, 'one high line cannot raise a target supported by a low line');
+  assert.deepEqual(model.state.order, beforeOrder, 'upgrading one of multiple lines preserves the existing order');
 
-  const single = new GameModel();
+  const single = twoProductModel();
   single.state.order.requirements = [{ product: 'original', level: 1 }];
   single.state.coins = single.outputOffer('original-1').cost;
+  const retainedOrder = clone(single.state.order);
   assert.equal(single.upgradeOutput('original-1').ok, true);
-  assert.equal(single.state.order.requirements[0].level, 2);
-  const raisedOrder = clone(single.state.order);
+  assert.deepEqual(single.state.order, retainedOrder, 'upgrading the only line preserves the target and reward');
+  const restored = new GameModel(single.serialize());
+  assert.equal(restored.recoveryRequired, false);
+  assert.deepEqual(restored.state.order, retainedOrder, 'restoring a lower-target order preserves its target and reward');
   purchase(single, 'original');
-  assert.deepEqual(single.state.order, raisedOrder, 'buying a new low line neither lowers nor redraws an existing order');
+  assert.deepEqual(single.state.order, retainedOrder, 'buying a new low line neither lowers nor redraws an existing order');
+});
+
+test('orders accept higher-level products and consume the lowest eligible level for the original reward', () => {
+  const model = twoProductModel();
+  const order = model.state.order;
+  const reward = order.reward;
+  const addProduct = (product, level) => {
+    const index = model.state.board.findIndex(item => item === null);
+    model.state.board[index] = { kind: 'product', product, level, id: model.state.nextItemId++ };
+    return index;
+  };
+  const levelFive = addProduct('original', 5);
+  const levelFour = addProduct('original', 4);
+  const levelTwo = addProduct('original', 2);
+  const otherProduct = addProduct('caramel', 3);
+  assert.equal(model.orderReady(order.id), true);
+  const progress = model.orderProgress(order.id);
+  assert.equal(progress.status, 'ready');
+  assert.equal(progress.ready, true);
+  assert.equal(progress.requirements[0].missingBaseUnits, 0);
+  const beforeCoins = model.state.coins;
+  const result = model.deliver(order.id);
+  assert.equal(result.ok, true);
+  assert.deepEqual(result.consumed, [{ index: levelFour, product: 'original', level: 4 }]);
+  assert.equal(result.level, 4);
+  assert.equal(result.reward, reward);
+  assert.equal(model.state.coins, beforeCoins + result.totalReward);
+  assert.equal(model.state.board[levelFour], null);
+  assert.equal(model.state.board[levelFive].level, 5);
+  assert.equal(model.state.board[levelTwo].level, 2);
+  assert.equal(model.state.board[otherProduct].product, 'caramel');
 });
 
 test('dynamic lines persist, old two-line saves add no free lines and damaged ownership stays protected', () => {
-  const originalSave = new GameModel().serialize();
+  const originalSave = twoProductModel().serialize();
   const originalRestore = new GameModel(originalSave);
   assert.equal(originalRestore.recoveryRequired, false);
   assert.equal(originalRestore.state.lines.length, originalSave.lines.length);

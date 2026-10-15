@@ -2,18 +2,31 @@
 
 const { createPlatform } = require('./platform');
 const { Assets } = require('./assets');
-const { GameModel } = require('./model');
-const { Renderer } = require('./renderer');
+const { SaveRecovery } = require('./save-recovery');
+const { Renderer, OFFLINE_PAGE_SIZE } = require('./renderer');
 const { Input } = require('./input');
 const { ProductionSession, mergeOfflineSummary } = require('./production-session');
+const { PRODUCTION_CONFIG: CONFIG, PRODUCT_DEFINITIONS } = require('./production-config');
+const { getCustomer } = require('./customer-config');
+
+const productName = product => PRODUCT_DEFINITIONS[product]?.name || '产品';
+const workshopName = product => PRODUCT_DEFINITIONS[product]?.workshopName || '新工坊';
+
+function recoveryView(issue, confirm = false, message = '') {
+  return {
+    reason: issue.reason, confirm, message,
+    title: confirm ? '确认重新开始？' : '存档需要恢复',
+    lines: confirm ? ['将从初始工坊重新开始。', '旧存档会先备份到本机，', '再用新存档替换当前进度。'] :
+      [issue.reason === 'read-failed' ? '暂时无法读取本机存档。' : '当前存档暂时无法使用。',
+        '原存档已保留，游戏进度已暂停。', '请重试读取，或选择重新开始。'],
+  };
+}
 
 function startGame() {
   const platform = createPlatform();
-  let saved = null, saveReadFailed = false;
-  try { saved = platform.readSave(); } catch (error) { saveReadFailed = true; platform.reportError(error); }
-  const model = new GameModel(saved);
-  // A failed read or invalid save must never be replaced by an automatic write.
-  if (model.recoveryRequired) saveReadFailed = true;
+  const saveRecovery = new SaveRecovery(platform);
+  let model = saveRecovery.model;
+  if (saveRecovery.issue?.error) platform.reportError(saveRecovery.issue.error);
   const assets = new Assets(platform);
   const renderer = new Renderer(platform.canvas, assets);
   let preferences = { reducedMotion: false };
@@ -23,13 +36,16 @@ function startGame() {
   } catch (error) { platform.reportError(error); }
   let time = 0, lastFrame = null, loaded = false, progress = 0,
     lastSave = 0, toast = null, loadError = null, storageErrorReported = false,
-    upgradeDialog = false, sharedUpgrade = null, lineExpansion = null, offlineSummary = null, entry = true, settingsOpen = false;
+    upgradeDialog = false, sharedUpgrade = null, lineExpansion = null, productConstruction = null,
+    offlineSummary = null, offlinePage = 0, entry = true, settingsOpen = false,
+    recovery = saveRecovery.issue ? recoveryView(saveRecovery.issue) : null,
+    customerResponse = null;
   const effects = [];
   const lineName = (lineId, product) => {
     const line = model.getLine(lineId);
     const number = String(lineId || '').match(/-(\d+)$/);
     const kind = product || (line && line.product);
-    return (kind === 'caramel' ? '焦糖' : '原味') + (number ? number[1] : '') + '号线';
+    return productName(kind) + (number ? number[1] : '') + '号线';
   };
   const closeLineExpansion = () => {
     lineExpansion = null;
@@ -40,9 +56,14 @@ function startGame() {
     sharedUpgrade = null;
     renderer.sharedUpgradeDialogOpen = false;
   };
-  const session = new ProductionSession({
+  const closeProductConstruction = () => {
+    productConstruction = null;
+    renderer.productConstructionDialogOpen = false;
+    renderer.productConstructionProduct = null;
+  };
+  const createSession = () => new ProductionSession({
     model, now: () => platform.now(), writeSave: value => platform.writeSave(value),
-    canWrite: !saveReadFailed, isVisible: platform.isVisible,
+    canWrite: !saveRecovery.issue, isVisible: platform.isVisible,
     onSaveError(error) {
       if (!storageErrorReported) {
         toast = { text: '存档失败，请检查设备存储空间', at: time, duration: 5 };
@@ -61,6 +82,36 @@ function startGame() {
       if (toast && toast.text === '生产暂未结算，请重新进入检查存档') toast = null;
     },
   });
+  let session = createSession();
+  const showRecovery = (confirm, message = '') => {
+    input.cancel();
+    recovery = recoveryView(saveRecovery.issue, confirm, message);
+    renderer.recovery = recovery;
+  };
+  const resumeRecovered = (result, message) => {
+    if (platform.cancelInput) platform.cancelInput();
+    input.cancel();
+    model = result.model;
+    input.model = model;
+    recovery = null;
+    renderer.recovery = null;
+    entry = true; settingsOpen = false;
+    renderer.entryOpen = true; renderer.entrySettingsOpen = false;
+    upgradeDialog = false; renderer.upgradeDialogOpen = false;
+    closeLineExpansion(); closeSharedUpgrade(); closeProductConstruction();
+    offlineSummary = null; offlinePage = 0; renderer.offlineSummaryOpen = false;
+    effects.length = 0;
+    customerResponse = null;
+    renderer.customerSelectedId = null;
+    renderer.customerScroll = 0;
+    renderer.customerCollectionScroll = 0;
+    renderer.customerBubbleOpen = false;
+    storageErrorReported = false;
+    toast = { text: message, at: time, duration: 4 };
+    session = createSession();
+    if (loaded) session.setReady();
+    lastFrame = null; lastSave = time;
+  };
   const save = () => {
     if (session.visible) session.advance();
     const savedSuccessfully = session.checkpoint();
@@ -76,19 +127,29 @@ function startGame() {
     // A later successful checkpoint also persists all previous offline stock.
     summary.saveFailed = !session.lastSaveSucceeded;
     if (!summary.producedByLine.length) return;
-    if (summary.seconds >= 60 || offlineSummary || summary.producedByLine.length > 2 || summary.saveFailed) {
+    const stockText = summary.producedByLine.map(item =>
+      lineName(item.lineId, item.product) + item.level + '级' + item.units + '份').join('、');
+    if (summary.seconds >= 60 || offlineSummary || summary.producedByLine.length > 2 || stockText.length > 24 || summary.firstStockedProducts?.length || summary.saveFailed) {
       offlineSummary = summary;
+      offlinePage = 0;
       upgradeDialog = false;
       renderer.upgradeDialogOpen = false;
       closeLineExpansion();
       closeSharedUpgrade();
+      closeProductConstruction();
       renderer.offlineSummaryOpen = true;
       input.cancel();
     } else {
-      const text = summary.producedByLine.map(item =>
-        lineName(item.lineId, item.product) + item.level + '级' + item.units + '份').join('、');
-      toast = { text: '离线入库：' + text + (summary.saveFailed ? '（未保存）' : ''), at: time, duration: 5 };
+      toast = { text: '离线入库：' + stockText + (summary.saveFailed ? '（未保存）' : ''), at: time, duration: 5 };
     }
+  };
+  const presentFirstStockedProducts = () => {
+    if (entry || !session.visible || !session.ready || offlineSummary || upgradeDialog || sharedUpgrade || lineExpansion || productConstruction || toast) return;
+    const products = session.takeFirstStockedProducts();
+    if (!products.length) return;
+    const savedSuccessfully = session.checkpoint();
+    const name = products.length === 1 ? productName(products[0]) : products.length + '种产品';
+    toast = { text: name + '首批已入库，去棋盘发射取货' + (savedSuccessfully ? '' : '（未保存）'), at: time, duration: 5 };
   };
   const resize = () => {
     platform.canvas.width = Math.max(1, Math.round(platform.width * platform.pixelRatio));
@@ -99,12 +160,15 @@ function startGame() {
   };
   const reasons = {
     'empty-inventory': '正在生产，入库后就能取货', 'board-full': '棋盘已满，合成或交付腾出空格',
-    incompatible: '同种同级的商品才能合成', 'max-level': '已达本轮最高商品等级',
+    incompatible: '同种同级的商品才能合成', 'max-level': '商品已达最高 Lv.' + CONFIG.maxProductLevel,
     'order-not-ready': '先备齐订单所需的棋盘成品', 'launcher-protected': '发射器需要留在棋盘上',
     'order-not-found': '这张订单已更新，请查看当前订单',
     'order-edge': '已到订单列表边缘',
+    'super-order-unavailable': '先投产超级订单所需的产品',
+    'super-orders-complete': '这位顾客的超级订单已全部完成',
+    'super-orders-unconfigured': '超级订单尚未开放',
     'insufficient-coins': '金币不足，完成订单后再来升级', 'capacity-max': '本线产能已满',
-    'output-max': '本轮出厂等级已达 Lv.2',
+    'output-max': '出厂等级已达最高 Lv.' + CONFIG.maxOutputLevel,
     'not-processing': '本批进入加工后可加速',
     'waiting-supply': '等待公共供料，备料后自动开始',
     'waiting-packaging': '等待公共包装，腾出位置后自动继续',
@@ -114,6 +178,9 @@ function startGame() {
     'invalid-product': '请选择已开放产品的流水线',
     'shared-max': '本轮公共设备已达最高档',
     'invalid-service': '请选择公共供料或公共包装',
+    'product-not-built': '请先建设这个产品的首条流水线',
+    'product-built': '该工坊已建成，可通过扩线增加产线',
+    'previous-product-required': '请先建设上一代工坊',
   };
   const input = new Input(model, renderer, result => {
     if (platform.kind === 'browser') console.debug('[工坊操作]', JSON.stringify(result));
@@ -121,7 +188,7 @@ function startGame() {
       let text = reasons[result.reason] || '请拖到空格或相同等级的商品';
       if (result.action === 'line-buy') {
         const offer = model.lineExpansionOffer(result.product);
-        const name = result.product === 'caramel' ? '焦糖' : '原味';
+        const name = productName(result.product);
         if (result.reason === 'line-max' && offer) text = name + '本轮最多' + offer.maxLines + '条线';
         if (result.reason === 'board-full') text = '棋盘已满，腾出一格后才能新增流水线';
         if (result.reason === 'insufficient-coins' && offer) text = '金币不足，新增' + name + '流水线需' + offer.cost + '金币';
@@ -132,15 +199,86 @@ function startGame() {
         if (result.reason === 'shared-max') text = name + '已达本轮最高档';
         if (result.reason === 'insufficient-coins' && offer) text = name + '升级需' + offer.cost + '金币';
       }
+      if (result.action === 'product-build') {
+        const offer = model.productConstructionOffer(result.product);
+        if (result.reason === 'board-full') text = '棋盘需腾出一格，用于' + productName(result.product) + '发射器';
+        if (result.reason === 'insufficient-coins' && offer) text = '建设' + workshopName(result.product) + '还差' + Math.max(0, offer.cost - model.state.coins) + '金币';
+      }
       toast = { text, at: time, duration: 2.5 };
       return;
     }
     const type = result.action;
+    if (type.startsWith('entry-recovery-')) {
+      if (!recovery) return;
+      if (type === 'entry-recovery-new' && !recovery.confirm) showRecovery(true);
+      else if (type === 'entry-recovery-cancel' && recovery.confirm) showRecovery(false);
+      else if (type === 'entry-recovery-retry' && !recovery.confirm) {
+        const retried = saveRecovery.retry();
+        if (retried.ok) resumeRecovered(retried, '存档已重新读取，可以继续经营');
+        else {
+          if (retried.issue.error) platform.reportError(retried.issue.error);
+          showRecovery(false, '仍无法读取，原存档继续保留');
+        }
+      } else if (type === 'entry-recovery-confirm' && recovery.confirm) {
+        const restarted = saveRecovery.restart();
+        if (restarted.ok) resumeRecovered(restarted, '旧档已备份，新工坊已保存');
+        else {
+          if (restarted.issue.error) platform.reportError(restarted.issue.error);
+          showRecovery(true, restarted.issue.reason === 'write-failed' ?
+            '新档保存失败，旧档备份已保留' : '旧档备份失败，尚未开始新游戏');
+        }
+      }
+      return;
+    }
+    if (recovery) return;
+    if (type.startsWith('customer-')) {
+      if (type === 'customer-response-close') customerResponse = null;
+      else if (type === 'customer-open' || type === 'customer-select') {
+        const info = model.customerInfo(result.customerId);
+        if (!info) return;
+        renderer.customerReturnPage = type === 'customer-open' ? model.state.page : 'customers';
+        if (type === 'customer-select') renderer.customerCollectionScroll = renderer.customerScroll;
+        renderer.customerSelectedId = result.customerId;
+        renderer.customerScroll = 0;
+        renderer.customerBubbleOpen = false;
+        renderer.customerRecordExpanded = Object.create(null);
+        customerResponse = null;
+        model.setPage('customers');
+        model.markCustomerRead(result.customerId);
+        save();
+      } else if (type === 'customer-back') {
+        renderer.customerSelectedId = null;
+        renderer.customerBubbleOpen = false;
+        renderer.customerScroll = renderer.customerCollectionScroll || 0;
+        model.setPage(renderer.customerReturnPage || 'customers');
+        save();
+      } else if (type === 'customer-talk') renderer.customerBubbleOpen = true;
+      else if (type === 'customer-bubble-close') renderer.customerBubbleOpen = false;
+      else if (type === 'customer-record-toggle') {
+        renderer.customerRecordExpanded[result.recordKey] = !result.expanded;
+      } else if (type === 'customer-super-order' || type === 'customer-super-pause') {
+        const tracked = model.trackSuperOrder(type === 'customer-super-pause' ? null : result.customerId);
+        if (tracked.ok) {
+          if (type === 'customer-super-order') model.setPage('board');
+          renderer.customerBubbleOpen = false;
+          save();
+        } else toast = { text: reasons[tracked.reason] || '这张超级订单暂未开放', at: time, duration: 3 };
+      } else if (type === 'customer-orders') {
+        const customerId = result.customerId || renderer.customerSelectedId;
+        const current = model.getOrder();
+        const order = current?.customerId === customerId && current.kind !== 'super' ? current :
+          model.state.orders.find(item => item.customerId === customerId && item.id === renderer.customerLastOrders?.[customerId]) ||
+          model.state.orders.find(item => item.customerId === customerId);
+        if (order) { model.focusOrder(order.id); model.setPage('board'); save(); }
+        renderer.customerBubbleOpen = false;
+      }
+      input.cancel();
+      return;
+    }
     if (type === 'entry-enter') {
       entry = false; settingsOpen = false;
       renderer.entryOpen = false; renderer.entrySettingsOpen = false;
       input.cancel();
-      if (saveReadFailed) toast = { text: '存档读取失败，本轮保留旧存档，请重新进入', at: time, duration: 8 };
       presentOfflineSummary();
       return;
     }
@@ -162,13 +300,21 @@ function startGame() {
     }
     if (type === 'offline-close') {
       offlineSummary = null;
+      offlinePage = 0;
       renderer.offlineSummaryOpen = false;
+      return;
+    }
+    if (type === 'offline-prev' || type === 'offline-next') {
+      if (!offlineSummary || result.page !== offlinePage) return;
+      const pageCount = Math.max(1, Math.ceil(offlineSummary.producedByLine.length / OFFLINE_PAGE_SIZE));
+      offlinePage = Math.max(0, Math.min(pageCount - 1, offlinePage + (type === 'offline-next' ? 1 : -1)));
+      input.cancel();
       return;
     }
     if (type === 'upgrade-open' || type === 'upgrade-close') {
       upgradeDialog = type === 'upgrade-open';
       renderer.upgradeDialogOpen = upgradeDialog;
-      if (upgradeDialog) { closeLineExpansion(); closeSharedUpgrade(); }
+      if (upgradeDialog) { closeLineExpansion(); closeSharedUpgrade(); closeProductConstruction(); }
       input.cancel();
       return;
     }
@@ -178,6 +324,7 @@ function startGame() {
       upgradeDialog = false;
       renderer.upgradeDialogOpen = false;
       closeLineExpansion();
+      closeProductConstruction();
       input.cancel();
       return;
     }
@@ -204,6 +351,7 @@ function startGame() {
       upgradeDialog = false;
       renderer.upgradeDialogOpen = false;
       closeSharedUpgrade();
+      closeProductConstruction();
       input.cancel();
       return;
     }
@@ -223,11 +371,47 @@ function startGame() {
         (savedSuccessfully ? '' : '（未保存）'), at: time, duration: 4 };
       return;
     }
-    if (type === 'page') {
+    if (type === 'product-construction-open') {
+      const offer = model.productConstructionOffer(result.product);
+      if (!offer || model.productStage(result.product) !== 'unbuilt') return;
+      productConstruction = { product: offer.product };
+      renderer.productConstructionProduct = offer.product;
+      renderer.productConstructionDialogOpen = true;
       upgradeDialog = false;
       renderer.upgradeDialogOpen = false;
       closeLineExpansion();
       closeSharedUpgrade();
+      input.cancel();
+      return;
+    }
+    if (type === 'product-construction-close') {
+      closeProductConstruction();
+      input.cancel();
+      return;
+    }
+    if (type === 'product-build') {
+      if (platform.cancelInput) platform.cancelInput();
+      input.cancel();
+      model.selectLine(result.lineId);
+      closeProductConstruction();
+      renderer.focusLine(result.lineId);
+      const savedSuccessfully = save();
+      toast = { text: workshopName(result.product) + '已建成，首批自动生产中' + (savedSuccessfully ? '' : '（未保存）'), at: time, duration: 4 };
+      return;
+    }
+    if (type === 'page') {
+      if (renderer.page === 'customers' && !renderer.customerSelectedId) renderer.customerCollectionScroll = renderer.customerScroll;
+      upgradeDialog = false;
+      renderer.upgradeDialogOpen = false;
+      closeLineExpansion();
+      closeSharedUpgrade();
+      closeProductConstruction();
+      customerResponse = null;
+      renderer.customerBubbleOpen = false;
+      if (model.state.page === 'customers') {
+        renderer.customerSelectedId = null;
+        renderer.customerScroll = renderer.customerCollectionScroll || 0;
+      }
       input.cancel();
     }
     if (type === 'order-focus') {
@@ -241,8 +425,15 @@ function startGame() {
     if (type === 'deliver') {
       if (platform.cancelInput) platform.cancelInput();
       input.cancel();
-      toast = { text: '交付成功，金币 +' + result.reward + ' · 已服务' + result.customerServiceCount + '次',
-        at: time, duration: 2.5 };
+      const customer = getCustomer(result.customerId);
+      const services = result.customerServiceCount, completed = model.customerInfo(customer.id).superOrdersCompleted || 0;
+      const stage = customer.stages.filter(item => item.superOrders <= completed).slice(-1)[0];
+      customerResponse = { customerId: customer.id, reward: result.reward,
+        text: (services === 1 ? '已结识。' : '') + (stage?.reply || '谢谢，这份我带走啦。'),
+        kind: services === 1 ? '初次结识' : '普通交单',
+        startedAt: time, duration: 5 };
+      toast = { text: '订单收入 +' + result.reward + (services === 1 ? ' · 已结识' + customer.name :
+        ' · 累计服务' + services + '次'), at: time, duration: 3 };
       if (!preferences.reducedMotion) (result.consumed || [{ index: result.from }]).forEach(item =>
         effects.push({ type: 'deliver', index: item.index, startedAt: time, duration: .6 }));
     }
@@ -277,7 +468,7 @@ function startGame() {
     },
     cancel: () => input.cancel(),
     wheel: deltaY => {
-      if (!entry && session.canInteract && model.state.page === 'factory' && !upgradeDialog && !sharedUpgrade && !lineExpansion && !offlineSummary &&
+      if (!entry && session.canInteract && ['factory', 'customers'].includes(model.state.page) && !upgradeDialog && !sharedUpgrade && !lineExpansion && !productConstruction && !offlineSummary &&
           typeof input.scroll === 'function') input.scroll(deltaY);
     },
   });
@@ -303,8 +494,9 @@ function startGame() {
     const delta = lastFrame == null ? 0 : Math.max((now - lastFrame) / 1000, 0);
     lastFrame = now;
     if (loaded) {
+      if (session.visible) time += delta;
       if (session.ready && session.visible) {
-        session.advance(); time += delta;
+        session.advance();
         // Lifecycle events cancel suspended gestures. A slow visible frame
         // should preserve a valid drag, without replaying a long shot backlog.
         if (!entry && !session.canInteract) input.cancel();
@@ -313,32 +505,39 @@ function startGame() {
       }
       for (let index = effects.length - 1; index >= 0; index--) if (time - effects[index].startedAt > effects[index].duration) effects.splice(index, 1);
       if (toast && time - toast.at > toast.duration) toast = null;
+      if (customerResponse && time - customerResponse.startedAt > customerResponse.duration) customerResponse = null;
+      presentFirstStockedProducts();
       const expansion = lineExpansion ? { product: lineExpansion.product,
         offer: model.lineExpansionOffer(lineExpansion.product) } : null;
+      const construction = productConstruction ? { product: productConstruction.product,
+        offer: model.productConstructionOffer(productConstruction.product) } : null;
       const bottleneck = model.productionBottleneck();
       const shared = sharedUpgrade ? { focus: sharedUpgrade.focus, bottleneck,
         offers: { supply: model.sharedUpgradeOffer('supply'), packaging: model.sharedUpgradeOffer('packaging') } } : null;
       renderer.draw(model, { time, toast, gesture: input.gesture, effects, upgradeDialog, sharedUpgrade: shared,
-        productionBottleneck: bottleneck, lineExpansion: expansion, offlineSummary,
-        entry, settingsOpen, reducedMotion: preferences.reducedMotion });
+        productionBottleneck: bottleneck, lineExpansion: expansion, productConstruction: construction, offlineSummary, offlinePage,
+        customerResponse, entry, settingsOpen, recovery, reducedMotion: preferences.reducedMotion });
       if (platform.publishState) platform.publishState(model.state, { upgradeDialog, sharedUpgrade: shared,
-        productionBottleneck: bottleneck, lineExpansion: expansion, offlineSummary,
-        orders: model.state.orders.map(order => model.orderProgress(order.id)),
+        productionBottleneck: bottleneck, lineExpansion: expansion, productConstruction: construction, offlineSummary,
+        offlinePagination: offlineSummary ? { page: offlinePage, pageSize: OFFLINE_PAGE_SIZE,
+          pageCount: Math.max(1, Math.ceil(offlineSummary.producedByLine.length / OFFLINE_PAGE_SIZE)) } : null,
+        orders: model.getOrders().map(order => model.orderProgress(order.id)),
         customerServiceCount: model.customerServiceCount('rabbit-courier'),
-        entry, settingsOpen, reducedMotion: preferences.reducedMotion,
+        customers: model.customerCollection(), selectedCustomerId: renderer.customerSelectedId,
+        customerBubbleOpen: renderer.customerBubbleOpen, customerResponse,
+        entry, settingsOpen, recovery, reducedMotion: preferences.reducedMotion,
         upgradeOffers: upgradeDialog ? { capacity: model.capacityOffer(), output: model.outputOffer() } : null });
     } else loadingScreen();
     platform.requestFrame(frame);
   };
   assets.load(value => { progress = value; }).then(() => {
     loaded = true;
-    session.setReady();
-    if (saveReadFailed) toast = { text: '存档读取失败，本轮保留旧存档，请重新进入', at: time, duration: 8 };
+    if (!recovery) session.setReady();
     presentOfflineSummary();
   })
     .catch(error => { loadError = error; platform.reportError(error); });
   platform.requestFrame(frame);
-  return { model, renderer, input, assets, platform, session };
+  return { get model() { return model; }, get session() { return session; }, renderer, input, assets, platform };
 }
 
 module.exports = { startGame };

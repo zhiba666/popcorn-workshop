@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "basePath": "assets/runtime/customer-page/v1/",
+  "runtimePixelRatio": 2,
+  "reference": "assets/reference/concepts/customer-module/v1/customer-layouts.png",
+  "ui": {
+    "collection-card": {
+      "source": "assets/source/ui/customer-page/v1/ui/collection-card.svg",
+      "runtime": "ui/collection-card.png",
+      "sourceSize": [
+        180,
+        300
+      ],
+      "size": [
+        360,
+        600
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "nine-slice",
+      "transparent": true,
+      "nineSlice": {
+        "left": 64,
+        "top": 64,
+        "right": 64,
+        "bottom": 64,
+        "borderScaleMode": "shrink-to-fit",
+        "maxBorderScale": 0.5
+      },
+      "nineSliceSize": [
+        360,
+        600
+      ],
+      "contentInsets": {
+        "left": 40,
+        "top": 40,
+        "right": 40,
+        "bottom": 48
+      },
+      "bytes": 11069
+    },
+    "profile-sheet": {
+      "source": "assets/source/ui/customer-page/v1/ui/profile-sheet.svg",
+      "runtime": "ui/profile-sheet.png",
+      "sourceSize": [
+        360,
+        640
+      ],
+      "size": [
+        720,
+        1280
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "nine-slice",
+      "transparent": true,
+      "nineSlice": {
+        "left": 64,
+        "top": 64,
+        "right": 64,
+        "bottom": 64,
+        "borderScaleMode": "shrink-to-fit",
+        "maxBorderScale": 0.5
+      },
+      "nineSliceSize": [
+        720,
+        1280
+      ],
+      "contentInsets": {
+        "left": 48,
+        "top": 48,
+        "right": 48,
+        "bottom": 48
+      },
+      "bytes": 29360
+    },
+    "relationship-entry": {
+      "source": "assets/source/ui/customer-page/v1/ui/relationship-entry.svg",
+      "runtime": "ui/relationship-entry.png",
+      "sourceSize": [
+        336,
+        112
+      ],
+      "size": [
+        672,
+        224
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "nine-slice",
+      "transparent": true,
+      "nineSlice": {
+        "left": 64,
+        "top": 64,
+        "right": 64,
+        "bottom": 64,
+        "borderScaleMode": "shrink-to-fit",
+        "maxBorderScale": 0.5
+      },
+      "nineSliceSize": [
+        672,
+        224
+      ],
+      "contentInsets": {
+        "left": 40,
+        "top": 40,
+        "right": 40,
+        "bottom": 48
+      },
+      "bytes": 8099
+    },
+    "speech-bubble": {
+      "source": "assets/source/ui/customer-page/v1/ui/speech-bubble.svg",
+      "runtime": "ui/speech-bubble.png",
+      "sourceSize": [
+        280,
+        120
+      ],
+      "size": [
+        560,
+        240
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "nine-slice",
+      "transparent": true,
+      "nineSlice": {
+        "left": 64,
+        "top": 64,
+        "right": 64,
+        "bottom": 64,
+        "borderScaleMode": "shrink-to-fit",
+        "maxBorderScale": 0.5
+      },
+      "nineSliceSize": [
+        560,
+        240
+      ],
+      "contentInsets": {
+        "left": 40,
+        "top": 40,
+        "right": 40,
+        "bottom": 48
+      },
+      "bytes": 8019
+    }
+  }
+}

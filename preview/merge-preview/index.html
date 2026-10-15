@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f4ecdf">
+  <title>合成高亮测试 · 爆米花工坊</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main class="workbench">
+    <header class="page-heading">
+      <div><p class="eyebrow">爆米花工坊 · 交互试验</p><h1>合成高亮测试</h1><p>拖动试一试，看看每一步提示是否清楚。</p></div>
+      <a href="/preview/">← 预览首页</a>
+    </header>
+    <div class="preview-layout">
+      <section class="phone" aria-label="合成交互测试棋盘">
+        <header class="scene-heading">
+          <div class="scene-title"><img src="/assets/icons/popcorn.png" alt=""><strong>合成台</strong></div>
+          <span class="scene-label">7 × 9</span>
+        </header>
+        <section class="order-card" aria-label="在场订单">
+          <div class="order-portrait"><img src="/assets/customers/rabbit-courier.png" alt="兔快递员"></div>
+          <div class="order-main"><h2 id="order-title">准备订单</h2><div id="order-items" class="order-items"></div></div>
+          <div class="order-actions"><button id="deliver" type="button" disabled>交付</button></div>
+          <nav class="order-pager" aria-label="切换订单"><button id="prev-order" type="button" aria-label="上一张订单">‹</button><span id="order-count"></span><button id="next-order" type="button" aria-label="下一张订单">›</button></nav>
+        </section>
+        <div id="board" class="board" role="group" aria-label="7列9行商品棋盘"></div>
+        <section class="item-info" aria-label="选中商品">
+          <img id="selected-art" alt="">
+          <div class="item-copy"><strong id="selected-name">点选一件商品</strong><p id="item-hint">绿色可以合成，金色表示订单需要。</p></div>
+          <button id="discard" type="button" disabled>丢弃</button>
+        </section>
+        <div id="feedback" class="feedback" role="status" aria-live="polite">正在准备棋盘…</div>
+        <footer class="scene-footer">拖到同级商品松手合成 · 稍停可接着拖</footer>
+      </section>
+      <aside class="preview-tools" aria-label="交互测试设置">
+        <section class="control-section">
+          <h2>试一段操作</h2>
+          <div id="scenarios" class="scenario-options"></div>
+          <p id="scenario-hint"></p>
+          <button id="reset" type="button">重置当前局面</button>
+          <button id="demo" type="button">重置并播放手势示范</button>
+        </section>
+        <section class="control-section">
+          <h2>看懂高亮</h2>
+          <div class="legend">
+            <div class="legend-row"><i class="legend-selected"></i><span>四角：正在操作</span></div>
+            <div class="legend-row"><i class="legend-safe"></i><span>绿色：可直接合成</span></div>
+            <div class="legend-row"><i class="legend-order">单</i><span>金签：订单所需</span></div>
+            <div class="legend-row"><i class="legend-protected">!</i><span>琥珀：松手后确认</span></div>
+            <div class="legend-row"><i class="legend-empty"></i><span>浅框：可放入空格</span></div>
+          </div>
+        </section>
+        <section class="control-section">
+          <h2>比较手感</h2>
+          <label class="range-label" for="dwell">停留合成 <output id="dwell-value" for="dwell">260 ms</output></label>
+          <input id="dwell" type="range" min="200" max="450" step="10" value="260">
+          <label class="check-label"><input id="reduced-motion" type="checkbox">减少动态效果</label>
+          <div class="width-options" role="group" aria-label="棋盘预览宽度"><button type="button" data-width="390" aria-pressed="true">390 px</button><button type="button" data-width="320" aria-pressed="false">320 px</button></div>
+          <div class="metrics"><span>已合成 <strong id="merge-count">0</strong> 次</span><span>空格 <strong id="empty-count">0</strong></span></div>
+          <p>示例数据可随时重置；独立测试，不改变游戏进度。</p>
+          <details><summary>键盘操作</summary><p>方向键移动焦点；空格拿起商品，Enter 放到当前格；Esc 取消。发射器可点击或长按取货。</p></details>
+        </section>
+      </aside>
+    </div>
+  </main>
+  <dialog id="protection-dialog" aria-labelledby="protection-title" aria-describedby="protection-message">
+    <form method="dialog">
+      <h2 id="protection-title">保留订单成品？</h2>
+      <div class="confirm-item"><img id="confirm-art" alt=""><span id="confirm-name"></span></div>
+      <p id="protection-message"></p>
+      <div class="dialog-actions"><button id="keep" value="cancel" autofocus>保留成品</button><button id="confirm" value="confirm">仍要合成</button></div>
+    </form>
+  </dialog>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

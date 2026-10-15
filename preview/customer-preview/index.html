@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4ecdf">
+  <title>顾客图鉴 · 爆米花工坊</title>
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./customer-status.css">
+</head>
+<body>
+  <aside class="preview-toolbar" aria-label="布局预览控制">
+    <div class="preview-brand"><a href="/preview/index.html">← 预览首页</a><strong>顾客界面预览</strong><small>成长进度示例 · 不改变游戏进度</small></div>
+    <nav class="preview-tabs" aria-label="查看组件">
+      <button type="button" data-view="collection" aria-pressed="true">图鉴卡</button>
+      <button type="button" data-view="profile" aria-pressed="false">详情档案</button>
+      <button type="button" data-view="records" aria-pressed="false">关系记录</button>
+      <button type="button" data-view="dialogue" aria-pressed="false">对白气泡</button>
+    </nav>
+    <div class="preview-options"><label for="customer-choice">预览角色</label><select id="customer-choice"></select><a href="/assets/reference/concepts/customer-module/v1/customer-layouts.png" target="_blank" rel="noopener">视觉目标 ↗</a></div>
+    <div class="preview-options"><label for="state-choice">角色状态</label><select id="state-choice"><option value="default">默认进度</option><option value="new">新面孔 · 未收录</option><option value="ordinary">普通服务20次 · 超级0张</option><option value="collected">一星 · 超级1张</option><option value="daily">新日常 · 超级12张</option><option value="growing">四星 · 超级14张</option><option value="imminent">超级订单升星 · 已完成15张</option><option value="max">五星 · 超级16张</option><option value="locked">尚未开放</option></select></div>
+    <p class="preview-status" id="preview-status" role="status">从图鉴点一位街坊，看看他的故事。</p>
+  </aside>
+  <main class="customer-app" aria-label="顾客界面">
+    <header class="page-header" id="page-header"></header>
+    <div class="page-content" id="page-content"></div>
+  </main>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
+

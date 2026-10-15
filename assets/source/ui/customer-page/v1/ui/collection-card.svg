@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="300" viewBox="0 0 180 300" fill="none">
+  <defs>
+    <linearGradient id="top-wash" x1="0" y1="6" x2="0" y2="32" gradientUnits="userSpaceOnUse"><stop stop-color="#dcefdc" stop-opacity=".68"/><stop offset="1" stop-color="#eaf4df" stop-opacity="0"/></linearGradient>
+    <linearGradient id="bottom-wash" x1="0" y1="268" x2="0" y2="292" gradientUnits="userSpaceOnUse"><stop stop-color="#ead8b7" stop-opacity="0"/><stop offset="1" stop-color="#ead8b7" stop-opacity=".32"/></linearGradient>
+  </defs>
+  <rect x="6" y="10" width="168" height="286" rx="18" fill="#8f7655" opacity=".06"/>
+  <rect x="5" y="8" width="170" height="286" rx="18" fill="#8f7655" opacity=".08"/>
+  <rect x="4" y="4" width="172" height="288" rx="18" fill="#fff9eb"/>
+  <rect x="4" y="4" width="172" height="288" rx="18" fill="url(#top-wash)"/>
+  <rect x="4" y="4" width="172" height="288" rx="18" fill="url(#bottom-wash)"/>
+  <rect x="4.65" y="4.65" width="170.7" height="286.7" rx="17.35" stroke="#d2bb91" stroke-width="1.3"/>
+  <rect x="8" y="8" width="164" height="280" rx="14" stroke="#fffef5" stroke-width="1.4"/>
+  <path d="M24 7H156" stroke="#fff" stroke-opacity=".72" stroke-width="1.1" stroke-linecap="round"/>
+</svg>

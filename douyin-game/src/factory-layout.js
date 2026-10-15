@@ -25,7 +25,10 @@ function buildFactoryLayout(lines) {
     }
     y += 22;
   }
-  return { groups, scenes, slots, supply: { x: 220, y: 10, w: 115, h: 101 },
+  const nextProduct = CONFIG.products.find(product => !lines.some(line => line.product === product));
+  const construction = nextProduct ? { product: nextProduct, x: 64, y, w: 252, h: 172 } : null;
+  if (construction) y += construction.h + 22;
+  return { groups, scenes, slots, construction, supply: { x: 220, y: 10, w: 115, h: 101 },
     packaging: { x: 243, y: y + 28, w: 122, h: 74 },
     warehouse: { x: 55, y: y + 126, w: 176, h: 66 }, height: y + 224 };
 }

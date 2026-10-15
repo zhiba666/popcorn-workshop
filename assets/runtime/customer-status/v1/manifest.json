@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "basePath": "assets/runtime/customer-status/v1/",
+  "runtimePixelRatio": 2,
+  "selection": {
+    "portrait": {
+      "selected": "portrait-selected",
+      "unselected": "portrait-unselected"
+    },
+    "detail": {
+      "selected": "detail-selected",
+      "unselected": "detail-unselected"
+    }
+  },
+  "ui": {
+    "portrait-selected": {
+      "source": "assets/source/ui/customer-status/v1/selection/portrait-selected.svg",
+      "runtime": "selection/portrait-selected.png",
+      "sourceSize": [
+        256,
+        256
+      ],
+      "size": [
+        512,
+        512
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "contain",
+      "transparent": true,
+      "layer": "behind-customer",
+      "contentInsets": {
+        "left": 56,
+        "top": 56,
+        "right": 56,
+        "bottom": 64
+      },
+      "bounds": {
+        "x": 16,
+        "y": 16,
+        "width": 480,
+        "height": 480
+      },
+      "bytes": 14911
+    },
+    "portrait-unselected": {
+      "source": "assets/source/ui/customer-status/v1/selection/portrait-unselected.svg",
+      "runtime": "selection/portrait-unselected.png",
+      "sourceSize": [
+        256,
+        256
+      ],
+      "size": [
+        512,
+        512
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "contain",
+      "transparent": true,
+      "layer": "behind-customer",
+      "contentInsets": {
+        "left": 56,
+        "top": 56,
+        "right": 56,
+        "bottom": 64
+      },
+      "bounds": {
+        "x": 16,
+        "y": 16,
+        "width": 480,
+        "height": 480
+      },
+      "bytes": 13993
+    },
+    "detail-selected": {
+      "source": "assets/source/ui/customer-status/v1/selection/detail-selected.svg",
+      "runtime": "selection/detail-selected.png",
+      "sourceSize": [
+        384,
+        480
+      ],
+      "size": [
+        768,
+        960
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "contain",
+      "transparent": true,
+      "layer": "behind-customer",
+      "contentInsets": {
+        "left": 64,
+        "top": 64,
+        "right": 64,
+        "bottom": 72
+      },
+      "bounds": {
+        "x": 16,
+        "y": 16,
+        "width": 736,
+        "height": 928
+      },
+      "bytes": 27112
+    },
+    "detail-unselected": {
+      "source": "assets/source/ui/customer-status/v1/selection/detail-unselected.svg",
+      "runtime": "selection/detail-unselected.png",
+      "sourceSize": [
+        384,
+        480
+      ],
+      "size": [
+        768,
+        960
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "scaleMode": "contain",
+      "transparent": true,
+      "layer": "behind-customer",
+      "contentInsets": {
+        "left": 64,
+        "top": 64,
+        "right": 64,
+        "bottom": 72
+      },
+      "bounds": {
+        "x": 16,
+        "y": 16,
+        "width": 736,
+        "height": 928
+      },
+      "bytes": 25902
+    }
+  }
+}

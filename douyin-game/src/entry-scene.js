@@ -44,6 +44,9 @@ function createEntryLayout(renderer) {
     panel: { x: 34, y: 290, w: 322, h: 222 },
     close: { x: 300, y: 304, w: 44, h: 44 },
     motion: { x: 56, y: 376, w: 278, h: 64 },
+    recoveryPanel: { x: 24, y: 215, w: 342, h: 418 },
+    recoveryPrimary: { x: 54, y: 450, w: 282, h: 60 },
+    recoverySecondary: { x: 54, y: 530, w: 282, h: 54 },
   };
   // Position the visible central machine like the reference, preserving the right-edge crop.
   layout.production.x -= 24;
@@ -65,6 +68,8 @@ function createEntryLayout(renderer) {
   layout.settingsTap = tapRect(layout.settings, scale);
   layout.closeTap = tapRect(layout.close, scale);
   layout.motionTap = tapRect(layout.motion, scale);
+  layout.recoveryPrimaryTap = tapRect(layout.recoveryPrimary, scale);
+  layout.recoverySecondaryTap = tapRect(layout.recoverySecondary, scale);
   renderer.entryLayout = layout;
 }
 
@@ -72,6 +77,11 @@ function entryHitTest(renderer, x, y) {
   const point = { x: (x - renderer.entryOffsetX) / renderer.entryScale,
     y: (y - renderer.entryOffsetY) / renderer.entryScale };
   const layout = renderer.entryLayout;
+  if (renderer.recovery) {
+    if (contains(point, layout.recoveryPrimaryTap)) return { type: renderer.recovery.confirm ? 'entry-recovery-confirm' : 'entry-recovery-retry' };
+    if (contains(point, layout.recoverySecondaryTap)) return { type: renderer.recovery.confirm ? 'entry-recovery-cancel' : 'entry-recovery-new' };
+    return null;
+  }
   if (renderer.entrySettingsOpen) {
     if (contains(point, layout.closeTap)) return { type: 'entry-settings-close' };
     if (contains(point, layout.motionTap)) return { type: 'entry-motion-toggle' };
@@ -150,6 +160,35 @@ function drawSettings(renderer, visual) {
     14, '#9b7c60', 'center');
 }
 
+function drawRecovery(renderer, visual) {
+  const ctx = renderer.ctx, layout = renderer.entryLayout, recovery = renderer.recovery;
+  ctx.save();
+  const dpr = renderer.canvas.width / renderer.width;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.fillStyle = '#3b2c22b8';
+  ctx.fillRect(0, 0, renderer.width, renderer.height);
+  ctx.restore();
+  const panel = layout.recoveryPanel;
+  renderer.slice('ui/panel-cream', panel.x, panel.y, panel.w, panel.h);
+  renderer.text(recovery.title, WIDTH / 2, 258, 25, '#5f341c', 'center', true);
+  recovery.lines.forEach((line, index) => renderer.text(line, WIDTH / 2, 310 + index * 29, 16, '#765b40', 'center'));
+  if (recovery.message) renderer.text(recovery.message, WIDTH / 2, 416, 15, '#a63f2f', 'center', true);
+  else if (recovery.confirm) renderer.text('备份或保存失败时，不会开始新游戏', WIDTH / 2, 416, 15, '#765b40', 'center');
+  const buttons = recovery.confirm ?
+    [['entry-recovery-confirm', '备份并重新开始'], ['entry-recovery-cancel', '返回']] :
+    [['entry-recovery-retry', '重试读取'], ['entry-recovery-new', '重新开始']];
+  buttons.forEach(([type, label], index) => {
+    const rect = index ? layout.recoverySecondary : layout.recoveryPrimary;
+    pressTransform(renderer, rect, pressed(renderer, visual, type), () => {
+      if (index) renderer.roundRect(rect.x, rect.y, rect.w, rect.h, 13, '#f0e2c9', '#c9b58f');
+      else renderer.slice('ui/button-teal', rect.x, rect.y, rect.w, rect.h);
+      renderer.text(label, rect.x + rect.w / 2, rect.y + rect.h / 2, 20,
+        index ? '#765238' : '#fff6dc', 'center', true);
+    });
+  });
+  renderer.text('完成恢复后才能进入工坊', WIDTH / 2, 610, 14, '#9b7c60', 'center');
+}
+
 function drawEntry(renderer, visual) {
   const ctx = renderer.ctx, dpr = renderer.canvas.width / renderer.width;
   ctx.setTransform(1, 0, 0, 1, 0, 0);
@@ -184,8 +223,11 @@ function drawEntry(renderer, visual) {
     imageRect(renderer, IDS.settingsIcon, layout.settingsIcon);
   });
   ctx.restore();
-  if (renderer.entrySettingsOpen) drawSettings(renderer, visual);
-  renderer.toast(visual);
+  if (renderer.recovery) drawRecovery(renderer, visual);
+  else {
+    if (renderer.entrySettingsOpen) drawSettings(renderer, visual);
+    renderer.toast(visual);
+  }
 }
 
 module.exports = { createEntryLayout, entryHitTest, drawEntry };

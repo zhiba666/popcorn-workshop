@@ -1,13 +1,126 @@
 'use strict';
 
+const { drawRotaryMachine } = require('./factory-rotary');
+
 const TAU = Math.PI * 2;
 const clamp = value => Math.max(0, Math.min(1, value));
 const smooth = value => { const t = clamp(value); return t * t * (3 - 2 * t); };
+
+function closingStroke(time, duration, hold = 0) {
+  const travel = Math.max(0.01, (duration - hold) / 2);
+  if (time < 0 || time > duration) return 0;
+  if (time < travel) return smooth(time / travel);
+  if (time < travel + hold) return 1;
+  return 1 - smooth((time - travel - hold) / travel);
+}
 
 function polygon(ctx, points) {
   ctx.beginPath();
   points.forEach((p, index) => index ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1]));
   ctx.closePath();
+}
+
+function excludePolygon(ctx, image, points) {
+  const area = points.reduce((sum, point, index) => {
+    const next = points[(index + 1) % points.length];
+    return sum + point[0] * next[1] - next[0] * point[1];
+  }, 0);
+  const hole = area > 0 ? points.slice().reverse() : points;
+  ctx.beginPath(); ctx.rect(0, 0, image.width, image.height);
+  hole.forEach((point, index) => index ? ctx.lineTo(point[0], point[1]) : ctx.moveTo(point[0], point[1]));
+  ctx.closePath(); ctx.clip();
+}
+
+function bladeHubPath(ctx, layer, meta, anticlockwise = false) {
+  ctx.save(); ctx.translate(layer.pivot[0], layer.pivot[1]); ctx.scale(meta.scale[0], meta.scale[1]);
+  ctx.translate(-5, 0); ctx.rotate(-0.16); ctx.scale(31, 44);
+  ctx.moveTo(1, 0); ctx.arc(0, 0, 1, 0, TAU, anticlockwise); ctx.closePath(); ctx.restore();
+}
+
+function projectedBlade(ctx, image, meta, layer, time) {
+  const [rx, ry] = layer.motion.radius, [x, y] = layer.pivot;
+  const shear = (layer.motion.shear || 0) * meta.scale[0] / meta.scale[1];
+  const angle = time * TAU * layer.motion.speed, c = Math.cos(angle), s = Math.sin(angle);
+  ctx.save(); polygon(ctx, layer.polygon); ctx.clip();
+  ctx.translate(x, y);
+  ctx.transform(c + shear * ry / rx * s, ry / rx * s,
+    -(rx / ry + shear * shear * ry / rx) * s, c - shear * ry / rx * s, 0, 0);
+  ctx.translate(-x, -y);
+  polygon(ctx, layer.polygon); ctx.clip();
+  // The source gold axle stays fixed while only the blade face rotates in its projected plane.
+  ctx.beginPath(); ctx.rect(0, 0, image.width, image.height); bladeHubPath(ctx, layer, meta, true); ctx.clip();
+  ctx.drawImage(image, 0, 0); ctx.restore();
+  ctx.save(); polygon(ctx, layer.polygon); ctx.clip();
+  ctx.beginPath(); bladeHubPath(ctx, layer, meta); ctx.clip(); ctx.drawImage(image, 0, 0); ctx.restore();
+}
+
+function roller(ctx, image, meta, layer, time) {
+  const sx = meta.scale[0], sy = meta.scale[1];
+  const xs = layer.polygon.map(point => point[0]), ys = layer.polygon.map(point => point[1]);
+  const left = Math.min(...xs), right = Math.max(...xs), top = Math.min(...ys), bottom = Math.max(...ys);
+  ctx.save(); polygon(ctx, layer.polygon); ctx.clip(); ctx.drawImage(image, 0, 0);
+  if (time > 0) {
+    const period = bottom - top + 48 * sy;
+    const offset = ((time * layer.motion.speed * 85 * sy * layer.motion.direction) % period + period) % period;
+    for (let index = -1; index < 2; index++) {
+      const y = top + offset + index * period;
+      const band = ctx.createLinearGradient(0, y - 15 * sy, 0, y + 17 * sy);
+      band.addColorStop(0, '#ffffff00'); band.addColorStop(0.46, '#ffffff45');
+      band.addColorStop(0.55, '#36344118'); band.addColorStop(1, '#36344100');
+      ctx.fillStyle = band;
+      polygon(ctx, [[left - 20 * sx, y + 16 * sy], [right + 20 * sx, y - 28 * sy],
+        [right + 20 * sx, y + 5 * sy], [left - 20 * sx, y + 49 * sy]]);
+      ctx.fill();
+    }
+  }
+  ctx.restore();
+}
+
+function hingedLid(ctx, image, closed, layer, closure) {
+  const [x, y] = layer.pivot, amplitude = layer.motion.amplitude || [0, 0];
+  ctx.save(); ctx.translate(x + amplitude[0] * closure, y + amplitude[1] * closure);
+  ctx.scale(1, Math.max(0.025, 1 - closure)); ctx.translate(-x, -y);
+  ctx.globalAlpha *= closed ? 1 - smooth((closure - 0.1) / 0.35) : 1;
+  polygon(ctx, layer.polygon); ctx.clip(); ctx.drawImage(image, 0, 0); ctx.restore();
+  const closedMix = closed ? smooth((closure - 0.25) / 0.35) : 0;
+  if (closedMix > 0) {
+    ctx.save(); ctx.translate(x, y); ctx.scale(1, Math.min(1, Math.max(0.025, closure / 0.8))); ctx.translate(-x, -y);
+    ctx.globalAlpha *= closedMix;
+    polygon(ctx, layer.closedPolygon); ctx.clip(); ctx.drawImage(closed, 0, 0); ctx.restore();
+  }
+}
+
+function flipMold(ctx, meta, spec, front, rear, progress) {
+  const [sx, sy] = meta.scale, [[x1, y1], [x2, y2]] = spec.axis;
+  const x = (x1 + x2) / 2, y = (y1 + y2) / 2;
+  const dx = (x2 - x1) / sx, dy = (y2 - y1) / sy, length = Math.hypot(dx, dy);
+  const ux = dx / length, uy = dy / length, vx = -uy, vy = ux;
+  const angle = smooth(progress) * TAU * (spec.turns || 1), cosine = Math.cos(angle), sine = Math.sin(angle);
+  const projections = spec.polygon.map(point => (point[0] - x) / sx * ux + (point[1] - y) / sy * uy);
+  const left = Math.min(...projections), right = Math.max(...projections);
+  const thickness = (spec.thickness || 54) * Math.abs(sine);
+  if (thickness > 0.5) {
+    ctx.save(); ctx.translate(x, y); ctx.scale(sx, sy); ctx.transform(ux, uy, vx, vy, 0, 0);
+    const edgeLeft = left + 9, edgeRight = right - 9, top = -thickness / 2, bottom = thickness / 2;
+    const radius = Math.min(10, thickness / 2);
+    ctx.beginPath(); ctx.moveTo(edgeLeft + radius, top); ctx.lineTo(edgeRight - radius, top);
+    ctx.quadraticCurveTo(edgeRight, top, edgeRight, top + radius); ctx.lineTo(edgeRight, bottom - radius);
+    ctx.quadraticCurveTo(edgeRight, bottom, edgeRight - radius, bottom); ctx.lineTo(edgeLeft + radius, bottom);
+    ctx.quadraticCurveTo(edgeLeft, bottom, edgeLeft, bottom - radius); ctx.lineTo(edgeLeft, top + radius);
+    ctx.quadraticCurveTo(edgeLeft, top, edgeLeft + radius, top); ctx.closePath(); ctx.clip();
+    const source = nativePoint(meta, [750, 716]);
+    ctx.drawImage(front, source[0], source[1], 102 * sx, 28 * sy, edgeLeft, top, edgeRight - edgeLeft, thickness);
+    const shade = ctx.createLinearGradient(0, top, 0, bottom);
+    shade.addColorStop(0, '#ffffff45'); shade.addColorStop(0.45, '#ffffff00'); shade.addColorStop(1, '#00234465');
+    ctx.fillStyle = shade; ctx.fillRect(left, top, right - left, thickness); ctx.restore();
+  }
+  if (Math.abs(cosine) > 0.035) {
+    ctx.save(); ctx.translate(x + vx * sine * 12 * sx, y + vy * sine * 12 * sy);
+    const offDiagonal = ux * uy * (1 - cosine);
+    ctx.transform(ux * ux + cosine * uy * uy, offDiagonal * sy / sx,
+      offDiagonal * sx / sy, uy * uy + cosine * ux * ux, 0, 0);
+    ctx.translate(-x, -y); ctx.drawImage(cosine >= 0 ? front : rear, 0, 0); ctx.restore();
+  }
 }
 
 function sprite(renderer, id, x, y, w, h) {
@@ -86,32 +199,65 @@ function tumble(ctx, image, meta, phase, progress, seconds, speed) {
   ctx.restore();
 }
 
-function drawMachine(renderer, id, x, y, w, h, phase, progress, time) {
+function drawMachine(renderer, id, x, y, w, h, phase, progress, time, reducedMotion = false, line = null, firstStocked = false) {
   const assetId = id.startsWith('factory/') ? id : 'factory/' + id;
   const surface = sprite(renderer, assetId, x, y, w, h);
   if (!surface) return;
   const { image, meta, ctx } = surface, animation = meta.animation;
   const clean = renderer.assets.get(assetId + '-body-clean') || image;
-  ctx.drawImage(clean, 0, 0);
-  if (!animation) { ctx.restore(); return; }
+  if (!animation) { ctx.drawImage(clean, 0, 0); ctx.restore(); return; }
   const phaseId = phase === 'discharge' ? 'discharging' : phase;
+  // A fixed pose describes the real phase without rotating or vibrating the machine.
+  const poseProgress = reducedMotion ? (phaseId === 'feeding' ? 1 : 0.5) : clamp(progress);
+  if (animation.indexedTable) {
+    drawRotaryMachine(renderer, image, meta, phaseId, poseProgress, line, firstStocked); ctx.restore(); return;
+  }
   const currentPhase = animation.phases.find(p => p.id === phaseId);
-  const active = !!currentPhase, local = currentPhase ? clamp(progress) * currentPhase.seconds : 0;
+  const active = !!currentPhase, local = currentPhase ? poseProgress * currentPhase.seconds : 0;
+  const lid = animation.layers.find(layer => layer.motion.type === 'hinge');
+  const lidMotion = lid && lid.motion;
+  const closure = lidMotion && phaseId === lidMotion.phase ?
+    closingStroke(local - (lidMotion.delay || 0), lidMotion.duration, lidMotion.hold || 0) : 0;
+  const flip = animation.flipAssembly;
+  const flipAge = flip ? local - flip.delay : -1;
+  const flipFront = flip && renderer.assets.get(flip.frontAsset), flipRear = flip && renderer.assets.get(flip.rearAsset);
+  const flipFrame = flip && renderer.assets.get(flip.frameAsset);
+  const flipping = !reducedMotion && flip && phaseId === flip.phase && flipAge >= 0 && flipAge <= flip.duration && flipFront && flipRear && flipFrame;
+  ctx.drawImage(flipping ? flipFrame : clean, 0, 0);
+  const pressHead = animation.layers.find(layer => layer.id === 'press-head');
+  const pressMotion = pressHead && pressHead.motion;
+  const pressMovement = pressMotion && phaseId === pressMotion.phase ?
+    closingStroke(local - (pressMotion.delay || 0), pressMotion.duration, pressMotion.hold || 0) : 0;
   const phaseStart = name => {
     let elapsed = 0;
     for (const entry of animation.phases) { if (entry.id === name) return elapsed; elapsed += entry.seconds; }
     return 0;
   };
+  const mechanicalTime = active ? phaseStart(phaseId) + local : 0;
+  const foodObstacles = animation.layers.filter(layer => layer.id.startsWith('cutter-') ||
+    layer.id === 'crosscut-frame' || layer.id === 'crosscut-blade');
+  let assemblyDrawn = false;
   animation.layers.forEach(layer => {
+    if (flipping && !assemblyDrawn && layer.order >= (flip.order || 70)) {
+      flipMold(ctx, meta, flip, flipFront, flipRear, flipAge / flip.duration); assemblyDrawn = true;
+    }
+    if (flipping && flip.layerIds.includes(layer.id)) return;
     if (layer.eraseOnly) return;
     const motion = layer.motion || {}, enabled = active && layer.when.includes(phaseId);
     const input = /hopper|input/.test(layer.id), output = layer.id.startsWith('product-');
     if (layer.role === 'material' && !(active && (input || (output ? phaseId === 'discharging' : enabled)))) return;
     if (motion.type === 'tumble') {
-      if (enabled) tumble(ctx, image, meta, phaseId, clamp(progress), currentPhase.seconds, motion.speed);
+      if (enabled) tumble(ctx, image, meta, phaseId, poseProgress, currentPhase.seconds, motion.speed);
       return;
     }
+    if (motion.type === 'projected-spin') { projectedBlade(ctx, image, meta, layer, mechanicalTime); return; }
+    if (motion.type === 'roller') { roller(ctx, image, meta, layer, mechanicalTime); return; }
+    if (motion.type === 'hinge') { hingedLid(ctx, image, renderer.assets.get(layer.closedAsset), layer, closure); return; }
     let dx = 0, dy = 0, alpha = 1;
+    if (layer.occludedByClosedLid) alpha *= 1 - smooth((closure - 0.2) / 0.4);
+    if (flip && phaseId === 'feeding' && (layer.id === 'wafer-left' || layer.id === 'wafer-right')) {
+      alpha *= smooth((poseProgress - (layer.id === 'wafer-right' ? 0.2 : 0)) / 0.65);
+    }
     if (motion.type === 'flow') {
       if (!enabled) return;
       const duration = Math.max(0.08, motion.duration || currentPhase.seconds);
@@ -126,14 +272,47 @@ function drawMachine(renderer, id, x, y, w, h, phase, progress, time) {
       const amplitude = motion.amplitude || [0, 0];
       dx = Math.sin(local * TAU * motion.speed) * amplitude[0];
       dy = Math.sin(local * TAU * motion.speed + 0.6) * amplitude[1];
+    } else if (enabled && phaseId === motion.phase && motion.type === 'press') {
+      const movement = closingStroke(local - (motion.delay || 0), motion.duration, motion.hold || 0);
+      dx = motion.amplitude[0] * movement; dy = motion.amplitude[1] * movement;
+    } else if (enabled && phaseId === motion.phase && motion.type === 'crosscut') {
+      const age = local - (motion.delay || 0), cycle = 0.72;
+      const movement = age >= 0 && age < cycle * 2 ? closingStroke(age % cycle, motion.duration, 0.09) : 0;
+      dx = motion.amplitude[0] * movement; dy = motion.amplitude[1] * movement;
+    } else if (enabled && phaseId === motion.phase && motion.type === 'nozzle') {
+      const age = local - (motion.delay || 0), duration = motion.duration;
+      const hold = motion.hold || 0;
+      const movement = age < duration ? smooth(age / duration) : age < duration + hold ? 1 :
+        1 - smooth((age - duration - hold) / duration);
+      dx = motion.amplitude[0] * movement; dy = motion.amplitude[1] * movement;
     }
     ctx.save();
     if (motion.clipPolygon) { polygon(ctx, motion.clipPolygon); ctx.clip(); }
     if (layer.role === 'mechanical' && layer.cleanPatch === false) { polygon(ctx, layer.polygon); ctx.clip(); }
-    ctx.translate(dx, dy); polygon(ctx, layer.polygon); ctx.clip(); ctx.globalAlpha *= alpha;
+    ctx.translate(dx, dy);
+    if (motion.type === 'linked-rod' && pressMotion) {
+      const bearing = animation.layers.find(candidate => candidate.id === 'press-linkage-bearing');
+      if (bearing) {
+        const upper = layer.pivot, lower = bearing.pivot;
+        const sourceX = lower[0] - upper[0], sourceY = lower[1] - upper[1];
+        const targetX = sourceX + pressMotion.amplitude[0] * pressMovement;
+        const targetY = sourceY + pressMotion.amplitude[1] * pressMovement;
+        const sourceLength = Math.hypot(sourceX, sourceY);
+        if (sourceLength > 0) {
+          ctx.translate(upper[0], upper[1]); ctx.rotate(Math.atan2(targetY, targetX));
+          ctx.scale(Math.hypot(targetX, targetY) / sourceLength, 1);
+          ctx.rotate(-Math.atan2(sourceY, sourceX)); ctx.translate(-upper[0], -upper[1]);
+        }
+      }
+    }
+    polygon(ctx, layer.polygon); ctx.clip(); ctx.globalAlpha *= alpha;
+    if (layer.id === 'sheet' || layer.id === 'cut-strips') {
+      foodObstacles.forEach(obstacle => excludePolygon(ctx, image, obstacle.polygon));
+    }
     ctx.drawImage(layer.role === 'foreground' || layer.role === 'mechanical' && !layer.cleanPatch ? clean : image, 0, 0);
     ctx.restore();
   });
+  if (flipping && !assemblyDrawn) flipMold(ctx, meta, flip, flipFront, flipRear, flipAge / flip.duration);
   ctx.restore();
 }
 

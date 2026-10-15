@@ -1958,6 +1958,282 @@ module.exports = {
     "bytes": 3624,
     "path": "assets/factory-upgrade/icons/arrow-right-mint.png"
   },
+  "customer-ui/collection-card": {
+    "sourceSize": [
+      180,
+      300
+    ],
+    "size": [
+      360,
+      600
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "nine-slice",
+    "transparent": true,
+    "nineSlice": {
+      "left": 64,
+      "top": 64,
+      "right": 64,
+      "bottom": 64,
+      "borderScaleMode": "shrink-to-fit",
+      "maxBorderScale": 0.5
+    },
+    "nineSliceSize": [
+      360,
+      600
+    ],
+    "contentInsets": {
+      "left": 40,
+      "top": 40,
+      "right": 40,
+      "bottom": 48
+    },
+    "bytes": 11069,
+    "runtimePixelRatio": 2,
+    "path": "assets/customer-ui/collection-card.png"
+  },
+  "customer-ui/profile-sheet": {
+    "sourceSize": [
+      360,
+      640
+    ],
+    "size": [
+      720,
+      1280
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "nine-slice",
+    "transparent": true,
+    "nineSlice": {
+      "left": 64,
+      "top": 64,
+      "right": 64,
+      "bottom": 64,
+      "borderScaleMode": "shrink-to-fit",
+      "maxBorderScale": 0.5
+    },
+    "nineSliceSize": [
+      720,
+      1280
+    ],
+    "contentInsets": {
+      "left": 48,
+      "top": 48,
+      "right": 48,
+      "bottom": 48
+    },
+    "bytes": 29360,
+    "runtimePixelRatio": 2,
+    "path": "assets/customer-ui/profile-sheet.png"
+  },
+  "customer-ui/relationship-entry": {
+    "sourceSize": [
+      336,
+      112
+    ],
+    "size": [
+      672,
+      224
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "nine-slice",
+    "transparent": true,
+    "nineSlice": {
+      "left": 64,
+      "top": 64,
+      "right": 64,
+      "bottom": 64,
+      "borderScaleMode": "shrink-to-fit",
+      "maxBorderScale": 0.5
+    },
+    "nineSliceSize": [
+      672,
+      224
+    ],
+    "contentInsets": {
+      "left": 40,
+      "top": 40,
+      "right": 40,
+      "bottom": 48
+    },
+    "bytes": 8099,
+    "runtimePixelRatio": 2,
+    "path": "assets/customer-ui/relationship-entry.png"
+  },
+  "customer-ui/speech-bubble": {
+    "sourceSize": [
+      280,
+      120
+    ],
+    "size": [
+      560,
+      240
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "nine-slice",
+    "transparent": true,
+    "nineSlice": {
+      "left": 64,
+      "top": 64,
+      "right": 64,
+      "bottom": 64,
+      "borderScaleMode": "shrink-to-fit",
+      "maxBorderScale": 0.5
+    },
+    "nineSliceSize": [
+      560,
+      240
+    ],
+    "contentInsets": {
+      "left": 40,
+      "top": 40,
+      "right": 40,
+      "bottom": 48
+    },
+    "bytes": 8019,
+    "runtimePixelRatio": 2,
+    "path": "assets/customer-ui/speech-bubble.png"
+  },
+  "customer-selection/portrait-selected": {
+    "sourceSize": [
+      256,
+      256
+    ],
+    "size": [
+      512,
+      512
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "contain",
+    "transparent": true,
+    "layer": "behind-customer",
+    "contentInsets": {
+      "left": 56,
+      "top": 56,
+      "right": 56,
+      "bottom": 64
+    },
+    "bounds": {
+      "x": 16,
+      "y": 16,
+      "width": 480,
+      "height": 480
+    },
+    "bytes": 14911,
+    "runtimePixelRatio": 2,
+    "path": "assets/customer-selection/portrait-selected.png"
+  },
+  "customer-selection/portrait-unselected": {
+    "sourceSize": [
+      256,
+      256
+    ],
+    "size": [
+      512,
+      512
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "contain",
+    "transparent": true,
+    "layer": "behind-customer",
+    "contentInsets": {
+      "left": 56,
+      "top": 56,
+      "right": 56,
+      "bottom": 64
+    },
+    "bounds": {
+      "x": 16,
+      "y": 16,
+      "width": 480,
+      "height": 480
+    },
+    "bytes": 13993,
+    "runtimePixelRatio": 2,
+    "path": "assets/customer-selection/portrait-unselected.png"
+  },
+  "customer-selection/detail-selected": {
+    "sourceSize": [
+      384,
+      480
+    ],
+    "size": [
+      768,
+      960
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "contain",
+    "transparent": true,
+    "layer": "behind-customer",
+    "contentInsets": {
+      "left": 64,
+      "top": 64,
+      "right": 64,
+      "bottom": 72
+    },
+    "bounds": {
+      "x": 16,
+      "y": 16,
+      "width": 736,
+      "height": 928
+    },
+    "bytes": 27112,
+    "runtimePixelRatio": 2,
+    "path": "assets/customer-selection/detail-selected.png"
+  },
+  "customer-selection/detail-unselected": {
+    "sourceSize": [
+      384,
+      480
+    ],
+    "size": [
+      768,
+      960
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "contain",
+    "transparent": true,
+    "layer": "behind-customer",
+    "contentInsets": {
+      "left": 64,
+      "top": 64,
+      "right": 64,
+      "bottom": 72
+    },
+    "bounds": {
+      "x": 16,
+      "y": 16,
+      "width": 736,
+      "height": 928
+    },
+    "bytes": 25902,
+    "runtimePixelRatio": 2,
+    "path": "assets/customer-selection/detail-unselected.png"
+  },
   "product/original/1": {
     "size": [
       192,
@@ -2152,6 +2428,201 @@ module.exports = {
     "productIndex": 1,
     "level": 5,
     "path": "assets/products/original/lv-05.png"
+  },
+  "product/original/6": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 33,
+      "y": 49,
+      "width": 446,
+      "height": 413
+    },
+    "cropBounds": {
+      "x": 31,
+      "y": 47,
+      "width": 450,
+      "height": 417
+    },
+    "outputBounds": {
+      "x": 6,
+      "y": 13,
+      "width": 180,
+      "height": 165
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "original",
+    "productIndex": 1,
+    "level": 6,
+    "path": "assets/products/original/lv-06.png"
+  },
+  "product/original/7": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 61,
+      "y": 33,
+      "width": 390,
+      "height": 446
+    },
+    "cropBounds": {
+      "x": 59,
+      "y": 31,
+      "width": 394,
+      "height": 450
+    },
+    "outputBounds": {
+      "x": 18,
+      "y": 6,
+      "width": 156,
+      "height": 180
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "original",
+    "productIndex": 1,
+    "level": 7,
+    "path": "assets/products/original/lv-07.png"
+  },
+  "product/original/8": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 54,
+      "y": 31,
+      "width": 404,
+      "height": 450
+    },
+    "cropBounds": {
+      "x": 52,
+      "y": 29,
+      "width": 408,
+      "height": 454
+    },
+    "outputBounds": {
+      "x": 16,
+      "y": 6,
+      "width": 160,
+      "height": 180
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "original",
+    "productIndex": 1,
+    "level": 8,
+    "path": "assets/products/original/lv-08.png"
+  },
+  "product/original/9": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 28,
+      "y": 56,
+      "width": 456,
+      "height": 400
+    },
+    "cropBounds": {
+      "x": 26,
+      "y": 54,
+      "width": 460,
+      "height": 404
+    },
+    "outputBounds": {
+      "x": 6,
+      "y": 17,
+      "width": 180,
+      "height": 158
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "original",
+    "productIndex": 1,
+    "level": 9,
+    "path": "assets/products/original/lv-09.png"
+  },
+  "product/original/10": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 24,
+      "y": 35,
+      "width": 464,
+      "height": 440
+    },
+    "cropBounds": {
+      "x": 22,
+      "y": 33,
+      "width": 468,
+      "height": 444
+    },
+    "outputBounds": {
+      "x": 6,
+      "y": 10,
+      "width": 179,
+      "height": 171
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "original",
+    "productIndex": 1,
+    "level": 10,
+    "path": "assets/products/original/lv-10.png"
   },
   "product/caramel/1": {
     "size": [
@@ -2348,6 +2819,1761 @@ module.exports = {
     "level": 5,
     "path": "assets/products/caramel/lv-05.png"
   },
+  "product/caramel/6": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 32,
+      "y": 53,
+      "width": 448,
+      "height": 405
+    },
+    "cropBounds": {
+      "x": 30,
+      "y": 51,
+      "width": 452,
+      "height": 409
+    },
+    "outputBounds": {
+      "x": 7,
+      "y": 14,
+      "width": 178,
+      "height": 163
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "caramel",
+    "productIndex": 2,
+    "level": 6,
+    "path": "assets/products/caramel/lv-06.png"
+  },
+  "product/caramel/7": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 48,
+      "y": 33,
+      "width": 416,
+      "height": 446
+    },
+    "cropBounds": {
+      "x": 46,
+      "y": 31,
+      "width": 420,
+      "height": 450
+    },
+    "outputBounds": {
+      "x": 13,
+      "y": 6,
+      "width": 166,
+      "height": 180
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "caramel",
+    "productIndex": 2,
+    "level": 7,
+    "path": "assets/products/caramel/lv-07.png"
+  },
+  "product/caramel/8": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 49,
+      "y": 33,
+      "width": 413,
+      "height": 446
+    },
+    "cropBounds": {
+      "x": 47,
+      "y": 31,
+      "width": 417,
+      "height": 450
+    },
+    "outputBounds": {
+      "x": 13,
+      "y": 7,
+      "width": 166,
+      "height": 179
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "caramel",
+    "productIndex": 2,
+    "level": 8,
+    "path": "assets/products/caramel/lv-08.png"
+  },
+  "product/caramel/9": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 28,
+      "y": 38,
+      "width": 456,
+      "height": 435
+    },
+    "cropBounds": {
+      "x": 26,
+      "y": 36,
+      "width": 460,
+      "height": 439
+    },
+    "outputBounds": {
+      "x": 6,
+      "y": 11,
+      "width": 179,
+      "height": 171
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "caramel",
+    "productIndex": 2,
+    "level": 9,
+    "path": "assets/products/caramel/lv-09.png"
+  },
+  "product/caramel/10": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 24,
+      "y": 25,
+      "width": 464,
+      "height": 461
+    },
+    "cropBounds": {
+      "x": 22,
+      "y": 23,
+      "width": 468,
+      "height": 465
+    },
+    "outputBounds": {
+      "x": 6,
+      "y": 7,
+      "width": 180,
+      "height": 178
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "caramel",
+    "productIndex": 2,
+    "level": 10,
+    "path": "assets/products/caramel/lv-10.png"
+  },
+  "product/popcorn-ball/1": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 114,
+      "y": 87,
+      "width": 283,
+      "height": 338
+    },
+    "cropBounds": {
+      "x": 112,
+      "y": 85,
+      "width": 287,
+      "height": 342
+    },
+    "outputBounds": {
+      "x": 21,
+      "y": 7,
+      "width": 149,
+      "height": 178
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "popcorn-ball",
+    "productIndex": 3,
+    "level": 1,
+    "path": "assets/products/popcorn-ball/lv-01.png"
+  },
+  "product/popcorn-ball/2": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 64,
+      "y": 69,
+      "width": 383,
+      "height": 374
+    },
+    "cropBounds": {
+      "x": 62,
+      "y": 67,
+      "width": 387,
+      "height": 378
+    },
+    "outputBounds": {
+      "x": 6,
+      "y": 9,
+      "width": 179,
+      "height": 174
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "popcorn-ball",
+    "productIndex": 3,
+    "level": 2,
+    "path": "assets/products/popcorn-ball/lv-02.png"
+  },
+  "product/popcorn-ball/3": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 42,
+      "y": 70,
+      "width": 427,
+      "height": 372
+    },
+    "cropBounds": {
+      "x": 40,
+      "y": 68,
+      "width": 431,
+      "height": 376
+    },
+    "outputBounds": {
+      "x": 6,
+      "y": 17,
+      "width": 180,
+      "height": 157
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "popcorn-ball",
+    "productIndex": 3,
+    "level": 3,
+    "path": "assets/products/popcorn-ball/lv-03.png"
+  },
+  "product/popcorn-ball/4": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 60,
+      "y": 33,
+      "width": 391,
+      "height": 446
+    },
+    "cropBounds": {
+      "x": 58,
+      "y": 31,
+      "width": 395,
+      "height": 450
+    },
+    "outputBounds": {
+      "x": 18,
+      "y": 6,
+      "width": 157,
+      "height": 180
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "popcorn-ball",
+    "productIndex": 3,
+    "level": 4,
+    "path": "assets/products/popcorn-ball/lv-04.png"
+  },
+  "product/popcorn-ball/5": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 32,
+      "y": 62,
+      "width": 448,
+      "height": 387
+    },
+    "cropBounds": {
+      "x": 30,
+      "y": 60,
+      "width": 452,
+      "height": 391
+    },
+    "outputBounds": {
+      "x": 7,
+      "y": 19,
+      "width": 178,
+      "height": 155
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "popcorn-ball",
+    "productIndex": 3,
+    "level": 5,
+    "path": "assets/products/popcorn-ball/lv-05.png"
+  },
+  "product/popcorn-ball/6": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 35,
+      "y": 32,
+      "width": 442,
+      "height": 447
+    },
+    "cropBounds": {
+      "x": 33,
+      "y": 30,
+      "width": 446,
+      "height": 451
+    },
+    "outputBounds": {
+      "x": 7,
+      "y": 7,
+      "width": 177,
+      "height": 179
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "popcorn-ball",
+    "productIndex": 3,
+    "level": 6,
+    "path": "assets/products/popcorn-ball/lv-06.png"
+  },
+  "product/popcorn-ball/7": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 52,
+      "y": 33,
+      "width": 407,
+      "height": 446
+    },
+    "cropBounds": {
+      "x": 50,
+      "y": 31,
+      "width": 411,
+      "height": 450
+    },
+    "outputBounds": {
+      "x": 14,
+      "y": 6,
+      "width": 164,
+      "height": 180
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "popcorn-ball",
+    "productIndex": 3,
+    "level": 7,
+    "path": "assets/products/popcorn-ball/lv-07.png"
+  },
+  "product/popcorn-ball/8": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 32,
+      "y": 44,
+      "width": 449,
+      "height": 423
+    },
+    "cropBounds": {
+      "x": 30,
+      "y": 42,
+      "width": 453,
+      "height": 427
+    },
+    "outputBounds": {
+      "x": 6,
+      "y": 12,
+      "width": 180,
+      "height": 168
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "popcorn-ball",
+    "productIndex": 3,
+    "level": 8,
+    "path": "assets/products/popcorn-ball/lv-08.png"
+  },
+  "product/popcorn-ball/9": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 36,
+      "y": 28,
+      "width": 440,
+      "height": 456
+    },
+    "cropBounds": {
+      "x": 34,
+      "y": 26,
+      "width": 444,
+      "height": 460
+    },
+    "outputBounds": {
+      "x": 10,
+      "y": 6,
+      "width": 172,
+      "height": 179
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "popcorn-ball",
+    "productIndex": 3,
+    "level": 9,
+    "path": "assets/products/popcorn-ball/lv-09.png"
+  },
+  "product/popcorn-ball/10": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 24,
+      "y": 36,
+      "width": 464,
+      "height": 440
+    },
+    "cropBounds": {
+      "x": 22,
+      "y": 34,
+      "width": 468,
+      "height": 444
+    },
+    "outputBounds": {
+      "x": 6,
+      "y": 11,
+      "width": 180,
+      "height": 169
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "popcorn-ball",
+    "productIndex": 3,
+    "level": 10,
+    "path": "assets/products/popcorn-ball/lv-10.png"
+  },
+  "product/crisp-stick/1": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 43,
+      "y": 32,
+      "width": 425,
+      "height": 448
+    },
+    "cropBounds": {
+      "x": 41,
+      "y": 30,
+      "width": 429,
+      "height": 452
+    },
+    "outputBounds": {
+      "x": 11,
+      "y": 7,
+      "width": 169,
+      "height": 178
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "crisp-stick",
+    "productIndex": 4,
+    "level": 1,
+    "path": "assets/products/crisp-stick/lv-01.png"
+  },
+  "product/crisp-stick/2": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 54,
+      "y": 32,
+      "width": 405,
+      "height": 448
+    },
+    "cropBounds": {
+      "x": 52,
+      "y": 30,
+      "width": 409,
+      "height": 452
+    },
+    "outputBounds": {
+      "x": 14,
+      "y": 7,
+      "width": 162,
+      "height": 178
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "crisp-stick",
+    "productIndex": 4,
+    "level": 2,
+    "path": "assets/products/crisp-stick/lv-02.png"
+  },
+  "product/crisp-stick/3": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 32,
+      "y": 120,
+      "width": 448,
+      "height": 272
+    },
+    "cropBounds": {
+      "x": 30,
+      "y": 118,
+      "width": 452,
+      "height": 276
+    },
+    "outputBounds": {
+      "x": 7,
+      "y": 41,
+      "width": 178,
+      "height": 109
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "crisp-stick",
+    "productIndex": 4,
+    "level": 3,
+    "path": "assets/products/crisp-stick/lv-03.png"
+  },
+  "product/crisp-stick/4": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 33,
+      "y": 73,
+      "width": 446,
+      "height": 365
+    },
+    "cropBounds": {
+      "x": 31,
+      "y": 71,
+      "width": 450,
+      "height": 369
+    },
+    "outputBounds": {
+      "x": 6,
+      "y": 23,
+      "width": 180,
+      "height": 146
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "crisp-stick",
+    "productIndex": 4,
+    "level": 4,
+    "path": "assets/products/crisp-stick/lv-04.png"
+  },
+  "product/crisp-stick/5": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 32,
+      "y": 77,
+      "width": 447,
+      "height": 357
+    },
+    "cropBounds": {
+      "x": 30,
+      "y": 75,
+      "width": 451,
+      "height": 361
+    },
+    "outputBounds": {
+      "x": 7,
+      "y": 24,
+      "width": 178,
+      "height": 144
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "crisp-stick",
+    "productIndex": 4,
+    "level": 5,
+    "path": "assets/products/crisp-stick/lv-05.png"
+  },
+  "product/crisp-stick/6": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 35,
+      "y": 87,
+      "width": 443,
+      "height": 337
+    },
+    "cropBounds": {
+      "x": 33,
+      "y": 85,
+      "width": 447,
+      "height": 341
+    },
+    "outputBounds": {
+      "x": 6,
+      "y": 27,
+      "width": 179,
+      "height": 137
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "crisp-stick",
+    "productIndex": 4,
+    "level": 6,
+    "path": "assets/products/crisp-stick/lv-06.png"
+  },
+  "product/crisp-stick/7": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 33,
+      "y": 64,
+      "width": 446,
+      "height": 384
+    },
+    "cropBounds": {
+      "x": 31,
+      "y": 62,
+      "width": 450,
+      "height": 388
+    },
+    "outputBounds": {
+      "x": 6,
+      "y": 18,
+      "width": 180,
+      "height": 155
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "crisp-stick",
+    "productIndex": 4,
+    "level": 7,
+    "path": "assets/products/crisp-stick/lv-07.png"
+  },
+  "product/crisp-stick/8": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 31,
+      "y": 55,
+      "width": 450,
+      "height": 402
+    },
+    "cropBounds": {
+      "x": 29,
+      "y": 53,
+      "width": 454,
+      "height": 406
+    },
+    "outputBounds": {
+      "x": 6,
+      "y": 15,
+      "width": 180,
+      "height": 161
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "crisp-stick",
+    "productIndex": 4,
+    "level": 8,
+    "path": "assets/products/crisp-stick/lv-08.png"
+  },
+  "product/crisp-stick/9": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 28,
+      "y": 35,
+      "width": 456,
+      "height": 442
+    },
+    "cropBounds": {
+      "x": 26,
+      "y": 33,
+      "width": 460,
+      "height": 446
+    },
+    "outputBounds": {
+      "x": 6,
+      "y": 9,
+      "width": 180,
+      "height": 173
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "crisp-stick",
+    "productIndex": 4,
+    "level": 9,
+    "path": "assets/products/crisp-stick/lv-09.png"
+  },
+  "product/crisp-stick/10": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 24,
+      "y": 25,
+      "width": 464,
+      "height": 462
+    },
+    "cropBounds": {
+      "x": 22,
+      "y": 23,
+      "width": 468,
+      "height": 466
+    },
+    "outputBounds": {
+      "x": 6,
+      "y": 6,
+      "width": 180,
+      "height": 179
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "crisp-stick",
+    "productIndex": 4,
+    "level": 10,
+    "path": "assets/products/crisp-stick/lv-10.png"
+  },
+  "product/wafer/1": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 87,
+      "y": 91,
+      "width": 338,
+      "height": 329
+    },
+    "cropBounds": {
+      "x": 85,
+      "y": 89,
+      "width": 342,
+      "height": 333
+    },
+    "outputBounds": {
+      "x": 7,
+      "y": 9,
+      "width": 178,
+      "height": 173
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "wafer",
+    "productIndex": 5,
+    "level": 1,
+    "path": "assets/products/wafer/lv-01.png"
+  },
+  "product/wafer/2": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 116,
+      "y": 64,
+      "width": 280,
+      "height": 383
+    },
+    "cropBounds": {
+      "x": 114,
+      "y": 62,
+      "width": 284,
+      "height": 387
+    },
+    "outputBounds": {
+      "x": 30,
+      "y": 6,
+      "width": 132,
+      "height": 180
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "wafer",
+    "productIndex": 5,
+    "level": 2,
+    "path": "assets/products/wafer/lv-02.png"
+  },
+  "product/wafer/3": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 42,
+      "y": 65,
+      "width": 427,
+      "height": 382
+    },
+    "cropBounds": {
+      "x": 40,
+      "y": 63,
+      "width": 431,
+      "height": 386
+    },
+    "outputBounds": {
+      "x": 6,
+      "y": 15,
+      "width": 180,
+      "height": 161
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "wafer",
+    "productIndex": 5,
+    "level": 3,
+    "path": "assets/products/wafer/lv-03.png"
+  },
+  "product/wafer/4": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 38,
+      "y": 75,
+      "width": 436,
+      "height": 362
+    },
+    "cropBounds": {
+      "x": 36,
+      "y": 73,
+      "width": 440,
+      "height": 366
+    },
+    "outputBounds": {
+      "x": 6,
+      "y": 22,
+      "width": 180,
+      "height": 148
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "wafer",
+    "productIndex": 5,
+    "level": 4,
+    "path": "assets/products/wafer/lv-04.png"
+  },
+  "product/wafer/5": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 36,
+      "y": 62,
+      "width": 440,
+      "height": 387
+    },
+    "cropBounds": {
+      "x": 34,
+      "y": 60,
+      "width": 444,
+      "height": 391
+    },
+    "outputBounds": {
+      "x": 6,
+      "y": 17,
+      "width": 179,
+      "height": 157
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "wafer",
+    "productIndex": 5,
+    "level": 5,
+    "path": "assets/products/wafer/lv-05.png"
+  },
+  "product/wafer/6": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 37,
+      "y": 34,
+      "width": 437,
+      "height": 444
+    },
+    "cropBounds": {
+      "x": 35,
+      "y": 32,
+      "width": 441,
+      "height": 448
+    },
+    "outputBounds": {
+      "x": 7,
+      "y": 6,
+      "width": 177,
+      "height": 179
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "wafer",
+    "productIndex": 5,
+    "level": 6,
+    "path": "assets/products/wafer/lv-06.png"
+  },
+  "product/wafer/7": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 66,
+      "y": 33,
+      "width": 379,
+      "height": 446
+    },
+    "cropBounds": {
+      "x": 64,
+      "y": 31,
+      "width": 383,
+      "height": 450
+    },
+    "outputBounds": {
+      "x": 19,
+      "y": 6,
+      "width": 153,
+      "height": 180
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "wafer",
+    "productIndex": 5,
+    "level": 7,
+    "path": "assets/products/wafer/lv-07.png"
+  },
+  "product/wafer/8": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 31,
+      "y": 46,
+      "width": 449,
+      "height": 419
+    },
+    "cropBounds": {
+      "x": 29,
+      "y": 44,
+      "width": 453,
+      "height": 423
+    },
+    "outputBounds": {
+      "x": 6,
+      "y": 12,
+      "width": 180,
+      "height": 168
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "wafer",
+    "productIndex": 5,
+    "level": 8,
+    "path": "assets/products/wafer/lv-08.png"
+  },
+  "product/wafer/9": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 74,
+      "y": 28,
+      "width": 364,
+      "height": 456
+    },
+    "cropBounds": {
+      "x": 72,
+      "y": 26,
+      "width": 368,
+      "height": 460
+    },
+    "outputBounds": {
+      "x": 24,
+      "y": 6,
+      "width": 144,
+      "height": 180
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "wafer",
+    "productIndex": 5,
+    "level": 9,
+    "path": "assets/products/wafer/lv-09.png"
+  },
+  "product/wafer/10": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 68,
+      "y": 24,
+      "width": 375,
+      "height": 464
+    },
+    "cropBounds": {
+      "x": 66,
+      "y": 22,
+      "width": 379,
+      "height": 468
+    },
+    "outputBounds": {
+      "x": 24,
+      "y": 6,
+      "width": 144,
+      "height": 180
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "wafer",
+    "productIndex": 5,
+    "level": 10,
+    "path": "assets/products/wafer/lv-10.png"
+  },
+  "product/sandwich-square/1": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 32,
+      "y": 86,
+      "width": 448,
+      "height": 338
+    },
+    "cropBounds": {
+      "x": 30,
+      "y": 84,
+      "width": 452,
+      "height": 342
+    },
+    "outputBounds": {
+      "x": 7,
+      "y": 29,
+      "width": 178,
+      "height": 135
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "sandwich-square",
+    "productIndex": 6,
+    "level": 1,
+    "path": "assets/products/sandwich-square/lv-01.png"
+  },
+  "product/sandwich-square/2": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 85,
+      "y": 33,
+      "width": 343,
+      "height": 447
+    },
+    "cropBounds": {
+      "x": 83,
+      "y": 31,
+      "width": 347,
+      "height": 451
+    },
+    "outputBounds": {
+      "x": 27,
+      "y": 6,
+      "width": 138,
+      "height": 179
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "sandwich-square",
+    "productIndex": 6,
+    "level": 2,
+    "path": "assets/products/sandwich-square/lv-02.png"
+  },
+  "product/sandwich-square/3": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 32,
+      "y": 85,
+      "width": 447,
+      "height": 341
+    },
+    "cropBounds": {
+      "x": 30,
+      "y": 83,
+      "width": 451,
+      "height": 345
+    },
+    "outputBounds": {
+      "x": 7,
+      "y": 28,
+      "width": 179,
+      "height": 137
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "sandwich-square",
+    "productIndex": 6,
+    "level": 3,
+    "path": "assets/products/sandwich-square/lv-03.png"
+  },
+  "product/sandwich-square/4": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 38,
+      "y": 55,
+      "width": 436,
+      "height": 401
+    },
+    "cropBounds": {
+      "x": 36,
+      "y": 53,
+      "width": 440,
+      "height": 405
+    },
+    "outputBounds": {
+      "x": 6,
+      "y": 14,
+      "width": 180,
+      "height": 164
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "sandwich-square",
+    "productIndex": 6,
+    "level": 4,
+    "path": "assets/products/sandwich-square/lv-04.png"
+  },
+  "product/sandwich-square/5": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 36,
+      "y": 54,
+      "width": 440,
+      "height": 404
+    },
+    "cropBounds": {
+      "x": 34,
+      "y": 52,
+      "width": 444,
+      "height": 408
+    },
+    "outputBounds": {
+      "x": 6,
+      "y": 13,
+      "width": 180,
+      "height": 165
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "sandwich-square",
+    "productIndex": 6,
+    "level": 5,
+    "path": "assets/products/sandwich-square/lv-05.png"
+  },
+  "product/sandwich-square/6": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 34,
+      "y": 34,
+      "width": 443,
+      "height": 443
+    },
+    "cropBounds": {
+      "x": 32,
+      "y": 32,
+      "width": 447,
+      "height": 447
+    },
+    "outputBounds": {
+      "x": 6,
+      "y": 6,
+      "width": 180,
+      "height": 180
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "sandwich-square",
+    "productIndex": 6,
+    "level": 6,
+    "path": "assets/products/sandwich-square/lv-06.png"
+  },
+  "product/sandwich-square/7": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 33,
+      "y": 50,
+      "width": 446,
+      "height": 411
+    },
+    "cropBounds": {
+      "x": 31,
+      "y": 48,
+      "width": 450,
+      "height": 415
+    },
+    "outputBounds": {
+      "x": 6,
+      "y": 13,
+      "width": 179,
+      "height": 166
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "sandwich-square",
+    "productIndex": 6,
+    "level": 7,
+    "path": "assets/products/sandwich-square/lv-07.png"
+  },
+  "product/sandwich-square/8": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 31,
+      "y": 50,
+      "width": 450,
+      "height": 411
+    },
+    "cropBounds": {
+      "x": 29,
+      "y": 48,
+      "width": 454,
+      "height": 415
+    },
+    "outputBounds": {
+      "x": 6,
+      "y": 14,
+      "width": 179,
+      "height": 163
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "sandwich-square",
+    "productIndex": 6,
+    "level": 8,
+    "path": "assets/products/sandwich-square/lv-08.png"
+  },
+  "product/sandwich-square/9": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 28,
+      "y": 35,
+      "width": 456,
+      "height": 442
+    },
+    "cropBounds": {
+      "x": 26,
+      "y": 33,
+      "width": 460,
+      "height": 446
+    },
+    "outputBounds": {
+      "x": 6,
+      "y": 9,
+      "width": 180,
+      "height": 173
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "sandwich-square",
+    "productIndex": 6,
+    "level": 9,
+    "path": "assets/products/sandwich-square/lv-09.png"
+  },
+  "product/sandwich-square/10": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "bounds": {
+      "x": 24,
+      "y": 25,
+      "width": 464,
+      "height": 462
+    },
+    "cropBounds": {
+      "x": 22,
+      "y": 23,
+      "width": 468,
+      "height": 466
+    },
+    "outputBounds": {
+      "x": 6,
+      "y": 6,
+      "width": 180,
+      "height": 179
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "product",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "sandwich-square",
+    "productIndex": 6,
+    "level": 10,
+    "path": "assets/products/sandwich-square/lv-10.png"
+  },
   "launcher/original/1": {
     "size": [
       192,
@@ -2425,6 +4651,162 @@ module.exports = {
     "productIndex": 1,
     "level": 2,
     "path": "assets/launchers/original/lv-02.png"
+  },
+  "launcher/original/3": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "bounds": {
+      "x": 251,
+      "y": 119,
+      "width": 751,
+      "height": 1085
+    },
+    "cropBounds": {
+      "x": 249,
+      "y": 117,
+      "width": 755,
+      "height": 1089
+    },
+    "outputBounds": {
+      "x": 33,
+      "y": 6,
+      "width": 125,
+      "height": 180
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "launcher",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "original",
+    "productIndex": 1,
+    "level": 3,
+    "path": "assets/launchers/original/lv-03.png"
+  },
+  "launcher/original/4": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "bounds": {
+      "x": 257,
+      "y": 76,
+      "width": 739,
+      "height": 1128
+    },
+    "cropBounds": {
+      "x": 255,
+      "y": 74,
+      "width": 743,
+      "height": 1132
+    },
+    "outputBounds": {
+      "x": 37,
+      "y": 6,
+      "width": 118,
+      "height": 180
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "launcher",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "original",
+    "productIndex": 1,
+    "level": 4,
+    "path": "assets/launchers/original/lv-04.png"
+  },
+  "launcher/original/5": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "bounds": {
+      "x": 220,
+      "y": 32,
+      "width": 811,
+      "height": 1172
+    },
+    "cropBounds": {
+      "x": 218,
+      "y": 30,
+      "width": 815,
+      "height": 1176
+    },
+    "outputBounds": {
+      "x": 33,
+      "y": 6,
+      "width": 125,
+      "height": 180
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "launcher",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "original",
+    "productIndex": 1,
+    "level": 5,
+    "path": "assets/launchers/original/lv-05.png"
+  },
+  "launcher/original/6": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "bounds": {
+      "x": 227,
+      "y": 34,
+      "width": 800,
+      "height": 1170
+    },
+    "cropBounds": {
+      "x": 225,
+      "y": 32,
+      "width": 804,
+      "height": 1174
+    },
+    "outputBounds": {
+      "x": 34,
+      "y": 6,
+      "width": 123,
+      "height": 180
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "launcher",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "original",
+    "productIndex": 1,
+    "level": 6,
+    "path": "assets/launchers/original/lv-06.png"
   },
   "launcher/caramel/1": {
     "size": [
@@ -2504,43 +4886,1097 @@ module.exports = {
     "level": 2,
     "path": "assets/launchers/caramel/lv-02.png"
   },
-  "customer/rabbit-courier": {
+  "launcher/caramel/3": {
     "size": [
-      256,
-      256
+      192,
+      192
     ],
     "sourceSize": [
       1254,
       1254
     ],
     "bounds": {
-      "x": 226,
-      "y": 36,
-      "width": 876,
-      "height": 1186
+      "x": 175,
+      "y": 43,
+      "width": 901,
+      "height": 1161
     },
     "cropBounds": {
-      "x": 224,
-      "y": 34,
-      "width": 880,
-      "height": 1190
+      "x": 173,
+      "y": 41,
+      "width": 905,
+      "height": 1165
     },
     "outputBounds": {
-      "x": 38,
+      "x": 26,
       "y": 6,
-      "width": 180,
-      "height": 244
+      "width": 140,
+      "height": 180
     },
     "anchor": [
       0.5,
       0.5
     ],
-    "type": "customer",
+    "type": "launcher",
     "alphaThreshold": 8,
     "padding": 6,
-    "customerId": "rabbit-courier",
-    "customerIndex": 1,
-    "path": "assets/customers/rabbit-courier.png"
+    "productId": "caramel",
+    "productIndex": 2,
+    "level": 3,
+    "path": "assets/launchers/caramel/lv-03.png"
+  },
+  "launcher/caramel/4": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "bounds": {
+      "x": 164,
+      "y": 32,
+      "width": 926,
+      "height": 1172
+    },
+    "cropBounds": {
+      "x": 162,
+      "y": 30,
+      "width": 930,
+      "height": 1176
+    },
+    "outputBounds": {
+      "x": 25,
+      "y": 6,
+      "width": 142,
+      "height": 180
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "launcher",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "caramel",
+    "productIndex": 2,
+    "level": 4,
+    "path": "assets/launchers/caramel/lv-04.png"
+  },
+  "launcher/caramel/5": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "bounds": {
+      "x": 194,
+      "y": 32,
+      "width": 866,
+      "height": 1172
+    },
+    "cropBounds": {
+      "x": 192,
+      "y": 30,
+      "width": 870,
+      "height": 1176
+    },
+    "outputBounds": {
+      "x": 29,
+      "y": 6,
+      "width": 133,
+      "height": 180
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "launcher",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "caramel",
+    "productIndex": 2,
+    "level": 5,
+    "path": "assets/launchers/caramel/lv-05.png"
+  },
+  "launcher/caramel/6": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "bounds": {
+      "x": 214,
+      "y": 31,
+      "width": 823,
+      "height": 1173
+    },
+    "cropBounds": {
+      "x": 212,
+      "y": 29,
+      "width": 827,
+      "height": 1177
+    },
+    "outputBounds": {
+      "x": 33,
+      "y": 6,
+      "width": 126,
+      "height": 180
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "launcher",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "caramel",
+    "productIndex": 2,
+    "level": 6,
+    "path": "assets/launchers/caramel/lv-06.png"
+  },
+  "launcher/popcorn-ball/1": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "bounds": {
+      "x": 156,
+      "y": 239,
+      "width": 942,
+      "height": 965
+    },
+    "cropBounds": {
+      "x": 154,
+      "y": 237,
+      "width": 946,
+      "height": 969
+    },
+    "outputBounds": {
+      "x": 8,
+      "y": 6,
+      "width": 176,
+      "height": 180
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "launcher",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "popcorn-ball",
+    "productIndex": 3,
+    "level": 1,
+    "path": "assets/launchers/popcorn-ball/lv-01.png"
+  },
+  "launcher/popcorn-ball/2": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "bounds": {
+      "x": 200,
+      "y": 202,
+      "width": 853,
+      "height": 1002
+    },
+    "cropBounds": {
+      "x": 198,
+      "y": 200,
+      "width": 857,
+      "height": 1006
+    },
+    "outputBounds": {
+      "x": 19,
+      "y": 6,
+      "width": 153,
+      "height": 180
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "launcher",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "popcorn-ball",
+    "productIndex": 3,
+    "level": 2,
+    "path": "assets/launchers/popcorn-ball/lv-02.png"
+  },
+  "launcher/popcorn-ball/3": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "bounds": {
+      "x": 173,
+      "y": 33,
+      "width": 909,
+      "height": 1171
+    },
+    "cropBounds": {
+      "x": 171,
+      "y": 31,
+      "width": 913,
+      "height": 1175
+    },
+    "outputBounds": {
+      "x": 26,
+      "y": 6,
+      "width": 140,
+      "height": 180
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "launcher",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "popcorn-ball",
+    "productIndex": 3,
+    "level": 3,
+    "path": "assets/launchers/popcorn-ball/lv-03.png"
+  },
+  "launcher/popcorn-ball/4": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "bounds": {
+      "x": 195,
+      "y": 32,
+      "width": 862,
+      "height": 1172
+    },
+    "cropBounds": {
+      "x": 193,
+      "y": 30,
+      "width": 866,
+      "height": 1176
+    },
+    "outputBounds": {
+      "x": 29,
+      "y": 6,
+      "width": 133,
+      "height": 180
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "launcher",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "popcorn-ball",
+    "productIndex": 3,
+    "level": 4,
+    "path": "assets/launchers/popcorn-ball/lv-04.png"
+  },
+  "launcher/popcorn-ball/5": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "bounds": {
+      "x": 108,
+      "y": 32,
+      "width": 1038,
+      "height": 1172
+    },
+    "cropBounds": {
+      "x": 106,
+      "y": 30,
+      "width": 1042,
+      "height": 1176
+    },
+    "outputBounds": {
+      "x": 16,
+      "y": 6,
+      "width": 159,
+      "height": 180
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "launcher",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "popcorn-ball",
+    "productIndex": 3,
+    "level": 5,
+    "path": "assets/launchers/popcorn-ball/lv-05.png"
+  },
+  "launcher/popcorn-ball/6": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "bounds": {
+      "x": 62,
+      "y": 70,
+      "width": 1128,
+      "height": 1134
+    },
+    "cropBounds": {
+      "x": 60,
+      "y": 68,
+      "width": 1132,
+      "height": 1138
+    },
+    "outputBounds": {
+      "x": 6,
+      "y": 6,
+      "width": 179,
+      "height": 180
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "launcher",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "popcorn-ball",
+    "productIndex": 3,
+    "level": 6,
+    "path": "assets/launchers/popcorn-ball/lv-06.png"
+  },
+  "launcher/crisp-stick/1": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "bounds": {
+      "x": 197,
+      "y": 310,
+      "width": 859,
+      "height": 896
+    },
+    "cropBounds": {
+      "x": 195,
+      "y": 308,
+      "width": 863,
+      "height": 900
+    },
+    "outputBounds": {
+      "x": 9,
+      "y": 6,
+      "width": 173,
+      "height": 180
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "launcher",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "crisp-stick",
+    "productIndex": 4,
+    "level": 1,
+    "path": "assets/launchers/crisp-stick/lv-01.png"
+  },
+  "launcher/crisp-stick/2": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "bounds": {
+      "x": 174,
+      "y": 240,
+      "width": 905,
+      "height": 964
+    },
+    "cropBounds": {
+      "x": 172,
+      "y": 238,
+      "width": 909,
+      "height": 968
+    },
+    "outputBounds": {
+      "x": 11,
+      "y": 6,
+      "width": 169,
+      "height": 180
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "launcher",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "crisp-stick",
+    "productIndex": 4,
+    "level": 2,
+    "path": "assets/launchers/crisp-stick/lv-02.png"
+  },
+  "launcher/crisp-stick/3": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "bounds": {
+      "x": 238,
+      "y": 137,
+      "width": 778,
+      "height": 1066
+    },
+    "cropBounds": {
+      "x": 236,
+      "y": 135,
+      "width": 782,
+      "height": 1070
+    },
+    "outputBounds": {
+      "x": 30,
+      "y": 6,
+      "width": 132,
+      "height": 180
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "launcher",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "crisp-stick",
+    "productIndex": 4,
+    "level": 3,
+    "path": "assets/launchers/crisp-stick/lv-03.png"
+  },
+  "launcher/crisp-stick/4": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "bounds": {
+      "x": 202,
+      "y": 49,
+      "width": 850,
+      "height": 1155
+    },
+    "cropBounds": {
+      "x": 200,
+      "y": 47,
+      "width": 854,
+      "height": 1159
+    },
+    "outputBounds": {
+      "x": 29,
+      "y": 6,
+      "width": 133,
+      "height": 180
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "launcher",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "crisp-stick",
+    "productIndex": 4,
+    "level": 4,
+    "path": "assets/launchers/crisp-stick/lv-04.png"
+  },
+  "launcher/crisp-stick/5": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "bounds": {
+      "x": 148,
+      "y": 42,
+      "width": 957,
+      "height": 1162
+    },
+    "cropBounds": {
+      "x": 146,
+      "y": 40,
+      "width": 961,
+      "height": 1166
+    },
+    "outputBounds": {
+      "x": 22,
+      "y": 6,
+      "width": 148,
+      "height": 180
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "launcher",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "crisp-stick",
+    "productIndex": 4,
+    "level": 5,
+    "path": "assets/launchers/crisp-stick/lv-05.png"
+  },
+  "launcher/crisp-stick/6": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "bounds": {
+      "x": 154,
+      "y": 32,
+      "width": 945,
+      "height": 1172
+    },
+    "cropBounds": {
+      "x": 152,
+      "y": 30,
+      "width": 949,
+      "height": 1176
+    },
+    "outputBounds": {
+      "x": 23,
+      "y": 6,
+      "width": 145,
+      "height": 180
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "launcher",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "crisp-stick",
+    "productIndex": 4,
+    "level": 6,
+    "path": "assets/launchers/crisp-stick/lv-06.png"
+  },
+  "launcher/wafer/1": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "bounds": {
+      "x": 138,
+      "y": 388,
+      "width": 977,
+      "height": 816
+    },
+    "cropBounds": {
+      "x": 136,
+      "y": 386,
+      "width": 981,
+      "height": 820
+    },
+    "outputBounds": {
+      "x": 6,
+      "y": 21,
+      "width": 180,
+      "height": 150
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "launcher",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "wafer",
+    "productIndex": 5,
+    "level": 1,
+    "path": "assets/launchers/wafer/lv-01.png"
+  },
+  "launcher/wafer/2": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "bounds": {
+      "x": 131,
+      "y": 222,
+      "width": 992,
+      "height": 982
+    },
+    "cropBounds": {
+      "x": 129,
+      "y": 220,
+      "width": 996,
+      "height": 986
+    },
+    "outputBounds": {
+      "x": 6,
+      "y": 7,
+      "width": 180,
+      "height": 178
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "launcher",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "wafer",
+    "productIndex": 5,
+    "level": 2,
+    "path": "assets/launchers/wafer/lv-02.png"
+  },
+  "launcher/wafer/3": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "bounds": {
+      "x": 128,
+      "y": 115,
+      "width": 998,
+      "height": 1089
+    },
+    "cropBounds": {
+      "x": 126,
+      "y": 113,
+      "width": 1002,
+      "height": 1093
+    },
+    "outputBounds": {
+      "x": 13,
+      "y": 6,
+      "width": 165,
+      "height": 180
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "launcher",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "wafer",
+    "productIndex": 5,
+    "level": 3,
+    "path": "assets/launchers/wafer/lv-03.png"
+  },
+  "launcher/wafer/4": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "bounds": {
+      "x": 124,
+      "y": 108,
+      "width": 1006,
+      "height": 1096
+    },
+    "cropBounds": {
+      "x": 122,
+      "y": 106,
+      "width": 1010,
+      "height": 1100
+    },
+    "outputBounds": {
+      "x": 13,
+      "y": 6,
+      "width": 165,
+      "height": 180
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "launcher",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "wafer",
+    "productIndex": 5,
+    "level": 4,
+    "path": "assets/launchers/wafer/lv-04.png"
+  },
+  "launcher/wafer/5": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "bounds": {
+      "x": 116,
+      "y": 115,
+      "width": 1020,
+      "height": 1088
+    },
+    "cropBounds": {
+      "x": 114,
+      "y": 113,
+      "width": 1024,
+      "height": 1092
+    },
+    "outputBounds": {
+      "x": 11,
+      "y": 6,
+      "width": 169,
+      "height": 180
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "launcher",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "wafer",
+    "productIndex": 5,
+    "level": 5,
+    "path": "assets/launchers/wafer/lv-05.png"
+  },
+  "launcher/wafer/6": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "bounds": {
+      "x": 116,
+      "y": 66,
+      "width": 1022,
+      "height": 1138
+    },
+    "cropBounds": {
+      "x": 114,
+      "y": 64,
+      "width": 1026,
+      "height": 1142
+    },
+    "outputBounds": {
+      "x": 15,
+      "y": 6,
+      "width": 162,
+      "height": 180
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "launcher",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "wafer",
+    "productIndex": 5,
+    "level": 6,
+    "path": "assets/launchers/wafer/lv-06.png"
+  },
+  "launcher/sandwich-square/1": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "bounds": {
+      "x": 162,
+      "y": 318,
+      "width": 930,
+      "height": 886
+    },
+    "cropBounds": {
+      "x": 160,
+      "y": 316,
+      "width": 934,
+      "height": 890
+    },
+    "outputBounds": {
+      "x": 6,
+      "y": 10,
+      "width": 180,
+      "height": 172
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "launcher",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "sandwich-square",
+    "productIndex": 6,
+    "level": 1,
+    "path": "assets/launchers/sandwich-square/lv-01.png"
+  },
+  "launcher/sandwich-square/2": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "bounds": {
+      "x": 139,
+      "y": 282,
+      "width": 975,
+      "height": 922
+    },
+    "cropBounds": {
+      "x": 137,
+      "y": 280,
+      "width": 979,
+      "height": 926
+    },
+    "outputBounds": {
+      "x": 6,
+      "y": 11,
+      "width": 180,
+      "height": 170
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "launcher",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "sandwich-square",
+    "productIndex": 6,
+    "level": 2,
+    "path": "assets/launchers/sandwich-square/lv-02.png"
+  },
+  "launcher/sandwich-square/3": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "bounds": {
+      "x": 150,
+      "y": 73,
+      "width": 953,
+      "height": 1131
+    },
+    "cropBounds": {
+      "x": 148,
+      "y": 71,
+      "width": 957,
+      "height": 1135
+    },
+    "outputBounds": {
+      "x": 20,
+      "y": 6,
+      "width": 152,
+      "height": 180
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "launcher",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "sandwich-square",
+    "productIndex": 6,
+    "level": 3,
+    "path": "assets/launchers/sandwich-square/lv-03.png"
+  },
+  "launcher/sandwich-square/4": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "bounds": {
+      "x": 167,
+      "y": 53,
+      "width": 917,
+      "height": 1150
+    },
+    "cropBounds": {
+      "x": 165,
+      "y": 51,
+      "width": 921,
+      "height": 1154
+    },
+    "outputBounds": {
+      "x": 24,
+      "y": 6,
+      "width": 144,
+      "height": 180
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "launcher",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "sandwich-square",
+    "productIndex": 6,
+    "level": 4,
+    "path": "assets/launchers/sandwich-square/lv-04.png"
+  },
+  "launcher/sandwich-square/5": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "bounds": {
+      "x": 152,
+      "y": 37,
+      "width": 949,
+      "height": 1167
+    },
+    "cropBounds": {
+      "x": 150,
+      "y": 35,
+      "width": 953,
+      "height": 1171
+    },
+    "outputBounds": {
+      "x": 23,
+      "y": 6,
+      "width": 146,
+      "height": 180
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "launcher",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "sandwich-square",
+    "productIndex": 6,
+    "level": 5,
+    "path": "assets/launchers/sandwich-square/lv-05.png"
+  },
+  "launcher/sandwich-square/6": {
+    "size": [
+      192,
+      192
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "bounds": {
+      "x": 156,
+      "y": 32,
+      "width": 941,
+      "height": 1172
+    },
+    "cropBounds": {
+      "x": 154,
+      "y": 30,
+      "width": 945,
+      "height": 1176
+    },
+    "outputBounds": {
+      "x": 23,
+      "y": 6,
+      "width": 145,
+      "height": 180
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "launcher",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "productId": "sandwich-square",
+    "productIndex": 6,
+    "level": 6,
+    "path": "assets/launchers/sandwich-square/lv-06.png"
   },
   "board-state/cell-blocked": {
     "size": [
@@ -2689,6 +6125,82 @@ module.exports = {
     "padding": 0,
     "stateId": "cell-selected",
     "path": "assets/board-states/cell-selected.png"
+  },
+  "customer-badge/max-star": {
+    "size": [
+      96,
+      96
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "bounds": {
+      "x": 74,
+      "y": 70,
+      "width": 1104,
+      "height": 1105
+    },
+    "cropBounds": {
+      "x": 72,
+      "y": 68,
+      "width": 1108,
+      "height": 1109
+    },
+    "outputBounds": {
+      "x": 6,
+      "y": 6,
+      "width": 84,
+      "height": 84
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "customer-status",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "subtype": "badge",
+    "statusId": "max-star",
+    "path": "assets/customer-status/badges/max-star.png"
+  },
+  "customer-badge/new-customer": {
+    "size": [
+      96,
+      96
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "bounds": {
+      "x": 64,
+      "y": 79,
+      "width": 1125,
+      "height": 1100
+    },
+    "cropBounds": {
+      "x": 62,
+      "y": 77,
+      "width": 1129,
+      "height": 1104
+    },
+    "outputBounds": {
+      "x": 6,
+      "y": 7,
+      "width": 84,
+      "height": 82
+    },
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "type": "customer-status",
+    "alphaThreshold": 8,
+    "padding": 6,
+    "subtype": "badge",
+    "statusId": "new-customer",
+    "path": "assets/customer-status/badges/new-customer.png"
   },
   "effect/focus-ring": {
     "size": [
@@ -2874,6 +6386,726 @@ module.exports = {
     "padding": 0,
     "stateId": "sparkle",
     "path": "assets/effects/sparkle.png"
+  },
+  "customer/rabbit-courier": {
+    "size": [
+      256,
+      256
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "contain",
+    "transparent": true,
+    "customerId": "rabbit-courier",
+    "customerIndex": 1,
+    "bytes": 70408,
+    "path": "assets/customers/rabbit-courier.png"
+  },
+  "customer-detail/rabbit-courier": {
+    "size": [
+      400,
+      500
+    ],
+    "sourceSize": [
+      1122,
+      1402
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "contain",
+    "transparent": true,
+    "customerId": "rabbit-courier",
+    "customerIndex": 1,
+    "bytes": 246931,
+    "path": "assets/customer-details/rabbit-courier.png"
+  },
+  "customer-silhouette/rabbit-courier": {
+    "size": [
+      256,
+      256
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "contain",
+    "transparent": true,
+    "customerId": "rabbit-courier",
+    "customerIndex": 1,
+    "bytes": 28524,
+    "path": "assets/customer-silhouettes/rabbit-courier.png"
+  },
+  "customer/bear-neighbor": {
+    "size": [
+      256,
+      256
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "contain",
+    "transparent": true,
+    "customerId": "bear-neighbor",
+    "customerIndex": 2,
+    "bytes": 108183,
+    "path": "assets/customers/bear-neighbor.png"
+  },
+  "customer-detail/bear-neighbor": {
+    "size": [
+      400,
+      500
+    ],
+    "sourceSize": [
+      1122,
+      1402
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "contain",
+    "transparent": true,
+    "customerId": "bear-neighbor",
+    "customerIndex": 2,
+    "bytes": 320456,
+    "path": "assets/customer-details/bear-neighbor.png"
+  },
+  "customer-silhouette/bear-neighbor": {
+    "size": [
+      256,
+      256
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "contain",
+    "transparent": true,
+    "customerId": "bear-neighbor",
+    "customerIndex": 2,
+    "bytes": 36516,
+    "path": "assets/customer-silhouettes/bear-neighbor.png"
+  },
+  "customer/fox-traveler": {
+    "size": [
+      256,
+      256
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "contain",
+    "transparent": true,
+    "customerId": "fox-traveler",
+    "customerIndex": 3,
+    "bytes": 87672,
+    "path": "assets/customers/fox-traveler.png"
+  },
+  "customer-detail/fox-traveler": {
+    "size": [
+      400,
+      500
+    ],
+    "sourceSize": [
+      1122,
+      1402
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "contain",
+    "transparent": true,
+    "customerId": "fox-traveler",
+    "customerIndex": 3,
+    "bytes": 266687,
+    "path": "assets/customer-details/fox-traveler.png"
+  },
+  "customer-silhouette/fox-traveler": {
+    "size": [
+      256,
+      256
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "contain",
+    "transparent": true,
+    "customerId": "fox-traveler",
+    "customerIndex": 3,
+    "bytes": 31646,
+    "path": "assets/customer-silhouettes/fox-traveler.png"
+  },
+  "customer/dog-mechanic": {
+    "size": [
+      256,
+      256
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "contain",
+    "transparent": true,
+    "customerId": "dog-mechanic",
+    "customerIndex": 4,
+    "bytes": 111186,
+    "path": "assets/customers/dog-mechanic.png"
+  },
+  "customer-detail/dog-mechanic": {
+    "size": [
+      400,
+      500
+    ],
+    "sourceSize": [
+      1122,
+      1402
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "contain",
+    "transparent": true,
+    "customerId": "dog-mechanic",
+    "customerIndex": 4,
+    "bytes": 351580,
+    "path": "assets/customer-details/dog-mechanic.png"
+  },
+  "customer-silhouette/dog-mechanic": {
+    "size": [
+      256,
+      256
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "contain",
+    "transparent": true,
+    "customerId": "dog-mechanic",
+    "customerIndex": 4,
+    "bytes": 37825,
+    "path": "assets/customer-silhouettes/dog-mechanic.png"
+  },
+  "customer/squirrel-tailor": {
+    "size": [
+      256,
+      256
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "contain",
+    "transparent": true,
+    "customerId": "squirrel-tailor",
+    "customerIndex": 5,
+    "bytes": 95298,
+    "path": "assets/customers/squirrel-tailor.png"
+  },
+  "customer-detail/squirrel-tailor": {
+    "size": [
+      400,
+      500
+    ],
+    "sourceSize": [
+      1122,
+      1402
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "contain",
+    "transparent": true,
+    "customerId": "squirrel-tailor",
+    "customerIndex": 5,
+    "bytes": 342256,
+    "path": "assets/customer-details/squirrel-tailor.png"
+  },
+  "customer-silhouette/squirrel-tailor": {
+    "size": [
+      256,
+      256
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "contain",
+    "transparent": true,
+    "customerId": "squirrel-tailor",
+    "customerIndex": 5,
+    "bytes": 31034,
+    "path": "assets/customer-silhouettes/squirrel-tailor.png"
+  },
+  "customer/cat-teacher": {
+    "size": [
+      256,
+      256
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "contain",
+    "transparent": true,
+    "customerId": "cat-teacher",
+    "customerIndex": 6,
+    "bytes": 112151,
+    "path": "assets/customers/cat-teacher.png"
+  },
+  "customer-detail/cat-teacher": {
+    "size": [
+      400,
+      500
+    ],
+    "sourceSize": [
+      1122,
+      1402
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "contain",
+    "transparent": true,
+    "customerId": "cat-teacher",
+    "customerIndex": 6,
+    "bytes": 322593,
+    "path": "assets/customer-details/cat-teacher.png"
+  },
+  "customer-silhouette/cat-teacher": {
+    "size": [
+      256,
+      256
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "contain",
+    "transparent": true,
+    "customerId": "cat-teacher",
+    "customerIndex": 6,
+    "bytes": 37179,
+    "path": "assets/customer-silhouettes/cat-teacher.png"
+  },
+  "customer/hedgehog-florist": {
+    "size": [
+      256,
+      256
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "contain",
+    "transparent": true,
+    "customerId": "hedgehog-florist",
+    "customerIndex": 7,
+    "bytes": 133291,
+    "path": "assets/customers/hedgehog-florist.png"
+  },
+  "customer-detail/hedgehog-florist": {
+    "size": [
+      400,
+      500
+    ],
+    "sourceSize": [
+      1122,
+      1402
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "contain",
+    "transparent": true,
+    "customerId": "hedgehog-florist",
+    "customerIndex": 7,
+    "bytes": 367104,
+    "path": "assets/customer-details/hedgehog-florist.png"
+  },
+  "customer-silhouette/hedgehog-florist": {
+    "size": [
+      256,
+      256
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "contain",
+    "transparent": true,
+    "customerId": "hedgehog-florist",
+    "customerIndex": 7,
+    "bytes": 43215,
+    "path": "assets/customer-silhouettes/hedgehog-florist.png"
+  },
+  "customer/otter-ferryman": {
+    "size": [
+      256,
+      256
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "contain",
+    "transparent": true,
+    "customerId": "otter-ferryman",
+    "customerIndex": 8,
+    "bytes": 107528,
+    "path": "assets/customers/otter-ferryman.png"
+  },
+  "customer-detail/otter-ferryman": {
+    "size": [
+      400,
+      500
+    ],
+    "sourceSize": [
+      1122,
+      1402
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "contain",
+    "transparent": true,
+    "customerId": "otter-ferryman",
+    "customerIndex": 8,
+    "bytes": 327535,
+    "path": "assets/customer-details/otter-ferryman.png"
+  },
+  "customer-silhouette/otter-ferryman": {
+    "size": [
+      256,
+      256
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "contain",
+    "transparent": true,
+    "customerId": "otter-ferryman",
+    "customerIndex": 8,
+    "bytes": 36009,
+    "path": "assets/customer-silhouettes/otter-ferryman.png"
+  },
+  "customer/goat-orchard-owner": {
+    "size": [
+      256,
+      256
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "contain",
+    "transparent": true,
+    "customerId": "goat-orchard-owner",
+    "customerIndex": 9,
+    "bytes": 108392,
+    "path": "assets/customers/goat-orchard-owner.png"
+  },
+  "customer-detail/goat-orchard-owner": {
+    "size": [
+      400,
+      500
+    ],
+    "sourceSize": [
+      1122,
+      1402
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "contain",
+    "transparent": true,
+    "customerId": "goat-orchard-owner",
+    "customerIndex": 9,
+    "bytes": 307910,
+    "path": "assets/customer-details/goat-orchard-owner.png"
+  },
+  "customer-silhouette/goat-orchard-owner": {
+    "size": [
+      256,
+      256
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "contain",
+    "transparent": true,
+    "customerId": "goat-orchard-owner",
+    "customerIndex": 9,
+    "bytes": 37123,
+    "path": "assets/customer-silhouettes/goat-orchard-owner.png"
+  },
+  "customer/owl-librarian": {
+    "size": [
+      256,
+      256
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "contain",
+    "transparent": true,
+    "customerId": "owl-librarian",
+    "customerIndex": 10,
+    "bytes": 111890,
+    "path": "assets/customers/owl-librarian.png"
+  },
+  "customer-detail/owl-librarian": {
+    "size": [
+      400,
+      500
+    ],
+    "sourceSize": [
+      1122,
+      1402
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "contain",
+    "transparent": true,
+    "customerId": "owl-librarian",
+    "customerIndex": 10,
+    "bytes": 352987,
+    "path": "assets/customer-details/owl-librarian.png"
+  },
+  "customer-silhouette/owl-librarian": {
+    "size": [
+      256,
+      256
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "contain",
+    "transparent": true,
+    "customerId": "owl-librarian",
+    "customerIndex": 10,
+    "bytes": 36870,
+    "path": "assets/customer-silhouettes/owl-librarian.png"
+  },
+  "customer/badger-potter": {
+    "size": [
+      256,
+      256
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "contain",
+    "transparent": true,
+    "customerId": "badger-potter",
+    "customerIndex": 11,
+    "bytes": 108879,
+    "path": "assets/customers/badger-potter.png"
+  },
+  "customer-detail/badger-potter": {
+    "size": [
+      400,
+      500
+    ],
+    "sourceSize": [
+      1122,
+      1402
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "contain",
+    "transparent": true,
+    "customerId": "badger-potter",
+    "customerIndex": 11,
+    "bytes": 331989,
+    "path": "assets/customer-details/badger-potter.png"
+  },
+  "customer-silhouette/badger-potter": {
+    "size": [
+      256,
+      256
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "contain",
+    "transparent": true,
+    "customerId": "badger-potter",
+    "customerIndex": 11,
+    "bytes": 38422,
+    "path": "assets/customer-silhouettes/badger-potter.png"
+  },
+  "customer/red-panda-projectionist": {
+    "size": [
+      256,
+      256
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "contain",
+    "transparent": true,
+    "customerId": "red-panda-projectionist",
+    "customerIndex": 12,
+    "bytes": 114084,
+    "path": "assets/customers/red-panda-projectionist.png"
+  },
+  "customer-detail/red-panda-projectionist": {
+    "size": [
+      400,
+      500
+    ],
+    "sourceSize": [
+      1122,
+      1402
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "contain",
+    "transparent": true,
+    "customerId": "red-panda-projectionist",
+    "customerIndex": 12,
+    "bytes": 330901,
+    "path": "assets/customer-details/red-panda-projectionist.png"
+  },
+  "customer-silhouette/red-panda-projectionist": {
+    "size": [
+      256,
+      256
+    ],
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "scaleMode": "contain",
+    "transparent": true,
+    "customerId": "red-panda-projectionist",
+    "customerIndex": 12,
+    "bytes": 38300,
+    "path": "assets/customer-silhouettes/red-panda-projectionist.png"
   },
   "factory/wall-back": {
     "id": "wall-back",
@@ -5887,6 +10119,6787 @@ module.exports = {
       ]
     }
   },
+  "factory/ball-mold-press": {
+    "id": "ball-mold-press",
+    "label": "三代合模机",
+    "group": "machines",
+    "type": "png",
+    "src": "./ball-mold-press.png",
+    "size": [
+      599,
+      535
+    ],
+    "bounds": [
+      66.0966,
+      1.8369,
+      546.2146,
+      532.7039
+    ],
+    "originalSource": "../../../source/gameplay/machines/artwork/v5/ball-mold-press.png",
+    "originalSize": [
+      1312,
+      1199
+    ],
+    "originalBounds": [
+      144,
+      10,
+      1190,
+      1166
+    ],
+    "originalAlphaBounds": [
+      0,
+      8,
+      1303,
+      1169
+    ],
+    "sourceCrop": [
+      0,
+      6,
+      1305,
+      1171
+    ],
+    "scale": [
+      0.45900383,
+      0.45922747
+    ],
+    "alphaThreshold": 16,
+    "padding": 2,
+    "maxEdge": 600,
+    "sourceBytes": 1433102,
+    "bytes": 365041,
+    "draw": {
+      "sourceRect": [
+        66.0966,
+        1.8369,
+        480.118,
+        530.867
+      ],
+      "anchor": [
+        304.3195,
+        448.6652
+      ],
+      "ports": {
+        "input": [
+          297.4345,
+          301.2532
+        ],
+        "output": [
+          379.1372,
+          466.5751
+        ]
+      }
+    },
+    "originalAnchor": [
+      663,
+      983
+    ],
+    "anchor": [
+      304.3195,
+      448.6652
+    ],
+    "originalPorts": {
+      "input": [
+        648,
+        662
+      ],
+      "output": [
+        826,
+        1022
+      ]
+    },
+    "ports": {
+      "input": [
+        297.4345,
+        301.2532
+      ],
+      "output": [
+        379.1372,
+        466.5751
+      ]
+    },
+    "path": "assets/factory/ball-mold-press.png",
+    "animation": {
+      "phases": [
+        {
+          "id": "feeding",
+          "label": "进料",
+          "seconds": 0.8
+        },
+        {
+          "id": "processing",
+          "label": "加工",
+          "seconds": 2.2
+        },
+        {
+          "id": "discharging",
+          "label": "出料",
+          "seconds": 1.7
+        }
+      ],
+      "layers": [
+        {
+          "id": "clear-middle-ball",
+          "name": "静态物料清除",
+          "role": "material",
+          "polygon": [
+            [
+              311.20459674,
+              418.35622517
+            ],
+            [
+              316.7126427,
+              410.54935818
+            ],
+            [
+              325.43371547,
+              406.41631095
+            ],
+            [
+              335.53179973,
+              405.95708348000005
+            ],
+            [
+              344.71187633,
+              410.54935818
+            ],
+            [
+              351.59693378000003,
+              417.89699770000004
+            ],
+            [
+              355.26896442,
+              428.00000204
+            ],
+            [
+              353.89195293,
+              437.18455144
+            ],
+            [
+              349.30191463,
+              445.90987337
+            ],
+            [
+              340.58084186,
+              451.87983048
+            ],
+            [
+              330.94176143,
+              452.79828542
+            ],
+            [
+              321.302681,
+              450.50214807000003
+            ],
+            [
+              313.95861972,
+              444.53219096000004
+            ],
+            [
+              309.36858142,
+              435.80686903000003
+            ],
+            [
+              307.5325661,
+              426.62231963000005
+            ]
+          ],
+          "pivot": [
+            0,
+            -2.75536482
+          ],
+          "order": 0,
+          "when": [],
+          "cleanPatch": true,
+          "eraseOnly": true,
+          "motion": {
+            "type": "fixed"
+          }
+        },
+        {
+          "id": "mold-fill-left",
+          "name": "左模腔物料",
+          "role": "material",
+          "polygon": [
+            [
+              183.14252817,
+              290.23176104000004
+            ],
+            [
+              188.65057413,
+              281.04721164
+            ],
+            [
+              197.83065073,
+              277.37339188000004
+            ],
+            [
+              207.01072733,
+              278.29184682
+            ],
+            [
+              214.35478861,
+              272.78111718
+            ],
+            [
+              224.45287287,
+              274.61802706000003
+            ],
+            [
+              231.79693415,
+              281.04721164
+            ],
+            [
+              240.05900309,
+              283.80257646
+            ],
+            [
+              244.19003756,
+              292.06867092000005
+            ],
+            [
+              239.59999926,
+              296.20171815000003
+            ],
+            [
+              229.04291117,
+              299.87553791
+            ],
+            [
+              218.48582308,
+              300.33476538
+            ],
+            [
+              206.5517235,
+              299.41631044
+            ],
+            [
+              195.53563158,
+              298.03862803000004
+            ],
+            [
+              186.81455881,
+              295.28326321000003
+            ]
+          ],
+          "pivot": [
+            213.43678095,
+            288.85407863
+          ],
+          "motion": {
+            "type": "vibrate",
+            "amplitude": [
+              0.550804596,
+              0.642918458
+            ],
+            "speed": 3
+          },
+          "order": 20,
+          "when": [
+            "feeding",
+            "processing"
+          ],
+          "cleanPatch": true
+        },
+        {
+          "id": "mold-fill-center",
+          "name": "中模腔物料",
+          "role": "material",
+          "polygon": [
+            [
+              267.14022906,
+              307.22317743
+            ],
+            [
+              272.64827502,
+              298.4978555
+            ],
+            [
+              281.82835162,
+              294.82403574
+            ],
+            [
+              289.63141673,
+              293.9055808
+            ],
+            [
+              296.97547801,
+              287.47639622
+            ],
+            [
+              305.69655078,
+              286.09871381
+            ],
+            [
+              315.33563121,
+              290.23176104000004
+            ],
+            [
+              320.84367717,
+              296.66094562
+            ],
+            [
+              327.26973079,
+              301.71244779
+            ],
+            [
+              328.18773845,
+              309.51931478
+            ],
+            [
+              320.38467334,
+              313.65236201
+            ],
+            [
+              309.36858142,
+              315.94849936
+            ],
+            [
+              297.43448184,
+              316.40772683
+            ],
+            [
+              285.50038226,
+              315.03004442
+            ],
+            [
+              274.02528651,
+              312.2746796
+            ]
+          ],
+          "pivot": [
+            297.89348567,
+            302.63090273
+          ],
+          "motion": {
+            "type": "vibrate",
+            "amplitude": [
+              0.550804596,
+              0.642918458
+            ],
+            "speed": 3
+          },
+          "order": 20,
+          "when": [
+            "feeding",
+            "processing"
+          ],
+          "cleanPatch": true
+        },
+        {
+          "id": "mold-fill-right",
+          "name": "右模腔物料",
+          "role": "material",
+          "polygon": [
+            [
+              353.4329491,
+              323.29613888
+            ],
+            [
+              358.94099506,
+              315.03004442
+            ],
+            [
+              368.12107166,
+              310.43776972
+            ],
+            [
+              375.92413677,
+              311.35622466
+            ],
+            [
+              382.80919422,
+              304.92704008000004
+            ],
+            [
+              391.98927082,
+              306.76394996
+            ],
+            [
+              398.87432827,
+              313.19313454
+            ],
+            [
+              406.67739338,
+              316.40772683
+            ],
+            [
+              411.26743168,
+              324.21459382
+            ],
+            [
+              408.05440487,
+              330.18455093
+            ],
+            [
+              395.66130146,
+              332.93991575
+            ],
+            [
+              383.26819805,
+              333.39914322000004
+            ],
+            [
+              370.87509464,
+              331.56223334000003
+            ],
+            [
+              361.69501804,
+              329.26609599
+            ]
+          ],
+          "pivot": [
+            382.80919422,
+            321.91845647
+          ],
+          "motion": {
+            "type": "vibrate",
+            "amplitude": [
+              0.550804596,
+              0.642918458
+            ],
+            "speed": 3
+          },
+          "order": 20,
+          "when": [
+            "feeding",
+            "processing"
+          ],
+          "cleanPatch": true
+        },
+        {
+          "id": "nozzle-manifold",
+          "name": "退让喷嘴排",
+          "role": "mechanical",
+          "polygon": [
+            [
+              241.89501841,
+              240.17596681
+            ],
+            [
+              247.40306437,
+              228.69528006000002
+            ],
+            [
+              255.66513331,
+              223.18455042000002
+            ],
+            [
+              264.38620608,
+              224.56223283
+            ],
+            [
+              266.2222214,
+              235.12446464
+            ],
+            [
+              279.53333247,
+              237.87982946000002
+            ],
+            [
+              278.61532481,
+              232.36909982
+            ],
+            [
+              285.95938609,
+              227.31759765
+            ],
+            [
+              298.3524895,
+              225.48068777
+            ],
+            [
+              310.28658908,
+              229.61373500000002
+            ],
+            [
+              316.25363887,
+              237.42060199000002
+            ],
+            [
+              315.79463504,
+              248.44206127
+            ],
+            [
+              342.87586101,
+              252.57510850000003
+            ],
+            [
+              343.33486484,
+              244.76824151000002
+            ],
+            [
+              351.59693378000003,
+              236.96137452000002
+            ],
+            [
+              362.6130257,
+              235.58369211000002
+            ],
+            [
+              373.62911762,
+              238.7982844
+            ],
+            [
+              380.9731789,
+              246.14592392
+            ],
+            [
+              380.05517124,
+              259.00429308
+            ],
+            [
+              403.9233704,
+              263.59656778000004
+            ],
+            [
+              401.62835125,
+              256.70815573
+            ],
+            [
+              409.43141636,
+              249.81974368000002
+            ],
+            [
+              421.82451977,
+              247.52360633
+            ],
+            [
+              431.92260403,
+              251.19742609000002
+            ],
+            [
+              438.34865765,
+              258.08583814
+            ],
+            [
+              437.88965382,
+              272.78111718
+            ],
+            [
+              431.00459637,
+              283.80257646
+            ],
+            [
+              430.08658871,
+              296.20171815000003
+            ],
+            [
+              410.34942402,
+              295.74249068
+            ],
+            [
+              409.43141636,
+              284.7210314
+            ],
+            [
+              403.9233704,
+              273.69957212
+            ],
+            [
+              377.76015209,
+              270.48497983000004
+            ],
+            [
+              374.54712528,
+              275.53648200000003
+            ],
+            [
+              373.17011379,
+              286.55794128
+            ],
+            [
+              353.4329491,
+              286.09871381
+            ],
+            [
+              352.97394527,
+              275.07725453
+            ],
+            [
+              344.2528725,
+              265.43347766
+            ],
+            [
+              313.95861972,
+              260.84120296000003
+            ],
+            [
+              309.36858142,
+              268.64806995000004
+            ],
+            [
+              307.99156993,
+              277.37339188000004
+            ],
+            [
+              286.87739375,
+              276.91416441
+            ],
+            [
+              285.95938609,
+              266.81116007
+            ],
+            [
+              280.45134013,
+              259.00429308
+            ],
+            [
+              263.00919459,
+              253.03433597
+            ],
+            [
+              258.41915629,
+              265.43347766
+            ],
+            [
+              249.69808352,
+              267.72961501000003
+            ],
+            [
+              241.89501841,
+              264.97425019
+            ]
+          ],
+          "pivot": [
+            346.08888782,
+            250.27897115000002
+          ],
+          "motion": {
+            "type": "nozzle",
+            "amplitude": [
+              29.37624512,
+              -19.28755374
+            ],
+            "delay": 0,
+            "duration": 0.3,
+            "phase": "processing",
+            "hold": 1.55
+          },
+          "order": 35,
+          "when": [
+            "feeding",
+            "processing",
+            "discharging"
+          ],
+          "cleanPatch": true
+        },
+        {
+          "id": "press-guide-collar-left",
+          "name": "左压板导套",
+          "role": "mechanical",
+          "polygon": [
+            [
+              179.0114937,
+              114.34764003000001
+            ],
+            [
+              191.40459711,
+              109.75536533
+            ],
+            [
+              207.01072733,
+              111.13304774000001
+            ],
+            [
+              220.3218384,
+              115.26609497000001
+            ],
+            [
+              223.99386904,
+              122.15450702000001
+            ],
+            [
+              221.69884989,
+              131.33905642000002
+            ],
+            [
+              213.43678095,
+              136.39055859
+            ],
+            [
+              192.7816086,
+              135.47210365
+            ],
+            [
+              180.38850519,
+              131.33905642000002
+            ]
+          ],
+          "pivot": [
+            200.58467371,
+            123.9914169
+          ],
+          "motion": {
+            "type": "press",
+            "amplitude": [
+              0,
+              71.63948532
+            ],
+            "duration": 1.55,
+            "delay": 0.3,
+            "phase": "processing",
+            "hold": 0.25
+          },
+          "order": 44,
+          "when": [
+            "feeding",
+            "processing",
+            "discharging"
+          ],
+          "cleanPatch": true
+        },
+        {
+          "id": "press-guide-collar-right",
+          "name": "右压板导套",
+          "role": "mechanical",
+          "polygon": [
+            [
+              372.71110996,
+              143.27897064
+            ],
+            [
+              384.18620571,
+              137.76824100000002
+            ],
+            [
+              399.79233593,
+              140.06437835
+            ],
+            [
+              411.72643551,
+              144.65665305000002
+            ],
+            [
+              416.31647381,
+              152.00429257000002
+            ],
+            [
+              414.48045849,
+              159.81115956000002
+            ],
+            [
+              406.67739338,
+              164.86266173
+            ],
+            [
+              385.5632172,
+              163.94420679
+            ],
+            [
+              373.62911762,
+              157.97424968
+            ]
+          ],
+          "pivot": [
+            394.7432938,
+            152.46352004000002
+          ],
+          "motion": {
+            "type": "press",
+            "amplitude": [
+              0,
+              71.63948532
+            ],
+            "duration": 1.55,
+            "delay": 0.3,
+            "phase": "processing",
+            "hold": 0.25
+          },
+          "order": 44,
+          "when": [
+            "feeding",
+            "processing",
+            "discharging"
+          ],
+          "cleanPatch": true
+        },
+        {
+          "id": "press-head",
+          "name": "活动压板与上模",
+          "role": "mechanical",
+          "polygon": [
+            [
+              153.76628305,
+              140.06437835
+            ],
+            [
+              169.8314171,
+              129.50214654
+            ],
+            [
+              265.30421374,
+              138.68669594000002
+            ],
+            [
+              265.76321757,
+              146.49356293
+            ],
+            [
+              292.38543971,
+              155.21888486
+            ],
+            [
+              321.302681,
+              150.62661016
+            ],
+            [
+              445.2337151,
+              159.35193209000002
+            ],
+            [
+              451.20076489,
+              169.45493643
+            ],
+            [
+              449.8237534,
+              185.06867041
+            ],
+            [
+              431.4636002,
+              204.35622415
+            ],
+            [
+              417.23448147,
+              208.03004391000002
+            ],
+            [
+              410.80842785,
+              224.10300536000003
+            ],
+            [
+              402.08735508,
+              232.82832729
+            ],
+            [
+              389.23524784,
+              235.58369211000002
+            ],
+            [
+              376.3831406,
+              233.74678223
+            ],
+            [
+              364.44904102,
+              228.69528006000002
+            ],
+            [
+              355.72796825,
+              220.4291856
+            ],
+            [
+              346.54789165,
+              208.94849885000002
+            ],
+            [
+              328.18773845,
+              207.57081644000002
+            ],
+            [
+              319.00766185,
+              218.13304825
+            ],
+            [
+              309.36858142,
+              224.56223283
+            ],
+            [
+              295.59846652,
+              226.39914271
+            ],
+            [
+              283.20536311,
+              223.18455042000002
+            ],
+            [
+              271.73026736,
+              217.21459331000003
+            ],
+            [
+              262.55019076,
+              208.03004391000002
+            ],
+            [
+              251.07509501,
+              191.03862752
+            ],
+            [
+              243.73103373,
+              202.51931427000002
+            ],
+            [
+              233.17394564,
+              208.94849885000002
+            ],
+            [
+              219.86283457,
+              213.08154608
+            ],
+            [
+              208.38773882,
+              211.2446362
+            ],
+            [
+              195.53563158,
+              206.19313403
+            ],
+            [
+              185.89655115,
+              198.84549451
+            ],
+            [
+              176.71647455,
+              188.28326270000002
+            ],
+            [
+              171.20842859,
+              180.01716824000002
+            ],
+            [
+              154.22528688,
+              174.96566607
+            ]
+          ],
+          "pivot": [
+            297.43448184,
+            164.86266173
+          ],
+          "motion": {
+            "type": "press",
+            "amplitude": [
+              0,
+              71.63948532
+            ],
+            "duration": 1.55,
+            "delay": 0.3,
+            "speed": 1,
+            "phase": "processing",
+            "hold": 0.25
+          },
+          "order": 45,
+          "when": [
+            "feeding",
+            "processing",
+            "discharging"
+          ],
+          "cleanPatch": true
+        },
+        {
+          "id": "press-linkage",
+          "name": "压模伸缩连杆",
+          "role": "mechanical",
+          "polygon": [
+            [
+              280.91034396,
+              61.53648098
+            ],
+            [
+              300.64750865,
+              67.50643809
+            ],
+            [
+              308.90957759,
+              73.4763952
+            ],
+            [
+              296.97547801,
+              117.10300485
+            ],
+            [
+              286.41838992,
+              132.25751136
+            ],
+            [
+              268.97624438,
+              125.82832678000001
+            ],
+            [
+              268.05823672,
+              114.80686750000001
+            ],
+            [
+              274.94329417,
+              87.25321930000001
+            ]
+          ],
+          "pivot": [
+            293.30344737,
+            62.914163390000006
+          ],
+          "motion": {
+            "type": "linked-rod",
+            "phase": "processing"
+          },
+          "order": 48,
+          "when": [
+            "feeding",
+            "processing",
+            "discharging"
+          ],
+          "cleanPatch": true
+        },
+        {
+          "id": "press-linkage-bearing",
+          "name": "压板连杆下支座",
+          "role": "mechanical",
+          "polygon": [
+            [
+              253.37011416,
+              118.02145979000001
+            ],
+            [
+              263.92720225,
+              109.29613786
+            ],
+            [
+              271.73026736,
+              109.29613786
+            ],
+            [
+              277.69731715,
+              113.42918509
+            ],
+            [
+              284.5823746,
+              114.80686750000001
+            ],
+            [
+              295.59846652,
+              109.75536533
+            ],
+            [
+              308.90957759,
+              113.42918509
+            ],
+            [
+              317.17164653,
+              121.69527955000001
+            ],
+            [
+              319.00766185,
+              143.73819811
+            ],
+            [
+              313.49961589,
+              152.00429257000002
+            ],
+            [
+              295.59846652,
+              155.67811233
+            ],
+            [
+              263.46819842,
+              152.92274751000002
+            ],
+            [
+              249.23907969,
+              147.87124534
+            ],
+            [
+              250.15708735,
+              138.22746847000002
+            ]
+          ],
+          "pivot": [
+            276.32030566,
+            129.04291907
+          ],
+          "motion": {
+            "type": "press",
+            "amplitude": [
+              0,
+              71.63948532
+            ],
+            "duration": 1.55,
+            "delay": 0.3,
+            "phase": "processing",
+            "hold": 0.25
+          },
+          "order": 49,
+          "when": [
+            "feeding",
+            "processing",
+            "discharging"
+          ],
+          "cleanPatch": true
+        },
+        {
+          "id": "ball-on-chute",
+          "name": "脱模落球清除",
+          "role": "material",
+          "polygon": [
+            [
+              275.402298,
+              390.34334950000004
+            ],
+            [
+              282.28735545,
+              382.53648251000004
+            ],
+            [
+              291.92643588,
+              379.78111769000003
+            ],
+            [
+              301.56551631,
+              381.1588001
+            ],
+            [
+              309.82758525,
+              386.66952974000003
+            ],
+            [
+              315.33563121,
+              395.39485167000004
+            ],
+            [
+              318.08965419,
+              404.57940107
+            ],
+            [
+              316.25363887,
+              413.304723
+            ],
+            [
+              310.74559291,
+              420.65236252
+            ],
+            [
+              302.02452014,
+              424.78540975000004
+            ],
+            [
+              292.38543971,
+              424.78540975000004
+            ],
+            [
+              283.66436694,
+              420.65236252
+            ],
+            [
+              275.86130183,
+              413.304723
+            ],
+            [
+              272.64827502,
+              404.12017360000004
+            ]
+          ],
+          "pivot": [
+            295.59846652,
+            402.74249119
+          ],
+          "motion": {
+            "type": "fixed"
+          },
+          "order": 60,
+          "when": [
+            "discharging"
+          ],
+          "cleanPatch": true,
+          "eraseOnly": true
+        },
+        {
+          "id": "product-1",
+          "name": "球形成品",
+          "role": "material",
+          "polygon": [
+            [
+              351.13792995,
+              442.69528108000003
+            ],
+            [
+              357.10497974,
+              435.80686903000003
+            ],
+            [
+              366.28505634,
+              433.05150421
+            ],
+            [
+              375.46513294,
+              433.96995915
+            ],
+            [
+              383.72720188,
+              438.10300638
+            ],
+            [
+              391.07126316,
+              444.53219096000004
+            ],
+            [
+              395.66130146,
+              453.71674036
+            ],
+            [
+              395.66130146,
+              463.8197447
+            ],
+            [
+              390.61225933000003,
+              473.00429410000004
+            ],
+            [
+              383.26819805,
+              480.35193362
+            ],
+            [
+              374.08812145,
+              484.48498085000006
+            ],
+            [
+              363.53103336,
+              483.10729844
+            ],
+            [
+              355.26896442,
+              478.05579627000003
+            ],
+            [
+              349.30191463,
+              471.16738422000003
+            ],
+            [
+              346.54789165,
+              461.98283482000005
+            ],
+            [
+              347.46589931,
+              451.87983048
+            ]
+          ],
+          "pivot": [
+            370.87509464,
+            459.68669747
+          ],
+          "motion": {
+            "type": "flow",
+            "path": [
+              [
+                292.84444354,
+                399.5278989
+              ],
+              [
+                329.56474994,
+                431.21459433
+              ],
+              [
+                371.7931023,
+                465.65665458
+              ],
+              [
+                397.49731678,
+                494.58798519000004
+              ]
+            ],
+            "duration": 1.2,
+            "delay": 0,
+            "amplitude": [
+              0,
+              0
+            ]
+          },
+          "order": 65,
+          "when": [
+            "discharging"
+          ],
+          "cleanPatch": true
+        },
+        {
+          "id": "product-2",
+          "name": "后续球形成品",
+          "role": "material",
+          "polygon": [
+            [
+              351.13792995,
+              442.69528108000003
+            ],
+            [
+              357.10497974,
+              435.80686903000003
+            ],
+            [
+              366.28505634,
+              433.05150421
+            ],
+            [
+              375.46513294,
+              433.96995915
+            ],
+            [
+              383.72720188,
+              438.10300638
+            ],
+            [
+              391.07126316,
+              444.53219096000004
+            ],
+            [
+              395.66130146,
+              453.71674036
+            ],
+            [
+              395.66130146,
+              463.8197447
+            ],
+            [
+              390.61225933000003,
+              473.00429410000004
+            ],
+            [
+              383.26819805,
+              480.35193362
+            ],
+            [
+              374.08812145,
+              484.48498085000006
+            ],
+            [
+              363.53103336,
+              483.10729844
+            ],
+            [
+              355.26896442,
+              478.05579627000003
+            ],
+            [
+              349.30191463,
+              471.16738422000003
+            ],
+            [
+              346.54789165,
+              461.98283482000005
+            ],
+            [
+              347.46589931,
+              451.87983048
+            ]
+          ],
+          "pivot": [
+            370.87509464,
+            459.68669747
+          ],
+          "motion": {
+            "type": "flow",
+            "path": [
+              [
+                292.84444354,
+                399.5278989
+              ],
+              [
+                329.56474994,
+                431.21459433
+              ],
+              [
+                371.7931023,
+                465.65665458
+              ],
+              [
+                397.49731678,
+                494.58798519000004
+              ]
+            ],
+            "duration": 1.2,
+            "delay": 0.5,
+            "amplitude": [
+              0,
+              0
+            ]
+          },
+          "order": 65,
+          "when": [
+            "discharging"
+          ],
+          "cleanPatch": true
+        },
+        {
+          "id": "mold-front-lips",
+          "name": "下模前缘",
+          "role": "foreground",
+          "polygon": [
+            [
+              162.48735582,
+              288.39485116000003
+            ],
+            [
+              170.74942476,
+              297.12017309000004
+            ],
+            [
+              185.89655115,
+              305.38626755
+            ],
+            [
+              208.84674265,
+              310.43776972
+            ],
+            [
+              232.25593798,
+              306.76394996
+            ],
+            [
+              249.69808352,
+              297.57940056
+            ],
+            [
+              253.37011416,
+              292.52789839
+            ],
+            [
+              252.4521065,
+              301.25322032
+            ],
+            [
+              240.05900309,
+              309.51931478
+            ],
+            [
+              220.3218384,
+              314.57081695
+            ],
+            [
+              196.45363924,
+              314.57081695
+            ],
+            [
+              176.71647455,
+              309.51931478
+            ],
+            [
+              164.78237497,
+              299.87553791
+            ]
+          ],
+          "pivot": [
+            0,
+            -2.75536482
+          ],
+          "order": 75,
+          "motion": {
+            "type": "fixed"
+          },
+          "when": [
+            "feeding",
+            "processing",
+            "discharging"
+          ],
+          "cleanPatch": false
+        },
+        {
+          "id": "center-mold-front-lip",
+          "name": "中模前缘",
+          "role": "foreground",
+          "polygon": [
+            [
+              246.48505671,
+              306.76394996
+            ],
+            [
+              255.20612948,
+              315.94849936
+            ],
+            [
+              269.43524821,
+              322.37768394
+            ],
+            [
+              292.38543971,
+              326.96995864
+            ],
+            [
+              315.33563121,
+              325.13304876
+            ],
+            [
+              334.61379207,
+              318.24463671
+            ],
+            [
+              343.79386867,
+              310.89699719000004
+            ],
+            [
+              341.49884952,
+              319.16309165
+            ],
+            [
+              329.56474994,
+              327.42918611000005
+            ],
+            [
+              310.28658908,
+              332.48068828000004
+            ],
+            [
+              286.87739375,
+              332.48068828000004
+            ],
+            [
+              268.05823672,
+              327.88841358
+            ],
+            [
+              252.4521065,
+              319.16309165
+            ]
+          ],
+          "pivot": [
+            0,
+            -2.75536482
+          ],
+          "order": 75,
+          "motion": {
+            "type": "fixed"
+          },
+          "when": [
+            "feeding",
+            "processing",
+            "discharging"
+          ],
+          "cleanPatch": false
+        },
+        {
+          "id": "right-mold-front-lip",
+          "name": "右模前缘",
+          "role": "foreground",
+          "polygon": [
+            [
+              330.94176143,
+              323.29613888
+            ],
+            [
+              338.74482654,
+              332.93991575
+            ],
+            [
+              355.72796825,
+              340.28755527000004
+            ],
+            [
+              377.30114826,
+              343.50214756
+            ],
+            [
+              397.95632061,
+              341.20601021000004
+            ],
+            [
+              415.85746998,
+              333.85837069
+            ],
+            [
+              426.41455807,
+              326.96995864
+            ],
+            [
+              425.49655041,
+              334.77682563
+            ],
+            [
+              411.26743168,
+              343.50214756
+            ],
+            [
+              390.61225933000003,
+              348.55364973
+            ],
+            [
+              369.95708698,
+              348.09442226000004
+            ],
+            [
+              351.13792995,
+              342.58369262
+            ],
+            [
+              336.90881122,
+              333.85837069
+            ]
+          ],
+          "pivot": [
+            0,
+            -2.75536482
+          ],
+          "order": 75,
+          "motion": {
+            "type": "fixed"
+          },
+          "when": [
+            "feeding",
+            "processing",
+            "discharging"
+          ],
+          "cleanPatch": false
+        },
+        {
+          "id": "left-guide-post",
+          "name": "左导柱前景",
+          "role": "foreground",
+          "polygon": [
+            [
+              119.3409958,
+              113.42918509
+            ],
+            [
+              158.35632135,
+              112.96995762
+            ],
+            [
+              157.89731752,
+              150.16738269
+            ],
+            [
+              167.99540178,
+              153.84120245
+            ],
+            [
+              173.96245157,
+              169.9141639
+            ],
+            [
+              174.4214554,
+              192.8755374
+            ],
+            [
+              162.94635965,
+              207.57081644000002
+            ],
+            [
+              162.94635965,
+              257.62661067
+            ],
+            [
+              156.97930986,
+              268.18884248
+            ],
+            [
+              142.75019113,
+              273.69957212
+            ],
+            [
+              123.9310341,
+              270.9442073
+            ],
+            [
+              115.20996133,
+              263.59656778000004
+            ],
+            [
+              120.25900346,
+              207.57081644000002
+            ],
+            [
+              110.1609192,
+              199.76394945
+            ],
+            [
+              108.32490388,
+              170.37339137
+            ],
+            [
+              115.66896516,
+              154.75965739
+            ]
+          ],
+          "pivot": [
+            0,
+            -2.75536482
+          ],
+          "order": 82,
+          "motion": {
+            "type": "fixed"
+          },
+          "when": [
+            "feeding",
+            "processing",
+            "discharging"
+          ],
+          "cleanPatch": false
+        },
+        {
+          "id": "right-guide-post",
+          "name": "右导柱前景",
+          "role": "foreground",
+          "polygon": [
+            [
+              448.90574574,
+              165.32188920000002
+            ],
+            [
+              495.26513257,
+              165.32188920000002
+            ],
+            [
+              496.18314023,
+              206.6523615
+            ],
+            [
+              504.44520917,
+              204.81545162
+            ],
+            [
+              513.62528577,
+              215.37768343000002
+            ],
+            [
+              513.62528577,
+              243.39055910000002
+            ],
+            [
+              500.3141747,
+              255.78970079
+            ],
+            [
+              498.47815938,
+              330.18455093
+            ],
+            [
+              487.00306363,
+              342.58369262
+            ],
+            [
+              467.26589894,
+              345.79828491
+            ],
+            [
+              451.65976872,
+              340.74678274
+            ],
+            [
+              447.52873425,
+              328.80686852
+            ],
+            [
+              449.36474957,
+              255.33047332
+            ],
+            [
+              436.97164616,
+              248.90128874
+            ],
+            [
+              436.51264233,
+              213.08154608
+            ],
+            [
+              448.44674191,
+              206.6523615
+            ]
+          ],
+          "pivot": [
+            0,
+            -2.75536482
+          ],
+          "order": 82,
+          "motion": {
+            "type": "fixed"
+          },
+          "when": [
+            "feeding",
+            "processing",
+            "discharging"
+          ],
+          "cleanPatch": false
+        }
+      ]
+    }
+  },
+  "factory/sheeting-strip-cutter": {
+    "id": "sheeting-strip-cutter",
+    "label": "四代压延切条机",
+    "group": "machines",
+    "type": "png",
+    "src": "./sheeting-strip-cutter.png",
+    "size": [
+      512,
+      444
+    ],
+    "bounds": [
+      30.6258,
+      19.6286,
+      510.4294,
+      438.1114
+    ],
+    "originalSource": "../../../source/gameplay/machines/artwork/v5/sheeting-strip-cutter.png",
+    "originalSize": [
+      1312,
+      1199
+    ],
+    "originalBounds": [
+      78,
+      73,
+      1300,
+      1139
+    ],
+    "originalAlphaBounds": [
+      0,
+      25,
+      1302,
+      1152
+    ],
+    "sourceCrop": [
+      0,
+      23,
+      1304,
+      1154
+    ],
+    "scale": [
+      0.39263804,
+      0.39257294
+    ],
+    "alphaThreshold": 16,
+    "padding": 2,
+    "maxEdge": 600,
+    "sourceBytes": 1191212,
+    "bytes": 237113,
+    "draw": {
+      "sourceRect": [
+        30.6258,
+        19.6286,
+        479.8036,
+        418.4828
+      ],
+      "anchor": [
+        259.5337,
+        372.5517
+      ],
+      "ports": {
+        "input": [
+          136.638,
+          56.1379
+        ],
+        "output": [
+          423.2638,
+          365.878
+        ]
+      }
+    },
+    "originalAnchor": [
+      661,
+      972
+    ],
+    "anchor": [
+      259.5337,
+      372.5517
+    ],
+    "originalPorts": {
+      "input": [
+        348,
+        166
+      ],
+      "output": [
+        1078,
+        955
+      ]
+    },
+    "ports": {
+      "input": [
+        136.638,
+        56.1379
+      ],
+      "output": [
+        423.2638,
+        365.878
+      ]
+    },
+    "path": "assets/factory/sheeting-strip-cutter.png",
+    "animation": {
+      "phases": [
+        {
+          "id": "feeding",
+          "label": "进料",
+          "seconds": 0.8
+        },
+        {
+          "id": "processing",
+          "label": "加工",
+          "seconds": 1.9
+        },
+        {
+          "id": "discharging",
+          "label": "出料",
+          "seconds": 1.6504521353150432
+        }
+      ],
+      "layers": [
+        {
+          "id": "clear-third-bar",
+          "name": "静态物料清除",
+          "role": "material",
+          "polygon": [
+            [
+              394.99386824000004,
+              317.9840814
+            ],
+            [
+              400.49080080000005,
+              310.52519553999997
+            ],
+            [
+              408.34356160000004,
+              305.81432026
+            ],
+            [
+              416.58896044000005,
+              306.99203908
+            ],
+            [
+              455.46012640000004,
+              337.6127284
+            ],
+            [
+              463.31288720000003,
+              347.4270519
+            ],
+            [
+              464.09816328000005,
+              355.27851069999997
+            ],
+            [
+              459.3865068,
+              360.38195892
+            ],
+            [
+              451.533746,
+              363.52254244
+            ],
+            [
+              442.50307108000004,
+              360.77453185999997
+            ],
+            [
+              404.4171812,
+              330.93898842
+            ],
+            [
+              398.5276106,
+              325.05039432
+            ]
+          ],
+          "pivot": [
+            0,
+            -9.029177619999999
+          ],
+          "order": 0,
+          "when": [],
+          "cleanPatch": true,
+          "eraseOnly": true,
+          "motion": {
+            "type": "fixed"
+          }
+        },
+        {
+          "id": "roller-feed-line",
+          "name": "辊间颗粒",
+          "role": "material",
+          "polygon": [
+            [
+              118.57668808000001,
+              115.41644436
+            ],
+            [
+              129.17791516,
+              111.8832879
+            ],
+            [
+              187.28834508,
+              103.24668322
+            ],
+            [
+              192.78527764,
+              105.60212086
+            ],
+            [
+              192.78527764,
+              108.74270437999999
+            ],
+            [
+              179.82822232,
+              112.66843378
+            ],
+            [
+              138.60122812,
+              119.34217376
+            ],
+            [
+              121.71779240000001,
+              124.05304903999999
+            ]
+          ],
+          "pivot": [
+            156.26993992,
+            113.45357965999999
+          ],
+          "motion": {
+            "type": "flow",
+            "path": [
+              [
+                156.26993992,
+                113.45357965999999
+              ],
+              [
+                160.19632032,
+                126.40848668
+              ]
+            ],
+            "duration": 0.6,
+            "repeat": true,
+            "startPhase": "feeding",
+            "clipPolygon": [
+              [
+                118.18405004,
+                112.66843378
+              ],
+              [
+                193.96319176,
+                100.1060997
+              ],
+              [
+                197.49693412000002,
+                111.49071495999999
+              ],
+              [
+                122.11043044,
+                127.19363256
+              ]
+            ]
+          },
+          "order": 25,
+          "when": [
+            "feeding",
+            "processing"
+          ],
+          "cleanPatch": true
+        },
+        {
+          "id": "roller-output-line",
+          "name": "辊间成片物料",
+          "role": "material",
+          "polygon": [
+            [
+              133.88957164,
+              163.31034304
+            ],
+            [
+              147.23926500000002,
+              160.16975951999999
+            ],
+            [
+              203.38650472,
+              149.57029014
+            ],
+            [
+              208.88343728,
+              151.92572778
+            ],
+            [
+              209.66871336,
+              156.63660306
+            ],
+            [
+              203.38650472,
+              160.16975951999999
+            ],
+            [
+              143.70552264,
+              169.59151007999998
+            ],
+            [
+              136.63803792000002,
+              168.02121832
+            ]
+          ],
+          "pivot": [
+            171.58282348,
+            159.77718658
+          ],
+          "motion": {
+            "type": "flow",
+            "path": [
+              [
+                171.58282348,
+                159.77718658
+              ],
+              [
+                175.90184192,
+                168.8063642
+              ]
+            ],
+            "duration": 0.6,
+            "repeat": true,
+            "startPhase": "feeding",
+            "clipPolygon": [
+              [
+                130.35582928,
+                158.9920407
+              ],
+              [
+                208.88343728,
+                146.03713367999998
+              ],
+              [
+                212.41717964,
+                158.59946775999998
+              ],
+              [
+                139.38650420000002,
+                172.33952066
+              ]
+            ]
+          },
+          "order": 25,
+          "when": [
+            "feeding",
+            "processing"
+          ],
+          "cleanPatch": true
+        },
+        {
+          "id": "roller-upper",
+          "name": "上压延辊旋转",
+          "role": "mechanical",
+          "polygon": [
+            [
+              125.6441728,
+              125.23076786
+            ],
+            [
+              206.52760904000002,
+              109.52785026
+            ],
+            [
+              217.9141122,
+              113.06100672
+            ],
+            [
+              219.09202632,
+              139.75596664
+            ],
+            [
+              209.66871336,
+              147.60742544
+            ],
+            [
+              136.63803792000002,
+              163.70291598
+            ],
+            [
+              128.00000104,
+              157.81432188
+            ]
+          ],
+          "pivot": [
+            172.7607376,
+            135.83023724
+          ],
+          "motion": {
+            "type": "roller",
+            "speed": 1.1,
+            "direction": 1
+          },
+          "order": 26,
+          "when": [
+            "feeding",
+            "processing",
+            "discharging"
+          ],
+          "cleanPatch": false
+        },
+        {
+          "id": "roller-lower",
+          "name": "下压延辊旋转",
+          "role": "mechanical",
+          "polygon": [
+            [
+              128.00000104,
+              171.55437478
+            ],
+            [
+              207.70552316,
+              155.0663113
+            ],
+            [
+              216.73619808,
+              159.77718658
+            ],
+            [
+              218.30675024,
+              178.22811475999998
+            ],
+            [
+              207.70552316,
+              186.07957356
+            ],
+            [
+              138.20859008000002,
+              202.96020998
+            ],
+            [
+              129.17791516,
+              194.71617823999998
+            ]
+          ],
+          "pivot": [
+            172.7607376,
+            178.6206877
+          ],
+          "motion": {
+            "type": "roller",
+            "speed": 1.1,
+            "direction": -1
+          },
+          "order": 26,
+          "when": [
+            "feeding",
+            "processing",
+            "discharging"
+          ],
+          "cleanPatch": false
+        },
+        {
+          "id": "hopper-fill",
+          "name": "压延原料",
+          "role": "material",
+          "polygon": [
+            [
+              85.98773076,
+              58.885940999999995
+            ],
+            [
+              92.66257744,
+              51.81962808
+            ],
+            [
+              99.73006216,
+              52.604773959999996
+            ],
+            [
+              105.61963276,
+              45.53846104
+            ],
+            [
+              113.47239356,
+              43.57559634
+            ],
+            [
+              122.11043044,
+              47.89389868
+            ],
+            [
+              129.5705532,
+              43.96816928
+            ],
+            [
+              131.92638144,
+              36.509283419999996
+            ],
+            [
+              139.77914224,
+              34.15384578
+            ],
+            [
+              147.23926500000002,
+              38.47214812
+            ],
+            [
+              151.16564540000002,
+              44.36074222
+            ],
+            [
+              157.84049208000002,
+              40.82758576
+            ],
+            [
+              165.30061484,
+              45.53846104
+            ],
+            [
+              167.26380504000002,
+              52.212201019999995
+            ],
+            [
+              173.54601368000002,
+              49.071617499999995
+            ],
+            [
+              180.6134984,
+              51.0344822
+            ],
+            [
+              184.5398788,
+              56.9230763
+            ],
+            [
+              191.60736352,
+              56.137930419999996
+            ],
+            [
+              195.92638196000001,
+              60.8488057
+            ],
+            [
+              184.93251684,
+              65.16710804
+            ],
+            [
+              160.9815964,
+              72.23342095999999
+            ],
+            [
+              136.63803792000002,
+              76.94429624
+            ],
+            [
+              118.18405004,
+              75.76657741999999
+            ],
+            [
+              103.26380452000001,
+              71.05570214
+            ],
+            [
+              91.87730136,
+              64.7745351
+            ]
+          ],
+          "pivot": [
+            140.17178028,
+            59.278513939999996
+          ],
+          "motion": {
+            "type": "vibrate",
+            "amplitude": [
+              0.510429452,
+              0.706631292
+            ],
+            "speed": 3.6
+          },
+          "order": 30,
+          "when": [
+            "feeding",
+            "processing"
+          ],
+          "cleanPatch": true
+        },
+        {
+          "id": "sheet",
+          "name": "压延片",
+          "role": "material",
+          "polygon": [
+            [
+              135.06748576,
+              202.56763704
+            ],
+            [
+              155.09202580000002,
+              192.36074059999999
+            ],
+            [
+              210.0613514,
+              181.36869828
+            ],
+            [
+              222.62576868000002,
+              186.47214649999998
+            ],
+            [
+              230.08589144,
+              196.28646999999998
+            ],
+            [
+              215.16564592,
+              210.0265229
+            ],
+            [
+              192.39263960000002,
+              221.8037111
+            ],
+            [
+              164.9079768,
+              216.30768994
+            ],
+            [
+              148.02454108,
+              208.84880407999998
+            ]
+          ],
+          "pivot": [
+            182.5766886,
+            202.96020998
+          ],
+          "motion": {
+            "type": "flow",
+            "path": [
+              [
+                182.5766886,
+                202.96020998
+              ],
+              [
+                226.94478712,
+                236.72148281999998
+              ]
+            ],
+            "duration": 0.9,
+            "repeat": true,
+            "startPhase": "feeding",
+            "clipPolygon": [
+              [
+                130.74846732,
+                200.60477233999998
+              ],
+              [
+                220.66257848,
+                177.44296888
+              ],
+              [
+                252.46625972,
+                206.10079349999998
+              ],
+              [
+                208.88343728,
+                232.01060754
+              ],
+              [
+                169.61963328000002,
+                222.58885698
+              ]
+            ]
+          },
+          "order": 30,
+          "when": [
+            "feeding",
+            "processing"
+          ],
+          "cleanPatch": true
+        },
+        {
+          "id": "cut-strips",
+          "name": "连续切条",
+          "role": "material",
+          "polygon": [
+            [
+              202.2085906,
+              229.26259696
+            ],
+            [
+              224.19632084,
+              216.70026288
+            ],
+            [
+              243.04294676,
+              213.55967936
+            ],
+            [
+              267.77914328,
+              230.83288872
+            ],
+            [
+              282.6993888,
+              243.3952228
+            ],
+            [
+              298.79754844,
+              258.31299451999996
+            ],
+            [
+              309.79141356,
+              271.66047448
+            ],
+            [
+              309.79141356,
+              301.88859085999997
+            ],
+            [
+              298.79754844,
+              325.44296726
+            ],
+            [
+              284.26994096000004,
+              314.84349788
+            ],
+            [
+              266.60122916,
+              298.3554344
+            ],
+            [
+              245.398775,
+              281.86737092
+            ],
+            [
+              224.58895888,
+              260.66843216
+            ],
+            [
+              207.70552316,
+              244.57294162
+            ]
+          ],
+          "pivot": [
+            256.78527816,
+            270.09018272
+          ],
+          "motion": {
+            "type": "flow",
+            "path": [
+              [
+                256.78527816,
+                270.09018272
+              ],
+              [
+                288.5889594,
+                302.2811638
+              ]
+            ],
+            "duration": 0.9,
+            "repeat": true,
+            "startPhase": "feeding",
+            "clipPolygon": [
+              [
+                202.2085906,
+                228.47745107999998
+              ],
+              [
+                241.86503264,
+                212.77453348
+              ],
+              [
+                319.21472652,
+                266.16445332
+              ],
+              [
+                320.78527868000003,
+                306.99203908
+              ],
+              [
+                299.19018648,
+                330.93898842
+              ],
+              [
+                224.19632084,
+                260.66843216
+              ]
+            ]
+          },
+          "order": 35,
+          "when": [
+            "feeding",
+            "processing"
+          ],
+          "cleanPatch": true
+        },
+        {
+          "id": "cutter-left",
+          "name": "纵切圆刀一",
+          "role": "mechanical",
+          "polygon": [
+            [
+              199.46012432,
+              204.1379288
+            ],
+            [
+              204.56441884,
+              193.14588648
+            ],
+            [
+              212.02454160000002,
+              187.64986532
+            ],
+            [
+              219.87730240000002,
+              189.22015707999998
+            ],
+            [
+              226.55214908000002,
+              197.85676175999998
+            ],
+            [
+              232.44171968,
+              210.41909583999998
+            ],
+            [
+              235.58282400000002,
+              228.47745107999998
+            ],
+            [
+              231.65644360000002,
+              243.78779573999998
+            ],
+            [
+              226.15951104,
+              252.03182747999998
+            ],
+            [
+              218.69938828000002,
+              255.95755688
+            ],
+            [
+              211.23926552,
+              252.81697336
+            ],
+            [
+              204.56441884,
+              243.78779573999998
+            ],
+            [
+              200.63803844,
+              230.44031578
+            ]
+          ],
+          "pivot": [
+            217.12883612000002,
+            222.19628404
+          ],
+          "motion": {
+            "type": "projected-spin",
+            "radius": [
+              15.312883560000001,
+              32.19098108
+            ],
+            "shear": 0.12,
+            "speed": 1.1
+          },
+          "order": 50,
+          "when": [
+            "feeding",
+            "processing",
+            "discharging"
+          ],
+          "cleanPatch": false
+        },
+        {
+          "id": "cutter-center",
+          "name": "纵切圆刀二",
+          "role": "mechanical",
+          "polygon": [
+            [
+              243.43558480000002,
+              193.53845941999998
+            ],
+            [
+              248.14724128,
+              182.54641709999999
+            ],
+            [
+              256.00000208,
+              178.6206877
+            ],
+            [
+              263.85276288,
+              181.76127122
+            ],
+            [
+              270.52760956000003,
+              191.18302178
+            ],
+            [
+              275.63190408,
+              204.92307467999998
+            ],
+            [
+              277.59509428,
+              221.01856522
+            ],
+            [
+              274.06135192,
+              235.93633694
+            ],
+            [
+              267.38650524,
+              244.96551455999997
+            ],
+            [
+              260.31902052000004,
+              247.3209522
+            ],
+            [
+              253.25153580000003,
+              242.21750397999998
+            ],
+            [
+              246.96932716,
+              232.40318048
+            ],
+            [
+              243.04294676,
+              217.8779817
+            ]
+          ],
+          "pivot": [
+            260.31902052000004,
+            212.77453348
+          ],
+          "motion": {
+            "type": "projected-spin",
+            "radius": [
+              15.312883560000001,
+              32.19098108
+            ],
+            "shear": 0.12,
+            "speed": 1.1
+          },
+          "order": 50,
+          "when": [
+            "feeding",
+            "processing",
+            "discharging"
+          ],
+          "cleanPatch": false
+        },
+        {
+          "id": "cutter-right",
+          "name": "纵切圆刀三",
+          "role": "mechanical",
+          "polygon": [
+            [
+              281.12883664000003,
+              182.15384416
+            ],
+            [
+              286.23313116,
+              172.33952066
+            ],
+            [
+              294.08589196,
+              168.02121832
+            ],
+            [
+              301.93865276,
+              170.37665596
+            ],
+            [
+              308.61349944,
+              178.22811475999998
+            ],
+            [
+              314.50307004,
+              191.96816765999998
+            ],
+            [
+              317.64417436,
+              208.0636582
+            ],
+            [
+              315.28834612,
+              223.37400286
+            ],
+            [
+              310.18405160000003,
+              233.97347223999998
+            ],
+            [
+              303.50920492,
+              239.86206633999998
+            ],
+            [
+              295.65644412,
+              237.11405575999999
+            ],
+            [
+              288.5889594,
+              228.87002402
+            ],
+            [
+              283.48466488,
+              214.73739817999999
+            ],
+            [
+              280.7361986,
+              198.2493347
+            ]
+          ],
+          "pivot": [
+            298.01227236,
+            203.74535586
+          ],
+          "motion": {
+            "type": "projected-spin",
+            "radius": [
+              15.312883560000001,
+              32.19098108
+            ],
+            "shear": 0.12,
+            "speed": 1.1
+          },
+          "order": 50,
+          "when": [
+            "feeding",
+            "processing",
+            "discharging"
+          ],
+          "cleanPatch": false
+        },
+        {
+          "id": "crosscut-blade",
+          "name": "横切闸刀",
+          "role": "mechanical",
+          "polygon": [
+            [
+              326.67484928,
+              287.36339208
+            ],
+            [
+              418.1595126,
+              266.94959919999997
+            ],
+            [
+              418.1595126,
+              294.82227794
+            ],
+            [
+              328.24540144,
+              314.45092494
+            ]
+          ],
+          "pivot": [
+            373.39877604000003,
+            290.11140266
+          ],
+          "motion": {
+            "type": "crosscut",
+            "amplitude": [
+              0,
+              20.021219939999998
+            ],
+            "duration": 0.58,
+            "delay": 0.46,
+            "phase": "processing"
+          },
+          "order": 55,
+          "when": [
+            "feeding",
+            "processing",
+            "discharging"
+          ],
+          "cleanPatch": true
+        },
+        {
+          "id": "product-1",
+          "name": "棒形成品",
+          "role": "material",
+          "polygon": [
+            [
+              333.34969596,
+              334.86471782
+            ],
+            [
+              339.23926656000003,
+              325.05039432
+            ],
+            [
+              347.48466540000004,
+              321.9098108
+            ],
+            [
+              356.51534032,
+              324.65782138
+            ],
+            [
+              388.7116596,
+              352.92307306
+            ],
+            [
+              395.77914432,
+              362.34482362
+            ],
+            [
+              396.17178236,
+              371.76657417999996
+            ],
+            [
+              392.24540196000004,
+              376.8700224
+            ],
+            [
+              385.96319332,
+              379.61803298
+            ],
+            [
+              377.32515644,
+              378.44031415999996
+            ],
+            [
+              369.0797576,
+              374.51458476
+            ],
+            [
+              339.23926656000003,
+              346.64190601999996
+            ]
+          ],
+          "pivot": [
+            365.1533772,
+            351.3527813
+          ],
+          "motion": {
+            "type": "flow",
+            "path": [
+              [
+                325.10429712,
+                306.20689319999997
+              ],
+              [
+                373.79141408000004,
+                349.3899166
+              ],
+              [
+                428.36810164,
+                393.35808588
+              ]
+            ],
+            "duration": 1.3,
+            "delay": 0,
+            "amplitude": [
+              0,
+              0
+            ]
+          },
+          "order": 65,
+          "when": [
+            "discharging"
+          ],
+          "cleanPatch": true
+        },
+        {
+          "id": "product-2",
+          "name": "后续棒形成品",
+          "role": "material",
+          "polygon": [
+            [
+              367.90184348,
+              328.97612372
+            ],
+            [
+              372.61349996,
+              318.76922728
+            ],
+            [
+              380.46626076,
+              315.23607082
+            ],
+            [
+              388.7116596,
+              317.19893551999996
+            ],
+            [
+              426.0122734,
+              347.4270519
+            ],
+            [
+              431.11656792,
+              358.02652128
+            ],
+            [
+              428.36810164,
+              366.66312596
+            ],
+            [
+              421.69325496000005,
+              370.58885535999997
+            ],
+            [
+              413.84049416000005,
+              369.0185636
+            ],
+            [
+              404.02454316,
+              363.52254244
+            ],
+            [
+              375.36196624,
+              339.96816603999997
+            ]
+          ],
+          "pivot": [
+            397.34969648000003,
+            342.71617662
+          ],
+          "motion": {
+            "type": "flow",
+            "path": [
+              [
+                352.58895992000004,
+                296.78514264
+              ],
+              [
+                401.27607688,
+                338.79044722
+              ],
+              [
+                451.14110796,
+                381.58089767999996
+              ]
+            ],
+            "duration": 1.2504521353150433,
+            "delay": 0.4,
+            "amplitude": [
+              0,
+              0
+            ]
+          },
+          "order": 65,
+          "when": [
+            "discharging"
+          ],
+          "cleanPatch": true
+        },
+        {
+          "id": "crosscut-frame",
+          "name": "横切门架遮挡",
+          "role": "foreground",
+          "polygon": [
+            [
+              296.83435824000003,
+              264.20158862
+            ],
+            [
+              301.54601472,
+              255.56498394
+            ],
+            [
+              309.79141356,
+              257.92042158
+            ],
+            [
+              323.53374496000004,
+              254.77983805999997
+            ],
+            [
+              435.04294832000005,
+              226.51458638
+            ],
+            [
+              448.00000364000005,
+              227.6923052
+            ],
+            [
+              452.31902208,
+              235.15119106
+            ],
+            [
+              451.533746,
+              259.49071334
+            ],
+            [
+              442.11043304000003,
+              265.37930744
+            ],
+            [
+              420.51534084,
+              269.69760978
+            ],
+            [
+              324.71165908,
+              295.21485088
+            ],
+            [
+              304.68711904,
+              295.99999676
+            ],
+            [
+              296.83435824000003,
+              290.11140266
+            ]
+          ],
+          "pivot": [
+            0,
+            -9.029177619999999
+          ],
+          "order": 85,
+          "motion": {
+            "type": "fixed"
+          },
+          "when": [
+            "feeding",
+            "processing",
+            "discharging"
+          ],
+          "cleanPatch": false
+        },
+        {
+          "id": "belt-near-rail",
+          "name": "输送带近侧遮挡",
+          "role": "foreground",
+          "polygon": [
+            [
+              316.85889828,
+              372.94429299999996
+            ],
+            [
+              330.60122968,
+              375.29973064
+            ],
+            [
+              369.47239564,
+              403.95755526
+            ],
+            [
+              418.55215064000004,
+              389.82492942
+            ],
+            [
+              427.9754636,
+              390.6100753
+            ],
+            [
+              425.22699732,
+              420.0530458
+            ],
+            [
+              363.97546308,
+              440.46683867999997
+            ],
+            [
+              341.5950948,
+              424.76392108
+            ],
+            [
+              324.71165908,
+              407.49071172
+            ]
+          ],
+          "pivot": [
+            0,
+            -9.029177619999999
+          ],
+          "order": 90,
+          "motion": {
+            "type": "fixed"
+          },
+          "when": [
+            "feeding",
+            "processing",
+            "discharging"
+          ],
+          "cleanPatch": false
+        }
+      ]
+    }
+  },
+  "factory/flip-wafer-mold": {
+    "id": "flip-wafer-mold",
+    "label": "五代双面烤模机",
+    "group": "machines",
+    "type": "png",
+    "src": "./flip-wafer-mold.png",
+    "size": [
+      483,
+      430
+    ],
+    "bounds": [
+      1.5431,
+      10.4219,
+      481.4569,
+      428.456
+    ],
+    "originalSource": "../../../source/gameplay/machines/artwork/v5/flip-wafer-mold.png",
+    "originalSize": [
+      1312,
+      1199
+    ],
+    "originalBounds": [
+      50,
+      52,
+      1294,
+      1135
+    ],
+    "originalAlphaBounds": [
+      48,
+      27,
+      1296,
+      1137
+    ],
+    "sourceCrop": [
+      46,
+      25,
+      1298,
+      1139
+    ],
+    "scale": [
+      0.38578275,
+      0.38599641
+    ],
+    "alphaThreshold": 16,
+    "padding": 2,
+    "maxEdge": 600,
+    "sourceBytes": 1494770,
+    "bytes": 280130,
+    "draw": {
+      "sourceRect": [
+        1.5431,
+        10.4219,
+        479.9138,
+        418.0341
+      ],
+      "anchor": [
+        268.5048,
+        407.2262
+      ],
+      "ports": {
+        "input": [
+          196.7492,
+          190.2962
+        ],
+        "output": [
+          171.6733,
+          355.1167
+        ]
+      }
+    },
+    "originalAnchor": [
+      742,
+      1080
+    ],
+    "anchor": [
+      268.5048,
+      407.2262
+    ],
+    "originalPorts": {
+      "input": [
+        556,
+        518
+      ],
+      "output": [
+        491,
+        945
+      ]
+    },
+    "ports": {
+      "input": [
+        196.7492,
+        190.2962
+      ],
+      "output": [
+        171.6733,
+        355.1167
+      ]
+    },
+    "path": "assets/factory/flip-wafer-mold.png",
+    "animation": {
+      "phases": [
+        {
+          "id": "feeding",
+          "label": "进料",
+          "seconds": 0.85
+        },
+        {
+          "id": "processing",
+          "label": "加工",
+          "seconds": 3.2
+        },
+        {
+          "id": "discharging",
+          "label": "出料",
+          "seconds": 1.9500000000000002
+        }
+      ],
+      "layers": [
+        {
+          "id": "clear-middle-wafer",
+          "name": "静态物料清除",
+          "role": "material",
+          "polygon": [
+            [
+              185.17572,
+              314.58707415000003
+            ],
+            [
+              191.348244,
+              309.18312441
+            ],
+            [
+              200.60703,
+              304.93716390000003
+            ],
+            [
+              210.25159875,
+              303.00718185
+            ],
+            [
+              219.89616750000002,
+              303.77917467000003
+            ],
+            [
+              229.926519,
+              307.25314236
+            ],
+            [
+              239.57108775,
+              312.6570921
+            ],
+            [
+              244.20048075,
+              319.60502748
+            ],
+            [
+              244.97204625,
+              325.78097004
+            ],
+            [
+              241.11421875,
+              331.57091619
+            ],
+            [
+              233.39856375,
+              336.20287311
+            ],
+            [
+              223.36821225,
+              338.90484798
+            ],
+            [
+              213.33786075,
+              340.83483003000003
+            ],
+            [
+              202.150161,
+              338.90484798
+            ],
+            [
+              193.27715775000001,
+              334.65888747
+            ],
+            [
+              186.33306825,
+              328.86894132000003
+            ],
+            [
+              182.47524075,
+              322.30700235
+            ]
+          ],
+          "pivot": [
+            -17.7460065,
+            -9.64991025
+          ],
+          "order": 0,
+          "when": [],
+          "cleanPatch": true,
+          "eraseOnly": true,
+          "motion": {
+            "type": "fixed"
+          }
+        },
+        {
+          "id": "bottom-mold",
+          "name": "下烤模组件",
+          "role": "mechanical",
+          "polygon": [
+            [
+              139.26757275,
+              201.49012602000002
+            ],
+            [
+              152.38418625,
+              181.03231629
+            ],
+            [
+              177.07428225,
+              156.71454246000002
+            ],
+            [
+              194.04872325,
+              152.46858195000002
+            ],
+            [
+              368.42252625000003,
+              187.98025167
+            ],
+            [
+              392.7268395,
+              194.15619423
+            ],
+            [
+              407.386584,
+              203.42010807
+            ],
+            [
+              406.22923575,
+              244.72172394
+            ],
+            [
+              399.28514625,
+              270.197487
+            ],
+            [
+              381.9249225,
+              290.26930032
+            ],
+            [
+              367.265178,
+              297.98922852
+            ],
+            [
+              344.50399575,
+              297.98922852
+            ],
+            [
+              154.69888275,
+              244.72172394
+            ],
+            [
+              140.81070375000002,
+              228.89587113000002
+            ]
+          ],
+          "pivot": [
+            273.134187,
+            213.45601473
+          ],
+          "motion": {
+            "type": "fixed"
+          },
+          "order": 20,
+          "when": [
+            "feeding",
+            "processing",
+            "discharging"
+          ],
+          "cleanPatch": false
+        },
+        {
+          "id": "output-slide-fixed",
+          "name": "固定出料滑道面",
+          "role": "foreground",
+          "polygon": [
+            [
+              228.76917075,
+              218.08797165000001
+            ],
+            [
+              236.48482575,
+              224.64991062
+            ],
+            [
+              271.97683875,
+              230.43985677
+            ],
+            [
+              282.77875575,
+              231.21184959
+            ],
+            [
+              284.7076695,
+              238.93177779
+            ],
+            [
+              258.86022525,
+              306.09515313
+            ],
+            [
+              250.7587875,
+              308.41113159
+            ],
+            [
+              191.348244,
+              293.74326801
+            ],
+            [
+              187.10463375,
+              289.11131109
+            ],
+            [
+              192.1198095,
+              278.30341161
+            ],
+            [
+              221.82508125,
+              223.10592498
+            ]
+          ],
+          "pivot": [
+            -17.7460065,
+            -9.64991025
+          ],
+          "order": 25,
+          "motion": {
+            "type": "fixed"
+          },
+          "when": [
+            "feeding",
+            "processing",
+            "discharging"
+          ],
+          "cleanPatch": false
+        },
+        {
+          "id": "wafer-left",
+          "name": "左烤模脆饼",
+          "role": "material",
+          "polygon": [
+            [
+              170.5159755,
+              184.12028757000002
+            ],
+            [
+              175.53115125,
+              177.94434501
+            ],
+            [
+              183.24680625,
+              173.6983845
+            ],
+            [
+              194.04872325,
+              170.61041322
+            ],
+            [
+              205.236423,
+              170.22441681
+            ],
+            [
+              216.03834,
+              173.31238809
+            ],
+            [
+              225.297126,
+              178.71633783000001
+            ],
+            [
+              232.2412155,
+              185.27827680000001
+            ],
+            [
+              233.7843465,
+              192.22621218
+            ],
+            [
+              230.31230175000002,
+              199.17414756
+            ],
+            [
+              222.9824295,
+              204.5780973
+            ],
+            [
+              211.408947,
+              208.82405781
+            ],
+            [
+              200.22124725,
+              210.36804345000002
+            ],
+            [
+              188.26198200000002,
+              208.4380614
+            ],
+            [
+              178.61741325,
+              203.80610448000002
+            ],
+            [
+              172.0591065,
+              197.63016192
+            ],
+            [
+              169.35862725,
+              191.06822295
+            ]
+          ],
+          "pivot": [
+            201.76437825,
+            190.29623013
+          ],
+          "motion": {
+            "type": "fixed"
+          },
+          "order": 30,
+          "when": [
+            "feeding",
+            "processing"
+          ],
+          "cleanPatch": true
+        },
+        {
+          "id": "wafer-right",
+          "name": "右烤模脆饼",
+          "role": "material",
+          "polygon": [
+            [
+              295.12380375,
+              218.85996447
+            ],
+            [
+              301.29632775,
+              212.2980255
+            ],
+            [
+              312.09824475,
+              206.12208294
+            ],
+            [
+              323.67172725,
+              202.64811525000002
+            ],
+            [
+              335.24520975,
+              203.03411166
+            ],
+            [
+              345.27556125,
+              206.12208294
+            ],
+            [
+              354.53434725,
+              212.2980255
+            ],
+            [
+              361.8642195,
+              219.24596088
+            ],
+            [
+              363.02156775000003,
+              226.96588908
+            ],
+            [
+              358.39217475,
+              234.29982087000002
+            ],
+            [
+              349.5191715,
+              240.86175984000002
+            ],
+            [
+              337.945689,
+              245.49371676
+            ],
+            [
+              325.98642375000003,
+              247.0377024
+            ],
+            [
+              314.798724,
+              245.10772035
+            ],
+            [
+              305.15415525000003,
+              240.47576343
+            ],
+            [
+              297.43850025,
+              234.29982087000002
+            ],
+            [
+              293.58067275,
+              226.96588908
+            ]
+          ],
+          "pivot": [
+            328.30112025,
+            225.42190344
+          ],
+          "motion": {
+            "type": "fixed"
+          },
+          "order": 30,
+          "when": [
+            "feeding",
+            "processing"
+          ],
+          "cleanPatch": true
+        },
+        {
+          "id": "wafer-on-chute",
+          "name": "滑道脆饼清除",
+          "role": "material",
+          "polygon": [
+            [
+              215.2667745,
+              250.12567368
+            ],
+            [
+              222.9824295,
+              243.17773830000002
+            ],
+            [
+              232.2412155,
+              240.08976702
+            ],
+            [
+              242.271567,
+              239.70377061000002
+            ],
+            [
+              251.91613575,
+              242.01974907000002
+            ],
+            [
+              260.0175735,
+              247.80969522
+            ],
+            [
+              263.48961825,
+              255.14362701000002
+            ],
+            [
+              263.48961825,
+              262.4775588
+            ],
+            [
+              259.246008,
+              269.81149059
+            ],
+            [
+              250.7587875,
+              275.60143674
+            ],
+            [
+              241.11421875,
+              278.68940802000003
+            ],
+            [
+              231.08386725,
+              278.30341161
+            ],
+            [
+              221.82508125,
+              274.44344751
+            ],
+            [
+              214.88099175,
+              267.88150854
+            ],
+            [
+              211.408947,
+              259.38958752
+            ]
+          ],
+          "pivot": [
+            238.02795675000002,
+            258.6175947
+          ],
+          "motion": {
+            "type": "fixed"
+          },
+          "order": 60,
+          "when": [
+            "discharging"
+          ],
+          "cleanPatch": true,
+          "eraseOnly": true
+        },
+        {
+          "id": "product-1",
+          "name": "圆饼成品",
+          "role": "material",
+          "polygon": [
+            [
+              144.2827485,
+              345.85278336
+            ],
+            [
+              151.9984035,
+              339.67684080000004
+            ],
+            [
+              161.2571895,
+              335.8168767
+            ],
+            [
+              170.90175825,
+              334.27289106
+            ],
+            [
+              180.16054425000002,
+              335.8168767
+            ],
+            [
+              190.19089575,
+              339.67684080000004
+            ],
+            [
+              198.67811625000002,
+              345.85278336
+            ],
+            [
+              204.07907475000002,
+              352.80071874000004
+            ],
+            [
+              205.236423,
+              360.13465053
+            ],
+            [
+              202.150161,
+              366.6965895
+            ],
+            [
+              194.82028875,
+              370.94255001
+            ],
+            [
+              184.78993725,
+              373.64452488
+            ],
+            [
+              172.830672,
+              374.03052129
+            ],
+            [
+              161.64297225,
+              372.10053924
+            ],
+            [
+              151.9984035,
+              368.24057514000003
+            ],
+            [
+              145.054314,
+              362.06463258
+            ],
+            [
+              140.03913825,
+              355.50269361
+            ],
+            [
+              140.424921,
+              350.48474028
+            ]
+          ],
+          "pivot": [
+            172.830672,
+            354.73070079
+          ],
+          "motion": {
+            "type": "flow",
+            "path": [
+              [
+                238.02795675000002,
+                260.16158034
+              ],
+              [
+                211.02316425,
+                311.88509928
+              ],
+              [
+                167.04393075000002,
+                355.50269361
+              ],
+              [
+                137.338659,
+                381.75044949
+              ]
+            ],
+            "duration": 1.35,
+            "delay": 0,
+            "amplitude": [
+              0,
+              0
+            ]
+          },
+          "order": 65,
+          "when": [
+            "discharging"
+          ],
+          "cleanPatch": true
+        },
+        {
+          "id": "product-2",
+          "name": "后续圆饼成品",
+          "role": "material",
+          "polygon": [
+            [
+              144.2827485,
+              345.85278336
+            ],
+            [
+              151.9984035,
+              339.67684080000004
+            ],
+            [
+              161.2571895,
+              335.8168767
+            ],
+            [
+              170.90175825,
+              334.27289106
+            ],
+            [
+              180.16054425000002,
+              335.8168767
+            ],
+            [
+              190.19089575,
+              339.67684080000004
+            ],
+            [
+              198.67811625000002,
+              345.85278336
+            ],
+            [
+              204.07907475000002,
+              352.80071874000004
+            ],
+            [
+              205.236423,
+              360.13465053
+            ],
+            [
+              202.150161,
+              366.6965895
+            ],
+            [
+              194.82028875,
+              370.94255001
+            ],
+            [
+              184.78993725,
+              373.64452488
+            ],
+            [
+              172.830672,
+              374.03052129
+            ],
+            [
+              161.64297225,
+              372.10053924
+            ],
+            [
+              151.9984035,
+              368.24057514000003
+            ],
+            [
+              145.054314,
+              362.06463258
+            ],
+            [
+              140.03913825,
+              355.50269361
+            ],
+            [
+              140.424921,
+              350.48474028
+            ]
+          ],
+          "pivot": [
+            172.830672,
+            354.73070079
+          ],
+          "motion": {
+            "type": "flow",
+            "path": [
+              [
+                238.02795675000002,
+                260.16158034
+              ],
+              [
+                211.02316425,
+                311.88509928
+              ],
+              [
+                167.04393075000002,
+                355.50269361
+              ],
+              [
+                137.338659,
+                381.75044949
+              ]
+            ],
+            "duration": 1.35,
+            "delay": 0.6,
+            "amplitude": [
+              0,
+              0
+            ]
+          },
+          "order": 65,
+          "when": [
+            "discharging"
+          ],
+          "cleanPatch": true
+        },
+        {
+          "id": "top-lid",
+          "name": "上烤模开合",
+          "role": "mechanical",
+          "polygon": [
+            [
+              143.51118300000002,
+              39.757630230000004
+            ],
+            [
+              150.4552725,
+              22.38779178
+            ],
+            [
+              162.028755,
+              11.579892300000001
+            ],
+            [
+              167.81549625,
+              10.03590666
+            ],
+            [
+              182.47524075,
+              11.19389589
+            ],
+            [
+              392.7268395,
+              47.47755843
+            ],
+            [
+              402.75719100000003,
+              55.96947945
+            ],
+            [
+              408.15814950000004,
+              69.09335739000001
+            ],
+            [
+              425.1325905,
+              147.45062862
+            ],
+            [
+              422.0463285,
+              160.96050297
+            ],
+            [
+              415.8738045,
+              169.45242399
+            ],
+            [
+              403.5287565,
+              178.71633783000001
+            ],
+            [
+              390.02636025,
+              181.03231629
+            ],
+            [
+              184.01837175,
+              142.43267529
+            ],
+            [
+              173.6022375,
+              135.87073632
+            ],
+            [
+              166.27236525,
+              124.67684043
+            ],
+            [
+              148.9121415,
+              77.199282
+            ],
+            [
+              147.75479325,
+              61.37342919
+            ]
+          ],
+          "pivot": [
+            285.86501775,
+            173.31238809
+          ],
+          "motion": {
+            "type": "hinge",
+            "amplitude": [
+              -3.086262,
+              -15.4398564
+            ],
+            "angle": 0,
+            "duration": 2.7,
+            "delay": 0.05,
+            "phase": "processing",
+            "hold": 1.2,
+            "depthAtClosed": 82
+          },
+          "order": 70,
+          "when": [
+            "feeding",
+            "processing",
+            "discharging"
+          ],
+          "cleanPatch": true,
+          "closedPolygon": [
+            [
+              140.424921,
+              182.57630193
+            ],
+            [
+              154.69888275,
+              167.90843835
+            ],
+            [
+              201.37859550000002,
+              138.9587076
+            ],
+            [
+              214.49520900000002,
+              134.32675068
+            ],
+            [
+              231.46965,
+              138.18671478000002
+            ],
+            [
+              401.59984275,
+              179.87432706
+            ],
+            [
+              412.40175975,
+              187.59425526
+            ],
+            [
+              414.3306735,
+              202.64811525000002
+            ],
+            [
+              408.54393225,
+              232.36983882
+            ],
+            [
+              392.34105675,
+              248.19569163
+            ],
+            [
+              371.12300550000003,
+              264.02154444
+            ],
+            [
+              143.51118300000002,
+              211.52603268000001
+            ]
+          ],
+          "closedAsset": "factory/flip-wafer-mold-closed"
+        },
+        {
+          "id": "hinge-front",
+          "name": "上盖铰链前缘",
+          "role": "foreground",
+          "polygon": [
+            [
+              195.2060715,
+              141.27468606
+            ],
+            [
+              204.4648575,
+              140.50269324
+            ],
+            [
+              227.22603975,
+              148.99461426
+            ],
+            [
+              229.926519,
+              156.71454246000002
+            ],
+            [
+              359.16374025,
+              177.17235219
+            ],
+            [
+              369.5798745,
+              182.96229834000002
+            ],
+            [
+              378.45287775,
+              186.82226244
+            ],
+            [
+              381.9249225,
+              192.998205
+            ],
+            [
+              378.45287775,
+              199.94614038
+            ],
+            [
+              371.12300550000003,
+              203.03411166
+            ],
+            [
+              350.67651975,
+              197.63016192
+            ],
+            [
+              348.36182325,
+              189.91023372
+            ],
+            [
+              225.297126,
+              167.90843835
+            ],
+            [
+              212.1805125,
+              164.04847425
+            ],
+            [
+              204.07907475000002,
+              160.18851015
+            ],
+            [
+              195.59185425,
+              154.01256759
+            ]
+          ],
+          "pivot": [
+            -17.7460065,
+            -9.64991025
+          ],
+          "order": 88,
+          "motion": {
+            "type": "fixed"
+          },
+          "when": [
+            "feeding",
+            "processing",
+            "discharging"
+          ],
+          "cleanPatch": false,
+          "occludedByClosedLid": true
+        },
+        {
+          "id": "output-slide-left-rail",
+          "name": "滑道左侧凸沿",
+          "role": "foreground",
+          "polygon": [
+            [
+              228.76917075,
+              218.08797165000001
+            ],
+            [
+              233.01278100000002,
+              219.63195729
+            ],
+            [
+              236.48482575,
+              224.64991062
+            ],
+            [
+              197.13498525,
+              290.65529673000003
+            ],
+            [
+              193.6629405,
+              293.74326801
+            ],
+            [
+              187.4904165,
+              290.65529673000003
+            ],
+            [
+              187.87619925,
+              284.47935417
+            ],
+            [
+              192.50559225,
+              275.21544033000004
+            ],
+            [
+              221.82508125,
+              223.10592498
+            ]
+          ],
+          "pivot": [
+            -17.7460065,
+            -9.64991025
+          ],
+          "order": 90,
+          "motion": {
+            "type": "fixed"
+          },
+          "when": [
+            "feeding",
+            "processing",
+            "discharging"
+          ],
+          "cleanPatch": false
+        },
+        {
+          "id": "output-slide-right-rail",
+          "name": "滑道右侧凸沿",
+          "role": "foreground",
+          "polygon": [
+            [
+              276.60623175,
+              230.82585318
+            ],
+            [
+              282.77875575,
+              231.21184959
+            ],
+            [
+              284.7076695,
+              238.93177779
+            ],
+            [
+              258.86022525,
+              306.09515313
+            ],
+            [
+              255.00239775,
+              309.18312441
+            ],
+            [
+              250.37300475,
+              307.25314236
+            ],
+            [
+              248.82987375000002,
+              301.0771998
+            ],
+            [
+              254.616615,
+              291.81328596000003
+            ],
+            [
+              273.9057525,
+              240.08976702
+            ]
+          ],
+          "pivot": [
+            -17.7460065,
+            -9.64991025
+          ],
+          "order": 90,
+          "motion": {
+            "type": "fixed"
+          },
+          "when": [
+            "feeding",
+            "processing",
+            "discharging"
+          ],
+          "cleanPatch": false
+        },
+        {
+          "id": "side-bearing-left",
+          "name": "左侧轴承遮挡",
+          "role": "foreground",
+          "polygon": [
+            [
+              121.52156625,
+              146.29263939
+            ],
+            [
+              141.968052,
+              146.6786358
+            ],
+            [
+              157.399362,
+              157.10053887
+            ],
+            [
+              163.95766875,
+              170.61041322
+            ],
+            [
+              164.72923425,
+              182.96229834000002
+            ],
+            [
+              157.78514475,
+              197.24416551000002
+            ],
+            [
+              145.8258795,
+              202.64811525000002
+            ],
+            [
+              140.03913825,
+              196.08617628000002
+            ],
+            [
+              136.95287625,
+              173.31238809
+            ],
+            [
+              129.623004,
+              160.96050297
+            ]
+          ],
+          "pivot": [
+            -17.7460065,
+            -9.64991025
+          ],
+          "order": 95,
+          "motion": {
+            "type": "fixed"
+          },
+          "when": [
+            "feeding",
+            "processing",
+            "discharging"
+          ],
+          "cleanPatch": false
+        },
+        {
+          "id": "side-bearing-right",
+          "name": "右侧轴承遮挡",
+          "role": "foreground",
+          "polygon": [
+            [
+              416.25958725,
+              203.03411166
+            ],
+            [
+              432.8482455,
+              201.10412961
+            ],
+            [
+              445.964859,
+              204.5780973
+            ],
+            [
+              459.0814725,
+              213.07001832
+            ],
+            [
+              464.86821375,
+              228.12387831
+            ],
+            [
+              466.7971275,
+              245.49371676
+            ],
+            [
+              459.853038,
+              260.54757675
+            ],
+            [
+              446.7364245,
+              270.96947982
+            ],
+            [
+              431.3051145,
+              267.49551213
+            ],
+            [
+              425.904156,
+              255.14362701000002
+            ],
+            [
+              423.20367675,
+              234.68581728
+            ]
+          ],
+          "pivot": [
+            -17.7460065,
+            -9.64991025
+          ],
+          "order": 95,
+          "motion": {
+            "type": "fixed"
+          },
+          "when": [
+            "feeding",
+            "processing",
+            "discharging"
+          ],
+          "cleanPatch": false
+        }
+      ],
+      "flipAssembly": {
+        "polygon": [
+          [
+            141.1964865,
+            181.4183127
+          ],
+          [
+            210.25159875,
+            135.48473991
+          ],
+          [
+            404.68610475,
+            180.64631988
+          ],
+          [
+            412.40175975,
+            195.70017987
+          ],
+          [
+            406.22923575,
+            223.49192139000002
+          ],
+          [
+            383.4680535,
+            228.89587113000002
+          ],
+          [
+            383.4680535,
+            263.63554803
+          ],
+          [
+            359.16374025,
+            291.81328596000003
+          ],
+          [
+            344.118213,
+            299.53321416
+          ],
+          [
+            140.424921,
+            238.54578138
+          ]
+        ],
+        "erasePolygon": [
+          [
+            157.399362,
+            168.29443476
+          ],
+          [
+            190.5766785,
+            132.78276504000002
+          ],
+          [
+            230.6980845,
+            135.87073632
+          ],
+          [
+            381.9249225,
+            175.24237014
+          ],
+          [
+            385.78275,
+            190.68222654000002
+          ],
+          [
+            414.3306735,
+            197.24416551000002
+          ],
+          [
+            414.3306735,
+            225.42190344
+          ],
+          [
+            386.16853275,
+            228.50987472
+          ],
+          [
+            386.55431550000003,
+            267.49551213
+          ],
+          [
+            367.265178,
+            289.49730750000003
+          ],
+          [
+            351.833868,
+            302.23518903
+          ],
+          [
+            136.5670935,
+            241.24775625
+          ],
+          [
+            136.5670935,
+            200.7181332
+          ]
+        ],
+        "fixedCutouts": [
+          [
+            [
+              229.1549535,
+              220.78994652
+            ],
+            [
+              281.62140750000003,
+              233.52782805
+            ],
+            [
+              251.530353,
+              307.63913877
+            ],
+            [
+              187.4904165,
+              292.58527878
+            ]
+          ]
+        ],
+        "axis": [
+          [
+            152.38418625,
+            178.33034142
+          ],
+          [
+            416.25958725,
+            239.3177742
+          ]
+        ],
+        "phase": "processing",
+        "delay": 0.85,
+        "duration": 1.05,
+        "turns": 1,
+        "order": 70,
+        "thickness": 54,
+        "layerIds": [
+          "bottom-mold",
+          "top-lid",
+          "wafer-left",
+          "wafer-right",
+          "hinge-front"
+        ],
+        "closedAsset": "factory/flip-wafer-mold-closed",
+        "frameAsset": "factory/flip-wafer-mold-frame-clean",
+        "frontAsset": "factory/flip-wafer-mold-flip-front",
+        "rearAsset": "factory/flip-wafer-mold-flip-rear"
+      }
+    }
+  },
+  "factory/rotary-sandwich-assembler": {
+    "id": "rotary-sandwich-assembler",
+    "label": "六代旋转组装台",
+    "group": "machines",
+    "type": "png",
+    "src": "./rotary-sandwich-assembler.png",
+    "size": [
+      502,
+      449
+    ],
+    "bounds": [
+      17.3769,
+      25.8445,
+      497.3662,
+      434.7277
+    ],
+    "originalSource": "../../../source/gameplay/machines/artwork/v5/rotary-sandwich-assembler.png",
+    "originalSize": [
+      1312,
+      1199
+    ],
+    "originalBounds": [
+      45,
+      88,
+      1288,
+      1148
+    ],
+    "originalAlphaBounds": [
+      0,
+      23,
+      1298,
+      1183
+    ],
+    "sourceCrop": [
+      0,
+      21,
+      1300,
+      1185
+    ],
+    "scale": [
+      0.38615385,
+      0.38573883
+    ],
+    "alphaThreshold": 16,
+    "padding": 2,
+    "maxEdge": 600,
+    "sourceBytes": 1404853,
+    "bytes": 268132,
+    "draw": {
+      "sourceRect": [
+        17.3769,
+        25.8445,
+        479.9893,
+        408.8832
+      ],
+      "anchor": [
+        296.18,
+        384.9674
+      ],
+      "ports": {
+        "input": [
+          215.86,
+          179.3686
+        ],
+        "output": [
+          88.0431,
+          358.3514
+        ]
+      }
+    },
+    "originalAnchor": [
+      767,
+      1019
+    ],
+    "anchor": [
+      296.18,
+      384.9674
+    ],
+    "originalPorts": {
+      "input": [
+        559,
+        486
+      ],
+      "output": [
+        228,
+        950
+      ]
+    },
+    "ports": {
+      "input": [
+        215.86,
+        179.3686
+      ],
+      "output": [
+        88.0431,
+        358.3514
+      ]
+    },
+    "path": "assets/factory/rotary-sandwich-assembler.png",
+    "animation": {
+      "phases": [
+        {
+          "id": "feeding",
+          "label": "进料",
+          "seconds": 0.8
+        },
+        {
+          "id": "processing",
+          "label": "加工",
+          "seconds": 2.4
+        },
+        {
+          "id": "discharging",
+          "label": "出料",
+          "seconds": 1.4
+        }
+      ],
+      "layers": [
+        {
+          "id": "clear-ejector-sandwich",
+          "name": "静态物料清除",
+          "role": "material",
+          "polygon": [
+            [
+              153.68923230000001,
+              248.80154535
+            ],
+            [
+              160.6400016,
+              240.70102992
+            ],
+            [
+              173.38307865000002,
+              234.52920863999998
+            ],
+            [
+              181.10615565,
+              231.82903682999998
+            ],
+            [
+              192.69077115000002,
+              235.3006863
+            ],
+            [
+              203.8892328,
+              240.31529109
+            ],
+            [
+              209.68154055000002,
+              246.48711236999998
+            ],
+            [
+              209.29538670000002,
+              256.13058312
+            ],
+            [
+              205.4338482,
+              265.77405387
+            ],
+            [
+              200.800002,
+              273.10309164
+            ],
+            [
+              185.353848,
+              281.97508473
+            ],
+            [
+              179.56154025,
+              285.06099537
+            ],
+            [
+              167.97692475,
+              281.97508473
+            ],
+            [
+              158.3230785,
+              275.80326345
+            ],
+            [
+              152.53077075000002,
+              269.24570334
+            ],
+            [
+              150.98615535000002,
+              259.21649376
+            ]
+          ],
+          "pivot": [
+            0,
+            -8.10051543
+          ],
+          "order": 0,
+          "when": [],
+          "cleanPatch": true,
+          "eraseOnly": true,
+          "motion": {
+            "type": "fixed"
+          }
+        },
+        {
+          "id": "clear-middle-sandwich",
+          "name": "静态物料清除",
+          "role": "material",
+          "polygon": [
+            [
+              106.96461645000001,
+              304.34793686999996
+            ],
+            [
+              114.30153960000001,
+              297.40463793
+            ],
+            [
+              128.97538590000002,
+              290.84707782
+            ],
+            [
+              137.85692445,
+              288.91838366999997
+            ],
+            [
+              149.44153995000002,
+              292.39003313999996
+            ],
+            [
+              162.184617,
+              298.56185442
+            ],
+            [
+              170.29384785000002,
+              305.89089219
+            ],
+            [
+              172.22461710000002,
+              315.14862410999996
+            ],
+            [
+              169.52154015000002,
+              324.79209485999996
+            ],
+            [
+              163.34307855,
+              330.96391614
+            ],
+            [
+              145.58000145,
+              339.06443156999995
+            ],
+            [
+              137.08461675,
+              340.99312571999997
+            ],
+            [
+              125.11384740000001,
+              336.36425976
+            ],
+            [
+              113.91538575000001,
+              330.19243847999996
+            ],
+            [
+              106.96461645000001,
+              322.86340071
+            ],
+            [
+              105.03384720000001,
+              313.99140761999996
+            ]
+          ],
+          "pivot": [
+            0,
+            -8.10051543
+          ],
+          "order": 0,
+          "when": [],
+          "cleanPatch": true,
+          "eraseOnly": true,
+          "motion": {
+            "type": "fixed"
+          }
+        },
+        {
+          "id": "cream-reservoir",
+          "name": "夹心罐存料",
+          "role": "material",
+          "polygon": [
+            [
+              312.7846185,
+              104.53522292999999
+            ],
+            [
+              318.9630801,
+              99.90635696999999
+            ],
+            [
+              327.4584648,
+              99.13487930999999
+            ],
+            [
+              333.25077255,
+              96.04896867
+            ],
+            [
+              338.65692645,
+              92.96305803
+            ],
+            [
+              346.76615730000003,
+              92.57731919999999
+            ],
+            [
+              352.9446189,
+              95.27749100999999
+            ],
+            [
+              356.42000355000005,
+              99.90635696999999
+            ],
+            [
+              365.3015421,
+              99.90635696999999
+            ],
+            [
+              373.0246191,
+              104.92096176
+            ],
+            [
+              377.27231145,
+              112.24999953
+            ],
+            [
+              378.04461915,
+              119.96477612999999
+            ],
+            [
+              372.2523114,
+              124.59364208999999
+            ],
+            [
+              362.59846515000004,
+              126.90807507
+            ],
+            [
+              352.9446189,
+              128.45103039
+            ],
+            [
+              339.42923415,
+              128.83676921999998
+            ],
+            [
+              326.6861571,
+              127.29381389999999
+            ],
+            [
+              317.80461855000004,
+              125.36511974999999
+            ],
+            [
+              312.39846465,
+              122.27920911
+            ]
+          ],
+          "pivot": [
+            344.83538805,
+            111.09278304
+          ],
+          "motion": {
+            "type": "vibrate",
+            "amplitude": [
+              0,
+              0.38573883
+            ],
+            "speed": 2.4
+          },
+          "order": 25,
+          "when": [
+            "feeding",
+            "processing"
+          ],
+          "cleanPatch": true
+        },
+        {
+          "id": "left-magazine-fill",
+          "name": "铺底脆片堆",
+          "role": "material",
+          "polygon": [
+            [
+              138.62923215,
+              51.303264389999995
+            ],
+            [
+              147.12461685,
+              47.44587609
+            ],
+            [
+              167.20461705,
+              42.81701013
+            ],
+            [
+              175.3138479,
+              42.81701013
+            ],
+            [
+              184.19538645,
+              47.06013726
+            ],
+            [
+              193.07692500000002,
+              57.47508567
+            ],
+            [
+              200.0276943,
+              66.34707876
+            ],
+            [
+              205.04769435,
+              75.60481068
+            ],
+            [
+              205.4338482,
+              93.73453569
+            ],
+            [
+              207.75077130000003,
+              109.54982772
+            ],
+            [
+              205.4338482,
+              117.65034315
+            ],
+            [
+              194.23538655000002,
+              122.66494793999999
+            ],
+            [
+              172.99692480000002,
+              125.75085858
+            ],
+            [
+              164.11538625,
+              120.35051496
+            ],
+            [
+              155.62000155,
+              116.49312665999999
+            ],
+            [
+              149.44153995000002,
+              113.02147719
+            ],
+            [
+              140.94615525,
+              113.40721601999999
+            ],
+            [
+              135.9261552,
+              103.76374526999999
+            ],
+            [
+              132.06461670000002,
+              92.57731919999999
+            ],
+            [
+              132.45077055000002,
+              81.0051543
+            ],
+            [
+              135.54000135,
+              72.51890003999999
+            ]
+          ],
+          "pivot": [
+            169.52154015000002,
+            86.01975909
+          ],
+          "motion": {
+            "type": "translate",
+            "amplitude": [
+              0,
+              1.54295532
+            ],
+            "speed": 1,
+            "phase": "feeding"
+          },
+          "order": 30,
+          "when": [
+            "feeding",
+            "processing"
+          ],
+          "cleanPatch": true
+        },
+        {
+          "id": "right-magazine-fill",
+          "name": "封层脆片堆",
+          "role": "material",
+          "polygon": [
+            [
+              401.98615785000004,
+              133.46563518
+            ],
+            [
+              413.1846195,
+              124.20790326
+            ],
+            [
+              425.92769655,
+              119.5790373
+            ],
+            [
+              437.8984659,
+              121.50773145
+            ],
+            [
+              462.22615845,
+              127.67955273
+            ],
+            [
+              472.26615855,
+              135.78006815999998
+            ],
+            [
+              474.58308165000005,
+              149.28092721
+            ],
+            [
+              473.4246201,
+              177.05412296999998
+            ],
+            [
+              473.81077395,
+              194.79810915
+            ],
+            [
+              468.79077390000003,
+              205.98453522
+            ],
+            [
+              459.90923535,
+              210.99914001
+            ],
+            [
+              450.2553891,
+              213.31357298999998
+            ],
+            [
+              442.5323121,
+              207.14175171
+            ],
+            [
+              436.74000435000005,
+              200.96993042999998
+            ],
+            [
+              427.85846580000003,
+              195.56958680999998
+            ],
+            [
+              417.43231185,
+              189.39776553
+            ],
+            [
+              405.84769635000004,
+              179.75429477999998
+            ],
+            [
+              400.0553886,
+              169.7250852
+            ],
+            [
+              398.12461935000005,
+              155.45274849
+            ]
+          ],
+          "pivot": [
+            436.74000435000005,
+            165.8676969
+          ],
+          "motion": {
+            "type": "translate",
+            "amplitude": [
+              0,
+              1.54295532
+            ],
+            "speed": 1,
+            "phase": "processing"
+          },
+          "order": 30,
+          "when": [
+            "feeding",
+            "processing"
+          ],
+          "cleanPatch": true
+        },
+        {
+          "id": "station-base",
+          "name": "铺底工位脆片",
+          "role": "material",
+          "polygon": [
+            [
+              188.05692495000002,
+              176.28264531
+            ],
+            [
+              195.3938481,
+              169.7250852
+            ],
+            [
+              212.77077135000002,
+              163.55326391999998
+            ],
+            [
+              221.6523099,
+              164.71048041
+            ],
+            [
+              242.89077165,
+              175.51116764999998
+            ],
+            [
+              244.8215409,
+              179.36855595
+            ],
+            [
+              239.80154085,
+              185.15463839999998
+            ],
+            [
+              219.72154065,
+              194.02663149
+            ],
+            [
+              211.61230980000002,
+              194.41237031999998
+            ],
+            [
+              193.84923270000002,
+              186.69759372
+            ],
+            [
+              188.05692495000002,
+              182.45446658999998
+            ]
+          ],
+          "pivot": [
+            215.86000215,
+            179.36855595
+          ],
+          "motion": {
+            "type": "ellipse",
+            "center": [
+              274.1692335,
+              207.14175171
+            ],
+            "radius": [
+              91.1323086,
+              47.83161492
+            ],
+            "startAngle": -2.5,
+            "angle": 1.5707963267948966,
+            "path": [
+              [
+                215.86000215,
+                179.36855595
+              ],
+              [
+                271.0800027,
+                164.32474158
+              ],
+              [
+                328.2307725,
+                183.22594425
+              ]
+            ],
+            "duration": 1.75,
+            "delay": 0.65,
+            "indexOnly": true,
+            "depthSort": true
+          },
+          "order": 40,
+          "when": [
+            "feeding",
+            "processing"
+          ],
+          "cleanPatch": true
+        },
+        {
+          "id": "station-cream",
+          "name": "注芯工位脆片",
+          "role": "material",
+          "polygon": [
+            [
+              298.88307990000004,
+              177.4398618
+            ],
+            [
+              306.99231075,
+              172.81099583999998
+            ],
+            [
+              320.12154165000004,
+              168.56786871
+            ],
+            [
+              328.61692635,
+              167.79639104999998
+            ],
+            [
+              351.4000035,
+              179.36855595
+            ],
+            [
+              357.96461895000004,
+              187.46907138
+            ],
+            [
+              356.0338497,
+              192.48367617
+            ],
+            [
+              337.88461875,
+              199.42697511
+            ],
+            [
+              328.2307725,
+              199.42697511
+            ],
+            [
+              306.99231075,
+              189.39776553
+            ],
+            [
+              300.04154145,
+              184.76889957
+            ]
+          ],
+          "pivot": [
+            328.2307725,
+            183.22594425
+          ],
+          "motion": {
+            "type": "ellipse",
+            "center": [
+              274.1692335,
+              207.14175171
+            ],
+            "radius": [
+              91.1323086,
+              47.83161492
+            ],
+            "startAngle": -0.55,
+            "angle": 1.5707963267948966,
+            "path": [
+              [
+                328.2307725,
+                183.22594425
+              ],
+              [
+                378.43077300000004,
+                206.75601288
+              ],
+              [
+                346.38000345,
+                250.73023949999998
+              ]
+            ],
+            "duration": 1.75,
+            "delay": 0.65,
+            "indexOnly": true,
+            "depthSort": true
+          },
+          "order": 42,
+          "when": [
+            "feeding",
+            "processing"
+          ],
+          "cleanPatch": true
+        },
+        {
+          "id": "station-seal",
+          "name": "封层工位夹心饼",
+          "role": "material",
+          "polygon": [
+            [
+              315.8738493,
+              243.78694055999998
+            ],
+            [
+              322.8246186,
+              236.45790279
+            ],
+            [
+              339.04308030000004,
+              228.35738736
+            ],
+            [
+              345.99384960000003,
+              226.81443203999999
+            ],
+            [
+              361.05384975000004,
+              232.21477566
+            ],
+            [
+              374.18308065,
+              239.92955225999998
+            ],
+            [
+              377.65846530000005,
+              246.87285119999999
+            ],
+            [
+              376.50000375,
+              258.05927727
+            ],
+            [
+              370.707696,
+              265.38831504
+            ],
+            [
+              351.01384965,
+              273.10309164
+            ],
+            [
+              343.67692650000004,
+              273.48883047
+            ],
+            [
+              330.93384945,
+              268.47422567999996
+            ],
+            [
+              321.2800032,
+              261.91666556999996
+            ],
+            [
+              315.48769545,
+              254.58762779999998
+            ]
+          ],
+          "pivot": [
+            346.38000345,
+            250.73023949999998
+          ],
+          "motion": {
+            "type": "ellipse",
+            "center": [
+              274.1692335,
+              207.14175171
+            ],
+            "radius": [
+              91.1323086,
+              47.83161492
+            ],
+            "startAngle": 0.55,
+            "angle": 1.5707963267948966,
+            "path": [
+              [
+                346.38000345,
+                250.73023949999998
+              ],
+              [
+                270.307695,
+                277.34621877
+              ],
+              [
+                180.7200018,
+                254.20188897
+              ]
+            ],
+            "duration": 1.75,
+            "delay": 0.65,
+            "indexOnly": true,
+            "depthSort": true
+          },
+          "order": 44,
+          "when": [
+            "feeding",
+            "processing"
+          ],
+          "cleanPatch": true
+        },
+        {
+          "id": "cream-dose",
+          "name": "注芯落料",
+          "role": "material",
+          "polygon": [
+            [
+              314.71538775,
+              173.96821233
+            ],
+            [
+              319.34923395000004,
+              169.33934637
+            ],
+            [
+              325.1415417,
+              167.41065222
+            ],
+            [
+              330.93384945,
+              169.33934637
+            ],
+            [
+              332.8646187,
+              173.96821233
+            ],
+            [
+              340.20154185,
+              178.21133945999998
+            ],
+            [
+              343.67692650000004,
+              183.22594425
+            ],
+            [
+              340.97384955,
+              187.85481020999998
+            ],
+            [
+              334.4092341,
+              190.16924318999997
+            ],
+            [
+              326.30000325000003,
+              190.16924318999997
+            ],
+            [
+              319.34923395000004,
+              187.85481020999998
+            ],
+            [
+              314.3292339,
+              184.38316074
+            ],
+            [
+              312.39846465,
+              179.75429477999998
+            ]
+          ],
+          "pivot": [
+            328.2307725,
+            179.36855595
+          ],
+          "motion": {
+            "type": "vibrate",
+            "amplitude": [
+              0,
+              0.77147766
+            ],
+            "speed": 2.4,
+            "phase": "processing",
+            "activeWindow": [
+              0,
+              0.6
+            ]
+          },
+          "order": 52,
+          "when": [
+            "processing"
+          ],
+          "cleanPatch": true
+        },
+        {
+          "id": "cream-nozzle",
+          "name": "注芯头",
+          "role": "mechanical",
+          "polygon": [
+            [
+              319.34923395000004,
+              150.43814369999998
+            ],
+            [
+              336.34000335,
+              152.36683785
+            ],
+            [
+              336.72615720000005,
+              158.15292029999998
+            ],
+            [
+              332.8646187,
+              162.0103086
+            ],
+            [
+              331.3200033,
+              168.95360753999998
+            ],
+            [
+              328.61692635,
+              170.88230169
+            ],
+            [
+              325.1415417,
+              168.95360753999998
+            ],
+            [
+              323.5969263,
+              162.0103086
+            ],
+            [
+              318.9630801,
+              158.92439796
+            ]
+          ],
+          "pivot": [
+            328.2307725,
+            160.85309210999998
+          ],
+          "motion": {
+            "type": "vibrate",
+            "amplitude": [
+              0,
+              0.5400343619999999
+            ],
+            "speed": 2.4,
+            "phase": "processing"
+          },
+          "order": 65,
+          "when": [
+            "feeding",
+            "processing",
+            "discharging"
+          ],
+          "cleanPatch": false
+        },
+        {
+          "id": "product-1",
+          "name": "夹心脆饼出料",
+          "role": "material",
+          "polygon": [
+            [
+              55.99230825,
+              349.09364115
+            ],
+            [
+              65.26000065000001,
+              340.99312571999997
+            ],
+            [
+              78.38923155,
+              332.89261029
+            ],
+            [
+              85.72615470000001,
+              331.7353938
+            ],
+            [
+              100.01384715,
+              336.36425976
+            ],
+            [
+              115.07384730000001,
+              343.69329753
+            ],
+            [
+              121.63846275,
+              350.63659647
+            ],
+            [
+              123.569232,
+              359.50858955999996
+            ],
+            [
+              120.86615505,
+              369.15206030999997
+            ],
+            [
+              114.68769345000001,
+              374.93814276
+            ],
+            [
+              95.38000095000001,
+              383.81013585
+            ],
+            [
+              86.88461625000001,
+              385.35309116999997
+            ],
+            [
+              71.8246161,
+              380.33848637999995
+            ],
+            [
+              60.2400006,
+              372.62370977999996
+            ],
+            [
+              54.44769285,
+              363.75171668999997
+            ]
+          ],
+          "pivot": [
+            88.8153855,
+            357.19415657999997
+          ],
+          "motion": {
+            "type": "flow",
+            "path": [
+              [
+                180.7200018,
+                254.20188897
+              ],
+              [
+                147.5107707,
+                302.80498155
+              ],
+              [
+                88.8153855,
+                357.19415657999997
+              ],
+              [
+                58.695385200000004,
+                383.03865819
+              ]
+            ],
+            "duration": 1.4,
+            "delay": 0,
+            "amplitude": [
+              0,
+              0
+            ]
+          },
+          "order": 65,
+          "when": [
+            "discharging"
+          ],
+          "cleanPatch": true
+        },
+        {
+          "id": "product-2",
+          "name": "后续夹心脆饼",
+          "role": "material",
+          "polygon": [
+            [
+              55.99230825,
+              349.09364115
+            ],
+            [
+              65.26000065000001,
+              340.99312571999997
+            ],
+            [
+              78.38923155,
+              332.89261029
+            ],
+            [
+              85.72615470000001,
+              331.7353938
+            ],
+            [
+              100.01384715,
+              336.36425976
+            ],
+            [
+              115.07384730000001,
+              343.69329753
+            ],
+            [
+              121.63846275,
+              350.63659647
+            ],
+            [
+              123.569232,
+              359.50858955999996
+            ],
+            [
+              120.86615505,
+              369.15206030999997
+            ],
+            [
+              114.68769345000001,
+              374.93814276
+            ],
+            [
+              95.38000095000001,
+              383.81013585
+            ],
+            [
+              86.88461625000001,
+              385.35309116999997
+            ],
+            [
+              71.8246161,
+              380.33848637999995
+            ],
+            [
+              60.2400006,
+              372.62370977999996
+            ],
+            [
+              54.44769285,
+              363.75171668999997
+            ]
+          ],
+          "pivot": [
+            88.8153855,
+            357.19415657999997
+          ],
+          "motion": {
+            "type": "flow",
+            "path": [
+              [
+                180.7200018,
+                254.20188897
+              ],
+              [
+                147.5107707,
+                302.80498155
+              ],
+              [
+                88.8153855,
+                357.19415657999997
+              ],
+              [
+                58.695385200000004,
+                383.03865819
+              ]
+            ],
+            "duration": 1.4,
+            "delay": 0.55,
+            "amplitude": [
+              0,
+              0
+            ]
+          },
+          "order": 65,
+          "when": [
+            "discharging"
+          ],
+          "cleanPatch": true
+        },
+        {
+          "id": "sealing-arm",
+          "name": "封层压头",
+          "role": "mechanical",
+          "polygon": [
+            [
+              362.59846515000004,
+              187.46907138
+            ],
+            [
+              370.32154215,
+              180.52577244
+            ],
+            [
+              386.54000385,
+              179.36855595
+            ],
+            [
+              387.69846540000003,
+              174.35395115999998
+            ],
+            [
+              394.26308085,
+              174.73968999
+            ],
+            [
+              423.99692730000004,
+              181.29725009999999
+            ],
+            [
+              435.5815428,
+              188.24054904
+            ],
+            [
+              435.19538895000005,
+              204.82731873
+            ],
+            [
+              426.70000425,
+              215.24226714
+            ],
+            [
+              408.5507733,
+              215.24226714
+            ],
+            [
+              402.75846555000004,
+              228.35738736
+            ],
+            [
+              396.58000395000005,
+              231.82903682999998
+            ],
+            [
+              388.85692695,
+              231.443298
+            ],
+            [
+              384.22308075,
+              224.49999906
+            ],
+            [
+              383.83692690000004,
+              215.62800596999998
+            ],
+            [
+              369.9353883,
+              209.84192352
+            ],
+            [
+              361.4400036,
+              205.59879639
+            ]
+          ],
+          "pivot": [
+            398.5107732,
+            200.96993042999998
+          ],
+          "motion": {
+            "type": "vibrate",
+            "amplitude": [
+              0,
+              0.5400343619999999
+            ],
+            "speed": 1.7,
+            "phase": "processing"
+          },
+          "order": 68,
+          "when": [
+            "feeding",
+            "processing",
+            "discharging"
+          ],
+          "cleanPatch": false
+        },
+        {
+          "id": "table-front-edge",
+          "name": "转盘前沿遮挡",
+          "role": "foreground",
+          "polygon": [
+            [
+              232.85077155000002,
+              268.08848685
+            ],
+            [
+              243.66307935,
+              276.57474111
+            ],
+            [
+              269.5353873,
+              282.36082356
+            ],
+            [
+              296.56615680000004,
+              283.13230122
+            ],
+            [
+              325.1415417,
+              278.50343526
+            ],
+            [
+              349.08308040000003,
+              269.63144216999996
+            ],
+            [
+              368.00461905000003,
+              256.90206078
+            ],
+            [
+              384.99538845,
+              239.1580746
+            ],
+            [
+              394.6492347,
+              221.02834958999998
+            ],
+            [
+              407.7784656,
+              224.11426022999999
+            ],
+            [
+              408.16461945000003,
+              245.71563471
+            ],
+            [
+              394.26308085,
+              266.15979269999997
+            ],
+            [
+              372.63846525,
+              282.74656239
+            ],
+            [
+              348.69692655,
+              294.31872728999997
+            ],
+            [
+              318.57692625000004,
+              303.19072037999996
+            ],
+            [
+              287.2984644,
+              306.66236985
+            ],
+            [
+              259.10923335,
+              303.96219804
+            ],
+            [
+              236.3261562,
+              297.0188991
+            ],
+            [
+              234.00923310000002,
+              282.36082356
+            ]
+          ],
+          "pivot": [
+            0,
+            -8.10051543
+          ],
+          "order": 76,
+          "motion": {
+            "type": "fixed"
+          },
+          "when": [
+            "feeding",
+            "processing",
+            "discharging"
+          ],
+          "cleanPatch": false
+        },
+        {
+          "id": "central-hub-fixed",
+          "name": "固定中央轴",
+          "role": "foreground",
+          "polygon": [
+            [
+              237.0984639,
+              207.14175171
+            ],
+            [
+              241.7323101,
+              197.49828096
+            ],
+            [
+              250.61384865000002,
+              193.25515382999998
+            ],
+            [
+              251.00000250000002,
+              189.78350436
+            ],
+            [
+              256.4061564,
+              185.54037723
+            ],
+            [
+              265.67384880000003,
+              183.99742190999999
+            ],
+            [
+              276.4861566,
+              185.54037723
+            ],
+            [
+              283.4369259,
+              189.78350436
+            ],
+            [
+              284.2092336,
+              200.19845277
+            ],
+            [
+              287.2984644,
+              204.05584106999999
+            ],
+            [
+              293.09077215,
+              207.52749053999997
+            ],
+            [
+              298.49692605,
+              213.31357298999998
+            ],
+            [
+              296.95231065,
+              219.48539427
+            ],
+            [
+              290.3876952,
+              223.34278257
+            ],
+            [
+              279.5753874,
+              227.58590969999997
+            ],
+            [
+              266.44615650000003,
+              229.12886501999998
+            ],
+            [
+              253.70307945000002,
+              226.81443203999999
+            ],
+            [
+              245.5938486,
+              223.34278257
+            ],
+            [
+              239.415387,
+              216.39948363
+            ]
+          ],
+          "pivot": [
+            0,
+            -8.10051543
+          ],
+          "order": 85,
+          "motion": {
+            "type": "fixed"
+          },
+          "when": [
+            "feeding",
+            "processing",
+            "discharging"
+          ],
+          "cleanPatch": false
+        },
+        {
+          "id": "ejector-platform-fixed",
+          "name": "固定出料滑板",
+          "role": "foreground",
+          "polygon": [
+            [
+              192.30461730000002,
+              215.62800596999998
+            ],
+            [
+              202.73077125,
+              219.87113309999998
+            ],
+            [
+              239.02923315,
+              236.84364162
+            ],
+            [
+              247.138464,
+              243.40120173
+            ],
+            [
+              243.66307935,
+              252.27319482
+            ],
+            [
+              215.86000215,
+              280.43212940999996
+            ],
+            [
+              195.3938481,
+              294.70446612
+            ],
+            [
+              182.65077105,
+              296.63316026999996
+            ],
+            [
+              147.89692455,
+              273.48883047
+            ],
+            [
+              145.58000145,
+              264.61683738
+            ],
+            [
+              154.46154,
+              246.48711236999998
+            ],
+            [
+              174.92769405,
+              225.27147671999998
+            ]
+          ],
+          "pivot": [
+            0,
+            -8.10051543
+          ],
+          "order": 89,
+          "motion": {
+            "type": "fixed"
+          },
+          "when": [
+            "feeding",
+            "processing",
+            "discharging"
+          ],
+          "cleanPatch": false
+        },
+        {
+          "id": "belt-front-rail",
+          "name": "输出输送带前缘",
+          "role": "foreground",
+          "polygon": [
+            [
+              118.54923195,
+              391.13917361999995
+            ],
+            [
+              131.29230900000002,
+              376.09535925
+            ],
+            [
+              156.39230925,
+              351.40807413
+            ],
+            [
+              185.74000185,
+              324.0206172
+            ],
+            [
+              196.55230965,
+              297.40463793
+            ],
+            [
+              206.59230975,
+              293.1615108
+            ],
+            [
+              216.63230985,
+              299.33333208
+            ],
+            [
+              220.1076945,
+              309.36254166
+            ],
+            [
+              213.15692520000002,
+              324.40635603
+            ],
+            [
+              186.51230955,
+              351.79381295999997
+            ],
+            [
+              152.14461690000002,
+              383.42439701999996
+            ],
+            [
+              136.6984629,
+              401.1683832
+            ]
+          ],
+          "pivot": [
+            0,
+            -8.10051543
+          ],
+          "order": 90,
+          "motion": {
+            "type": "fixed"
+          },
+          "when": [
+            "feeding",
+            "processing",
+            "discharging"
+          ],
+          "cleanPatch": false
+        },
+        {
+          "id": "ejector-lips",
+          "name": "出料滑板侧沿遮挡",
+          "role": "foreground",
+          "polygon": [
+            [
+              153.30307845000002,
+              239.92955225999998
+            ],
+            [
+              160.6400016,
+              233.37199214999998
+            ],
+            [
+              180.33384795,
+              226.42869320999998
+            ],
+            [
+              185.74000185,
+              228.35738736
+            ],
+            [
+              176.8584633,
+              235.68642512999998
+            ],
+            [
+              165.66000165,
+              239.54381342999997
+            ],
+            [
+              158.3230785,
+              247.25859003
+            ],
+            [
+              147.5107707,
+              269.24570334
+            ],
+            [
+              142.1046168,
+              270.78865866
+            ],
+            [
+              143.26307835,
+              261.14518791
+            ]
+          ],
+          "pivot": [
+            0,
+            -8.10051543
+          ],
+          "order": 91,
+          "motion": {
+            "type": "fixed"
+          },
+          "when": [
+            "feeding",
+            "processing",
+            "discharging"
+          ],
+          "cleanPatch": false
+        }
+      ],
+      "indexedTable": {
+        "radius": [
+          236,
+          124
+        ],
+        "delay": 0.65,
+        "duration": 1.75,
+        "order": 39,
+        "members": {
+          "station-base": 0,
+          "station-cream": 1,
+          "station-seal": 2
+        },
+        "paths": [
+          [
+            [
+              559,
+              486
+            ],
+            [
+              702,
+              447
+            ],
+            [
+              850,
+              496
+            ]
+          ],
+          [
+            [
+              850,
+              496
+            ],
+            [
+              980,
+              557
+            ],
+            [
+              897,
+              671
+            ]
+          ],
+          [
+            [
+              897,
+              671
+            ],
+            [
+              700,
+              740
+            ],
+            [
+              468,
+              680
+            ]
+          ],
+          [
+            [
+              468,
+              680
+            ],
+            [
+              363,
+              547
+            ],
+            [
+              559,
+              486
+            ]
+          ]
+        ],
+        "eraseRegions": [
+          [
+            [
+              451,
+              470
+            ],
+            [
+              541,
+              430
+            ],
+            [
+              581,
+              430
+            ],
+            [
+              680,
+              473
+            ],
+            [
+              681,
+              499
+            ],
+            [
+              569,
+              549
+            ],
+            [
+              543,
+              548
+            ],
+            [
+              451,
+              509
+            ]
+          ],
+          [
+            [
+              735,
+              476
+            ],
+            [
+              832,
+              436
+            ],
+            [
+              869,
+              438
+            ],
+            [
+              970,
+              484
+            ],
+            [
+              971,
+              514
+            ],
+            [
+              870,
+              559
+            ],
+            [
+              839,
+              557
+            ],
+            [
+              735,
+              517
+            ]
+          ],
+          [
+            [
+              761,
+              649
+            ],
+            [
+              879,
+              593
+            ],
+            [
+              914,
+              596
+            ],
+            [
+              1025,
+              663
+            ],
+            [
+              1024,
+              698
+            ],
+            [
+              916,
+              750
+            ],
+            [
+              882,
+              749
+            ],
+            [
+              760,
+              706
+            ]
+          ],
+          [
+            [
+              364,
+              637
+            ],
+            [
+              472,
+              576
+            ],
+            [
+              516,
+              581
+            ],
+            [
+              658,
+              650
+            ],
+            [
+              651,
+              681
+            ],
+            [
+              494,
+              767
+            ],
+            [
+              438,
+              759
+            ],
+            [
+              370,
+              710
+            ]
+          ]
+        ],
+        "slots": [
+          {
+            "id": "slot-base",
+            "pivot": [
+              559,
+              486
+            ],
+            "polygon": [
+              [
+                458,
+                483
+              ],
+              [
+                554,
+                445
+              ],
+              [
+                573,
+                444
+              ],
+              [
+                670,
+                478
+              ],
+              [
+                670,
+                490
+              ],
+              [
+                557,
+                530
+              ],
+              [
+                548,
+                528
+              ],
+              [
+                459,
+                500
+              ]
+            ]
+          },
+          {
+            "id": "slot-cream",
+            "pivot": [
+              850,
+              496
+            ],
+            "polygon": [
+              [
+                744,
+                489
+              ],
+              [
+                833,
+                452
+              ],
+              [
+                840,
+                462
+              ],
+              [
+                850,
+                470
+              ],
+              [
+                861,
+                462
+              ],
+              [
+                870,
+                450
+              ],
+              [
+                958,
+                489
+              ],
+              [
+                951,
+                510
+              ],
+              [
+                854,
+                546
+              ],
+              [
+                847,
+                540
+              ],
+              [
+                744,
+                507
+              ]
+            ]
+          },
+          {
+            "id": "slot-seal",
+            "pivot": [
+              897,
+              671
+            ],
+            "polygon": [
+              [
+                770,
+                666
+              ],
+              [
+                886,
+                603
+              ],
+              [
+                904,
+                600
+              ],
+              [
+                1018,
+                665
+              ],
+              [
+                1011,
+                689
+              ],
+              [
+                902,
+                735
+              ],
+              [
+                886,
+                735
+              ],
+              [
+                771,
+                690
+              ]
+            ]
+          },
+          {
+            "id": "slot-output",
+            "pivot": [
+              468,
+              680
+            ],
+            "sourcePivot": [
+              850,
+              496
+            ],
+            "sourcePolygon": [
+              [
+                744,
+                489
+              ],
+              [
+                833,
+                452
+              ],
+              [
+                840,
+                462
+              ],
+              [
+                850,
+                470
+              ],
+              [
+                861,
+                462
+              ],
+              [
+                870,
+                450
+              ],
+              [
+                958,
+                489
+              ],
+              [
+                951,
+                510
+              ],
+              [
+                854,
+                546
+              ],
+              [
+                847,
+                540
+              ],
+              [
+                744,
+                507
+              ]
+            ]
+          }
+        ],
+        "coordinateSpace": "source",
+        "tipCoordinateSpace": "source",
+        "blankAsset": "factory/rotary-sandwich-assembler-body-clean",
+        "topTextureAsset": "factory/rotary-sandwich-assembler-food-top",
+        "capTextureAsset": "factory/rotary-sandwich-assembler-food-cap",
+        "nozzleTipAsset": "factory/rotary-sandwich-assembler-nozzle-tip",
+        "pressTipAsset": "factory/rotary-sandwich-assembler-press-tip",
+        "nozzleTipRect": [
+          840,
+          438,
+          21,
+          27
+        ],
+        "pressTipRect": [
+          1003,
+          583,
+          31,
+          53
+        ],
+        "outputPath": [
+          [
+            468,
+            680
+          ],
+          [
+            382,
+            806
+          ],
+          [
+            230,
+            947
+          ],
+          [
+            152,
+            1014
+          ]
+        ]
+      }
+    }
+  },
   "factory/packer-complete": {
     "id": "packer-complete",
     "label": "公共包装完整原画",
@@ -6811,5 +17824,909 @@ module.exports = {
       ]
     },
     "path": "assets/factory/caramel-drum-body-clean.png"
+  },
+  "factory/ball-mold-press-body-clean": {
+    "id": "ball-mold-press",
+    "label": "三代合模机",
+    "group": "machines",
+    "type": "png",
+    "src": "./ball-mold-press.png",
+    "size": [
+      599,
+      535
+    ],
+    "bounds": [
+      66.0966,
+      1.8369,
+      546.2146,
+      532.7039
+    ],
+    "originalSource": "../../../source/gameplay/machines/artwork/v5/ball-mold-press.png",
+    "originalSize": [
+      1312,
+      1199
+    ],
+    "originalBounds": [
+      144,
+      10,
+      1190,
+      1166
+    ],
+    "originalAlphaBounds": [
+      0,
+      8,
+      1303,
+      1169
+    ],
+    "sourceCrop": [
+      0,
+      6,
+      1305,
+      1171
+    ],
+    "scale": [
+      0.45900383,
+      0.45922747
+    ],
+    "alphaThreshold": 16,
+    "padding": 2,
+    "maxEdge": 600,
+    "sourceBytes": 1433102,
+    "bytes": 415867,
+    "draw": {
+      "sourceRect": [
+        66.0966,
+        1.8369,
+        480.118,
+        530.867
+      ],
+      "anchor": [
+        304.3195,
+        448.6652
+      ],
+      "ports": {
+        "input": [
+          297.4345,
+          301.2532
+        ],
+        "output": [
+          379.1372,
+          466.5751
+        ]
+      }
+    },
+    "originalAnchor": [
+      663,
+      983
+    ],
+    "anchor": [
+      304.3195,
+      448.6652
+    ],
+    "originalPorts": {
+      "input": [
+        648,
+        662
+      ],
+      "output": [
+        826,
+        1022
+      ]
+    },
+    "ports": {
+      "input": [
+        297.4345,
+        301.2532
+      ],
+      "output": [
+        379.1372,
+        466.5751
+      ]
+    },
+    "path": "assets/factory/ball-mold-press-body-clean.png"
+  },
+  "factory/popcorn-ball": {
+    "id": "popcorn-ball",
+    "label": "未包装爆米花球",
+    "group": "materials",
+    "type": "png",
+    "size": [
+      111,
+      116
+    ],
+    "draw": {
+      "sourceRect": [
+        2,
+        2,
+        107,
+        112
+      ]
+    },
+    "path": "assets/factory/popcorn-ball.png"
+  },
+  "factory/sheeting-strip-cutter-body-clean": {
+    "id": "sheeting-strip-cutter",
+    "label": "四代压延切条机",
+    "group": "machines",
+    "type": "png",
+    "src": "./sheeting-strip-cutter.png",
+    "size": [
+      512,
+      444
+    ],
+    "bounds": [
+      30.6258,
+      19.6286,
+      510.4294,
+      438.1114
+    ],
+    "originalSource": "../../../source/gameplay/machines/artwork/v5/sheeting-strip-cutter.png",
+    "originalSize": [
+      1312,
+      1199
+    ],
+    "originalBounds": [
+      78,
+      73,
+      1300,
+      1139
+    ],
+    "originalAlphaBounds": [
+      0,
+      25,
+      1302,
+      1152
+    ],
+    "sourceCrop": [
+      0,
+      23,
+      1304,
+      1154
+    ],
+    "scale": [
+      0.39263804,
+      0.39257294
+    ],
+    "alphaThreshold": 16,
+    "padding": 2,
+    "maxEdge": 600,
+    "sourceBytes": 1191212,
+    "bytes": 276536,
+    "draw": {
+      "sourceRect": [
+        30.6258,
+        19.6286,
+        479.8036,
+        418.4828
+      ],
+      "anchor": [
+        259.5337,
+        372.5517
+      ],
+      "ports": {
+        "input": [
+          136.638,
+          56.1379
+        ],
+        "output": [
+          423.2638,
+          365.878
+        ]
+      }
+    },
+    "originalAnchor": [
+      661,
+      972
+    ],
+    "anchor": [
+      259.5337,
+      372.5517
+    ],
+    "originalPorts": {
+      "input": [
+        348,
+        166
+      ],
+      "output": [
+        1078,
+        955
+      ]
+    },
+    "ports": {
+      "input": [
+        136.638,
+        56.1379
+      ],
+      "output": [
+        423.2638,
+        365.878
+      ]
+    },
+    "path": "assets/factory/sheeting-strip-cutter-body-clean.png"
+  },
+  "factory/crisp-stick": {
+    "id": "crisp-stick",
+    "label": "未包装脆棒",
+    "group": "materials",
+    "type": "png",
+    "size": [
+      164,
+      151
+    ],
+    "draw": {
+      "sourceRect": [
+        2,
+        2,
+        160,
+        147
+      ]
+    },
+    "path": "assets/factory/crisp-stick.png"
+  },
+  "factory/flip-wafer-mold-body-clean": {
+    "id": "flip-wafer-mold",
+    "label": "五代双面烤模机",
+    "group": "machines",
+    "type": "png",
+    "src": "./flip-wafer-mold.png",
+    "size": [
+      483,
+      430
+    ],
+    "bounds": [
+      1.5431,
+      10.4219,
+      481.4569,
+      428.456
+    ],
+    "originalSource": "../../../source/gameplay/machines/artwork/v5/flip-wafer-mold.png",
+    "originalSize": [
+      1312,
+      1199
+    ],
+    "originalBounds": [
+      50,
+      52,
+      1294,
+      1135
+    ],
+    "originalAlphaBounds": [
+      48,
+      27,
+      1296,
+      1137
+    ],
+    "sourceCrop": [
+      46,
+      25,
+      1298,
+      1139
+    ],
+    "scale": [
+      0.38578275,
+      0.38599641
+    ],
+    "alphaThreshold": 16,
+    "padding": 2,
+    "maxEdge": 600,
+    "sourceBytes": 1494770,
+    "bytes": 245963,
+    "draw": {
+      "sourceRect": [
+        1.5431,
+        10.4219,
+        479.9138,
+        418.0341
+      ],
+      "anchor": [
+        268.5048,
+        407.2262
+      ],
+      "ports": {
+        "input": [
+          196.7492,
+          190.2962
+        ],
+        "output": [
+          171.6733,
+          355.1167
+        ]
+      }
+    },
+    "originalAnchor": [
+      742,
+      1080
+    ],
+    "anchor": [
+      268.5048,
+      407.2262
+    ],
+    "originalPorts": {
+      "input": [
+        556,
+        518
+      ],
+      "output": [
+        491,
+        945
+      ]
+    },
+    "ports": {
+      "input": [
+        196.7492,
+        190.2962
+      ],
+      "output": [
+        171.6733,
+        355.1167
+      ]
+    },
+    "path": "assets/factory/flip-wafer-mold-body-clean.png"
+  },
+  "factory/flip-wafer-mold-closed": {
+    "id": "flip-wafer-mold",
+    "label": "五代双面烤模机",
+    "group": "machines",
+    "type": "png",
+    "src": "./flip-wafer-mold.png",
+    "size": [
+      483,
+      430
+    ],
+    "bounds": [
+      1.5431,
+      10.4219,
+      481.4569,
+      428.456
+    ],
+    "originalSource": "../../../source/gameplay/machines/artwork/v5/flip-wafer-mold.png",
+    "originalSize": [
+      1312,
+      1199
+    ],
+    "originalBounds": [
+      50,
+      52,
+      1294,
+      1135
+    ],
+    "originalAlphaBounds": [
+      48,
+      27,
+      1296,
+      1137
+    ],
+    "sourceCrop": [
+      46,
+      25,
+      1298,
+      1139
+    ],
+    "scale": [
+      0.38578275,
+      0.38599641
+    ],
+    "alphaThreshold": 16,
+    "padding": 2,
+    "maxEdge": 600,
+    "sourceBytes": 1494770,
+    "bytes": 226229,
+    "draw": {
+      "sourceRect": [
+        1.5431,
+        10.4219,
+        479.9138,
+        418.0341
+      ],
+      "anchor": [
+        268.5048,
+        407.2262
+      ],
+      "ports": {
+        "input": [
+          196.7492,
+          190.2962
+        ],
+        "output": [
+          171.6733,
+          355.1167
+        ]
+      }
+    },
+    "originalAnchor": [
+      742,
+      1080
+    ],
+    "anchor": [
+      268.5048,
+      407.2262
+    ],
+    "originalPorts": {
+      "input": [
+        556,
+        518
+      ],
+      "output": [
+        491,
+        945
+      ]
+    },
+    "ports": {
+      "input": [
+        196.7492,
+        190.2962
+      ],
+      "output": [
+        171.6733,
+        355.1167
+      ]
+    },
+    "path": "assets/factory/flip-wafer-mold-closed.png"
+  },
+  "factory/flip-wafer-mold-frame-clean": {
+    "id": "flip-wafer-mold",
+    "label": "五代双面烤模机",
+    "group": "machines",
+    "type": "png",
+    "src": "./flip-wafer-mold.png",
+    "size": [
+      483,
+      430
+    ],
+    "bounds": [
+      1.5431,
+      10.4219,
+      481.4569,
+      428.456
+    ],
+    "originalSource": "../../../source/gameplay/machines/artwork/v5/flip-wafer-mold.png",
+    "originalSize": [
+      1312,
+      1199
+    ],
+    "originalBounds": [
+      50,
+      52,
+      1294,
+      1135
+    ],
+    "originalAlphaBounds": [
+      48,
+      27,
+      1296,
+      1137
+    ],
+    "sourceCrop": [
+      46,
+      25,
+      1298,
+      1139
+    ],
+    "scale": [
+      0.38578275,
+      0.38599641
+    ],
+    "alphaThreshold": 16,
+    "padding": 2,
+    "maxEdge": 600,
+    "sourceBytes": 1494770,
+    "bytes": 182608,
+    "draw": {
+      "sourceRect": [
+        1.5431,
+        10.4219,
+        479.9138,
+        418.0341
+      ],
+      "anchor": [
+        268.5048,
+        407.2262
+      ],
+      "ports": {
+        "input": [
+          196.7492,
+          190.2962
+        ],
+        "output": [
+          171.6733,
+          355.1167
+        ]
+      }
+    },
+    "originalAnchor": [
+      742,
+      1080
+    ],
+    "anchor": [
+      268.5048,
+      407.2262
+    ],
+    "originalPorts": {
+      "input": [
+        556,
+        518
+      ],
+      "output": [
+        491,
+        945
+      ]
+    },
+    "ports": {
+      "input": [
+        196.7492,
+        190.2962
+      ],
+      "output": [
+        171.6733,
+        355.1167
+      ]
+    },
+    "path": "assets/factory/flip-wafer-mold-frame-clean.png"
+  },
+  "factory/flip-wafer-mold-flip-front": {
+    "id": "flip-wafer-mold",
+    "label": "五代双面烤模机",
+    "group": "machines",
+    "type": "png",
+    "src": "./flip-wafer-mold.png",
+    "size": [
+      483,
+      430
+    ],
+    "bounds": [
+      1.5431,
+      10.4219,
+      481.4569,
+      428.456
+    ],
+    "originalSource": "../../../source/gameplay/machines/artwork/v5/flip-wafer-mold.png",
+    "originalSize": [
+      1312,
+      1199
+    ],
+    "originalBounds": [
+      50,
+      52,
+      1294,
+      1135
+    ],
+    "originalAlphaBounds": [
+      48,
+      27,
+      1296,
+      1137
+    ],
+    "sourceCrop": [
+      46,
+      25,
+      1298,
+      1139
+    ],
+    "scale": [
+      0.38578275,
+      0.38599641
+    ],
+    "alphaThreshold": 16,
+    "padding": 2,
+    "maxEdge": 600,
+    "sourceBytes": 1494770,
+    "bytes": 64217,
+    "draw": {
+      "sourceRect": [
+        1.5431,
+        10.4219,
+        479.9138,
+        418.0341
+      ],
+      "anchor": [
+        268.5048,
+        407.2262
+      ],
+      "ports": {
+        "input": [
+          196.7492,
+          190.2962
+        ],
+        "output": [
+          171.6733,
+          355.1167
+        ]
+      }
+    },
+    "originalAnchor": [
+      742,
+      1080
+    ],
+    "anchor": [
+      268.5048,
+      407.2262
+    ],
+    "originalPorts": {
+      "input": [
+        556,
+        518
+      ],
+      "output": [
+        491,
+        945
+      ]
+    },
+    "ports": {
+      "input": [
+        196.7492,
+        190.2962
+      ],
+      "output": [
+        171.6733,
+        355.1167
+      ]
+    },
+    "path": "assets/factory/flip-wafer-mold-flip-front.png"
+  },
+  "factory/flip-wafer-mold-flip-rear": {
+    "id": "flip-wafer-mold",
+    "label": "五代双面烤模机",
+    "group": "machines",
+    "type": "png",
+    "src": "./flip-wafer-mold.png",
+    "size": [
+      483,
+      430
+    ],
+    "bounds": [
+      1.5431,
+      10.4219,
+      481.4569,
+      428.456
+    ],
+    "originalSource": "../../../source/gameplay/machines/artwork/v5/flip-wafer-mold.png",
+    "originalSize": [
+      1312,
+      1199
+    ],
+    "originalBounds": [
+      50,
+      52,
+      1294,
+      1135
+    ],
+    "originalAlphaBounds": [
+      48,
+      27,
+      1296,
+      1137
+    ],
+    "sourceCrop": [
+      46,
+      25,
+      1298,
+      1139
+    ],
+    "scale": [
+      0.38578275,
+      0.38599641
+    ],
+    "alphaThreshold": 16,
+    "padding": 2,
+    "maxEdge": 600,
+    "sourceBytes": 1494770,
+    "bytes": 35865,
+    "draw": {
+      "sourceRect": [
+        1.5431,
+        10.4219,
+        479.9138,
+        418.0341
+      ],
+      "anchor": [
+        268.5048,
+        407.2262
+      ],
+      "ports": {
+        "input": [
+          196.7492,
+          190.2962
+        ],
+        "output": [
+          171.6733,
+          355.1167
+        ]
+      }
+    },
+    "originalAnchor": [
+      742,
+      1080
+    ],
+    "anchor": [
+      268.5048,
+      407.2262
+    ],
+    "originalPorts": {
+      "input": [
+        556,
+        518
+      ],
+      "output": [
+        491,
+        945
+      ]
+    },
+    "ports": {
+      "input": [
+        196.7492,
+        190.2962
+      ],
+      "output": [
+        171.6733,
+        355.1167
+      ]
+    },
+    "path": "assets/factory/flip-wafer-mold-flip-rear.png"
+  },
+  "factory/wafer": {
+    "id": "wafer",
+    "label": "未包装薄脆",
+    "group": "materials",
+    "type": "png",
+    "size": [
+      173,
+      107
+    ],
+    "draw": {
+      "sourceRect": [
+        2,
+        2,
+        169,
+        103
+      ]
+    },
+    "path": "assets/factory/wafer.png"
+  },
+  "factory/rotary-sandwich-assembler-body-clean": {
+    "id": "rotary-sandwich-assembler",
+    "label": "六代旋转组装台",
+    "group": "machines",
+    "type": "png",
+    "src": "./rotary-sandwich-assembler.png",
+    "size": [
+      502,
+      449
+    ],
+    "bounds": [
+      17.3769,
+      25.8445,
+      497.3662,
+      434.7277
+    ],
+    "originalSource": "../../../source/gameplay/machines/artwork/v5/rotary-sandwich-assembler.png",
+    "originalSize": [
+      1312,
+      1199
+    ],
+    "originalBounds": [
+      45,
+      88,
+      1288,
+      1148
+    ],
+    "originalAlphaBounds": [
+      0,
+      23,
+      1298,
+      1183
+    ],
+    "sourceCrop": [
+      0,
+      21,
+      1300,
+      1185
+    ],
+    "scale": [
+      0.38615385,
+      0.38573883
+    ],
+    "alphaThreshold": 16,
+    "padding": 2,
+    "maxEdge": 600,
+    "sourceBytes": 1404853,
+    "bytes": 306635,
+    "draw": {
+      "sourceRect": [
+        17.3769,
+        25.8445,
+        479.9893,
+        408.8832
+      ],
+      "anchor": [
+        296.18,
+        384.9674
+      ],
+      "ports": {
+        "input": [
+          215.86,
+          179.3686
+        ],
+        "output": [
+          88.0431,
+          358.3514
+        ]
+      }
+    },
+    "originalAnchor": [
+      767,
+      1019
+    ],
+    "anchor": [
+      296.18,
+      384.9674
+    ],
+    "originalPorts": {
+      "input": [
+        559,
+        486
+      ],
+      "output": [
+        228,
+        950
+      ]
+    },
+    "ports": {
+      "input": [
+        215.86,
+        179.3686
+      ],
+      "output": [
+        88.0431,
+        358.3514
+      ]
+    },
+    "path": "assets/factory/rotary-sandwich-assembler-body-clean.png"
+  },
+  "factory/rotary-sandwich-assembler-food-top": {
+    "size": [
+      192,
+      192
+    ],
+    "path": "assets/factory/rotary-sandwich-assembler-food-top.png"
+  },
+  "factory/rotary-sandwich-assembler-food-cap": {
+    "size": [
+      192,
+      192
+    ],
+    "path": "assets/factory/rotary-sandwich-assembler-food-cap.png"
+  },
+  "factory/rotary-sandwich-assembler-nozzle-tip": {
+    "size": [
+      21,
+      27
+    ],
+    "path": "assets/factory/rotary-sandwich-assembler-nozzle-tip.png"
+  },
+  "factory/rotary-sandwich-assembler-press-tip": {
+    "size": [
+      31,
+      53
+    ],
+    "path": "assets/factory/rotary-sandwich-assembler-press-tip.png"
+  },
+  "factory/sandwich-square": {
+    "id": "sandwich-square",
+    "label": "未包装夹心脆方",
+    "group": "materials",
+    "type": "png",
+    "size": [
+      183,
+      143
+    ],
+    "draw": {
+      "sourceRect": [
+        2,
+        2,
+        179,
+        139
+      ]
+    },
+    "path": "assets/factory/sandwich-square.png"
   }
 };

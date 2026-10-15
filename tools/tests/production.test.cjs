@@ -8,7 +8,38 @@ const { ProductionSession } = require('../../douyin-game/src/production-session'
 
 const clone = value => JSON.parse(JSON.stringify(value));
 const unitValue = level => 2 ** (level - 1);
-const initialState = new GameModel().state;
+
+// Preserve the two-product starting scenario used by these existing checks.
+// This is the previous schema-5 opening save, restored through normal migration.
+function twoProductModel() {
+  const board = Array(63).fill(null);
+  const lines = ['original', 'caramel'].map((product, index) => {
+    const id = product + '-1';
+    board[index === 0 ? 8 : 12] = { kind: 'launcher', lineId: id, product, level: 1, id: index + 1 };
+    return { id, product, outputLevel: 1, capacityLevel: 1, inventory: 0, discardedBaseUnits: 0,
+      cacheCapacityBaseUnits: 8, buffer: [], warehouse: [], legacyGroup: null,
+      factory: { phase: index === 0 ? 'supply' : 'waiting-supply', elapsed: 0,
+        duration: index === 0 ? 0.6 : 0, batchId: index === 0 ? 1 : null,
+        outputLevel: 1, capacityLevel: 1, batchUnits: 4, baseUnits: 4 } };
+  });
+  const orders = [
+    { id: 1, requirements: [{ product: 'original', level: 3 }], reward: 60 },
+    { id: 2, requirements: [{ product: 'caramel', level: 3 }], reward: 70 },
+    { id: 3, requirements: [{ product: 'original', level: 3 }, { product: 'caramel', level: 3 }], reward: 150 }
+  ];
+  return new GameModel({ schemaVersion: 5, productionAt: null, nextBatchId: 2,
+    coins: 0, completedOrders: 0, page: 'board', selectedCell: 8, selectedLineId: 'original-1',
+    board, lines, orders, focusedOrderId: 1, nextOrderId: 4, order: orders[0],
+    customerServiceCounts: { 'rabbit-courier': 0 }, nextItemId: 3,
+    shared: {
+      materials: { baseUnits: 0, capacityBaseUnits: 8, elapsed: 0, duration: 2.2,
+        refillBaseUnits: 4, refilledBaseUnits: 0 },
+      supply: { level: 1, lineId: 'original-1', elapsed: 0, duration: 0.6, queue: ['caramel-1'] },
+      packaging: { level: 1, lineId: null, batch: null, elapsed: 0, duration: 0.95, queue: [] }
+    } });
+}
+
+const initialState = twoProductModel().state;
 const INITIAL_MATERIAL_UNITS = initialState.shared.materials.baseUnits + initialState.lines.reduce((sum, line) =>
   sum + (line.factory.batchId === null ? 0 : line.factory.baseUnits), 0);
 
@@ -63,7 +94,7 @@ function assertWithinCacheCapacity(model) {
 // Persisted backlogs are valid inputs even when the current starting machines
 // normally leave the shared packer with spare capacity.
 function backloggedModel(inventory = 0) {
-  const model = new GameModel();
+  const model = twoProductModel();
   for (let step = 0; step < 1000 && model.state.shared.packaging.batch?.lineId !== 'original-1'; step += 1) {
     model.update(0.01);
   }
@@ -138,8 +169,8 @@ function legacySave(version) {
 }
 
 test('online production is identical with short steps and a long interval', () => {
-  const continuous = new GameModel();
-  const stepped = new GameModel();
+  const continuous = twoProductModel();
+  const stepped = twoProductModel();
   continuous.update(120);
   for (let step = 0; step < 600; step += 1) { stepped.update(0.2); assertWithinCacheCapacity(stepped); }
   assertEquivalent(stepped.serialize(), continuous.serialize());
@@ -147,7 +178,7 @@ test('online production is identical with short steps and a long interval', () =
 });
 
 test('production, launch and output upgrades conserve real material', () => {
-  const model = new GameModel();
+  const model = twoProductModel();
   model.update(40);
   assertConserved(model);
   assert.equal(model.launch('original-1').ok, true);
@@ -203,7 +234,7 @@ test('an upgraded line aggregates old batches once and preserves other lines and
 });
 
 test('current saves round trip and v4 saves migrate without changing player goods or rewards', () => {
-  const current = new GameModel();
+  const current = twoProductModel();
   current.update(9);
   const snapshot = current.serialize();
   const restored = new GameModel(snapshot);
@@ -214,7 +245,8 @@ test('current saves round trip and v4 saves migrate without changing player good
   assert.equal(migrated.restored, true);
   assert.equal(migrated.recoveryRequired, false);
   assert.ok(migrated.state.schemaVersion > old.schemaVersion);
-  assert.deepEqual(protectedState(migrated), { board: old.board, order: old.order, coins: old.coins, completedOrders: 0 });
+  assert.deepEqual(protectedState(migrated), { board: old.board,
+    order: { ...old.order, kind: 'normal', customerId: 'rabbit-courier' }, coins: old.coins, completedOrders: 0 });
   assert.deepEqual(migrated.state.lines.map(line => line.inventory), old.lines.map(line => line.inventory));
   const stable = new GameModel(migrated.serialize());
   assertEquivalent(stable.serialize(), migrated.serialize());
@@ -228,7 +260,7 @@ test('v1, v2 and v3 saves retain original goods and add only the second launcher
     assert.equal(migrated.getLine('original-1').inventory, saved.line.inventory);
     assert.equal(migrated.getLine('caramel-1').inventory, 0);
     assert.equal(migrated.state.coins, saved.coins);
-    assert.deepEqual(migrated.state.order, { id: 1, requirements: [{ product: 'original', level: 5 }], reward: 180 });
+    assert.deepEqual(migrated.state.order, { id: 1, kind: 'normal', customerId: 'rabbit-courier', requirements: [{ product: 'original', level: 5 }], reward: 180 });
     assert.equal(migrated.state.board.filter(item => item?.kind === 'launcher').length, 2);
     assert.equal(new GameModel(migrated.serialize()).recoveryRequired, false);
   }
@@ -252,7 +284,7 @@ test('damaged saves remain protected from every automatic session checkpoint', (
   invalid.lines[0].inventory = -1;
   assertProtected(invalid, 'negative stored goods');
 
-  const nullRequirement = new GameModel().serialize();
+  const nullRequirement = twoProductModel().serialize();
   nullRequirement.order.requirements = [null];
   assertProtected(nullRequirement, 'null order entries are rejected without throwing');
 
@@ -307,7 +339,7 @@ test('damaged saves remain protected from every automatic session checkpoint', (
 });
 
 test('offline production is capped at two hours and changes supply inventory only', () => {
-  const model = new GameModel();
+  const model = twoProductModel();
   model.resumeProduction(1000);
   model.state.coins = 83;
   const before = protectedState(model);
@@ -326,7 +358,7 @@ test('offline production is capped at two hours and changes supply inventory onl
 });
 
 test('repeated resume and clock rollback never duplicate production', () => {
-  const model = new GameModel();
+  const model = twoProductModel();
   model.resumeProduction(100000);
   model.resumeProduction(160000);
   const settled = model.serialize();
@@ -344,7 +376,7 @@ test('repeated resume and clock rollback never duplicate production', () => {
 
 test('repeated lifecycle events consume intervals once and checkpoint is a pure snapshot', () => {
   let now = 1000;
-  const model = new GameModel();
+  const model = twoProductModel();
   const writes = [];
   const session = new ProductionSession({ model, now: () => now, writeSave: snapshot => writes.push(clone(snapshot)) });
   session.setReady();
@@ -357,14 +389,14 @@ test('repeated lifecycle events consume intervals once and checkpoint is a pure 
   now += 10000; session.show(); session.checkpoint();
   assertEquivalent(model.serialize(), shown);
   session.advance();
-  const reference = new GameModel(); reference.resumeProduction(1000); reference.advanceProduction(now);
+  const reference = twoProductModel(); reference.resumeProduction(1000); reference.advanceProduction(now);
   assertEquivalent(model.serialize(), reference.serialize());
   assert.deepEqual(writes.at(-1), shown, 'checkpoint does not consume a new clock interval');
 });
 
 test('background time during resource loading is settled once and its summary is consumed once', () => {
   let now = 1000;
-  const model = new GameModel();
+  const model = twoProductModel();
   const session = new ProductionSession({ model, now: () => now, writeSave: () => {} });
   assert.equal(session.canInteract, false);
   now += 5000; session.hide(); now += 60000; session.show();
@@ -373,7 +405,7 @@ test('background time during resource loading is settled once and its summary is
   assert.equal(session.canInteract, false);
   session.show(); assert.equal(session.canInteract, true);
   now += 3000; session.advance();
-  const reference = new GameModel(); reference.resumeProduction(1000); reference.advanceProduction(now);
+  const reference = twoProductModel(); reference.resumeProduction(1000); reference.advanceProduction(now);
   assertEquivalent(model.serialize(), reference.serialize());
   const summary = session.takeOfflineSummary();
   assert.equal(summary.seconds, 180);
