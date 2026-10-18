@@ -42,28 +42,18 @@ button:focus-visible,select:focus-visible,a:focus-visible,.scene-viewport:focus-
 #zoom-level{display:block;min-width:0;text-align:center;color:#6d5c43;font-size:12px;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
 .scene-viewport{position:relative;min-height:0;overflow:hidden;overscroll-behavior:none;touch-action:none;outline-offset:-3px;background:radial-gradient(ellipse at 48% 42%,#c5cfad,#aab995);cursor:grab;user-select:none;-webkit-user-select:none}
 .scene-viewport:active{cursor:grabbing}
-.logistics-bed,.logistics-crossing{fill:none;stroke:#f4e8cc;stroke-width:18;stroke-linejoin:round;stroke-linecap:round}
-.logistics-crossing{stroke-width:20}
-.shared-courtyard{position:absolute;border:2px solid #b7ad8e;border-radius:34px;background:#ded5bc99;z-index:0}
 .trunk-label{position:absolute;z-index:3;font-size:13px;line-height:1.5;font-weight:800;text-align:center;background:#f4e8cc;border-radius:6px;padding:3px;pointer-events:none}
 .supply-label{color:#327f99}.return-label{color:#9d6c30}
 .construction-slot.locked{opacity:.42;filter:saturate(.3)}
 .overview-labels{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:40}
 .overview-labels[hidden]{display:none}
 .overview-workshop[hidden]{display:none}
-.overview-workshop{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2px;width:88px;min-height:44px;padding:4px 3px;border:1px solid #86a68b;border-radius:9px;background:#fff7e9ed;color:#386b5b;box-shadow:0 2px 4px #5c5b4326;font-size:12px;line-height:1.2;pointer-events:auto;touch-action:none}
-.overview-workshop strong{font-size:13px}.overview-workshop span{font-size:10px}.overview-workshop.locked{color:#84917a;background:#dfe4d3e8;border-color:#aab59b}.overview-workshop.next{color:#8d6a31;background:#fbefd4f0;border-color:#ccb177}.overview-workshop:disabled{cursor:default}
+.overview-workshop{position:absolute;transform:translate(-50%,-50%);display:flex;justify-content:center;align-items:center;gap:4px;width:82px;height:44px;padding:4px 3px;border:0;background:transparent;color:#386b5b;font-size:12px;line-height:1.2;pointer-events:auto;touch-action:none;isolation:isolate}
+.overview-workshop::before{content:'';position:absolute;inset:9px 0;border:1px solid #86a68b;border-radius:6px;background:#fff7e9f2;box-shadow:0 2px 4px #5c5b4326;z-index:-1}
+.overview-workshop strong{font-size:12px}.overview-workshop span{font-size:10px}.overview-workshop.locked{color:#84917a}.overview-workshop.locked::before{background:#dfe4d3e8;border-color:#aab59b}.overview-workshop.next{color:#8d6a31}.overview-workshop.next::before{background:#fbefd4f0;border-color:#ccb177}.overview-workshop:disabled{cursor:default}
 .phone.overview .workshop-title,.phone.overview .workshop-status,.phone.overview .trunk-label{display:none}
 .world{position:absolute;left:0;top:0;width:auto;height:auto;min-width:0;min-height:0;transform-origin:0 0;will-change:transform;background:transparent;touch-action:none;isolation:isolate}
 .world img{user-select:none;-webkit-user-drag:none}
-.expansion-scene-layer,.scene-floors,.logistics,.logistics-foreground,.transport-motion{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;overflow:visible}
-.expansion-scene-layer{z-index:2}
-.scene-floors{z-index:0}
-.logistics-supply,.logistics-return,.logistics-local{fill:none;stroke-linecap:round;stroke-linejoin:round}
-.logistics-supply{stroke:#4a95ae;stroke-width:12}
-.logistics-return{stroke:#c69551;stroke-width:12}
-.logistics-local{stroke:#769d85;stroke-width:7}
-.expansion-platform{position:absolute;left:-6%;bottom:-5%;width:112%;height:42%;overflow:hidden;pointer-events:none;z-index:0}
 .expansion-stamp{position:absolute;height:auto;pointer-events:none;z-index:1}
 .expansion-decoration{position:absolute;overflow:hidden;pointer-events:none;z-index:4}
 .shared-label{z-index:2000;border:0;background:transparent;color:#6e7859;font-size:18px;letter-spacing:3px}
@@ -88,7 +78,7 @@ button:focus-visible,select:focus-visible,a:focus-visible,.scene-viewport:focus-
 .workshop-ground.locked{border-style:dashed;border-color:#9caa8a;background:#d8dfbd33;box-shadow:none}
 .workshop-ground.next{border-style:dashed;border-color:#bd9e59;background:#f2e3b955}
 .workshop-title,.workshop-status{position:absolute;box-sizing:border-box;text-align:center;line-height:1.3;white-space:nowrap;pointer-events:none;transform:scale(var(--map-label-scale,1));transform-origin:center top}
-.workshop-title{z-index:2000;padding:4px 10px;border:1px solid #acb48a;border-radius:8px;background:#fff8e9f2;color:#3b7161;font-size:16px;font-weight:800;box-shadow:0 2px 4px #5c5b4326}
+.workshop-title{z-index:2000;padding:4px 6px;border:1px solid #acb48a;border-radius:6px;background:#fff8e9f2;color:#3b7161;font-size:14px;font-weight:800;box-shadow:0 2px 4px #5c5b4326}
 .workshop-status{z-index:32;padding:4px 8px;border-radius:7px;background:#e6efdbf0;color:#4d755e;font-size:13px;font-weight:700}
 .workshop-title.locked,.workshop-status.locked,.workshop-ground.locked .workshop-title,.workshop-ground.locked .workshop-status{color:#84917a;background:#dfe4d3e8;border-color:#b3bea4}
 .workshop-title.next,.workshop-status.next,.workshop-ground.next .workshop-title,.workshop-ground.next .workshop-status{color:#8d6a31;background:#fbefd4f0;border-color:#ccb177}

@@ -55,7 +55,24 @@
         "order": 0
       },
       "sourceBytes": 1831692,
-      "bytes": 452099
+      "bytes": 452099,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        390,
+        844
+      ],
+      "pixelSize": [
+        780,
+        1688
+      ],
+      "anchorPx": [
+        390,
+        844
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "scene/hero-production": {
       "source": "assets/source/ui/entry-page/v1/scene/hero-production.png",
@@ -104,7 +121,24 @@
         "order": 1
       },
       "sourceBytes": 1425960,
-      "bytes": 148019
+      "bytes": 148019,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        360,
+        399.5
+      ],
+      "pixelSize": [
+        720,
+        799
+      ],
+      "anchorPx": [
+        360,
+        399.5
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "scene/rabbit-host": {
       "source": "assets/source/ui/entry-page/v1/scene/rabbit-host.png",
@@ -153,7 +187,24 @@
         "order": 2
       },
       "sourceBytes": 1697083,
-      "bytes": 76925
+      "bytes": 76925,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        228,
+        343.5
+      ],
+      "pixelSize": [
+        456,
+        687
+      ],
+      "anchorPx": [
+        228,
+        343.5
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "ui/title-sign": {
       "source": "assets/source/ui/entry-page/v1/ui/title-sign.png",
@@ -208,7 +259,24 @@
         "top": 189,
         "right": 86,
         "bottom": 46
-      }
+      },
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        390,
+        192.5
+      ],
+      "pixelSize": [
+        780,
+        385
+      ],
+      "anchorPx": [
+        390,
+        192.5
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "ui/button-enter": {
       "source": "assets/source/ui/entry-page/v1/ui/button-enter.png",
@@ -263,7 +331,24 @@
         "top": 31,
         "right": 100,
         "bottom": 31
-      }
+      },
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        312,
+        97.5
+      ],
+      "pixelSize": [
+        624,
+        195
+      ],
+      "anchorPx": [
+        312,
+        97.5
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "ui/button-settings": {
       "source": "assets/source/ui/entry-page/v1/ui/button-settings.png",
@@ -312,7 +397,24 @@
         "order": 5
       },
       "sourceBytes": 1111120,
-      "bytes": 5137
+      "bytes": 5137,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        47,
+        43.5
+      ],
+      "pixelSize": [
+        94,
+        87
+      ],
+      "anchorPx": [
+        47,
+        43.5
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "icons/settings": {
       "source": "assets/source/ui/entry-page/v1/icons/settings.png",
@@ -361,7 +463,25 @@
         "order": 6
       },
       "sourceBytes": 765235,
-      "bytes": 2704
+      "bytes": 2704,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        28,
+        27
+      ],
+      "pixelSize": [
+        56,
+        54
+      ],
+      "anchorPx": [
+        28,
+        27
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     }
-  }
+  },
+  "metadataSchemaVersion": 2
 }

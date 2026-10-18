@@ -43,7 +43,24 @@
         "width": 480,
         "height": 480
       },
-      "bytes": 14911
+      "bytes": 10559,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        256,
+        256
+      ],
+      "pixelSize": [
+        512,
+        512
+      ],
+      "anchorPx": [
+        256,
+        256
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "portrait-unselected": {
       "source": "assets/source/ui/customer-status/v1/selection/portrait-unselected.svg",
@@ -75,7 +92,24 @@
         "width": 480,
         "height": 480
       },
-      "bytes": 13993
+      "bytes": 9548,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        256,
+        256
+      ],
+      "pixelSize": [
+        512,
+        512
+      ],
+      "anchorPx": [
+        256,
+        256
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "detail-selected": {
       "source": "assets/source/ui/customer-status/v1/selection/detail-selected.svg",
@@ -107,7 +141,24 @@
         "width": 736,
         "height": 928
       },
-      "bytes": 27112
+      "bytes": 14920,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        384,
+        480
+      ],
+      "pixelSize": [
+        768,
+        960
+      ],
+      "anchorPx": [
+        384,
+        480
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "detail-unselected": {
       "source": "assets/source/ui/customer-status/v1/selection/detail-unselected.svg",
@@ -139,7 +190,25 @@
         "width": 736,
         "height": 928
       },
-      "bytes": 25902
+      "bytes": 13686,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        384,
+        480
+      ],
+      "pixelSize": [
+        768,
+        960
+      ],
+      "anchorPx": [
+        384,
+        480
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     }
-  }
+  },
+  "metadataSchemaVersion": 2
 }

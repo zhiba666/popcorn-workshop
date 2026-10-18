@@ -1,0 +1,15 @@
+.workshop-boundary{position:absolute;overflow:visible;pointer-events:none}
+.workshop-boundary *{pointer-events:none}
+.boundary-shadow{fill:#58654b;fill-opacity:.14}
+.boundary-curb-top{fill:#e2d5b4;stroke:#b8aa88;stroke-width:.8;stroke-linejoin:round}
+.boundary-curb-face{fill:#b9aa88;stroke:#a89977;stroke-width:.6;stroke-linejoin:round}
+.boundary-rail{fill:none;stroke:#9cae9f;stroke-width:5;stroke-linecap:round}
+.boundary-post-shadow{fill:none;stroke:#6d8173;stroke-width:5;stroke-linecap:square;opacity:.28}
+.boundary-post{fill:none;stroke:#82998a;stroke-width:5;stroke-linecap:square}
+.boundary-post-cap{fill:#d5dec9;stroke:#789181;stroke-width:.8}
+.boundary-courtyard .boundary-rail{stroke:#a8b9a6}
+.boundary-rear .boundary-curb-top{fill:#c3c5a3;stroke:#a5ae8e}
+.boundary-rear .boundary-curb-face{fill:#a2ad8c;stroke:#98a583}
+.workshop-boundary.next .boundary-curb-top{fill:#c9bd98;stroke:#ac9e7b;stroke-width:.8}
+.workshop-boundary.next .boundary-curb-face{fill:#ad9f7d;stroke:none;opacity:.7}
+.workshop-boundary.next .boundary-shadow{fill-opacity:.07}

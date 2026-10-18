@@ -39,7 +39,24 @@
         "right": 40,
         "bottom": 48
       },
-      "bytes": 11069
+      "bytes": 7055,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        180,
+        300
+      ],
+      "pixelSize": [
+        360,
+        600
+      ],
+      "anchorPx": [
+        180,
+        300
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "profile-sheet": {
       "source": "assets/source/ui/customer-page/v1/ui/profile-sheet.svg",
@@ -76,7 +93,24 @@
         "right": 48,
         "bottom": 48
       },
-      "bytes": 29360
+      "bytes": 12814,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        360,
+        640
+      ],
+      "pixelSize": [
+        720,
+        1280
+      ],
+      "anchorPx": [
+        360,
+        640
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "relationship-entry": {
       "source": "assets/source/ui/customer-page/v1/ui/relationship-entry.svg",
@@ -113,7 +147,24 @@
         "right": 40,
         "bottom": 48
       },
-      "bytes": 8099
+      "bytes": 5522,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        336,
+        112
+      ],
+      "pixelSize": [
+        672,
+        224
+      ],
+      "anchorPx": [
+        336,
+        112
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "speech-bubble": {
       "source": "assets/source/ui/customer-page/v1/ui/speech-bubble.svg",
@@ -150,7 +201,25 @@
         "right": 40,
         "bottom": 48
       },
-      "bytes": 8019
+      "bytes": 5776,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        280,
+        120
+      ],
+      "pixelSize": [
+        560,
+        240
+      ],
+      "anchorPx": [
+        280,
+        120
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     }
-  }
+  },
+  "metadataSchemaVersion": 2
 }

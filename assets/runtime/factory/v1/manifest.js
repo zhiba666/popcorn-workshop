@@ -1,6 +1,5 @@
-// Runtime-only PNGs; source artwork and animation rigs remain unchanged.
-// Bounds use alpha > 16 for placement. sourceCrop retains all nonzero alpha with 2 px padding.
-// draw coordinates are in runtime image pixels; original coordinates remain available for calibration.
+// Generated from assets/recipes/runtime-catalogs.json; do not edit.
+// Bounds and draw coordinates use final PNG pixels; sourceCrop is [left, top, right, bottom] in source pixels.
 const resolveAsset = item => ({
   ...item,
   src: new URL(item.src, import.meta.url).href,
@@ -55,7 +54,7 @@ export const runtimeFactoryAssets = [
     "padding": 2,
     "maxEdge": 600,
     "sourceBytes": 1523973,
-    "bytes": 330605,
+    "bytes": 331630,
     "draw": {
       "sourceRect": [
         4.2324,
@@ -105,7 +104,28 @@ export const runtimeFactoryAssets = [
         404.621,
         443.8077
       ]
-    }
+    },
+    "metadataSchemaVersion": 2,
+    "logicalSize": [
+      488,
+      528
+    ],
+    "pixelSize": [
+      488,
+      528
+    ],
+    "sourceSize": [
+      1199,
+      1312
+    ],
+    "anchorPx": [
+      242.0954,
+      407.8462
+    ],
+    "anchorNormalized": [
+      0.496097131147541,
+      0.7724359848484849
+    ]
   },
   {
     "id": "caramel-drum",
@@ -154,13 +174,13 @@ export const runtimeFactoryAssets = [
     "padding": 2,
     "maxEdge": 600,
     "sourceBytes": 1641583,
-    "bytes": 353029,
+    "bytes": 354240,
     "draw": {
       "sourceRect": [
         2.4872,
         1.2439,
         479.6111,
-        510.0
+        510
       ],
       "anchor": [
         235.8675,
@@ -204,7 +224,28 @@ export const runtimeFactoryAssets = [
         424.8932,
         436.6098
       ]
-    }
+    },
+    "metadataSchemaVersion": 2,
+    "logicalSize": [
+      485,
+      544
+    ],
+    "pixelSize": [
+      485,
+      544
+    ],
+    "sourceSize": [
+      1199,
+      1312
+    ],
+    "anchorPx": [
+      235.8675,
+      451.122
+    ],
+    "anchorNormalized": [
+      0.48632474226804123,
+      0.8292683823529412
+    ]
   },
   {
     "id": "ball-mold-press",
@@ -253,7 +294,7 @@ export const runtimeFactoryAssets = [
     "padding": 2,
     "maxEdge": 600,
     "sourceBytes": 1433102,
-    "bytes": 365041,
+    "bytes": 366282,
     "draw": {
       "sourceRect": [
         66.0966,
@@ -303,7 +344,28 @@ export const runtimeFactoryAssets = [
         379.1372,
         466.5751
       ]
-    }
+    },
+    "metadataSchemaVersion": 2,
+    "logicalSize": [
+      599,
+      535
+    ],
+    "pixelSize": [
+      599,
+      535
+    ],
+    "sourceSize": [
+      1312,
+      1199
+    ],
+    "anchorPx": [
+      304.3195,
+      448.6652
+    ],
+    "anchorNormalized": [
+      0.5080459098497496,
+      0.8386265420560748
+    ]
   },
   {
     "id": "sheeting-strip-cutter",
@@ -352,7 +414,7 @@ export const runtimeFactoryAssets = [
     "padding": 2,
     "maxEdge": 600,
     "sourceBytes": 1191212,
-    "bytes": 237113,
+    "bytes": 237925,
     "draw": {
       "sourceRect": [
         30.6258,
@@ -402,7 +464,28 @@ export const runtimeFactoryAssets = [
         423.2638,
         365.878
       ]
-    }
+    },
+    "metadataSchemaVersion": 2,
+    "logicalSize": [
+      512,
+      444
+    ],
+    "pixelSize": [
+      512,
+      444
+    ],
+    "sourceSize": [
+      1312,
+      1199
+    ],
+    "anchorPx": [
+      259.5337,
+      372.5517
+    ],
+    "anchorNormalized": [
+      0.5069017578125,
+      0.8390804054054054
+    ]
   },
   {
     "id": "flip-wafer-mold",
@@ -451,7 +534,7 @@ export const runtimeFactoryAssets = [
     "padding": 2,
     "maxEdge": 600,
     "sourceBytes": 1494770,
-    "bytes": 280130,
+    "bytes": 281133,
     "draw": {
       "sourceRect": [
         1.5431,
@@ -501,7 +584,28 @@ export const runtimeFactoryAssets = [
         171.6733,
         355.1167
       ]
-    }
+    },
+    "metadataSchemaVersion": 2,
+    "logicalSize": [
+      483,
+      430
+    ],
+    "pixelSize": [
+      483,
+      430
+    ],
+    "sourceSize": [
+      1312,
+      1199
+    ],
+    "anchorPx": [
+      268.5048,
+      407.2262
+    ],
+    "anchorNormalized": [
+      0.5559105590062111,
+      0.9470376744186046
+    ]
   },
   {
     "id": "rotary-sandwich-assembler",
@@ -550,7 +654,7 @@ export const runtimeFactoryAssets = [
     "padding": 2,
     "maxEdge": 600,
     "sourceBytes": 1404853,
-    "bytes": 268132,
+    "bytes": 269117,
     "draw": {
       "sourceRect": [
         17.3769,
@@ -600,7 +704,28 @@ export const runtimeFactoryAssets = [
         88.0431,
         358.3514
       ]
-    }
+    },
+    "metadataSchemaVersion": 2,
+    "logicalSize": [
+      502,
+      449
+    ],
+    "pixelSize": [
+      502,
+      449
+    ],
+    "sourceSize": [
+      1312,
+      1199
+    ],
+    "anchorPx": [
+      296.18,
+      384.9674
+    ],
+    "anchorNormalized": [
+      0.59,
+      0.8573884187082406
+    ]
   },
   {
     "id": "supply-body-clean",
@@ -649,7 +774,7 @@ export const runtimeFactoryAssets = [
     "padding": 2,
     "maxEdge": 600,
     "sourceBytes": 1386321,
-    "bytes": 352539,
+    "bytes": 353187,
     "draw": {
       "sourceRect": [
         37.7075,
@@ -710,7 +835,28 @@ export const runtimeFactoryAssets = [
         188.5376,
         479.5402
       ]
-    }
+    },
+    "metadataSchemaVersion": 2,
+    "logicalSize": [
+      544,
+      600
+    ],
+    "pixelSize": [
+      544,
+      600
+    ],
+    "sourceSize": [
+      1199,
+      1312
+    ],
+    "anchorPx": [
+      285.1057,
+      516.3218
+    ],
+    "anchorNormalized": [
+      0.5240913602941176,
+      0.8605363333333335
+    ]
   },
   {
     "id": "packer-body-clean",
@@ -759,7 +905,7 @@ export const runtimeFactoryAssets = [
     "padding": 2,
     "maxEdge": 600,
     "sourceBytes": 1150262,
-    "bytes": 201825,
+    "bytes": 202400,
     "draw": {
       "sourceRect": [
         15.9208,
@@ -832,7 +978,28 @@ export const runtimeFactoryAssets = [
         435.9264,
         334.3134
       ]
-    }
+    },
+    "metadataSchemaVersion": 2,
+    "logicalSize": [
+      536,
+      387
+    ],
+    "pixelSize": [
+      536,
+      387
+    ],
+    "sourceSize": [
+      1448,
+      1086
+    ],
+    "anchorPx": [
+      303.2532,
+      320.668
+    ],
+    "anchorNormalized": [
+      0.565770895522388,
+      0.8285994832041343
+    ]
   },
   {
     "id": "supply-complete",
@@ -881,7 +1048,7 @@ export const runtimeFactoryAssets = [
     "padding": 2,
     "maxEdge": 600,
     "sourceBytes": 1503120,
-    "bytes": 378027,
+    "bytes": 378968,
     "draw": {
       "sourceRect": [
         9.3298,
@@ -919,7 +1086,28 @@ export const runtimeFactoryAssets = [
         161.4048,
         468.5547
       ]
-    }
+    },
+    "metadataSchemaVersion": 2,
+    "logicalSize": [
+      522,
+      576
+    ],
+    "pixelSize": [
+      522,
+      576
+    ],
+    "sourceSize": [
+      1199,
+      1312
+    ],
+    "anchorPx": [
+      259.3673,
+      505.927
+    ],
+    "anchorNormalized": [
+      0.4968722222222222,
+      0.8783454861111112
+    ]
   },
   {
     "id": "packer-complete",
@@ -968,7 +1156,7 @@ export const runtimeFactoryAssets = [
     "padding": 2,
     "maxEdge": 600,
     "sourceBytes": 1134094,
-    "bytes": 203485,
+    "bytes": 204111,
     "draw": {
       "sourceRect": [
         26.43,
@@ -1018,7 +1206,28 @@ export const runtimeFactoryAssets = [
         443.4797,
         337.4623
       ]
-    }
+    },
+    "metadataSchemaVersion": 2,
+    "logicalSize": [
+      508,
+      402
+    ],
+    "pixelSize": [
+      508,
+      402
+    ],
+    "sourceSize": [
+      1448,
+      1086
+    ],
+    "anchorPx": [
+      310.9411,
+      329.6867
+    ],
+    "anchorNormalized": [
+      0.612088779527559,
+      0.8201161691542288
+    ]
   },
   {
     "id": "warehouse",
@@ -1067,7 +1276,7 @@ export const runtimeFactoryAssets = [
     "padding": 2,
     "maxEdge": 600,
     "sourceBytes": 836716,
-    "bytes": 147593,
+    "bytes": 147436,
     "draw": {
       "sourceRect": [
         9.3366,
@@ -1111,7 +1320,28 @@ export const runtimeFactoryAssets = [
         133.9604,
         121.7355
       ]
-    }
+    },
+    "metadataSchemaVersion": 2,
+    "logicalSize": [
+      492,
+      491
+    ],
+    "pixelSize": [
+      492,
+      491
+    ],
+    "sourceSize": [
+      1226,
+      1283
+    ],
+    "anchorPx": [
+      247.6238,
+      348.5694
+    ],
+    "anchorNormalized": [
+      0.503300406504065,
+      0.7099173116089612
+    ]
   },
   {
     "id": "buffer-bin",
@@ -1160,7 +1390,7 @@ export const runtimeFactoryAssets = [
     "padding": 2,
     "maxEdge": 360,
     "sourceBytes": 1138005,
-    "bytes": 67427,
+    "bytes": 67598,
     "draw": {
       "sourceRect": [
         15.6798,
@@ -1204,7 +1434,28 @@ export const runtimeFactoryAssets = [
         128.8749,
         83.8933
       ]
-    }
+    },
+    "metadataSchemaVersion": 2,
+    "logicalSize": [
+      273,
+      242
+    ],
+    "pixelSize": [
+      273,
+      242
+    ],
+    "sourceSize": [
+      1330,
+      1182
+    ],
+    "anchorPx": [
+      140.6884,
+      212.3147
+    ],
+    "anchorNormalized": [
+      0.5153421245421246,
+      0.8773334710743801
+    ]
   },
   {
     "id": "supply-motor-cap",
@@ -1253,7 +1504,7 @@ export const runtimeFactoryAssets = [
     "padding": 2,
     "maxEdge": 320,
     "sourceBytes": 790561,
-    "bytes": 67357,
+    "bytes": 67523,
     "draw": {
       "sourceRect": [
         69.455,
@@ -1264,7 +1515,28 @@ export const runtimeFactoryAssets = [
       "partOf": "supply-body-clean"
     },
     "originalPartOf": "supply-body-clean",
-    "partOf": "supply-body-clean"
+    "partOf": "supply-body-clean",
+    "metadataSchemaVersion": 2,
+    "logicalSize": [
+      314,
+      320
+    ],
+    "pixelSize": [
+      314,
+      320
+    ],
+    "sourceSize": [
+      1299,
+      1211
+    ],
+    "anchorPx": [
+      157,
+      160
+    ],
+    "anchorNormalized": [
+      0.5,
+      0.5
+    ]
   },
   {
     "id": "packer-head",
@@ -1324,7 +1596,28 @@ export const runtimeFactoryAssets = [
       "partOf": "packer-body-clean"
     },
     "originalPartOf": "packer-body-clean",
-    "partOf": "packer-body-clean"
+    "partOf": "packer-body-clean",
+    "metadataSchemaVersion": 2,
+    "logicalSize": [
+      320,
+      303
+    ],
+    "pixelSize": [
+      320,
+      303
+    ],
+    "sourceSize": [
+      1346,
+      1169
+    ],
+    "anchorPx": [
+      160,
+      151.5
+    ],
+    "anchorNormalized": [
+      0.5,
+      0.5
+    ]
   },
   {
     "id": "platform",
@@ -1373,7 +1666,7 @@ export const runtimeFactoryAssets = [
     "padding": 2,
     "maxEdge": 600,
     "sourceBytes": 997139,
-    "bytes": 107124,
+    "bytes": 106899,
     "draw": {
       "sourceRect": [
         2.4138,
@@ -1381,7 +1674,28 @@ export const runtimeFactoryAssets = [
         590.3448,
         218.468
       ]
-    }
+    },
+    "metadataSchemaVersion": 2,
+    "logicalSize": [
+      600,
+      296
+    ],
+    "pixelSize": [
+      600,
+      296
+    ],
+    "sourceSize": [
+      1817,
+      866
+    ],
+    "anchorPx": [
+      300,
+      148
+    ],
+    "anchorNormalized": [
+      0.5,
+      0.5
+    ]
   },
   {
     "id": "wall-left",
@@ -1430,7 +1744,7 @@ export const runtimeFactoryAssets = [
     "padding": 2,
     "maxEdge": 800,
     "sourceBytes": 781508,
-    "bytes": 176764,
+    "bytes": 177130,
     "draw": {
       "sourceRect": [
         6.2299,
@@ -1438,7 +1752,28 @@ export const runtimeFactoryAssets = [
         159.7528,
         745.7476
       ]
-    }
+    },
+    "metadataSchemaVersion": 2,
+    "logicalSize": [
+      360,
+      800
+    ],
+    "pixelSize": [
+      360,
+      800
+    ],
+    "sourceSize": [
+      853,
+      1843
+    ],
+    "anchorPx": [
+      180,
+      400
+    ],
+    "anchorNormalized": [
+      0.5,
+      0.5
+    ]
   },
   {
     "id": "wall-back",
@@ -1487,7 +1822,7 @@ export const runtimeFactoryAssets = [
     "padding": 2,
     "maxEdge": 800,
     "sourceBytes": 1150641,
-    "bytes": 260377,
+    "bytes": 261045,
     "draw": {
       "sourceRect": [
         14.6537,
@@ -1495,7 +1830,28 @@ export const runtimeFactoryAssets = [
         781.2249,
         343.292
       ]
-    }
+    },
+    "metadataSchemaVersion": 2,
+    "logicalSize": [
+      800,
+      406
+    ],
+    "pixelSize": [
+      800,
+      406
+    ],
+    "sourceSize": [
+      1774,
+      887
+    ],
+    "anchorPx": [
+      400,
+      203
+    ],
+    "anchorNormalized": [
+      0.5,
+      0.5
+    ]
   },
   {
     "id": "loose-popcorn",
@@ -1544,7 +1900,7 @@ export const runtimeFactoryAssets = [
     "padding": 2,
     "maxEdge": 256,
     "sourceBytes": 804865,
-    "bytes": 41211,
+    "bytes": 41334,
     "draw": {
       "sourceRect": [
         42.7994,
@@ -1552,7 +1908,28 @@ export const runtimeFactoryAssets = [
         179.1602,
         169.3464
       ]
-    }
+    },
+    "metadataSchemaVersion": 2,
+    "logicalSize": [
+      256,
+      224
+    ],
+    "pixelSize": [
+      256,
+      224
+    ],
+    "sourceSize": [
+      1312,
+      1199
+    ],
+    "anchorPx": [
+      128,
+      112
+    ],
+    "anchorNormalized": [
+      0.5,
+      0.5
+    ]
   },
   {
     "id": "caramel-popcorn",
@@ -1601,7 +1978,7 @@ export const runtimeFactoryAssets = [
     "padding": 2,
     "maxEdge": 256,
     "sourceBytes": 1078527,
-    "bytes": 68654,
+    "bytes": 68882,
     "draw": {
       "sourceRect": [
         23.3306,
@@ -1609,7 +1986,28 @@ export const runtimeFactoryAssets = [
         219.0952,
         214.0835
       ]
-    }
+    },
+    "metadataSchemaVersion": 2,
+    "logicalSize": [
+      256,
+      244
+    ],
+    "pixelSize": [
+      256,
+      244
+    ],
+    "sourceSize": [
+      1312,
+      1199
+    ],
+    "anchorPx": [
+      128,
+      122
+    ],
+    "anchorNormalized": [
+      0.5,
+      0.5
+    ]
   }
 ].map(resolveAsset);
 

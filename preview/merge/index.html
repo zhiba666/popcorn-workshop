@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f4ecdf">
+  <title>合成手感测试 · 爆米花工坊</title>
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./chain-panel.css">
+</head>
+<body>
+  <main class="workbench">
+    <header class="page-heading">
+      <div><p class="eyebrow">爆米花工坊 · 交互试验</p><h1>合成手感测试</h1><p>试试棋盘高亮、连续合成，以及发射器取货的反馈。</p></div>
+      <a href="/preview/">← 预览首页</a>
+    </header>
+    <div class="preview-layout">
+      <section class="phone" aria-label="合成交互测试棋盘">
+        <header class="scene-heading">
+          <div class="scene-title"><img src="/assets/icons/popcorn.png" alt=""><strong>合成台</strong></div>
+          <div class="scene-actions"><span class="scene-label">7 × 9</span><button id="ready-orders" type="button" aria-haspopup="dialog" aria-controls="orders-dialog"></button></div>
+        </header>
+        <section class="order-card" aria-label="在场订单">
+          <div class="order-portrait"><img src="/assets/customers/rabbit-courier.png" alt="兔快递员"></div>
+          <div class="order-main"><h2 id="order-title" tabindex="-1">准备订单</h2><span id="order-status" class="order-status">备货中</span><button id="compact-order-needs" type="button" aria-label="查看订单需求" aria-haspopup="dialog" aria-controls="orders-dialog"></button><div id="order-items" class="order-items"></div></div>
+          <div class="order-actions"><button id="deliver" type="button" disabled>交付</button><button id="preview-delivery" type="button" aria-label="查看交付预览" aria-controls="delivery-preview" aria-expanded="false" disabled>预览</button></div>
+          <nav class="order-pager" aria-label="切换订单"><button id="prev-order" type="button" aria-label="上一张订单">‹</button><span id="order-count"></span><button id="next-order" type="button" aria-label="下一张订单">›</button></nav>
+        </section>
+        <section class="item-info" aria-label="选中商品">
+          <img id="selected-art" alt="">
+          <div class="item-copy"><div class="item-heading"><strong id="selected-name">点选一件商品</strong><span id="launcher-status" class="launcher-status" hidden></span></div><p id="item-hint">暖金细框可以合成，金签表示订单需要。</p><div id="production-meter" class="production-meter" hidden><span></span></div></div>
+          <div class="item-actions"><button id="inspect-chain" type="button" aria-label="查看合成链与来源" disabled>图鉴</button><button id="discard" type="button" disabled>丢弃</button></div>
+        </section>
+        <div id="board" class="board" role="group" aria-label="7列9行商品棋盘"></div>
+        <p id="delivery-impact-hint" class="order-impact-hint" hidden></p>
+        <section id="delivery-preview" class="delivery-preview" aria-label="交付预览" aria-live="polite" hidden></section>
+        <div id="recovery" class="board-recovery" role="group" aria-label="空间预警与恢复取货" hidden>
+          <p id="recovery-hint" aria-live="polite" aria-atomic="true"></p>
+          <div class="recovery-actions"><button id="recovery-order" type="button" hidden>查看可交订单</button><button id="recovery-merge" type="button" hidden>找可合成</button><button id="recovery-source" type="button" hidden>定位发射器</button></div>
+        </div>
+        <section id="discard-recovery" class="discard-recovery" aria-label="恢复最近丢弃的商品" hidden>
+          <img id="discarded-art" alt="">
+          <div><strong id="discarded-name"></strong><p id="discarded-hint" aria-live="polite" aria-atomic="true"></p></div>
+          <button id="restore-discard" type="button">恢复丢弃</button>
+        </section>
+        <div id="feedback" class="feedback">正在准备棋盘…</div>
+        <div id="feedback-announcement" class="visually-hidden" role="status" aria-live="polite" aria-atomic="true"></div>
+        <footer class="scene-footer"><span id="preparation-status">拖到同种同级商品，松手合成</span><button id="preparation-next" type="button" hidden>查看备货建议</button></footer>
+      </section>
+      <aside class="preview-tools" aria-label="交互测试设置">
+        <section class="control-section">
+          <h2>试一段操作</h2>
+          <div id="scenarios" class="scenario-options"></div>
+          <p id="scenario-hint"></p>
+          <button id="reset" type="button">重置当前局面</button>
+          <button id="demo" type="button">重置并播放手势示范</button>
+        </section>
+        <section class="control-section">
+          <h2>看懂高亮</h2>
+          <div class="legend">
+            <div class="legend-row"><i class="legend-selected"></i><span>白色四角：当前选中</span></div>
+            <div class="legend-row"><i class="legend-safe"></i><span>暖金细框：同种同级，可合成</span></div>
+            <div class="legend-row"><i class="legend-order">单</i><span>金签：订单所需</span></div>
+            <div class="legend-row"><i class="legend-protected">!</i><span>琥珀：松手后确认</span></div>
+            <div class="legend-row"><i class="legend-empty"></i><span>浅框：可放入空格</span></div>
+            <div class="legend-row"><i class="legend-output">↓</i><span>绿色落点：下一份出货位置</span></div>
+          </div>
+        </section>
+        <section class="control-section">
+          <h2>发射器取货</h2>
+          <p>点一下取一份，按住连续取货；拖动只移动发射器。格内显示出厂等级与库存。</p>
+          <div class="launcher-legend"><span><i data-state="ready"></i>可取货</span><span><i data-state="producing"></i>生产中</span><span><i data-state="board-full"></i>满盘停发</span></div>
+          <p>本页以每6秒补一份演示生产；满盘或库存耗尽会停发，腾位、补货后重新按下取货。</p>
+          <p>连续取货会累计本次份数，短暂标记新落点；其他订单齐货后，点顶部提示查看。</p>
+        </section>
+        <section class="control-section">
+          <h2>比较手感</h2>
+          <label class="check-label"><input id="reduced-motion" type="checkbox">减少动态效果</label>
+          <div class="width-options" role="group" aria-label="动效观察速度"><button type="button" data-motion-rate="1" aria-pressed="true">正常速度</button><button type="button" data-motion-rate="0.35" aria-pressed="false">慢速观察</button></div>
+          <div class="width-options" role="group" aria-label="棋盘预览宽度"><button type="button" data-width="390" aria-pressed="true">390 px</button><button type="button" data-width="320" aria-pressed="false">320 px</button></div>
+          <div class="metrics"><span>已合成 <strong id="merge-count">0</strong> 次</span><span>空格 <strong id="empty-count">0</strong></span></div>
+          <p>示例数据可随时重置；独立测试，不改变游戏进度。</p>
+          <details><summary>键盘操作</summary><p>方向键移动焦点；空格拿起商品，Enter 放到当前格；Esc 取消。发射器可点击或长按取货。</p></details>
+        </section>
+      </aside>
+    </div>
+  </main>
+  <dialog id="protection-dialog" aria-labelledby="protection-title" aria-describedby="protection-message">
+    <form method="dialog">
+      <h2 id="protection-title">保留订单成品？</h2>
+      <div class="confirm-item"><img id="confirm-art" alt=""><span id="confirm-name"></span></div>
+      <p id="protection-message"></p>
+      <div class="dialog-actions"><button id="keep" value="cancel" autofocus>保留成品</button><button id="confirm" value="confirm">仍要合成</button></div>
+    </form>
+  </dialog>
+  <dialog id="orders-dialog" aria-labelledby="orders-dialog-title">
+    <div class="orders-dialog-shell">
+      <header><div><h2 id="orders-dialog-title">全部订单</h2><p id="orders-dialog-summary"></p></div><button id="close-orders" type="button" aria-label="关闭订单列表">×</button></header>
+      <div id="orders-list" class="orders-list"></div>
+    </div>
+  </dialog>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

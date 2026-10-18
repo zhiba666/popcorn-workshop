@@ -1,29 +1,4 @@
 <!doctype html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#f4ecdf">
-  <title>爆米花工坊 · 游戏试玩</title>
-  <style>
-    * { box-sizing: border-box; }
-    html, body { margin:0; min-height:100%; background:#e8dfd0; }
-    body { display:flex; flex-direction:column; justify-content:center; align-items:center; min-height:100vh; }
-    .preview-nav { display:flex; flex:0 0 44px; align-items:center; justify-content:center; gap:8px; width:390px; padding:6px 10px; box-sizing:border-box; font:14px "Microsoft YaHei",sans-serif; }
-    .preview-nav a { display:flex; align-items:center; justify-content:center; min-height:32px; padding:0 15px; border-radius:8px; color:#765b40; background:#fff7e9; text-decoration:none; }
-    .preview-nav a[aria-current="page"] { color:#fff; background:#257e78; }
-    .preview-nav a:focus-visible { outline:3px solid #0d8793; outline-offset:2px; }
-    canvas { width:390px; height:844px; display:block; touch-action:none; user-select:none; background:#f4ecdf; box-shadow:0 12px 65px #78634330; }
-    @media (max-width:500px) { body { display:block; } .preview-nav { width:100%; height:44px; } canvas { width:100vw; height:calc(100dvh - 44px); box-shadow:none; } }
-  </style>
-</head>
-<body>
-  <nav class="preview-nav" aria-label="预览页面">
-    <a href="/preview/">预览首页</a>
-    <a href="/preview/game-preview/index.html" aria-current="page">游戏试玩</a>
-    <a href="/preview/game-preview/board.html">棋盘展示</a>
-  </nav>
-  <canvas id="game-canvas" aria-label="爆米花工坊，正在准备游戏入口。"></canvas>
-  <script src="./bundle.js"></script>
-</body>
-</html>
+<html lang="zh-CN"><meta charset="UTF-8"><title>预览页面已迁移</title>
+<p><a href="/preview/play/index.html">打开预览</a></p>
+<script>location.replace('/preview/play/index.html' + location.search + location.hash);</script>

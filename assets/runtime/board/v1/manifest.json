@@ -37,7 +37,24 @@
         "y": 0,
         "width": 1080,
         "height": 360
-      }
+      },
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        540,
+        180
+      ],
+      "pixelSize": [
+        1080,
+        360
+      ],
+      "anchorPx": [
+        540,
+        180
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "background-table": {
       "source": "assets/source/ui/board-page/v1/ui/background-table.png",
@@ -73,7 +90,24 @@
         "y": 0,
         "width": 512,
         "height": 512
-      }
+      },
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        256,
+        256
+      ],
+      "pixelSize": [
+        512,
+        512
+      ],
+      "anchorPx": [
+        256,
+        256
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "title-sign": {
       "source": "assets/source/ui/board-page/v1/ui/title-sign.png",
@@ -115,7 +149,24 @@
         "top": 105,
         "right": 90,
         "bottom": 38
-      }
+      },
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        320,
+        134.5
+      ],
+      "pixelSize": [
+        640,
+        269
+      ],
+      "anchorPx": [
+        320,
+        134.5
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "panel-cream": {
       "source": "assets/source/ui/board-page/v1/ui/panel-cream.png",
@@ -170,7 +221,24 @@
         "width": 634,
         "height": 150
       },
-      "contentInsetScaleMode": "nine-slice"
+      "contentInsetScaleMode": "nine-slice",
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        320,
+        78
+      ],
+      "pixelSize": [
+        640,
+        156
+      ],
+      "anchorPx": [
+        320,
+        78
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "portrait-well": {
       "source": "assets/source/ui/board-page/v1/ui/portrait-well.png",
@@ -225,7 +293,24 @@
         "width": 246,
         "height": 242
       },
-      "contentInsetScaleMode": "nine-slice"
+      "contentInsetScaleMode": "nine-slice",
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        128,
+        126
+      ],
+      "pixelSize": [
+        256,
+        252
+      ],
+      "anchorPx": [
+        128,
+        126
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "currency-pill": {
       "source": "assets/source/ui/board-page/v1/ui/currency-pill.png",
@@ -280,7 +365,24 @@
         "width": 507,
         "height": 120
       },
-      "contentInsetScaleMode": "nine-slice"
+      "contentInsetScaleMode": "nine-slice",
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        256,
+        62.5
+      ],
+      "pixelSize": [
+        512,
+        125
+      ],
+      "anchorPx": [
+        256,
+        62.5
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "board-frame": {
       "source": "assets/source/ui/board-page/v1/ui/board-frame.png",
@@ -335,7 +437,24 @@
         "width": 492,
         "height": 645
       },
-      "contentInsetScaleMode": "nine-slice"
+      "contentInsetScaleMode": "nine-slice",
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        256,
+        332.5
+      ],
+      "pixelSize": [
+        512,
+        665
+      ],
+      "anchorPx": [
+        256,
+        332.5
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "board-cell": {
       "source": "assets/source/ui/board-page/v1/ui/cell-base.png",
@@ -390,7 +509,24 @@
         "width": 185,
         "height": 181
       },
-      "contentInsetScaleMode": "nine-slice"
+      "contentInsetScaleMode": "nine-slice",
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        96,
+        94
+      ],
+      "pixelSize": [
+        192,
+        188
+      ],
+      "anchorPx": [
+        96,
+        94
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "button-teal": {
       "source": "assets/source/ui/board-page/v1/ui/button-teal.png",
@@ -445,7 +581,24 @@
         "width": 377,
         "height": 161
       },
-      "contentInsetScaleMode": "nine-slice"
+      "contentInsetScaleMode": "nine-slice",
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        84
+      ],
+      "pixelSize": [
+        384,
+        168
+      ],
+      "anchorPx": [
+        192,
+        84
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "button-red": {
       "source": "assets/source/ui/board-page/v1/ui/button-red.png",
@@ -500,7 +653,24 @@
         "width": 377,
         "height": 162
       },
-      "contentInsetScaleMode": "nine-slice"
+      "contentInsetScaleMode": "nine-slice",
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        84.5
+      ],
+      "pixelSize": [
+        384,
+        169
+      ],
+      "anchorPx": [
+        192,
+        84.5
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "nav-active": {
       "source": "assets/source/ui/board-page/v1/ui/nav-active.png",
@@ -555,7 +725,24 @@
         "width": 633,
         "height": 159
       },
-      "contentInsetScaleMode": "nine-slice"
+      "contentInsetScaleMode": "nine-slice",
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        320,
+        83
+      ],
+      "pixelSize": [
+        640,
+        166
+      ],
+      "anchorPx": [
+        320,
+        83
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "nav-idle": {
       "source": "assets/source/ui/board-page/v1/ui/nav-idle.png",
@@ -610,7 +797,24 @@
         "width": 633,
         "height": 160
       },
-      "contentInsetScaleMode": "nine-slice"
+      "contentInsetScaleMode": "nine-slice",
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        320,
+        83.5
+      ],
+      "pixelSize": [
+        640,
+        167
+      ],
+      "anchorPx": [
+        320,
+        83.5
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     }
   },
   "icons": {
@@ -625,7 +829,28 @@
         0.5,
         0.5
       ],
-      "transparent": true
+      "transparent": true,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        128,
+        128
+      ],
+      "pixelSize": [
+        128,
+        128
+      ],
+      "sourceSize": [
+        96,
+        96
+      ],
+      "anchorPx": [
+        64,
+        64
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "popcorn": {
       "source": "assets/source/ui/board-page/v1/icons/popcorn.svg",
@@ -638,7 +863,28 @@
         0.5,
         0.5
       ],
-      "transparent": true
+      "transparent": true,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        128,
+        128
+      ],
+      "pixelSize": [
+        128,
+        128
+      ],
+      "sourceSize": [
+        96,
+        96
+      ],
+      "anchorPx": [
+        64,
+        64
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "star": {
       "source": "assets/source/ui/board-page/v1/icons/star.svg",
@@ -651,7 +897,28 @@
         0.5,
         0.5
       ],
-      "transparent": true
+      "transparent": true,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        96,
+        96
+      ],
+      "pixelSize": [
+        96,
+        96
+      ],
+      "sourceSize": [
+        64,
+        64
+      ],
+      "anchorPx": [
+        48,
+        48
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "check": {
       "source": "assets/source/ui/board-page/v1/icons/check.svg",
@@ -664,7 +931,28 @@
         0.5,
         0.5
       ],
-      "transparent": true
+      "transparent": true,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        96,
+        96
+      ],
+      "pixelSize": [
+        96,
+        96
+      ],
+      "sourceSize": [
+        64,
+        64
+      ],
+      "anchorPx": [
+        48,
+        48
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "trash": {
       "source": "assets/source/ui/board-page/v1/icons/trash.svg",
@@ -677,7 +965,28 @@
         0.5,
         0.5
       ],
-      "transparent": true
+      "transparent": true,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        96,
+        96
+      ],
+      "pixelSize": [
+        96,
+        96
+      ],
+      "sourceSize": [
+        64,
+        64
+      ],
+      "anchorPx": [
+        48,
+        48
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "arrow-right": {
       "source": "assets/source/ui/board-page/v1/icons/arrow-right.svg",
@@ -690,7 +999,28 @@
         0.5,
         0.5
       ],
-      "transparent": true
+      "transparent": true,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        96,
+        96
+      ],
+      "pixelSize": [
+        96,
+        96
+      ],
+      "sourceSize": [
+        64,
+        64
+      ],
+      "anchorPx": [
+        48,
+        48
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "factory-active": {
       "source": "assets/source/ui/board-page/v1/icons/factory.svg",
@@ -704,7 +1034,28 @@
         0.5
       ],
       "transparent": true,
-      "color": "#FFF6E6"
+      "color": "#FFF6E6",
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        96,
+        96
+      ],
+      "pixelSize": [
+        96,
+        96
+      ],
+      "sourceSize": [
+        64,
+        64
+      ],
+      "anchorPx": [
+        48,
+        48
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "factory-idle": {
       "source": "assets/source/ui/board-page/v1/icons/factory.svg",
@@ -718,7 +1069,28 @@
         0.5
       ],
       "transparent": true,
-      "color": "#AE8B68"
+      "color": "#AE8B68",
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        96,
+        96
+      ],
+      "pixelSize": [
+        96,
+        96
+      ],
+      "sourceSize": [
+        64,
+        64
+      ],
+      "anchorPx": [
+        48,
+        48
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "board-active": {
       "source": "assets/source/ui/board-page/v1/icons/board.svg",
@@ -732,7 +1104,28 @@
         0.5
       ],
       "transparent": true,
-      "color": "#FFF6E6"
+      "color": "#FFF6E6",
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        96,
+        96
+      ],
+      "pixelSize": [
+        96,
+        96
+      ],
+      "sourceSize": [
+        64,
+        64
+      ],
+      "anchorPx": [
+        48,
+        48
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "board-idle": {
       "source": "assets/source/ui/board-page/v1/icons/board.svg",
@@ -746,7 +1139,28 @@
         0.5
       ],
       "transparent": true,
-      "color": "#AE8B68"
+      "color": "#AE8B68",
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        96,
+        96
+      ],
+      "pixelSize": [
+        96,
+        96
+      ],
+      "sourceSize": [
+        64,
+        64
+      ],
+      "anchorPx": [
+        48,
+        48
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     }
   },
   "controlStates": {
@@ -830,7 +1244,24 @@
       "padding": 6,
       "productId": "original",
       "productIndex": 1,
-      "level": 1
+      "level": 1,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/original/lv-02.png",
@@ -870,7 +1301,24 @@
       "padding": 6,
       "productId": "original",
       "productIndex": 1,
-      "level": 2
+      "level": 2,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/original/lv-03.png",
@@ -910,7 +1358,24 @@
       "padding": 6,
       "productId": "original",
       "productIndex": 1,
-      "level": 3
+      "level": 3,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/original/lv-04.png",
@@ -950,7 +1415,24 @@
       "padding": 6,
       "productId": "original",
       "productIndex": 1,
-      "level": 4
+      "level": 4,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/original/lv-05.png",
@@ -990,7 +1472,24 @@
       "padding": 6,
       "productId": "original",
       "productIndex": 1,
-      "level": 5
+      "level": 5,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/original/lv-06.png",
@@ -1030,7 +1529,24 @@
       "padding": 6,
       "productId": "original",
       "productIndex": 1,
-      "level": 6
+      "level": 6,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/original/lv-07.png",
@@ -1070,7 +1586,24 @@
       "padding": 6,
       "productId": "original",
       "productIndex": 1,
-      "level": 7
+      "level": 7,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/original/lv-08.png",
@@ -1110,7 +1643,24 @@
       "padding": 6,
       "productId": "original",
       "productIndex": 1,
-      "level": 8
+      "level": 8,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/original/lv-09.png",
@@ -1150,7 +1700,24 @@
       "padding": 6,
       "productId": "original",
       "productIndex": 1,
-      "level": 9
+      "level": 9,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/original/lv-10.png",
@@ -1190,7 +1757,24 @@
       "padding": 6,
       "productId": "original",
       "productIndex": 1,
-      "level": 10
+      "level": 10,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/caramel/lv-01.png",
@@ -1230,7 +1814,24 @@
       "padding": 6,
       "productId": "caramel",
       "productIndex": 2,
-      "level": 1
+      "level": 1,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/caramel/lv-02.png",
@@ -1270,7 +1871,24 @@
       "padding": 6,
       "productId": "caramel",
       "productIndex": 2,
-      "level": 2
+      "level": 2,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/caramel/lv-03.png",
@@ -1310,7 +1928,24 @@
       "padding": 6,
       "productId": "caramel",
       "productIndex": 2,
-      "level": 3
+      "level": 3,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/caramel/lv-04.png",
@@ -1350,7 +1985,24 @@
       "padding": 6,
       "productId": "caramel",
       "productIndex": 2,
-      "level": 4
+      "level": 4,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/caramel/lv-05.png",
@@ -1390,7 +2042,24 @@
       "padding": 6,
       "productId": "caramel",
       "productIndex": 2,
-      "level": 5
+      "level": 5,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/caramel/lv-06.png",
@@ -1430,7 +2099,24 @@
       "padding": 6,
       "productId": "caramel",
       "productIndex": 2,
-      "level": 6
+      "level": 6,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/caramel/lv-07.png",
@@ -1470,7 +2156,24 @@
       "padding": 6,
       "productId": "caramel",
       "productIndex": 2,
-      "level": 7
+      "level": 7,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/caramel/lv-08.png",
@@ -1510,7 +2213,24 @@
       "padding": 6,
       "productId": "caramel",
       "productIndex": 2,
-      "level": 8
+      "level": 8,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/caramel/lv-09.png",
@@ -1550,7 +2270,24 @@
       "padding": 6,
       "productId": "caramel",
       "productIndex": 2,
-      "level": 9
+      "level": 9,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/caramel/lv-10.png",
@@ -1590,7 +2327,24 @@
       "padding": 6,
       "productId": "caramel",
       "productIndex": 2,
-      "level": 10
+      "level": 10,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/popcorn-ball/lv-01.png",
@@ -1630,7 +2384,24 @@
       "padding": 6,
       "productId": "popcorn-ball",
       "productIndex": 3,
-      "level": 1
+      "level": 1,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/popcorn-ball/lv-02.png",
@@ -1670,7 +2441,24 @@
       "padding": 6,
       "productId": "popcorn-ball",
       "productIndex": 3,
-      "level": 2
+      "level": 2,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/popcorn-ball/lv-03.png",
@@ -1710,7 +2498,24 @@
       "padding": 6,
       "productId": "popcorn-ball",
       "productIndex": 3,
-      "level": 3
+      "level": 3,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/popcorn-ball/lv-04.png",
@@ -1750,7 +2555,24 @@
       "padding": 6,
       "productId": "popcorn-ball",
       "productIndex": 3,
-      "level": 4
+      "level": 4,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/popcorn-ball/lv-05.png",
@@ -1790,7 +2612,24 @@
       "padding": 6,
       "productId": "popcorn-ball",
       "productIndex": 3,
-      "level": 5
+      "level": 5,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/popcorn-ball/lv-06.png",
@@ -1830,7 +2669,24 @@
       "padding": 6,
       "productId": "popcorn-ball",
       "productIndex": 3,
-      "level": 6
+      "level": 6,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/popcorn-ball/lv-07.png",
@@ -1870,7 +2726,24 @@
       "padding": 6,
       "productId": "popcorn-ball",
       "productIndex": 3,
-      "level": 7
+      "level": 7,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/popcorn-ball/lv-08.png",
@@ -1910,7 +2783,24 @@
       "padding": 6,
       "productId": "popcorn-ball",
       "productIndex": 3,
-      "level": 8
+      "level": 8,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/popcorn-ball/lv-09.png",
@@ -1950,7 +2840,24 @@
       "padding": 6,
       "productId": "popcorn-ball",
       "productIndex": 3,
-      "level": 9
+      "level": 9,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/popcorn-ball/lv-10.png",
@@ -1990,7 +2897,24 @@
       "padding": 6,
       "productId": "popcorn-ball",
       "productIndex": 3,
-      "level": 10
+      "level": 10,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/crisp-stick/lv-01.png",
@@ -2030,7 +2954,24 @@
       "padding": 6,
       "productId": "crisp-stick",
       "productIndex": 4,
-      "level": 1
+      "level": 1,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/crisp-stick/lv-02.png",
@@ -2070,7 +3011,24 @@
       "padding": 6,
       "productId": "crisp-stick",
       "productIndex": 4,
-      "level": 2
+      "level": 2,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/crisp-stick/lv-03.png",
@@ -2110,7 +3068,24 @@
       "padding": 6,
       "productId": "crisp-stick",
       "productIndex": 4,
-      "level": 3
+      "level": 3,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/crisp-stick/lv-04.png",
@@ -2150,7 +3125,24 @@
       "padding": 6,
       "productId": "crisp-stick",
       "productIndex": 4,
-      "level": 4
+      "level": 4,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/crisp-stick/lv-05.png",
@@ -2190,7 +3182,24 @@
       "padding": 6,
       "productId": "crisp-stick",
       "productIndex": 4,
-      "level": 5
+      "level": 5,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/crisp-stick/lv-06.png",
@@ -2230,7 +3239,24 @@
       "padding": 6,
       "productId": "crisp-stick",
       "productIndex": 4,
-      "level": 6
+      "level": 6,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/crisp-stick/lv-07.png",
@@ -2270,7 +3296,24 @@
       "padding": 6,
       "productId": "crisp-stick",
       "productIndex": 4,
-      "level": 7
+      "level": 7,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/crisp-stick/lv-08.png",
@@ -2310,7 +3353,24 @@
       "padding": 6,
       "productId": "crisp-stick",
       "productIndex": 4,
-      "level": 8
+      "level": 8,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/crisp-stick/lv-09.png",
@@ -2350,7 +3410,24 @@
       "padding": 6,
       "productId": "crisp-stick",
       "productIndex": 4,
-      "level": 9
+      "level": 9,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/crisp-stick/lv-10.png",
@@ -2390,7 +3467,24 @@
       "padding": 6,
       "productId": "crisp-stick",
       "productIndex": 4,
-      "level": 10
+      "level": 10,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/wafer/lv-01.png",
@@ -2430,7 +3524,24 @@
       "padding": 6,
       "productId": "wafer",
       "productIndex": 5,
-      "level": 1
+      "level": 1,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/wafer/lv-02.png",
@@ -2470,7 +3581,24 @@
       "padding": 6,
       "productId": "wafer",
       "productIndex": 5,
-      "level": 2
+      "level": 2,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/wafer/lv-03.png",
@@ -2510,7 +3638,24 @@
       "padding": 6,
       "productId": "wafer",
       "productIndex": 5,
-      "level": 3
+      "level": 3,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/wafer/lv-04.png",
@@ -2550,7 +3695,24 @@
       "padding": 6,
       "productId": "wafer",
       "productIndex": 5,
-      "level": 4
+      "level": 4,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/wafer/lv-05.png",
@@ -2590,7 +3752,24 @@
       "padding": 6,
       "productId": "wafer",
       "productIndex": 5,
-      "level": 5
+      "level": 5,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/wafer/lv-06.png",
@@ -2630,7 +3809,24 @@
       "padding": 6,
       "productId": "wafer",
       "productIndex": 5,
-      "level": 6
+      "level": 6,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/wafer/lv-07.png",
@@ -2670,7 +3866,24 @@
       "padding": 6,
       "productId": "wafer",
       "productIndex": 5,
-      "level": 7
+      "level": 7,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/wafer/lv-08.png",
@@ -2710,7 +3923,24 @@
       "padding": 6,
       "productId": "wafer",
       "productIndex": 5,
-      "level": 8
+      "level": 8,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/wafer/lv-09.png",
@@ -2750,7 +3980,24 @@
       "padding": 6,
       "productId": "wafer",
       "productIndex": 5,
-      "level": 9
+      "level": 9,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/wafer/lv-10.png",
@@ -2790,7 +4037,24 @@
       "padding": 6,
       "productId": "wafer",
       "productIndex": 5,
-      "level": 10
+      "level": 10,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/sandwich-square/lv-01.png",
@@ -2830,7 +4094,24 @@
       "padding": 6,
       "productId": "sandwich-square",
       "productIndex": 6,
-      "level": 1
+      "level": 1,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/sandwich-square/lv-02.png",
@@ -2870,7 +4151,24 @@
       "padding": 6,
       "productId": "sandwich-square",
       "productIndex": 6,
-      "level": 2
+      "level": 2,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/sandwich-square/lv-03.png",
@@ -2910,7 +4208,24 @@
       "padding": 6,
       "productId": "sandwich-square",
       "productIndex": 6,
-      "level": 3
+      "level": 3,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/sandwich-square/lv-04.png",
@@ -2950,7 +4265,24 @@
       "padding": 6,
       "productId": "sandwich-square",
       "productIndex": 6,
-      "level": 4
+      "level": 4,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/sandwich-square/lv-05.png",
@@ -2990,7 +4322,24 @@
       "padding": 6,
       "productId": "sandwich-square",
       "productIndex": 6,
-      "level": 5
+      "level": 5,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/sandwich-square/lv-06.png",
@@ -3030,7 +4379,24 @@
       "padding": 6,
       "productId": "sandwich-square",
       "productIndex": 6,
-      "level": 6
+      "level": 6,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/sandwich-square/lv-07.png",
@@ -3070,7 +4436,24 @@
       "padding": 6,
       "productId": "sandwich-square",
       "productIndex": 6,
-      "level": 7
+      "level": 7,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/sandwich-square/lv-08.png",
@@ -3110,7 +4493,24 @@
       "padding": 6,
       "productId": "sandwich-square",
       "productIndex": 6,
-      "level": 8
+      "level": 8,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/sandwich-square/lv-09.png",
@@ -3150,7 +4550,24 @@
       "padding": 6,
       "productId": "sandwich-square",
       "productIndex": 6,
-      "level": 9
+      "level": 9,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/products/v9/sandwich-square/lv-10.png",
@@ -3190,7 +4607,24 @@
       "padding": 6,
       "productId": "sandwich-square",
       "productIndex": 6,
-      "level": 10
+      "level": 10,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/launchers/v1/original/lv-01.png",
@@ -3230,7 +4664,24 @@
       "padding": 6,
       "productId": "original",
       "productIndex": 1,
-      "level": 1
+      "level": 1,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/launchers/v1/original/lv-02.png",
@@ -3270,7 +4721,24 @@
       "padding": 6,
       "productId": "original",
       "productIndex": 1,
-      "level": 2
+      "level": 2,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/launchers/v1/original/lv-03.png",
@@ -3310,7 +4778,24 @@
       "padding": 6,
       "productId": "original",
       "productIndex": 1,
-      "level": 3
+      "level": 3,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/launchers/v1/original/lv-04.png",
@@ -3350,7 +4835,24 @@
       "padding": 6,
       "productId": "original",
       "productIndex": 1,
-      "level": 4
+      "level": 4,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/launchers/v1/original/lv-05.png",
@@ -3390,7 +4892,24 @@
       "padding": 6,
       "productId": "original",
       "productIndex": 1,
-      "level": 5
+      "level": 5,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/launchers/v1/original/lv-06.png",
@@ -3430,7 +4949,24 @@
       "padding": 6,
       "productId": "original",
       "productIndex": 1,
-      "level": 6
+      "level": 6,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/launchers/v1/caramel/lv-01.png",
@@ -3470,7 +5006,24 @@
       "padding": 6,
       "productId": "caramel",
       "productIndex": 2,
-      "level": 1
+      "level": 1,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/launchers/v1/caramel/lv-02.png",
@@ -3510,7 +5063,24 @@
       "padding": 6,
       "productId": "caramel",
       "productIndex": 2,
-      "level": 2
+      "level": 2,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/launchers/v1/caramel/lv-03.png",
@@ -3550,7 +5120,24 @@
       "padding": 6,
       "productId": "caramel",
       "productIndex": 2,
-      "level": 3
+      "level": 3,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/launchers/v1/caramel/lv-04.png",
@@ -3590,7 +5177,24 @@
       "padding": 6,
       "productId": "caramel",
       "productIndex": 2,
-      "level": 4
+      "level": 4,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/launchers/v1/caramel/lv-05.png",
@@ -3630,7 +5234,24 @@
       "padding": 6,
       "productId": "caramel",
       "productIndex": 2,
-      "level": 5
+      "level": 5,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/launchers/v1/caramel/lv-06.png",
@@ -3670,7 +5291,24 @@
       "padding": 6,
       "productId": "caramel",
       "productIndex": 2,
-      "level": 6
+      "level": 6,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/launchers/v1/popcorn-ball/lv-01.png",
@@ -3710,7 +5348,24 @@
       "padding": 6,
       "productId": "popcorn-ball",
       "productIndex": 3,
-      "level": 1
+      "level": 1,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/launchers/v1/popcorn-ball/lv-02.png",
@@ -3750,7 +5405,24 @@
       "padding": 6,
       "productId": "popcorn-ball",
       "productIndex": 3,
-      "level": 2
+      "level": 2,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/launchers/v1/popcorn-ball/lv-03.png",
@@ -3790,7 +5462,24 @@
       "padding": 6,
       "productId": "popcorn-ball",
       "productIndex": 3,
-      "level": 3
+      "level": 3,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/launchers/v1/popcorn-ball/lv-04.png",
@@ -3830,7 +5519,24 @@
       "padding": 6,
       "productId": "popcorn-ball",
       "productIndex": 3,
-      "level": 4
+      "level": 4,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/launchers/v1/popcorn-ball/lv-05.png",
@@ -3870,7 +5576,24 @@
       "padding": 6,
       "productId": "popcorn-ball",
       "productIndex": 3,
-      "level": 5
+      "level": 5,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/launchers/v1/popcorn-ball/lv-06.png",
@@ -3910,7 +5633,24 @@
       "padding": 6,
       "productId": "popcorn-ball",
       "productIndex": 3,
-      "level": 6
+      "level": 6,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/launchers/v1/crisp-stick/lv-01.png",
@@ -3950,7 +5690,24 @@
       "padding": 6,
       "productId": "crisp-stick",
       "productIndex": 4,
-      "level": 1
+      "level": 1,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/launchers/v1/crisp-stick/lv-02.png",
@@ -3990,7 +5747,24 @@
       "padding": 6,
       "productId": "crisp-stick",
       "productIndex": 4,
-      "level": 2
+      "level": 2,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/launchers/v1/crisp-stick/lv-03.png",
@@ -4030,7 +5804,24 @@
       "padding": 6,
       "productId": "crisp-stick",
       "productIndex": 4,
-      "level": 3
+      "level": 3,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/launchers/v1/crisp-stick/lv-04.png",
@@ -4070,7 +5861,24 @@
       "padding": 6,
       "productId": "crisp-stick",
       "productIndex": 4,
-      "level": 4
+      "level": 4,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/launchers/v1/crisp-stick/lv-05.png",
@@ -4110,7 +5918,24 @@
       "padding": 6,
       "productId": "crisp-stick",
       "productIndex": 4,
-      "level": 5
+      "level": 5,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/launchers/v1/crisp-stick/lv-06.png",
@@ -4150,7 +5975,24 @@
       "padding": 6,
       "productId": "crisp-stick",
       "productIndex": 4,
-      "level": 6
+      "level": 6,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/launchers/v1/wafer/lv-01.png",
@@ -4190,7 +6032,24 @@
       "padding": 6,
       "productId": "wafer",
       "productIndex": 5,
-      "level": 1
+      "level": 1,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/launchers/v1/wafer/lv-02.png",
@@ -4230,7 +6089,24 @@
       "padding": 6,
       "productId": "wafer",
       "productIndex": 5,
-      "level": 2
+      "level": 2,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/launchers/v1/wafer/lv-03.png",
@@ -4270,7 +6146,24 @@
       "padding": 6,
       "productId": "wafer",
       "productIndex": 5,
-      "level": 3
+      "level": 3,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/launchers/v1/wafer/lv-04.png",
@@ -4310,7 +6203,24 @@
       "padding": 6,
       "productId": "wafer",
       "productIndex": 5,
-      "level": 4
+      "level": 4,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/launchers/v1/wafer/lv-05.png",
@@ -4350,7 +6260,24 @@
       "padding": 6,
       "productId": "wafer",
       "productIndex": 5,
-      "level": 5
+      "level": 5,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/launchers/v1/wafer/lv-06.png",
@@ -4390,7 +6317,24 @@
       "padding": 6,
       "productId": "wafer",
       "productIndex": 5,
-      "level": 6
+      "level": 6,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/launchers/v1/sandwich-square/lv-01.png",
@@ -4430,7 +6374,24 @@
       "padding": 6,
       "productId": "sandwich-square",
       "productIndex": 6,
-      "level": 1
+      "level": 1,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/launchers/v1/sandwich-square/lv-02.png",
@@ -4470,7 +6431,24 @@
       "padding": 6,
       "productId": "sandwich-square",
       "productIndex": 6,
-      "level": 2
+      "level": 2,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/launchers/v1/sandwich-square/lv-03.png",
@@ -4510,7 +6488,24 @@
       "padding": 6,
       "productId": "sandwich-square",
       "productIndex": 6,
-      "level": 3
+      "level": 3,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/launchers/v1/sandwich-square/lv-04.png",
@@ -4550,7 +6545,24 @@
       "padding": 6,
       "productId": "sandwich-square",
       "productIndex": 6,
-      "level": 4
+      "level": 4,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/launchers/v1/sandwich-square/lv-05.png",
@@ -4590,7 +6602,24 @@
       "padding": 6,
       "productId": "sandwich-square",
       "productIndex": 6,
-      "level": 5
+      "level": 5,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/gameplay/launchers/v1/sandwich-square/lv-06.png",
@@ -4630,7 +6659,24 @@
       "padding": 6,
       "productId": "sandwich-square",
       "productIndex": 6,
-      "level": 6
+      "level": 6,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/characters/customers/v2/rabbit-courier.png",
@@ -4669,7 +6715,24 @@
       "alphaThreshold": 8,
       "padding": 6,
       "customerId": "rabbit-courier",
-      "customerIndex": 1
+      "customerIndex": 1,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        256,
+        256
+      ],
+      "pixelSize": [
+        256,
+        256
+      ],
+      "anchorPx": [
+        128,
+        128
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/characters/customers/v2/bear-neighbor.png",
@@ -4708,7 +6771,24 @@
       "alphaThreshold": 8,
       "padding": 6,
       "customerId": "bear-neighbor",
-      "customerIndex": 2
+      "customerIndex": 2,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        256,
+        256
+      ],
+      "pixelSize": [
+        256,
+        256
+      ],
+      "anchorPx": [
+        128,
+        128
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/characters/customers/v2/fox-traveler.png",
@@ -4747,7 +6827,24 @@
       "alphaThreshold": 8,
       "padding": 6,
       "customerId": "fox-traveler",
-      "customerIndex": 3
+      "customerIndex": 3,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        256,
+        256
+      ],
+      "pixelSize": [
+        256,
+        256
+      ],
+      "anchorPx": [
+        128,
+        128
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/ui/board-states/v1/cell-blocked.png",
@@ -4785,7 +6882,24 @@
       "type": "board-state",
       "alphaThreshold": 8,
       "padding": 0,
-      "stateId": "cell-blocked"
+      "stateId": "cell-blocked",
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/ui/board-states/v1/cell-mergeable.png",
@@ -4823,7 +6937,24 @@
       "type": "board-state",
       "alphaThreshold": 8,
       "padding": 0,
-      "stateId": "cell-mergeable"
+      "stateId": "cell-mergeable",
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/ui/board-states/v1/cell-order-match.png",
@@ -4861,7 +6992,24 @@
       "type": "board-state",
       "alphaThreshold": 8,
       "padding": 0,
-      "stateId": "cell-order-match"
+      "stateId": "cell-order-match",
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/ui/board-states/v1/cell-selected.png",
@@ -4899,7 +7047,24 @@
       "type": "board-state",
       "alphaThreshold": 8,
       "padding": 0,
-      "stateId": "cell-selected"
+      "stateId": "cell-selected",
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        192,
+        192
+      ],
+      "pixelSize": [
+        192,
+        192
+      ],
+      "anchorPx": [
+        96,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/ui/customer-status/v1/badges/max-star.png",
@@ -4938,7 +7103,24 @@
       "alphaThreshold": 8,
       "padding": 6,
       "subtype": "badge",
-      "statusId": "max-star"
+      "statusId": "max-star",
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        96,
+        96
+      ],
+      "pixelSize": [
+        96,
+        96
+      ],
+      "anchorPx": [
+        48,
+        48
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/ui/customer-status/v1/badges/new-customer.png",
@@ -4977,124 +7159,24 @@
       "alphaThreshold": 8,
       "padding": 6,
       "subtype": "badge",
-      "statusId": "new-customer"
-    },
-    {
-      "source": "assets/source/ui/customer-status/v1/silhouettes/rabbit-courier.png",
-      "output": "customer-status/silhouettes/rabbit-courier.png",
-      "size": [
-        256,
-        256
+      "statusId": "new-customer",
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        96,
+        96
       ],
-      "sourceSize": [
-        1254,
-        1254
+      "pixelSize": [
+        96,
+        96
       ],
-      "bounds": {
-        "x": 230,
-        "y": 40,
-        "width": 873,
-        "height": 1181
-      },
-      "cropBounds": {
-        "x": 228,
-        "y": 38,
-        "width": 877,
-        "height": 1185
-      },
-      "outputBounds": {
-        "x": 37,
-        "y": 6,
-        "width": 181,
-        "height": 244
-      },
-      "anchor": [
+      "anchorPx": [
+        48,
+        48
+      ],
+      "anchorNormalized": [
         0.5,
         0.5
-      ],
-      "type": "customer-status",
-      "alphaThreshold": 8,
-      "padding": 6,
-      "subtype": "silhouette",
-      "statusId": "rabbit"
-    },
-    {
-      "source": "assets/source/ui/customer-status/v1/silhouettes/bear-neighbor.png",
-      "output": "customer-status/silhouettes/bear-neighbor.png",
-      "size": [
-        256,
-        256
-      ],
-      "sourceSize": [
-        1254,
-        1254
-      ],
-      "bounds": {
-        "x": 80,
-        "y": 47,
-        "width": 1093,
-        "height": 1161
-      },
-      "cropBounds": {
-        "x": 78,
-        "y": 45,
-        "width": 1097,
-        "height": 1165
-      },
-      "outputBounds": {
-        "x": 13,
-        "y": 6,
-        "width": 230,
-        "height": 244
-      },
-      "anchor": [
-        0.5,
-        0.5
-      ],
-      "type": "customer-status",
-      "alphaThreshold": 8,
-      "padding": 6,
-      "subtype": "silhouette",
-      "statusId": "bear"
-    },
-    {
-      "source": "assets/source/ui/customer-status/v1/silhouettes/fox-traveler.png",
-      "output": "customer-status/silhouettes/fox-traveler.png",
-      "size": [
-        256,
-        256
-      ],
-      "sourceSize": [
-        1254,
-        1254
-      ],
-      "bounds": {
-        "x": 174,
-        "y": 25,
-        "width": 964,
-        "height": 1210
-      },
-      "cropBounds": {
-        "x": 172,
-        "y": 23,
-        "width": 968,
-        "height": 1214
-      },
-      "outputBounds": {
-        "x": 30,
-        "y": 6,
-        "width": 195,
-        "height": 244
-      },
-      "anchor": [
-        0.5,
-        0.5
-      ],
-      "type": "customer-status",
-      "alphaThreshold": 8,
-      "padding": 6,
-      "subtype": "silhouette",
-      "statusId": "fox"
+      ]
     },
     {
       "source": "assets/source/effects/merge-feedback/v1/focus-ring.svg",
@@ -5132,7 +7214,24 @@
       "type": "effect",
       "alphaThreshold": 8,
       "padding": 0,
-      "stateId": "focus-ring"
+      "stateId": "focus-ring",
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        128,
+        128
+      ],
+      "pixelSize": [
+        128,
+        128
+      ],
+      "anchorPx": [
+        64,
+        64
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/effects/merge-feedback/v1/invalid-target.svg",
@@ -5170,7 +7269,24 @@
       "type": "effect",
       "alphaThreshold": 8,
       "padding": 0,
-      "stateId": "invalid-target"
+      "stateId": "invalid-target",
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        128,
+        128
+      ],
+      "pixelSize": [
+        128,
+        128
+      ],
+      "anchorPx": [
+        64,
+        64
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/effects/merge-feedback/v1/merge-burst.svg",
@@ -5208,7 +7324,24 @@
       "type": "effect",
       "alphaThreshold": 8,
       "padding": 0,
-      "stateId": "merge-burst"
+      "stateId": "merge-burst",
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        128,
+        128
+      ],
+      "pixelSize": [
+        128,
+        128
+      ],
+      "anchorPx": [
+        64,
+        64
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/effects/merge-feedback/v1/merge-target.svg",
@@ -5246,7 +7379,24 @@
       "type": "effect",
       "alphaThreshold": 8,
       "padding": 0,
-      "stateId": "merge-target"
+      "stateId": "merge-target",
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        128,
+        128
+      ],
+      "pixelSize": [
+        128,
+        128
+      ],
+      "anchorPx": [
+        64,
+        64
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     {
       "source": "assets/source/effects/merge-feedback/v1/sparkle.svg",
@@ -5284,7 +7434,25 @@
       "type": "effect",
       "alphaThreshold": 8,
       "padding": 0,
-      "stateId": "sparkle"
+      "stateId": "sparkle",
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        128,
+        128
+      ],
+      "pixelSize": [
+        128,
+        128
+      ],
+      "anchorPx": [
+        64,
+        64
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     }
-  ]
+  ],
+  "metadataSchemaVersion": 2
 }

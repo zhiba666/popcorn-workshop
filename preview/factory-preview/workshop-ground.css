@@ -23,6 +23,16 @@
 .ground-workshop-connector{fill:#d1c5a6;stroke:#acaa8d;stroke-width:1.5;stroke-linejoin:round}
 .ground-workshop-threshold{fill:none;stroke:#f8edcd;stroke-width:4;stroke-linecap:round}
 .ground-workshop-accent{fill:var(--workshop-ground-accent,#8fa38b);opacity:.8}
+.ground-future-soil{fill:#99ac80;fill-opacity:.14;stroke:none}
+.ground-future-meadow{fill:#b9c69b;fill-opacity:.13;stroke:none}
+.ground-construction-soil{fill:#c8c39b;fill-opacity:.56;stroke:none}
+.ground-construction-edge{fill:none;stroke:#b8ab83;stroke-width:5;stroke-linecap:butt;stroke-linejoin:round}
+.ground-construction-approach{fill:#c3c2a2;fill-opacity:.6;stroke:none}
+.ground-construction-reserve{fill:#d3d2b0;fill-opacity:.16;stroke:#b5b99b;stroke-width:1.2;stroke-opacity:.45}
+.ground-material-shadow{fill:#8b8f70;fill-opacity:.18;stroke:none;transform:translate(2px,3px)}
+.ground-material-beam{fill:#d5bd8a;stroke:#af986d;stroke-width:1;stroke-linejoin:round}
+.ground-work-area.next .ground-work-bay-outline{fill:#d8ceb0;fill-opacity:.3;stroke:#baad87;stroke-dasharray:none;stroke-width:1.5}
+.ground-work-area.next .ground-work-bay-corner{stroke:#e6d6ad;stroke-width:3;opacity:.8}
 .ground-workshop.locked .ground-platform-top{fill:#bdc9aa;fill-opacity:.45;stroke:#91a181;stroke-dasharray:10 8;stroke-width:2}
 .ground-workshop.locked .ground-side-edge,.ground-workshop.locked .ground-front-edge{fill:#91a080;fill-opacity:.35;stroke:#93a382;stroke-opacity:.55}
 .ground-workshop.locked .ground-workshop-inset{stroke:#e1e7cf;stroke-dasharray:7 8;opacity:.35}
@@ -46,3 +56,38 @@
 .ground-installation-base.locked .ground-edge-highlight{opacity:.3}
 .ground-installation-base.next .ground-platform-top{fill:#f1e6c5;fill-opacity:.7;stroke:#bd9e59;stroke-dasharray:7 5;stroke-width:2}
 .ground-installation-base.next .ground-installation-inset{stroke:#c9b57f;stroke-dasharray:6 5;opacity:.6}
+.ground-work-aisle{fill:#cecbb0;stroke:#b7b59c;stroke-width:1;stroke-linejoin:round}
+.ground-work-entry{fill:#d1ceb2;stroke:none}
+.ground-work-aisle-guide{fill:none;stroke:#f7eed2;stroke-width:2;stroke-linecap:round;stroke-dasharray:10 14;opacity:.75}
+.ground-work-bay-outline{fill:#f8edcf;fill-opacity:.12;stroke:#b9ad8c;stroke-width:1.3;stroke-linejoin:round}
+.ground-work-bay-corner{fill:none;stroke:#f9efcf;stroke-width:3;stroke-linecap:square;stroke-linejoin:miter}
+.ground-work-bay.next .ground-work-bay-outline{fill:#e7d9ac;fill-opacity:.12;stroke:#bea15e;stroke-dasharray:8 6}
+.ground-work-bay.next .ground-work-bay-corner{stroke:#dbc490;stroke-width:2.5}
+.ground-work-bay.locked .ground-work-bay-outline{fill:none;stroke:#97a286;stroke-dasharray:6 7;opacity:.5}
+.ground-work-bay.locked .ground-work-bay-corner{stroke:#d3dbc1;stroke-width:2;opacity:.5}
+.ground-work-area.locked .ground-work-aisle,.ground-work-area.locked .ground-work-entry{fill:#acb99a;fill-opacity:.25;stroke-opacity:.3}
+.ground-work-area.locked .ground-work-aisle-guide{opacity:.15}
+.ground-work-area.next .ground-work-aisle,.ground-work-area.next .ground-work-entry{fill:#d0c6a1;fill-opacity:.55;stroke-opacity:.45}
+.ground-work-area.next .ground-work-aisle-guide{opacity:.4}
+.ground-cache-pad .ground-platform-top{fill:#dccca7;stroke:#b5a37e;stroke-width:1.2}
+.ground-cache-pad .ground-side-edge{fill:#b09a73;stroke:#a48f69;stroke-width:.8}
+.ground-cache-pad .ground-front-edge{fill:#bdab82;stroke:#a48f69;stroke-width:.8}
+.ground-cache-pad .ground-platform-shadow{opacity:.08}
+.ground-cache-pad .ground-edge-highlight{stroke:#f6eacb;stroke-width:1.5}
+.ground-cache-pad-inset{fill:none;stroke:#eee0ba;stroke-width:1;stroke-linejoin:round}
+.ground-cache-pad-edge{fill:none;stroke:#8fa194;stroke-width:3;stroke-linecap:square}
+.ground-cache-pad.locked .ground-platform-top{fill:#c5cfb0;fill-opacity:.25;stroke:#9caa89;stroke-opacity:.5;stroke-dasharray:6 5}
+.ground-cache-pad.locked .ground-side-edge,.ground-cache-pad.locked .ground-front-edge{fill:#aab695;fill-opacity:.25;stroke-opacity:.3}
+.ground-cache-pad.locked .ground-cache-pad-inset,.ground-cache-pad.locked .ground-cache-pad-edge{opacity:.25}
+.ground-cache-pad.locked .ground-platform-shadow{opacity:.02}
+.ground-cache-pad.next .ground-platform-top{fill:#e6d8b3;fill-opacity:.6;stroke:#bca267;stroke-dasharray:6 5}
+.ground-cache-pad.next .ground-cache-pad-inset,.ground-cache-pad.next .ground-cache-pad-edge{opacity:.55}
+.ground-installation-service-edge{fill:none;stroke:#faf1d5;stroke-width:3;stroke-linecap:square;stroke-dasharray:6 5}
+.ground-installation-base.locked .ground-installation-service-edge{opacity:.25}
+.ground-installation-base.next .ground-installation-service-edge{stroke:#e1cb96;opacity:.65}
+.phone.overview .ground-work-aisle-guide,.phone.overview .ground-work-bay-corner,.phone.overview .ground-installation-service-edge{opacity:.3}
+.phone.overview .ground-work-bay-outline{stroke-opacity:.55}
+.phone.overview .ground-cache-pad-inset,.phone.overview .ground-cache-pad-edge{opacity:.45}
+.ground-installation-base.next .ground-platform-top{fill:#e1d7b9;fill-opacity:.95;stroke:#b7a785;stroke-dasharray:none;stroke-width:1.5}
+.ground-installation-base.next .ground-installation-inset{stroke:#c8bc9e;stroke-dasharray:none;opacity:.7}
+.ground-installation-base.next .ground-side-edge,.ground-installation-base.next .ground-front-edge{fill:#b9aa87;stroke:#aa9b79;stroke-width:1}

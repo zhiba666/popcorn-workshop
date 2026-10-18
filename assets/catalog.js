@@ -56,10 +56,10 @@ export const assetCatalog = Object.freeze({
       'owl-librarian', 'badger-potter', 'red-panda-projectionist',
     ],
     factoryAssets: [
-      'wall-back', 'wall-left', 'platform', 'supply-complete', 'supply-body-clean', 'supply-motor-cap',
+      'wall-back', 'wall-left', 'platform', 'supply-body-clean', 'supply-motor-cap',
       'air-popper', 'caramel-drum', 'ball-mold-press', 'sheeting-strip-cutter', 'flip-wafer-mold',
       'rotary-sandwich-assembler',
-      'packer-complete', 'packer-body-clean', 'packer-head',
+      'packer-body-clean', 'packer-head',
       'warehouse', 'buffer-bin', 'loose-popcorn', 'caramel-popcorn',
     ],
   },

@@ -58,7 +58,24 @@
         "width": 716,
         "height": 1272
       },
-      "bytes": 37330
+      "bytes": 19816,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        360,
+        640
+      ],
+      "pixelSize": [
+        720,
+        1280
+      ],
+      "anchorPx": [
+        360,
+        640
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "title-sign": {
       "source": "assets/source/ui/factory-upgrade/v1/ui/title-sign.svg",
@@ -114,7 +131,24 @@
         "width": 428,
         "height": 110
       },
-      "bytes": 8000
+      "bytes": 7128,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        216,
+        56
+      ],
+      "pixelSize": [
+        432,
+        112
+      ],
+      "anchorPx": [
+        216,
+        56
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "card-mint": {
       "source": "assets/source/ui/factory-upgrade/v1/ui/card-mint.svg",
@@ -170,7 +204,24 @@
         "width": 672,
         "height": 390
       },
-      "bytes": 11955
+      "bytes": 7062,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        336,
+        196
+      ],
+      "pixelSize": [
+        672,
+        392
+      ],
+      "anchorPx": [
+        336,
+        196
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "card-gold": {
       "source": "assets/source/ui/factory-upgrade/v1/ui/card-gold.svg",
@@ -226,7 +277,24 @@
         "width": 672,
         "height": 654
       },
-      "bytes": 16263
+      "bytes": 8064,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        336,
+        328
+      ],
+      "pixelSize": [
+        672,
+        656
+      ],
+      "anchorPx": [
+        336,
+        328
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "inset-cream": {
       "source": "assets/source/ui/factory-upgrade/v1/ui/inset-cream.svg",
@@ -282,7 +350,24 @@
         "width": 606,
         "height": 124
       },
-      "bytes": 3937
+      "bytes": 2445,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        304,
+        64
+      ],
+      "pixelSize": [
+        608,
+        128
+      ],
+      "anchorPx": [
+        304,
+        64
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "well-mint": {
       "source": "assets/source/ui/factory-upgrade/v1/ui/well-mint.svg",
@@ -338,7 +423,24 @@
         "width": 188,
         "height": 156
       },
-      "bytes": 3003
+      "bytes": 2499,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        96,
+        80
+      ],
+      "pixelSize": [
+        192,
+        160
+      ],
+      "anchorPx": [
+        96,
+        80
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "badge-level": {
       "source": "assets/source/ui/factory-upgrade/v1/ui/badge-level.svg",
@@ -394,7 +496,24 @@
         "width": 220,
         "height": 60
       },
-      "bytes": 1570
+      "bytes": 1318,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        112,
+        32
+      ],
+      "pixelSize": [
+        224,
+        64
+      ],
+      "anchorPx": [
+        112,
+        32
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "ribbon-mint": {
       "source": "assets/source/ui/factory-upgrade/v1/ui/ribbon-mint.svg",
@@ -450,7 +569,24 @@
         "width": 604,
         "height": 44
       },
-      "bytes": 1349
+      "bytes": 863,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        304,
+        24
+      ],
+      "pixelSize": [
+        608,
+        48
+      ],
+      "anchorPx": [
+        304,
+        24
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "badge-success": {
       "source": "assets/source/ui/factory-upgrade/v1/ui/badge-success.svg",
@@ -506,7 +642,24 @@
         "width": 142,
         "height": 46
       },
-      "bytes": 1612
+      "bytes": 1500,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        72,
+        24
+      ],
+      "pixelSize": [
+        144,
+        48
+      ],
+      "anchorPx": [
+        72,
+        24
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "button-close": {
       "source": "assets/source/ui/factory-upgrade/v1/ui/button-close.svg",
@@ -543,7 +696,24 @@
         "width": 72,
         "height": 76
       },
-      "bytes": 4861
+      "bytes": 4745,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        40,
+        40
+      ],
+      "pixelSize": [
+        80,
+        80
+      ],
+      "anchorPx": [
+        40,
+        40
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "button-green": {
       "source": "assets/source/factory/ui/v1/button-green.svg",
@@ -599,7 +769,24 @@
         "width": 504,
         "height": 182
       },
-      "bytes": 12946
+      "bytes": 11256,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        256,
+        96
+      ],
+      "pixelSize": [
+        512,
+        192
+      ],
+      "anchorPx": [
+        256,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "button-gold": {
       "source": "assets/source/factory/ui/v1/button-gold.svg",
@@ -655,7 +842,24 @@
         "width": 504,
         "height": 182
       },
-      "bytes": 12896
+      "bytes": 11160,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        256,
+        96
+      ],
+      "pixelSize": [
+        512,
+        192
+      ],
+      "anchorPx": [
+        256,
+        96
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     }
   },
   "icons": {
@@ -694,7 +898,24 @@
         "width": 88,
         "height": 89
       },
-      "bytes": 1103
+      "bytes": 995,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        128,
+        128
+      ],
+      "pixelSize": [
+        128,
+        128
+      ],
+      "anchorPx": [
+        64,
+        64
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "output-level": {
       "source": "assets/source/ui/factory-upgrade/v1/icons/output-level.svg",
@@ -731,7 +952,24 @@
         "width": 106,
         "height": 111
       },
-      "bytes": 4031
+      "bytes": 3889,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        128,
+        128
+      ],
+      "pixelSize": [
+        128,
+        128
+      ],
+      "anchorPx": [
+        64,
+        64
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "inventory": {
       "source": "assets/source/ui/factory-upgrade/v1/icons/inventory.svg",
@@ -768,7 +1006,24 @@
         "width": 98,
         "height": 96
       },
-      "bytes": 2778
+      "bytes": 2618,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        128,
+        128
+      ],
+      "pixelSize": [
+        128,
+        128
+      ],
+      "anchorPx": [
+        64,
+        64
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "level": {
       "source": "assets/source/ui/factory-upgrade/v1/icons/level.svg",
@@ -805,7 +1060,24 @@
         "width": 112,
         "height": 112
       },
-      "bytes": 2131
+      "bytes": 1977,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        128,
+        128
+      ],
+      "pixelSize": [
+        128,
+        128
+      ],
+      "anchorPx": [
+        64,
+        64
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "arrow-right": {
       "source": "assets/source/ui/factory-upgrade/v1/icons/arrow-right.svg",
@@ -842,7 +1114,24 @@
         "width": 100,
         "height": 106
       },
-      "bytes": 3850
+      "bytes": 3700,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        128,
+        128
+      ],
+      "pixelSize": [
+        128,
+        128
+      ],
+      "anchorPx": [
+        64,
+        64
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     },
     "arrow-right-mint": {
       "source": "assets/source/ui/factory-upgrade/v1/icons/arrow-right-mint.svg",
@@ -879,7 +1168,24 @@
         "width": 100,
         "height": 106
       },
-      "bytes": 3624
+      "bytes": 3474,
+      "metadataSchemaVersion": 2,
+      "logicalSize": [
+        128,
+        128
+      ],
+      "pixelSize": [
+        128,
+        128
+      ],
+      "anchorPx": [
+        64,
+        64
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.5
+      ]
     }
   },
   "reusedAssets": [
@@ -906,5 +1212,6 @@
     "positive": "#075731",
     "onGreen": "#fff8e7",
     "onGold": "#5f341c"
-  }
+  },
+  "metadataSchemaVersion": 2
 }

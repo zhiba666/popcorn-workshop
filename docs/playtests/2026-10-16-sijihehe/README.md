@@ -111,12 +111,12 @@ Python 输入与前两次输入方式同时存在 DPI 校准和拖动节奏差�
 
 ### 录屏证据与账号变化
 
-- 单点：[动画](launcher-single.gif)、[逐帧联系表](launcher-single-frames.jpg)、[前](launcher-single-before.jpg)、[后](launcher-single-after.jpg)、[时序](launcher-single-timing.json)。
-- 连续保持：[动画](launcher-hold.gif)、[逐帧联系表](launcher-hold-frames.jpg)、[前](launcher-hold-before.jpg)、[后](launcher-hold-after.jpg)、[时序](launcher-hold-timing.json)。
-- 满盘点击：[动画](launcher-full.gif)、[逐帧联系表](launcher-full-frames.jpg)、[前](launcher-full-before.jpg)、[后](launcher-full-after.jpg)、[时序](launcher-full-timing.json)。
-- 较短保持：[动画](launcher-release.gif)、[逐帧联系表](launcher-release-frames.jpg)、[前](launcher-release-before.jpg)、[后](launcher-release-after.jpg)、[时序](launcher-release-timing.json)。
+- 单点：[动画](recordings/launcher-single/animation.webp)、[逐帧联系表](launcher-single-frames.jpg)、[前](launcher-single-before.jpg)、[后](launcher-single-after.jpg)、[时序](recordings/launcher-single/timing.json)。
+- 连续保持：[动画](recordings/launcher-hold/animation.webp)、[逐帧联系表](launcher-hold-frames.jpg)、[前](launcher-hold-before.jpg)、[后](launcher-hold-after.jpg)、[时序](recordings/launcher-hold/timing.json)。
+- 满盘点击：[动画](recordings/launcher-full/animation.webp)、[逐帧联系表](launcher-full-frames.jpg)、[前](launcher-full-before.jpg)、[后](launcher-full-after.jpg)、[时序](recordings/launcher-full/timing.json)。
+- 较短保持：[动画](recordings/launcher-release/animation.webp)、[逐帧联系表](launcher-release-frames.jpg)、[前](launcher-release-before.jpg)、[后](launcher-release-after.jpg)、[时序](recordings/launcher-release/timing.json)。
 
-GIF按采样时序校正总播放时长，时间分辨率受GIF的10毫秒单位约束；窗口原始采样约30帧／秒，没有录制音频。动画用于观察过程，商品数量与资源结算以稳定的前后截图核对。
+动画现由原GIF无损转存为WebP，保留全部帧和逐帧时长。原GIF按采样时序校正总播放时长，时间分辨率受GIF的10毫秒单位约束；窗口原始采样约30帧／秒，没有录制音频。动画用于观察过程，商品数量与资源结算以稳定的前后截图核对。
 
 为腾出少量空格，正常合并了花瓣和饮料；首次满盘后合并新产工具及一对同图案烤串，再次满盘后合并两把新铲子及原有同级枝剪，没有丢弃、出售或领取金币。部分合成会出现额外活动道具，因此腾位按最终空格核对，不按合成次数推算。结束时保留2个空格，见[最终棋盘](launcher-final-board.jpg)。
 
@@ -155,9 +155,9 @@ GIF按采样时序校正总播放时长，时间分辨率受GIF的10毫秒单位
 
 ### 保存证据与最终状态
 
-- 第一组：[录屏](stop-main.gif)、[全局联系表](stop-main-frames.jpg)、[松手边界放大](stop-main-release-boundary.jpg)、[体力滚数联系表](stop-main-resource-timeline.jpg)、[时序](stop-main-timing.json)、[前](stop-main-before.jpg)、[后](stop-main-after.jpg)。关键原帧保留第62、63、64、65、74、188帧，其中[松手后约21毫秒的原帧](stop-main-frame-064.png)可核对末件出现。
-- 随后单独单点：[前](stop-probe-before.jpg)、[后](stop-probe-after.jpg)、[时序](stop-probe-timing.json)。
-- 同段复测与恢复单点：[录屏](stop-repeat.gif)、[全局联系表](stop-repeat-frames.jpg)、[松手边界放大](stop-repeat-release-boundary.jpg)、[体力联系表](stop-repeat-resource-timeline.jpg)、[时序](stop-repeat-timing.json)、[前](stop-repeat-before.jpg)、[后](stop-repeat-after.jpg)。另保留第51、52、61、170、177、183、254帧；[恢复单点前的原帧](stop-repeat-frame-170.png)确认体力549且仍有2格。
+- 第一组：[录屏](recordings/stop-main/animation.webp)、[全局联系表](stop-main-frames.jpg)、[松手边界放大](stop-main-release-boundary.jpg)、[体力滚数联系表](stop-main-resource-timeline.jpg)、[时序](recordings/stop-main/timing.json)、[前](stop-main-before.jpg)、[后](stop-main-after.jpg)。关键原帧保留第62、63、64、65、74、188帧，其中[松手后约21毫秒的原帧](stop-main-frame-064.png)可核对末件出现。
+- 随后单独单点：[前](stop-probe-before.jpg)、[后](stop-probe-after.jpg)、[时序](recordings/stop-probe/timing.json)。
+- 同段复测与恢复单点：[录屏](recordings/stop-repeat/animation.webp)、[全局联系表](stop-repeat-frames.jpg)、[松手边界放大](stop-repeat-release-boundary.jpg)、[体力联系表](stop-repeat-resource-timeline.jpg)、[时序](recordings/stop-repeat/timing.json)、[前](stop-repeat-before.jpg)、[后](stop-repeat-after.jpg)。另保留第51、52、61、170、177、183、254帧；[恢复单点前的原帧](stop-repeat-frame-170.png)确认体力549且仍有2格。
 - 腾位与收尾：[初始棋盘](stop-01-before.jpg)、[8格测试起点](stop-18-ready.jpg)、[复测5格起点](stop-24-repeat-ready.jpg)、[最终棋盘](stop-final-board.jpg)。GIF为约30帧／秒的回放版，按原始采样时序保持总时长；边界判断使用约60帧／秒的原帧和时序，不靠GIF帧序推算。
 
 本次合计实际取出10件，体力585→545，消耗40；为腾位领取金币52，金币15815→15867；钻石始终3083。合并、领取活动道具后，贴纸进度最终为5/15。复测结束又合并两次工具，最终保留3个空格，没有继续发射。临时输入脚本及未选用的逐帧中间文件已清理，只保留上述录屏、时序、关键帧和截图。没有修改项目游戏实现，普通商品交单仍未完成。
@@ -170,7 +170,7 @@ GIF按采样时序校正总播放时长，时间分辨率受GIF的10毫秒单位
 
 点击该订单的「完成」后，贡丸串从原格移向订单区域；原格清空，金币奖励飞向资源栏。稳定结果为金币15904，**增加35金币**，体力仍525、钻石仍3083。该顾客订单离场，剩余订单向左衔接，棋盘继续可操作，没有强制转去建设场景。这次确认的是普通商品交单，不是此前消耗360金币的区域建设。订单另外显示的奖励图标未核实名称，不据此扩展经济结论，也不由一次同级交付推断高等级商品的代交规则。
 
-证据：[交单前](order-delivery-before.jpg)、[实际交单动画](order-delivery.gif)、[过程联系表](order-delivery-frames.jpg)、[交单后](order-delivery-after.jpg)、[输入采样时序](order-delivery-timing.json)。采集实际帧间隔中位约48毫秒，没有录制声音；画面用于核对过程，不用于测量毫秒级交付延迟。
+证据：[交单前](order-delivery-before.jpg)、[实际交单动画](recordings/order-delivery/animation.webp)、[过程联系表](order-delivery-frames.jpg)、[交单后](order-delivery-after.jpg)、[输入采样时序](recordings/order-delivery/timing.json)。采集实际帧间隔中位约48毫秒，没有录制声音；画面用于核对过程，不用于测量毫秒级交付延迟。
 
 **试玩收获：**交单最有效的反馈是「哪件成品交给了谁 → 奖励到账 → 原格腾出 → 剩余目标接上」，不是一段通用的完成文字。竞品的活动进度会短暂进入详情条，本项目不照搬该干扰，也不为测试交付反馈添加新的奖励经济或强制跳转。
 

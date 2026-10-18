@@ -1,34 +1,4 @@
 <!doctype html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#f6f2e9">
-  <title>六代设备 · 动画展示</title>
-  <link rel="stylesheet" href="./styles.css">
-</head>
-<body>
-  <main>
-    <header class="page-heading">
-      <div><p class="eyebrow">爆米花工厂</p><h1>六代设备动画</h1></div>
-      <div class="view-switch" aria-label="展示方式">
-        <button type="button" data-view="overview" aria-pressed="true">六机总览</button>
-        <button type="button" data-view="focus" aria-pressed="false">单机展示</button>
-      </div>
-    </header>
-    <nav class="preview-nav" aria-label="预览页面"><a href="/preview/">预览首页</a></nav>
-    <section class="display-controls" aria-label="动画选择">
-      <label class="machine-selector">设备<select id="machine-select" aria-label="选择设备"></select></label>
-      <div class="form-selector"><span>形态</span><div id="form-options" class="form-options" aria-label="选择动画形态"></div></div>
-    </section>
-    <section class="animation-stage" aria-label="设备动画展示">
-      <div id="machine-grid" class="machine-grid" aria-label="六代设备"></div>
-      <div id="focus-scene" class="focus-scene" hidden>
-        <canvas id="focus-canvas" aria-label="当前设备动画"></canvas>
-        <div class="focus-caption"><span id="focus-name"></span><span id="focus-form"></span></div>
-      </div>
-    </section>
-  </main>
-  <script type="module" src="./app.js"></script>
-</body>
-</html>
+<html lang="zh-CN"><meta charset="UTF-8"><title>预览页面已迁移</title>
+<p><a href="/preview/machines/index.html">打开预览</a></p>
+<script>location.replace('/preview/machines/index.html' + location.search + location.hash);</script>

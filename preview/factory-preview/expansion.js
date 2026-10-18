@@ -1,4 +1,4 @@
-import {runtimeFactoryAssets,runtimeFactoryAssetsById as bitmaps} from '../../assets/runtime/factory/v1/manifest.js';
+import {runtimeFactoryAssets} from '../../assets/runtime/factory/v1/manifest.js';
 import {runtimeFactoryFloor} from '../../assets/runtime/factory/v1/floor.js';
 import {factoryExpansionAssets} from '../../assets/source/factory/expansion/v1/manifest.js';
 import {factoryDecorationAssets} from '../../assets/runtime/decoration/v1/manifest.js';
@@ -6,14 +6,20 @@ import {factoryProducts,factoryLayoutPresets,buildFactoryExpansionLayout} from '
 import {WorkshopCamera} from './workshop-camera.js';
 import {WorkshopUpgrade} from './workshop-upgrade.js';
 import {renderWorkshopGround} from './workshop-ground.js';
+import {renderWorkshopLogistics,updateWorkshopLogistics} from './workshop-logistics.js';
+import {renderWorkshopBoundary} from './workshop-boundary.js';
+import {WorkshopPresentation} from './workshop-presentation.js';
+import {WorkshopMotion} from './workshop-motion.js';
 
-const $=id=>document.getElementById(id),ns='http://www.w3.org/2000/svg';
+const $=id=>document.getElementById(id);
 const params=new URLSearchParams(location.search),vectors=factoryExpansionAssets.assets;
 const definitions=new Map([...runtimeFactoryAssets,...factoryDecorationAssets].map(asset=>[asset.id,asset]));
 const levels=new Map(),nodes=new Map(),images=new Map(),overviewLabels=new Map();
 const world=$('world'),viewport=$('scene-viewport');
 const overlay=document.createElement('div');overlay.className='overview-labels';overlay.setAttribute('aria-label','工坊总览定位');viewport.append(overlay);
-let counts=[...factoryLayoutPresets.six],layout,selected,layer,camera,upgrade,upgradeCameraState,upgradeStartSelectionId,overview=false;
+const presentation=new WorkshopPresentation(viewport,world);
+const motion=new WorkshopMotion(viewport);
+let counts=[...factoryLayoutPresets.six],layout,selected,logistics,camera,upgrade,upgradeCameraState,upgradeStartSelectionId,overview=false,courtyardView=false;
 if(params.get('capture')==='phone')document.body.classList.add('capture-mode');
 
 function loadImage(src){
@@ -29,11 +35,6 @@ function fitSprite(container,asset,width,height){
 function caption(text,x,y,width,className){
   const label=document.createElement('div');label.className=className;label.textContent=text;
   Object.assign(label.style,{left:`${x}px`,top:`${y}px`,width:`${width}px`});world.append(label);return label;
-}
-function path(points,role,{arrow=false,bridge=false}={}){
-  const d=points.map((p,i)=>`${i?'L':'M'}${p[0]} ${p[1]}`).join(' ');
-  const add=className=>{const p=document.createElementNS(ns,'path');p.setAttribute('d',d);p.setAttribute('class',className);layer.append(p);return p;};
-  add(bridge?'logistics-crossing':'logistics-bed');const p=add(`logistics-${role}`);if(arrow)p.setAttribute('marker-end',`url(#arrow-${role})`);return p;
 }
 function mount(assetId,id,name,cx,foot,width,type='shared',data={}){
   const asset=definitions.get(assetId),[x0,y0,x1,y1]=asset.bounds,scale=width/(x1-x0),height=(y1-y0)*scale;
@@ -61,6 +62,7 @@ function construction(slot){
 }
 function focusGroup(group){
   if(!group||(!group.built&&layout.next?.id!==group.product.id))return;
+  courtyardView=false;
   selectNode(selected?.product?.id===group.product.id?selected:nodes.get(`${group.product.id}-1`));camera.focus(group.bounds,{padding:20});
   if(upgrade?.isOpen)frameUpgradeSelection();
 }
@@ -68,11 +70,12 @@ function renderGround(){
   renderWorkshopGround(world,layout);
   for(const group of layout.groups){
     const state=group.built?'':layout.next?.id===group.product.id?' next':' locked';
-    caption(`${group.product.name}工坊 · ${group.count}/2`,group.labelAnchor[0]-112,group.labelAnchor[1]+8,224,`workshop-title${state}`);
+    caption(`${group.product.name} · ${group.count}/${group.maxLines}`,group.labelAnchor[0]-70,group.labelAnchor[1]-12,140,`workshop-title${state}`);
     const button=document.createElement('button');button.type='button';button.className=`overview-workshop${state}`;button.dataset.product=group.product.id;
     button.disabled=!group.built&&layout.next?.id!==group.product.id;
     const name=document.createElement('strong');name.textContent=group.product.name;
-    const count=document.createElement('span');count.textContent=group.built?`${group.count}/2 产线 · 进入`:button.disabled?'待解锁':'待扩建 · 进入';button.append(name,count);
+    const count=document.createElement('span');count.textContent=group.built?`${group.count}/${group.maxLines}`:button.disabled?'锁定':'待建';button.append(name,count);
+    button.setAttribute('aria-label',`${group.product.name}工坊，${group.built?`${group.count}/${group.maxLines}条产线，进入`:button.disabled?'待解锁':'待扩建，进入'}`);
     button.addEventListener('click',()=>focusGroup(group));overlay.append(button);overviewLabels.set(group.product.id,{button,group});
   }
   caption('公共前庭',layout.courtyard.labelAnchor[0]-90,layout.courtyard.labelAnchor[1],180,'shared-label');
@@ -81,23 +84,17 @@ function renderGround(){
 function renderWorld(focusId){
   layout=buildFactoryExpansionLayout(counts);nodes.clear();overviewLabels.clear();overlay.replaceChildren();world.replaceChildren();
   world.style.width=`${layout.width}px`;world.style.height=`${layout.height}px`;renderGround();
-  layer=document.createElementNS(ns,'svg');layer.classList.add('expansion-scene-layer');layer.setAttribute('viewBox',`0 0 ${layout.width} ${layout.height}`);layer.setAttribute('aria-label','中央蓝色供料上行，橙色成品回流下行，经过公共包装后入仓');
-  const defs=document.createElementNS(ns,'defs');for(const [role,color] of [['supply','#4a95ae'],['return','#c69551']]){
-    const marker=document.createElementNS(ns,'marker');marker.id=`arrow-${role}`;for(const [key,value] of Object.entries({viewBox:'0 0 10 10',refX:'8',refY:'5',markerWidth:'4',markerHeight:'4',orient:'auto'}))marker.setAttribute(key,value);
-    const shape=document.createElementNS(ns,'path');shape.setAttribute('d','M0 0 L10 5 L0 10 Z');shape.setAttribute('fill',color);marker.append(shape);defs.append(marker);
-  }layer.append(defs);world.append(layer);
-  path(layout.mainRoutes.supply,'supply',{arrow:true});path(layout.mainRoutes.return,'return',{arrow:true});path(layout.mainRoutes.packToWarehouse,'return',{arrow:true});
+  logistics=renderWorkshopLogistics(world,layout);
+  renderWorkshopBoundary(world,layout);
   caption('供料 ↑',layout.supplyLabel[0]-36,layout.supplyLabel[1]-28,64,'trunk-label supply-label');caption('成品 ↓',layout.returnLabel[0]-20,layout.returnLabel[1]-28,64,'trunk-label return-label');
   for(const slot of layout.slots){
-    if(!slot.built){construction(slot);continue;}
+    if(!slot.built){if(slot.next)construction(slot);continue;}
     const machine=mount(slot.product.machine,slot.id,`${slot.product.name} · ${slot.number}号线`,slot.machineCx,slot.foot,slot.width,'line',slot);
     mount('buffer-bin',`${slot.id}-buffer`,`${slot.number}号缓存`,slot.cacheCx,slot.cacheFoot,slot.cacheWidth,'cache',{lineId:slot.id,product:slot.product});
-    path(slot.feedRoute,'supply',{arrow:true,bridge:slot.column===1});path(slot.outputRoute,'local');path(slot.returnRoute,'return',{arrow:true,bridge:slot.column===0});
     machine.connections={input:slot.ground.input,output:slot.ground.output,cache:slot.ground.cacheEntry,supply:'supply',packaging:'packer'};
   }
   for(const device of Object.values(layout.shared))mount(device.assetId,device.id,device.name,device.cx,device.foot,device.width);
-  path(layout.shared.supply.feedRoute,'supply',{arrow:true});
-  path(layout.shared.packer.feedRoute,'return',{arrow:true});
+  motion.ready=motion.mount(world,layout,nodes);
   $('line-count').textContent=String(layout.lines.length);$('phone').dataset.lineCount=String(layout.lines.length);world.dataset.lineCount=String(layout.lines.length);world.dataset.productCount='6';
   renderJumps();selectNode(nodes.get(focusId)||nodes.get('original-1'));if(camera){camera.setBounds(layout.bounds);updateCamera(camera.getState());}
 }
@@ -109,14 +106,15 @@ function renderJumps(){
   }
 }
 function selectNode(node){
-  if(!node)return;selected=node;for(const item of nodes.values())item.element.setAttribute('aria-pressed',String(item.id===node.id));$('detail-name').textContent=node.name;
+  if(!node)return;selected=node;for(const item of nodes.values())item.element.setAttribute('aria-pressed',String(item.id===node.id));$('detail-name').textContent=node.type==='cache'?`${node.product.name} · ${node.name}`:node.name;
+  updateWorkshopLogistics(logistics,node.id);
   const collapsed=$('phone').classList.contains('collapsed');fitSprite($('detail-sprite'),node.asset,collapsed?44:72,collapsed?43:72);
   const line=node.type==='line',slot=node.type==='line-slot',product=node.product,index=product?factoryProducts.findIndex(p=>p.id===product.id):-1;
-  $('detail-level').textContent=line?`出厂 Lv.${levels.get(node.id)||1}`:node.type==='product-slot'?'待建工坊':slot?'预留机位':'公共设备';
+  $('detail-level').textContent=line?`出厂 Lv.${levels.get(node.id)||1}`:node.type==='product-slot'?'待建工坊':slot?'预留机位':node.type==='cache'?'本线独立缓存':'公共设备';
   $('detail-stock').textContent=line?'本线独立缓存':slot||node.type==='product-slot'?'仅布局演示':node.id==='warehouse'?`${layout.lines.length}条产线入仓`:node.type==='cache'?'本线待包缓存':'共享全厂';
-  $('detail-help').textContent=line?'本线连接中央供料，经独立缓存汇入公共包装。':slot?'填入本坊第二机位；已有设备位置及等级保留。':node.type==='product-slot'?'在预留工坊建设首线，接入中央物流。':node.id==='warehouse'?'包装完成后统一入仓。':'公共庭院服务全厂已建产线。';
-  const canAdd=(line||slot)&&index>=0&&counts[index]>0&&counts[index]<2;
-  $('build-line').disabled=!canAdd;$('build-line').textContent=canAdd?'预览增开2号线':line?'本坊机位已满':'预览增开本线';
+  $('detail-help').textContent=line?'本线连接中央供料，经独立缓存汇入公共包装。':slot?`填入本坊第${node.number}机位；已有设备位置及等级保留。`:node.type==='product-slot'?'在预留工坊建设首线，接入中央物流。':node.type==='cache'?'接收所属产线出料，经成品输送槽送往公共包装。':node.id==='warehouse'?'包装完成后统一入仓。':'公共庭院服务全厂已建产线。';
+  const canAdd=(line||slot)&&index>=0&&counts[index]>0&&counts[index]<layout.maxLinesPerProduct;
+  $('build-line').disabled=!canAdd;$('build-line').textContent=canAdd?`预览增开${counts[index]+1}号线`:line?'本坊机位已满':'预览增开本线';
   $('build-product').disabled=!layout.next;$('build-product').textContent=layout.next?`扩建${layout.next.name}`:'六坊已全部装配';
   const upgradeNode=getUpgradeNode(node),canUpgrade=upgradeNode?.type==='line';
   $('level-select').disabled=!canUpgrade;$('level-select').value=String(canUpgrade?levels.get(upgradeNode.id)||1:1);$('focus-view').disabled=!product;
@@ -125,6 +123,11 @@ function selectNode(node){
   upgrade?.update(getUpgradeSelection());
   if(upgrade?.isOpen&&previousUpgradeId!==upgrade.selection?.id)frameUpgradeSelection();
   for(const button of $('product-jumps').children)button.setAttribute('aria-pressed',String(button.dataset.product===product?.id));
+  updatePresentation();
+}
+function updatePresentation(state=camera?.getState()){
+  const safeBottom=upgrade?.isOpen?upgrade.sheet.offsetTop-viewport.offsetTop-8:viewport.clientHeight;
+  presentation.update({nodes,selected,layout,camera,state,overview,levels,safeBottom,overviewLabels});
 }
 function getUpgradeNode(node=selected){return node?.type==='cache'&&node.lineId?nodes.get(node.lineId):node;}
 function getUpgradeSelection(){
@@ -143,7 +146,7 @@ function frameUpgradeSelection(){
   camera.setState({x:node.left+node.width/2,y:node.top+node.height/2+(viewport.clientHeight-visibleHeight)/2/zoom,zoom,mode:'detail'});
 }
 function updateCamera(state){
-  overview=state.zoom<.54;$('phone').classList.toggle('overview',overview);viewport.classList.toggle('overview',overview);overlay.hidden=!overview;
+  overview=!courtyardView&&(state.mode==='overview'||(overview?state.zoom<.58:state.zoom<=.50));$('phone').classList.toggle('overview',overview);viewport.classList.toggle('overview',overview);overlay.hidden=!overview;
   $('zoom-level').textContent=`${Math.round(state.zoom*100)}%`;
   const currentGroup=layout?.groups.find(group=>group.product.id===selected?.product?.id);
   $('overview-view').setAttribute('aria-pressed',String(state.zoom<=state.minZoom+.0001));
@@ -151,14 +154,16 @@ function updateCamera(state){
   $('zoom-out').disabled=state.zoom<=state.minZoom+.0001;$('zoom-in').disabled=state.zoom>=state.maxZoom-.0001;
   for(const node of nodes.values())node.element.disabled=overview||!!node.disabled;if(!camera)return;
   for(const {button,group} of overviewLabels.values()){
-    const p=camera.worldToViewport({x:group.labelAnchor[0],y:group.labelAnchor[1]+12});
+    const p=camera.worldToViewport({x:group.labelAnchor[0],y:group.labelAnchor[1]});
     button.hidden=p.y < -23||p.y > viewport.clientHeight+23||p.x < -44||p.x > viewport.clientWidth+44;
-    const x=group.column===0?Math.min(p.x,viewport.clientWidth/2-48):Math.max(p.x,viewport.clientWidth/2+48);
-    button.style.left=`${Math.max(46,Math.min(viewport.clientWidth-46,x))}px`;button.style.top=`${p.y}px`;
+    const x=group.column===0?Math.min(p.x-34,viewport.clientWidth/2-40):Math.max(p.x+34,viewport.clientWidth/2+40);
+    button.style.left=`${Math.max(36,Math.min(viewport.clientWidth-36,x))}px`;button.style.top=`${Math.max(22,Math.min(viewport.clientHeight-22,p.y))}px`;
   }
   viewport.dataset.cameraX=state.x.toFixed(2);viewport.dataset.cameraY=state.y.toFixed(2);
+  motion.setView(state,overview);
+  updatePresentation(state);
 }
-function fitInitial(){camera.fit(layout.lines.length<=2?layout.activeBounds:layout.bounds,{padding:20});}
+function fitInitial(){courtyardView=false;camera.fit(layout.lines.length<=2?layout.activeBounds:layout.bounds,{padding:20});}
 function applyPreset(value){upgrade?.close();counts=[...factoryLayoutPresets[value]];levels.clear();renderWorld('original-1');upgrade?.reset();$('layout-select').value=value;if(camera)fitInitial();}
 
 $('layout-select').addEventListener('change',event=>{applyPreset(event.target.value);$('demo-feedback').textContent='布局已切换；六坊及公共庭院位置固定，演示等级重置。';});
@@ -177,19 +182,19 @@ $('upgrade-entry').addEventListener('click',()=>{
   upgrade.open(getUpgradeSelection());frameUpgradeSelection();
 });
 $('collapse-detail').addEventListener('click',()=>{const collapsed=$('phone').classList.toggle('collapsed');$('collapse-detail').setAttribute('aria-expanded',String(!collapsed));$('collapse-detail').setAttribute('aria-label',collapsed?'展开设备详情':'收起设备详情');if(selected)selectNode(selected);});
-$('overview-view').addEventListener('click',()=>camera.fit(layout.bounds,{padding:20}));
+$('overview-view').addEventListener('click',()=>{courtyardView=false;camera.fit(layout.bounds,{padding:20});});
 $('focus-view').addEventListener('click',()=>focusGroup(layout.groups.find(g=>g.product.id===selected?.product?.id)));
 $('zoom-out').addEventListener('click',()=>camera.zoomBy(1/1.25));$('zoom-in').addEventListener('click',()=>camera.zoomBy(1.25));
-$('warehouse-view').addEventListener('click',()=>{selectNode(nodes.get('warehouse'));camera.focus(layout.courtyard.bounds,{padding:18});if(upgrade?.isOpen)frameUpgradeSelection();});
+$('warehouse-view').addEventListener('click',()=>{selectNode(nodes.get('warehouse'));courtyardView=true;camera.fit(layout.courtyard.bounds,{padding:18,mode:'detail'});if(upgrade?.isOpen)frameUpgradeSelection();});
 $('catalog-view').addEventListener('click',()=>{const show=$('catalog').hidden;$('catalog').hidden=!show;$('catalog-view').setAttribute('aria-expanded',String(show));if(show)$('catalog').scrollIntoView({behavior:'smooth',block:'start'});});
 
 try{
   await Promise.all([...runtimeFactoryAssets,...factoryDecorationAssets,...Object.values(vectors),runtimeFactoryFloor].map(asset=>loadImage(asset.src)));
   const preset=Object.hasOwn(factoryLayoutPresets,params.get('layout'))?params.get('layout'):'six';applyPreset(preset);
-  camera=new WorkshopCamera(viewport,world,{onChange:updateCamera});camera.setBounds(layout.bounds);fitInitial();
+  camera=new WorkshopCamera(viewport,world,{onChange:updateCamera,onActivate:({type})=>{if(type!=='pan')courtyardView=false;}});camera.setBounds(layout.bounds);fitInitial();
   upgrade=new WorkshopUpgrade({host:$('phone'),getSelection:getUpgradeSelection,onClose:()=>{
     camera.resize();const previous=upgradeCameraState,changed=getUpgradeNode()?.id!==upgradeStartSelectionId;upgradeCameraState=null;upgradeStartSelectionId=null;
-    if(changed){const group=layout.groups.find(item=>item.product.id===selected?.product?.id);camera.focus(group?.bounds||layout.courtyard.bounds,{padding:20});}
+    if(changed){const group=layout.groups.find(item=>item.product.id===selected?.product?.id);courtyardView=!group;if(group)camera.focus(group.bounds,{padding:20});else camera.fit(layout.courtyard.bounds,{padding:18,mode:'detail'});}
     else if(previous)camera.setState(previous);
   },onUpgrade:({id,fromLevel,toLevel})=>{
     const node=getUpgradeNode();if(node?.type!=='line'||node.id!==id||(levels.get(id)||1)!==fromLevel)return false;
@@ -197,8 +202,9 @@ try{
   }});
   if(params.get('collapsed')==='false')$('collapse-detail').click();
   const position=params.get('position');if(position==='warehouse')$('warehouse-view').click();else if(position)focusGroup(layout.groups.find(g=>g.product.id===position));
+  await motion.ready;
   for(const asset of [...Object.values(vectors),...factoryDecorationAssets,...runtimeFactoryAssets,runtimeFactoryFloor]){
     const card=document.createElement('a');card.className='asset-card';card.href=asset.src;card.target='_blank';card.rel='noopener';const display=document.createElement('div');display.className='asset-display';const img=document.createElement('img');img.src=asset.src;img.alt=asset.label||asset.id||'运行地面';display.append(img);const title=document.createElement('strong');title.textContent=asset.label||asset.id||'运行地面';card.append(display,title);$('catalog').append(card);
   }
-  $('load-status').textContent='运行素材已载入：六坊、十二个固定机位、中央供料与成品回流、前庭公共配套。';document.documentElement.dataset.ready='true';
+  $('load-status').textContent=`运行素材已载入：六坊、${factoryProducts.length*layout.maxLinesPerProduct}个固定机位、中央供料与成品回流、前庭公共配套。`;document.documentElement.dataset.ready='true';
 }catch(error){$('load-status').textContent=error.message;document.documentElement.dataset.ready='error';console.error(error);}
