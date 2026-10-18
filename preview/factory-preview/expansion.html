@@ -5,25 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>工厂 · 扩建演示</title>
   <link rel="stylesheet" href="./expansion.css">
+  <link rel="stylesheet" href="./workshop-ground.css">
+  <link rel="stylesheet" href="./workshop-upgrade.css">
 </head>
 <body>
   <main class="workbench">
     <div class="toolbar">
-      <div><span class="eyebrow">爆米花工厂 · 美术装配</span><h1>扩建演示</h1></div>
+      <div><span class="eyebrow">爆米花工厂 · 工坊分区</span><h1>扩建演示</h1></div>
       <div class="tools">
         <a href="/preview/">预览首页</a>
-        <label for="layout-select">布局<select id="layout-select"><option value="opening">开局两线</option><option value="six" selected>六代各一线</option><option value="full">十八线</option></select></label>
-        <button id="warehouse-view">包装与仓储</button>
+        <label for="layout-select">布局<select id="layout-select"><option value="single">单线</option><option value="opening">开局双线</option><option value="six" selected>六坊各一线</option><option value="full">满厂十二线</option><option value="custom" disabled>当前装配</option></select></label>
+        <button id="warehouse-view">公共庭院</button>
         <button id="catalog-view" aria-expanded="false" aria-controls="catalog">资源一览</button>
+        <label for="level-select">演示等级<select id="level-select" aria-label="设置选中产线的演示等级"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select></label>
       </div>
     </div>
-    <p class="scope">390 × 844 布局演示，建设不扣金币，费用待定。本页验证扩线后的设备、物流和占位。</p>
+    <p class="scope">独立布局示例，用于查看工坊分区、设备与物流。扩建及等级调整不改变游戏进度。</p>
     <div class="product-toolbar"><span>产品定位</span><div id="product-jumps" class="product-jumps" aria-label="定位产品产区"></div></div>
-    <p id="demo-feedback" class="demo-feedback" role="status">选择设备查看装配信息；可预览增开产线、扩建新品与出厂等级。</p>
+    <p id="demo-feedback" class="demo-feedback" role="status">拖动查看工坊；选择全厂或当前工坊取景，点击设备查看详情。</p>
     <div class="comparison">
       <section class="preview-column" aria-label="实际装配预览">
-        <div class="column-label">实际装配 · 上下滑动查看产区</div>
-        <div id="phone" class="phone">
+        <div class="column-label">实际装配 · 拖动与缩放查看工坊</div>
+        <div id="phone" class="phone collapsed">
           <header class="game-header"><div class="factory-title"><svg class="icon" aria-hidden="true"><use href="../../assets/source/factory/ui/v1/icons.svg#factory"></use></svg><span>工厂</span></div><div class="assembly-count"><span>已装配</span><strong id="line-count">6</strong><span>条线</span></div></header>
           <div class="orders" aria-label="顾客订单样式">
             <article class="order-card">
@@ -31,17 +34,24 @@
               <div class="order-content"><strong>兔快递员</strong><div class="order-products"><div><div class="order-product"><img src="../../assets/source/gameplay/products/v9/original/lv-01.png" alt="原味爆米花"></div><span>0/1</span></div><div><div class="order-product"><img src="../../assets/source/gameplay/products/v9/caramel/lv-01.png" alt="焦糖爆米花"></div><span>0/1</span></div></div></div>
             </article><div class="next-card" aria-hidden="true">›</div>
           </div>
-          <div id="scene-viewport" class="scene-viewport" aria-label="扩线工厂场景" tabindex="0"><div id="world" class="world"></div></div>
+          <div class="scene-tools" role="group" aria-label="场景取景与缩放">
+            <button id="overview-view" type="button">全厂</button>
+            <button id="focus-view" type="button">当前工坊</button>
+            <button id="zoom-out" type="button" aria-label="缩小场景">−</button>
+            <output id="zoom-level" aria-label="当前缩放">100%</output>
+            <button id="zoom-in" type="button" aria-label="放大场景">＋</button>
+          </div>
+          <div id="scene-viewport" class="scene-viewport" aria-label="可拖动和缩放的工厂场景" tabindex="0"><div id="world" class="world"></div></div>
           <section id="detail" class="detail" aria-label="设备详情">
             <div id="detail-sprite" class="detail-sprite"></div>
-            <div class="detail-content"><div class="detail-heading"><strong id="detail-name">原味爆米花 · 1号线</strong><button id="collapse-detail" aria-label="收起设备详情" aria-expanded="true"><svg class="icon" aria-hidden="true"><use href="../../assets/source/factory/ui/v1/icons.svg#chevron"></use></svg></button></div><div class="detail-stats"><span id="detail-level">出厂 Lv.1</span><span id="detail-stock">本地待包箱</span></div></div>
+            <div class="detail-content"><div class="detail-heading"><strong id="detail-name">原味爆米花 · 1号线</strong><button id="collapse-detail" aria-label="展开设备详情" aria-expanded="false"><svg class="icon" aria-hidden="true"><use href="../../assets/source/factory/ui/v1/icons.svg#chevron"></use></svg></button></div><div class="detail-stats"><span id="detail-level">出厂 Lv.1</span><span id="detail-stock">本线独立缓存与库存</span></div></div>
             <p id="detail-help" class="detail-help">选择产线后，可查看设备、缓存与物流接口。</p>
-            <div class="actions"><button id="build-line" class="blue">预览增开本线</button><button id="build-product" class="green">预览扩建新品</button><label class="level-control" for="level-select"><span>出厂等级</span><select id="level-select" aria-label="出厂等级"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select></label></div>
+            <div class="actions"><button id="build-line" class="blue">预览增开本线</button><button id="build-product" class="green">预览扩建新品</button><button id="upgrade-entry" class="gold">升级设备</button></div>
           </section>
           <nav class="game-nav" aria-label="主导航"><button class="active" aria-current="page"><svg class="icon" aria-hidden="true"><use href="../../assets/source/factory/ui/v1/icons.svg#factory"></use></svg>工厂</button><a href="../game-preview/board.html"><svg class="icon" aria-hidden="true"><use href="../../assets/source/factory/ui/v1/icons.svg#board"></use></svg>棋盘</a></nav>
         </div>
       </section>
-      <section class="reference-column" aria-label="工厂页概念参考"><div class="column-label">工厂页参考图 · 概念目标</div><img class="reference" src="../../assets/reference/concepts/core-pages/v1/factory-page.png" alt="工厂页概念目标"></section>
+      <details class="reference-column" open aria-label="工坊分区结构参考"><summary>工坊分区参考 · 结构示意</summary><a class="reference-link" href="./workshop-reference.png" target="_blank" rel="noopener">查看参考原图 ↗</a><img class="reference" src="./workshop-reference.png" alt="两列三排工坊与中央公共庭院的结构参考"></details>
     </div>
     <p id="load-status" role="status">资源载入中…</p>
     <a class="previous-demo" href="./index.html">查看生产演示</a>

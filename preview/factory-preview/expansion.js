@@ -2,14 +2,18 @@ import {runtimeFactoryAssets,runtimeFactoryAssetsById as bitmaps} from '../../as
 import {runtimeFactoryFloor} from '../../assets/runtime/factory/v1/floor.js';
 import {factoryExpansionAssets} from '../../assets/source/factory/expansion/v1/manifest.js';
 import {factoryDecorationAssets} from '../../assets/runtime/decoration/v1/manifest.js';
-import {factoryProducts,factoryLayoutPresets,buildFactoryExpansionLayout} from '../../assets/source/factory/expansion/v1/layout.js';
+import {factoryProducts,factoryLayoutPresets,buildFactoryExpansionLayout} from './workshop-layout.js';
+import {WorkshopCamera} from './workshop-camera.js';
+import {WorkshopUpgrade} from './workshop-upgrade.js';
+import {renderWorkshopGround} from './workshop-ground.js';
 
 const $=id=>document.getElementById(id),ns='http://www.w3.org/2000/svg';
 const params=new URLSearchParams(location.search),vectors=factoryExpansionAssets.assets;
-const base=new URL('../../assets/source/factory/logistics/v1/',import.meta.url);
 const definitions=new Map([...runtimeFactoryAssets,...factoryDecorationAssets].map(asset=>[asset.id,asset]));
-const levels=new Map(),nodes=new Map(),groupPositions=new Map(),images=new Map();
-let counts=[...factoryLayoutPresets.six],layout,selected,layer;
+const levels=new Map(),nodes=new Map(),images=new Map(),overviewLabels=new Map();
+const world=$('world'),viewport=$('scene-viewport');
+const overlay=document.createElement('div');overlay.className='overview-labels';overlay.setAttribute('aria-label','工坊总览定位');viewport.append(overlay);
+let counts=[...factoryLayoutPresets.six],layout,selected,layer,camera,upgrade,upgradeCameraState,upgradeStartSelectionId,overview=false;
 if(params.get('capture')==='phone')document.body.classList.add('capture-mode');
 
 function loadImage(src){
@@ -20,38 +24,22 @@ function loadImage(src){
 function fitSprite(container,asset,width,height){
   const [x0,y0,x1,y1]=asset.bounds||[0,0,...asset.size],scale=Math.min(width/(x1-x0),height/(y1-y0));
   const img=document.createElement('img');img.src=asset.src;img.alt='';img.draggable=false;
-  Object.assign(img.style,{position:'absolute',width:`${asset.size[0]*scale}px`,height:`${asset.size[1]*scale}px`,left:`${(width-(x1-x0)*scale)/2-x0*scale}px`,top:`${(height-(y1-y0)*scale)/2-y0*scale}px`});
-  container.replaceChildren(img);
+  Object.assign(img.style,{position:'absolute',width:`${asset.size[0]*scale}px`,height:`${asset.size[1]*scale}px`,left:`${(width-(x1-x0)*scale)/2-x0*scale}px`,top:`${(height-(y1-y0)*scale)/2-y0*scale}px`});container.replaceChildren(img);
 }
-function svgImage(src,center,matrix=[.5,0,0,.5],size=[96,96]){
-  const group=document.createElementNS(ns,'g');group.setAttribute('transform',`translate(${center.join(' ')}) matrix(${matrix.join(' ')} 0 0)`);
-  const image=document.createElementNS(ns,'image');image.setAttribute('href',src);image.setAttribute('x',String(-size[0]/2));image.setAttribute('y',String(-size[1]/2));image.setAttribute('width',String(size[0]));image.setAttribute('height',String(size[1]));group.append(image);layer.append(group);
+function caption(text,x,y,width,className){
+  const label=document.createElement('div');label.className=className;label.textContent=text;
+  Object.assign(label.style,{left:`${x}px`,top:`${y}px`,width:`${width}px`});world.append(label);return label;
 }
-function tile(id,point){svgImage(new URL(`${id}.svg`,base).href,point);}
-function straight(from,to){
-  let a=from,b=to;const horizontal=Math.abs(b[0]-a[0])>=Math.abs(b[1]-a[1]);
-  if(horizontal?b[0]<a[0]:b[1]<a[1])[a,b]=[b,a];
-  const dx=b[0]-a[0],dy=b[1]-a[1],length=Math.hypot(dx,dy);if(length<.2)return;
-  const [sx,sy,cx,cy]=horizontal?[80,11.04,-.1333333333,1]:[-10.6666666667,80,1,.138];
-  const wx=(horizontal?-dy:dy)/length*.5,wy=(horizontal?dx:-dx)/length*.5,det=sx*cy-cx*sy;
-  const matrix=[(dx*cy-wx*sy)/det,(dy*cy-wy*sy)/det,(-dx*cx+wx*sx)/det,(-dy*cx+wy*sx)/det];
-  svgImage(new URL(`straight-${horizontal?'h':'v'}.svg`,base).href,[(a[0]+b[0])/2,(a[1]+b[1])/2],matrix);
-}
-function route(points){for(let i=1;i<points.length;i++)straight(points[i-1],points[i]);}
-function corner(id,point){tile(`corner-${id}`,point);}
-function stamp(id,x,y,width){const asset=vectors[id],img=document.createElement('img');img.src=asset.src;img.alt='';img.className='expansion-stamp';Object.assign(img.style,{left:`${x}px`,top:`${y}px`,width:`${width}px`});$('world').append(img);return img;}
-function caption(text,x,y,width,className='zone-label'){
-  const label=document.createElement('div');label.className=className;label.textContent=text;Object.assign(label.style,{left:`${x}px`,top:`${y}px`,width:`${width}px`});$('world').append(label);return label;
+function path(points,role,{arrow=false,bridge=false}={}){
+  const d=points.map((p,i)=>`${i?'L':'M'}${p[0]} ${p[1]}`).join(' ');
+  const add=className=>{const p=document.createElementNS(ns,'path');p.setAttribute('d',d);p.setAttribute('class',className);layer.append(p);return p;};
+  add(bridge?'logistics-crossing':'logistics-bed');const p=add(`logistics-${role}`);if(arrow)p.setAttribute('marker-end',`url(#arrow-${role})`);return p;
 }
 function mount(assetId,id,name,cx,foot,width,type='shared',data={}){
   const asset=definitions.get(assetId),[x0,y0,x1,y1]=asset.bounds,scale=width/(x1-x0),height=(y1-y0)*scale;
-  const anchor=type==='line'?.88:.9,left=cx-width/2,top=foot-height*anchor;
-  const node={id,name,type,asset,left,top,width,height,foot,...data};
+  const left=cx-width/2,top=foot-height*(type==='line'?.88:.9),node={id,name,type,asset,left,top,width,height,foot,...data};
   const button=document.createElement('button');button.type='button';button.className=`equipment-item${type==='cache'?' small':''}`;button.dataset.deviceId=id;button.setAttribute('aria-pressed','false');
-  Object.assign(button.style,{left:`${left}px`,top:`${top}px`,width:`${width}px`,height:`${Math.max(44,height)}px`,zIndex:type==='cache'?'21':'20'});
-  if(type!=='cache'){
-    const platform=document.createElement('div');platform.className='expansion-platform';fitSprite(platform,bitmaps.platform,width*1.12,width*.42);button.append(platform);
-  }
+  Object.assign(button.style,{left:`${left}px`,top:`${top}px`,width:`${width}px`,height:`${Math.max(44,height)}px`,zIndex:String(100+Math.round(foot))});
   const ring=document.createElement('span');ring.className='selection';button.append(ring);
   const sprite=document.createElement('div');sprite.className='sprite';sprite.style.height=`${height}px`;fitSprite(sprite,asset,width,height);button.append(sprite);
   const plate=document.createElement('span');plate.className='nameplate';plate.textContent=name;button.append(plate);
@@ -59,113 +47,158 @@ function mount(assetId,id,name,cx,foot,width,type='shared',data={}){
     const level=document.createElement('span');level.className='line-level';level.textContent=`Lv.${levels.get(id)||1}`;button.append(level);node.levelElement=level;button.dataset.lineId=id;button.dataset.level=String(levels.get(id)||1);button.dataset.inventory='0';
   }
   button.setAttribute('aria-label',type==='line'?`选择${name}，出厂${levels.get(id)||1}级`:`选择${name}`);
-  button.addEventListener('click',()=>selectNode(node));node.element=button;nodes.set(id,node);$('world').append(button);
-  node.point=point=>[left+(point[0]-x0)*scale,top+(point[1]-y0)*scale];
-  node.sourcePoint=point=>[left+(point[0]-asset.originalBounds[0])*width/(asset.originalBounds[2]-asset.originalBounds[0]),top+(point[1]-asset.originalBounds[1])*height/(asset.originalBounds[3]-asset.originalBounds[1])];
-  return node;
+  button.addEventListener('click',()=>{if(!overview){selectNode(node);if($('phone').classList.contains('collapsed'))$('collapse-detail').click();}});node.element=button;nodes.set(id,node);world.append(button);return node;
 }
 function construction(slot){
-  const button=document.createElement('button');button.type='button';button.className='construction-slot';Object.assign(button.style,{left:'76px',top:`${slot.y+10}px`,width:'236px',height:slot.type==='product-slot'?'154px':'92px'});
-  const platform=document.createElement('img');platform.src=vectors['construction-platform'].src;platform.alt='';platform.className='slot-platform';
+  const button=document.createElement('button');button.type='button';button.className=`construction-slot${slot.disabled?' locked':''}`;
+  const width=slot.product.width+24,height=115,left=slot.machineCx-width/2,top=slot.foot-90;
+  Object.assign(button.style,{left:`${left}px`,top:`${top}px`,width:`${width}px`,height:`${height}px`});
   const sign=document.createElement('img');sign.src=vectors['expansion-plus-sign'].src;sign.alt='';sign.className='slot-sign';
-  const label=document.createElement('span');label.className='slot-label';label.textContent=slot.type==='product-slot'?`扩建${slot.product.zone}`:`新增${slot.product.name} · ${slot.number}号线`;
-  button.append(platform,sign,label);button.setAttribute('aria-label',`选择${label.textContent}建设区域`);
-  const node={...slot,name:label.textContent,asset:vectors['construction-platform'],width:128,height:104,element:button};
-  button.addEventListener('click',()=>selectNode(node));nodes.set(slot.id,node);$('world').append(button);
-  svgImage(vectors['branch-sealed-cap'].src,[layout.supplyTrunkX+20,slot.y+44]);
-  svgImage(vectors['branch-connection-slot'].src,[layout.finishedTrunkX-20,slot.y+69],[-.5,0,0,.5]);
+  const label=document.createElement('span');label.className='slot-label';label.textContent=slot.disabled?'预留机位':slot.type==='product-slot'?'待建首条产线':`增开${slot.number}号线`;
+  button.style.zIndex=String(100+Math.round(slot.foot));button.append(sign,label);button.setAttribute('aria-label',`${slot.product.name}${slot.number}号机位，${label.textContent}`);
+  const node={...slot,name:`${slot.product.name} · ${slot.number}号机位`,asset:vectors['construction-platform'],left,top,width,height,element:button};
+  button.addEventListener('click',()=>{if(!overview&&!slot.disabled){selectNode(node);if($('phone').classList.contains('collapsed'))$('collapse-detail').click();}});nodes.set(slot.id,node);world.append(button);
 }
-function decorate(){
-  for(let i=0;i<layout.groups.length;i++){
-    const group=layout.groups[i],asset=factoryDecorationAssets[i%2];
-    const decoration=document.createElement('div');decoration.className='expansion-decoration';Object.assign(decoration.style,{left:'4px',top:`${group.y+58}px`,width:'31px',height:'42px'});fitSprite(decoration,asset,31,42);$('world').append(decoration);
-    stamp('pipe-v',7,group.y+118,30);
-    stamp('floor-transition-h',82,group.bottom+1,236);
+function focusGroup(group){
+  if(!group||(!group.built&&layout.next?.id!==group.product.id))return;
+  selectNode(selected?.product?.id===group.product.id?selected:nodes.get(`${group.product.id}-1`));camera.focus(group.bounds,{padding:20});
+  if(upgrade?.isOpen)frameUpgradeSelection();
+}
+function renderGround(){
+  renderWorkshopGround(world,layout);
+  for(const group of layout.groups){
+    const state=group.built?'':layout.next?.id===group.product.id?' next':' locked';
+    caption(`${group.product.name}工坊 · ${group.count}/2`,group.labelAnchor[0]-112,group.labelAnchor[1]+8,224,`workshop-title${state}`);
+    const button=document.createElement('button');button.type='button';button.className=`overview-workshop${state}`;button.dataset.product=group.product.id;
+    button.disabled=!group.built&&layout.next?.id!==group.product.id;
+    const name=document.createElement('strong');name.textContent=group.product.name;
+    const count=document.createElement('span');count.textContent=group.built?`${group.count}/2 产线 · 进入`:button.disabled?'待解锁':'待扩建 · 进入';button.append(name,count);
+    button.addEventListener('click',()=>focusGroup(group));overlay.append(button);overviewLabels.set(group.product.id,{button,group});
   }
-  for(const [i,asset] of factoryDecorationAssets.entries()){
-    const decoration=document.createElement('div');decoration.className='expansion-decoration';Object.assign(decoration.style,{left:`${i?320:10}px`,top:`${layout.sharedY+210}px`,width:'45px',height:'58px'});fitSprite(decoration,asset,45,58);$('world').append(decoration);
-  }
+  caption('公共前庭',layout.courtyard.labelAnchor[0]-90,layout.courtyard.labelAnchor[1],180,'shared-label');
+  caption('入口',layout.courtyard.entry[0]-36,layout.courtyard.entry[1]-12,72,'entry-label');
 }
 function renderWorld(focusId){
-  layout=buildFactoryExpansionLayout(counts);nodes.clear();groupPositions.clear();const world=$('world');world.replaceChildren();world.style.height=`${layout.height}px`;world.style.backgroundImage=`url("${runtimeFactoryFloor.src}")`;
-  const back=document.createElement('img');back.className='back-wall';back.src=bitmaps['wall-back'].src;back.alt='厂房后墙';world.append(back);
-  layer=document.createElementNS(ns,'svg');layer.classList.add('expansion-scene-layer');layer.setAttribute('viewBox',`0 0 390 ${layout.height}`);layer.setAttribute('height',String(layout.height));layer.setAttribute('aria-label','左侧公共供料、右侧汇流、包装后统一仓储');world.append(layer);
-  const supply=mount('supply-complete','supply','公共供料',253,164,116);
-  const output=supply.point(supply.asset.draw.ports.output);route([output,[layout.supplyTrunkX,output[1]],[layout.supplyTrunkX,layout.sharedY-20]]);corner('se',[layout.supplyTrunkX,output[1]]);
-  for(const group of layout.groups){
-    groupPositions.set(group.product.id,group.y);const title=caption(`${group.index+1}代 · ${group.product.zone}  ${group.count}/3`,81,group.y,232,'product-label');title.style.backgroundImage=`url("${vectors['product-zone-nameplate'].src}")`;
+  layout=buildFactoryExpansionLayout(counts);nodes.clear();overviewLabels.clear();overlay.replaceChildren();world.replaceChildren();
+  world.style.width=`${layout.width}px`;world.style.height=`${layout.height}px`;renderGround();
+  layer=document.createElementNS(ns,'svg');layer.classList.add('expansion-scene-layer');layer.setAttribute('viewBox',`0 0 ${layout.width} ${layout.height}`);layer.setAttribute('aria-label','中央蓝色供料上行，橙色成品回流下行，经过公共包装后入仓');
+  const defs=document.createElementNS(ns,'defs');for(const [role,color] of [['supply','#4a95ae'],['return','#c69551']]){
+    const marker=document.createElementNS(ns,'marker');marker.id=`arrow-${role}`;for(const [key,value] of Object.entries({viewBox:'0 0 10 10',refX:'8',refY:'5',markerWidth:'4',markerHeight:'4',orient:'auto'}))marker.setAttribute(key,value);
+    const shape=document.createElementNS(ns,'path');shape.setAttribute('d','M0 0 L10 5 L0 10 Z');shape.setAttribute('fill',color);marker.append(shape);defs.append(marker);
+  }layer.append(defs);world.append(layer);
+  path(layout.mainRoutes.supply,'supply',{arrow:true});path(layout.mainRoutes.return,'return',{arrow:true});path(layout.mainRoutes.packToWarehouse,'return',{arrow:true});
+  caption('供料 ↑',layout.supplyLabel[0]-36,layout.supplyLabel[1]-28,64,'trunk-label supply-label');caption('成品 ↓',layout.returnLabel[0]-20,layout.returnLabel[1]-28,64,'trunk-label return-label');
+  for(const slot of layout.slots){
+    if(!slot.built){construction(slot);continue;}
+    const machine=mount(slot.product.machine,slot.id,`${slot.product.name} · ${slot.number}号线`,slot.machineCx,slot.foot,slot.width,'line',slot);
+    mount('buffer-bin',`${slot.id}-buffer`,`${slot.number}号缓存`,slot.cacheCx,slot.cacheFoot,slot.cacheWidth,'cache',{lineId:slot.id,product:slot.product});
+    path(slot.feedRoute,'supply',{arrow:true,bridge:slot.column===1});path(slot.outputRoute,'local');path(slot.returnRoute,'return',{arrow:true,bridge:slot.column===0});
+    machine.connections={input:slot.ground.input,output:slot.ground.output,cache:slot.ground.cacheEntry,supply:'supply',packaging:'packer'};
   }
-  const branchY=[];
-  for(const line of layout.lines){
-    const machine=mount(line.product.machine,line.id,`${line.product.name} · ${line.number}号线`,171,line.foot,line.product.width,'line',line);
-    const buffer=mount('buffer-bin',`${line.id}-buffer`,'本地待包',287,line.foot+12,42,'cache',{lineId:line.id,product:line.product});
-    const input=machine.point(machine.asset.draw.ports.input),terminal=machine.sourcePoint(line.product.terminal),cachePoint=[283,line.foot-12];
-    const feedStart=[layout.supplyTrunkX+20,input[1]];route([feedStart,[input[0]-12,input[1]],input]);tile('junction-east',[layout.supplyTrunkX,input[1]-2.76]);tile('connector',input);
-    if(line.product.frontReturn){
-      const turnY=line.foot+49;route([terminal,[terminal[0],turnY],[263,turnY],[263,cachePoint[1]],cachePoint]);corner('ne',[terminal[0],turnY]);corner('nw',[263,turnY]);corner('se',[263,cachePoint[1]]);
-    }else route([terminal,[cachePoint[0],terminal[1]],cachePoint]);
-    tile('connector',terminal);
-    const join=[layout.finishedTrunkX,line.foot];route([[306,line.foot],[layout.finishedTrunkX-20,line.foot]]);tile('junction-west',[join[0],join[1]+2.76]);branchY.push(join[1]);
-    machine.connections={input,output:terminal,cache:cachePoint,supply:'supply',packaging:'packer'};
-  }
-  for(const slot of layout.slots)construction(slot);
-  const packer=mount('packer-complete','packer','公共包装',215,layout.sharedY+139,173),input=packer.point(packer.asset.draw.ports.input),packOutput=packer.point(packer.asset.draw.ports.output);
-  const bypassY=packer.top-23;route([[layout.finishedTrunkX,branchY[0]],[layout.finishedTrunkX,bypassY],[111,bypassY],[111,input[1]],input]);corner('nw',[layout.finishedTrunkX,bypassY]);corner('se',[111,bypassY]);corner('ne',[111,input[1]]);tile('connector',input);
-  mount('buffer-bin','public-buffer','公共待包',341,bypassY-14,41,'cache');
-  const warehouse=mount('warehouse','warehouse','统一仓储',193,layout.sharedY+287,236);
-  const destination=[195,warehouse.top+14],turnY=packer.foot+36;route([packOutput,[packOutput[0],turnY],[195,turnY],destination]);corner('nw',[packOutput[0],turnY]);corner('se',[195,turnY]);tile('connector',packOutput);
-  decorate();
-  $('line-count').textContent=String(layout.lines.length);$('phone').dataset.lineCount=String(layout.lines.length);world.dataset.lineCount=String(layout.lines.length);world.dataset.productCount=String(layout.groups.length);
-  renderJumps();resizeWorld();selectNode(nodes.get(focusId)||nodes.get('original-1'));
+  for(const device of Object.values(layout.shared))mount(device.assetId,device.id,device.name,device.cx,device.foot,device.width);
+  path(layout.shared.supply.feedRoute,'supply',{arrow:true});
+  path(layout.shared.packer.feedRoute,'return',{arrow:true});
+  $('line-count').textContent=String(layout.lines.length);$('phone').dataset.lineCount=String(layout.lines.length);world.dataset.lineCount=String(layout.lines.length);world.dataset.productCount='6';
+  renderJumps();selectNode(nodes.get(focusId)||nodes.get('original-1'));if(camera){camera.setBounds(layout.bounds);updateCamera(camera.getState());}
 }
 function renderJumps(){
   $('product-jumps').replaceChildren();
-  for(const product of factoryProducts){const button=document.createElement('button');button.type='button';button.textContent=product.name;button.disabled=!groupPositions.has(product.id)&&layout.next?.id!==product.id;button.addEventListener('click',()=>{
-    const node=nodes.get(`${product.id}-1`)||(layout.next?.id===product.id?nodes.get('next-product'):null);if(node){selectNode(node);scrollToNode(node);}
-  });button.dataset.product=product.id;$('product-jumps').append(button);}
+  for(const product of factoryProducts){
+    const group=layout.groups.find(g=>g.product.id===product.id),button=document.createElement('button');button.type='button';button.textContent=product.name;
+    button.disabled=!group.built&&layout.next?.id!==product.id;button.dataset.product=product.id;button.addEventListener('click',()=>focusGroup(group));$('product-jumps').append(button);
+  }
 }
 function selectNode(node){
-  selected=node;for(const item of nodes.values())item.element.setAttribute('aria-pressed',String(item.id===node.id));
-  $('detail-name').textContent=node.name;
+  if(!node)return;selected=node;for(const item of nodes.values())item.element.setAttribute('aria-pressed',String(item.id===node.id));$('detail-name').textContent=node.name;
   const collapsed=$('phone').classList.contains('collapsed');fitSprite($('detail-sprite'),node.asset,collapsed?44:72,collapsed?43:72);
-  const line=node.type==='line',slot=node.type==='line-slot',product=node.product;
-  $('detail-level').textContent=line?`出厂 Lv.${levels.get(node.id)||1}`:node.type==='product-slot'?'下一代':slot?'待建设':'公共设备';
-  $('detail-stock').textContent=line?'独立库存 0':slot||node.type==='product-slot'?'费用待定':node.id==='warehouse'?`${layout.lines.length}条线独立库存`:node.type==='cache'?'待包缓存':'共享全厂';
-  $('detail-help').textContent=line?'本线接入公共供料与包装。':slot?'新线从一级出厂起步，保留其他产线规格。':node.type==='product-slot'?'新品首条线和物流同时接入。':node.id==='warehouse'?'各条流水线分别记账。':'公共环节服务各条已装配产线。';
-  const canAdd=(line||slot)&&counts[factoryProducts.findIndex(p=>p.id===product.id)]<3;
-  $('build-line').disabled=!canAdd;$('build-line').textContent=canAdd?`预览新增${counts[factoryProducts.findIndex(p=>p.id===product.id)]+1}号线`:line?'本产品已达3条':'预览增开本线';
-  $('build-product').disabled=!layout.next;$('build-product').textContent=layout.next?'预览扩建新品':'六代已全部装配';
-  $('level-select').disabled=!line;$('level-select').value=String(line?levels.get(node.id)||1:1);
+  const line=node.type==='line',slot=node.type==='line-slot',product=node.product,index=product?factoryProducts.findIndex(p=>p.id===product.id):-1;
+  $('detail-level').textContent=line?`出厂 Lv.${levels.get(node.id)||1}`:node.type==='product-slot'?'待建工坊':slot?'预留机位':'公共设备';
+  $('detail-stock').textContent=line?'本线独立缓存':slot||node.type==='product-slot'?'仅布局演示':node.id==='warehouse'?`${layout.lines.length}条产线入仓`:node.type==='cache'?'本线待包缓存':'共享全厂';
+  $('detail-help').textContent=line?'本线连接中央供料，经独立缓存汇入公共包装。':slot?'填入本坊第二机位；已有设备位置及等级保留。':node.type==='product-slot'?'在预留工坊建设首线，接入中央物流。':node.id==='warehouse'?'包装完成后统一入仓。':'公共庭院服务全厂已建产线。';
+  const canAdd=(line||slot)&&index>=0&&counts[index]>0&&counts[index]<2;
+  $('build-line').disabled=!canAdd;$('build-line').textContent=canAdd?'预览增开2号线':line?'本坊机位已满':'预览增开本线';
+  $('build-product').disabled=!layout.next;$('build-product').textContent=layout.next?`扩建${layout.next.name}`:'六坊已全部装配';
+  const upgradeNode=getUpgradeNode(node),canUpgrade=upgradeNode?.type==='line';
+  $('level-select').disabled=!canUpgrade;$('level-select').value=String(canUpgrade?levels.get(upgradeNode.id)||1:1);$('focus-view').disabled=!product;
+  $('upgrade-entry').textContent=node.type==='cache'?'升级所属产线':line?'升级设备':node.type.endsWith('slot')?'查看机位':'查看设施';
+  const previousUpgradeId=upgrade?.selection?.id;
+  upgrade?.update(getUpgradeSelection());
+  if(upgrade?.isOpen&&previousUpgradeId!==upgrade.selection?.id)frameUpgradeSelection();
   for(const button of $('product-jumps').children)button.setAttribute('aria-pressed',String(button.dataset.product===product?.id));
 }
-function scrollToNode(node){const scale=$('scene-viewport').clientWidth/390;const y=node.type==='line'?node.y-44:node.type.endsWith('slot')?node.y:node.top-24;$('scene-viewport').scrollTo({top:Math.max(0,y*scale),behavior:'instant'});}
-function resizeWorld(){$('world').style.zoom=String($('scene-viewport').clientWidth/390);}
-function applyPreset(value){counts=[...factoryLayoutPresets[value]];levels.clear();renderWorld('original-1');$('layout-select').value=value;$('scene-viewport').scrollTop=0;}
+function getUpgradeNode(node=selected){return node?.type==='cache'&&node.lineId?nodes.get(node.lineId):node;}
+function getUpgradeSelection(){
+  const node=getUpgradeNode();
+  return node?{id:node.id,name:node.name,type:node.type,level:levels.get(node.id)||1,lineCount:layout.lines.length,productName:node.product?.name}:null;
+}
+function setLineLevel(node,level){
+  levels.set(node.id,level);node.levelElement.textContent=`Lv.${level}`;node.element.dataset.level=String(level);
+  node.element.setAttribute('aria-label',`选择${node.name}，出厂${level}级`);selectNode(selected);
+}
+function frameUpgradeSelection(){
+  camera.resize();
+  const node=getUpgradeNode();if(!node)return;
+  const visibleHeight=Math.max(44,Math.min(viewport.clientHeight,upgrade.sheet.offsetTop-viewport.offsetTop));
+  const zoom=Math.max(.65,camera.zoom);
+  camera.setState({x:node.left+node.width/2,y:node.top+node.height/2+(viewport.clientHeight-visibleHeight)/2/zoom,zoom,mode:'detail'});
+}
+function updateCamera(state){
+  overview=state.zoom<.54;$('phone').classList.toggle('overview',overview);viewport.classList.toggle('overview',overview);overlay.hidden=!overview;
+  $('zoom-level').textContent=`${Math.round(state.zoom*100)}%`;
+  const currentGroup=layout?.groups.find(group=>group.product.id===selected?.product?.id);
+  $('overview-view').setAttribute('aria-pressed',String(state.zoom<=state.minZoom+.0001));
+  $('focus-view').setAttribute('aria-pressed',String(!overview&&!!currentGroup&&Math.hypot(state.x-currentGroup.center[0],state.y-currentGroup.center[1])<1));
+  $('zoom-out').disabled=state.zoom<=state.minZoom+.0001;$('zoom-in').disabled=state.zoom>=state.maxZoom-.0001;
+  for(const node of nodes.values())node.element.disabled=overview||!!node.disabled;if(!camera)return;
+  for(const {button,group} of overviewLabels.values()){
+    const p=camera.worldToViewport({x:group.labelAnchor[0],y:group.labelAnchor[1]+12});
+    button.hidden=p.y < -23||p.y > viewport.clientHeight+23||p.x < -44||p.x > viewport.clientWidth+44;
+    const x=group.column===0?Math.min(p.x,viewport.clientWidth/2-48):Math.max(p.x,viewport.clientWidth/2+48);
+    button.style.left=`${Math.max(46,Math.min(viewport.clientWidth-46,x))}px`;button.style.top=`${p.y}px`;
+  }
+  viewport.dataset.cameraX=state.x.toFixed(2);viewport.dataset.cameraY=state.y.toFixed(2);
+}
+function fitInitial(){camera.fit(layout.lines.length<=2?layout.activeBounds:layout.bounds,{padding:20});}
+function applyPreset(value){upgrade?.close();counts=[...factoryLayoutPresets[value]];levels.clear();renderWorld('original-1');upgrade?.reset();$('layout-select').value=value;if(camera)fitInitial();}
 
-$('layout-select').addEventListener('change',event=>{applyPreset(event.target.value);$('demo-feedback').textContent='已切换装配布局；演示等级重置为一级。';});
+$('layout-select').addEventListener('change',event=>{applyPreset(event.target.value);$('demo-feedback').textContent='布局已切换；六坊及公共庭院位置固定，演示等级重置。';});
 $('build-line').addEventListener('click',()=>{
-  if(!selected?.product||$('build-line').disabled)return;const index=factoryProducts.findIndex(p=>p.id===selected.product.id),number=++counts[index],id=`${selected.product.id}-${number}`;levels.set(id,1);renderWorld(id);scrollToNode(selected);$('demo-feedback').textContent=`已装配${selected.name}，一级出厂；其他产线规格保留。`;
+  if(!selected?.product||$('build-line').disabled)return;const product=selected.product,index=factoryProducts.findIndex(p=>p.id===product.id),number=++counts[index],id=`${product.id}-${number}`;
+  levels.set(id,1);renderWorld(id);$('layout-select').value='custom';focusGroup(layout.groups.find(g=>g.product.id===product.id));$('demo-feedback').textContent=`已填入${selected.name}，一级出厂；其他机位与等级保留。`;
 });
 $('build-product').addEventListener('click',()=>{
-  if(!layout.next)return;const product=layout.next,index=factoryProducts.findIndex(p=>p.id===product.id);counts[index]=1;const id=`${product.id}-1`;levels.set(id,1);renderWorld(id);scrollToNode(selected);$('demo-feedback').textContent=`${product.zone}首条线和物流已接入。`;
+  if(!layout.next)return;const product=layout.next,index=factoryProducts.findIndex(p=>p.id===product.id);counts[index]=1;const id=`${product.id}-1`;levels.set(id,1);renderWorld(id);$('layout-select').value='custom';focusGroup(layout.groups.find(g=>g.product.id===product.id));$('demo-feedback').textContent=`${product.name}工坊已接入，首条产线装配完成。`;
 });
 $('level-select').addEventListener('change',event=>{
-  if(selected?.type!=='line')return;const level=Number(event.target.value);levels.set(selected.id,level);selected.levelElement.textContent=`Lv.${level}`;selected.element.dataset.level=String(level);selected.element.setAttribute('aria-label',`选择${selected.name}，出厂${level}级`);selectNode(selected);$('demo-feedback').textContent=`${selected.name}显示为${level}级，其他产线显示等级保留。`;
+  const node=getUpgradeNode();if(node?.type!=='line')return;const level=Number(event.target.value);setLineLevel(node,level);$('demo-feedback').textContent=`${node.name}显示为${level}级，其他产线显示等级保留。`;
+});
+$('upgrade-entry').addEventListener('click',()=>{
+  if(!upgrade)return;if(!upgrade.isOpen){upgradeCameraState=camera.getState();upgradeStartSelectionId=getUpgradeNode()?.id;}
+  upgrade.open(getUpgradeSelection());frameUpgradeSelection();
 });
 $('collapse-detail').addEventListener('click',()=>{const collapsed=$('phone').classList.toggle('collapsed');$('collapse-detail').setAttribute('aria-expanded',String(!collapsed));$('collapse-detail').setAttribute('aria-label',collapsed?'展开设备详情':'收起设备详情');if(selected)selectNode(selected);});
-$('warehouse-view').addEventListener('click',()=>{selectNode(nodes.get('warehouse'));scrollToNode(selected);});
+$('overview-view').addEventListener('click',()=>camera.fit(layout.bounds,{padding:20}));
+$('focus-view').addEventListener('click',()=>focusGroup(layout.groups.find(g=>g.product.id===selected?.product?.id)));
+$('zoom-out').addEventListener('click',()=>camera.zoomBy(1/1.25));$('zoom-in').addEventListener('click',()=>camera.zoomBy(1.25));
+$('warehouse-view').addEventListener('click',()=>{selectNode(nodes.get('warehouse'));camera.focus(layout.courtyard.bounds,{padding:18});if(upgrade?.isOpen)frameUpgradeSelection();});
 $('catalog-view').addEventListener('click',()=>{const show=$('catalog').hidden;$('catalog').hidden=!show;$('catalog-view').setAttribute('aria-expanded',String(show));if(show)$('catalog').scrollIntoView({behavior:'smooth',block:'start'});});
-window.addEventListener('resize',resizeWorld);
 
 try{
   await Promise.all([...runtimeFactoryAssets,...factoryDecorationAssets,...Object.values(vectors),runtimeFactoryFloor].map(asset=>loadImage(asset.src)));
   const preset=Object.hasOwn(factoryLayoutPresets,params.get('layout'))?params.get('layout'):'six';applyPreset(preset);
-  if(params.get('collapsed')==='true')$('collapse-detail').click();
-  const position=params.get('position');if(position==='warehouse')$('warehouse-view').click();else if(position&&nodes.has(`${position}-1`)){selectNode(nodes.get(`${position}-1`));scrollToNode(selected);}
+  camera=new WorkshopCamera(viewport,world,{onChange:updateCamera});camera.setBounds(layout.bounds);fitInitial();
+  upgrade=new WorkshopUpgrade({host:$('phone'),getSelection:getUpgradeSelection,onClose:()=>{
+    camera.resize();const previous=upgradeCameraState,changed=getUpgradeNode()?.id!==upgradeStartSelectionId;upgradeCameraState=null;upgradeStartSelectionId=null;
+    if(changed){const group=layout.groups.find(item=>item.product.id===selected?.product?.id);camera.focus(group?.bounds||layout.courtyard.bounds,{padding:20});}
+    else if(previous)camera.setState(previous);
+  },onUpgrade:({id,fromLevel,toLevel})=>{
+    const node=getUpgradeNode();if(node?.type!=='line'||node.id!==id||(levels.get(id)||1)!==fromLevel)return false;
+    setLineLevel(node,toLevel);$('demo-feedback').textContent=`${node.name}已升至 Lv.${toLevel}，其他产线等级保留。`;return true;
+  }});
+  if(params.get('collapsed')==='false')$('collapse-detail').click();
+  const position=params.get('position');if(position==='warehouse')$('warehouse-view').click();else if(position)focusGroup(layout.groups.find(g=>g.product.id===position));
   for(const asset of [...Object.values(vectors),...factoryDecorationAssets,...runtimeFactoryAssets,runtimeFactoryFloor]){
-    const card=document.createElement('a');card.className='asset-card';card.href=asset.src;card.target='_blank';card.rel='noopener';
-    const display=document.createElement('div');display.className='asset-display';const img=document.createElement('img');img.src=asset.src;img.alt=asset.label||asset.id||'运行地面';display.append(img);const title=document.createElement('strong');title.textContent=asset.label||asset.id||'运行地面';card.append(display,title);$('catalog').append(card);
+    const card=document.createElement('a');card.className='asset-card';card.href=asset.src;card.target='_blank';card.rel='noopener';const display=document.createElement('div');display.className='asset-display';const img=document.createElement('img');img.src=asset.src;img.alt=asset.label||asset.id||'运行地面';display.append(img);const title=document.createElement('strong');title.textContent=asset.label||asset.id||'运行地面';card.append(display,title);$('catalog').append(card);
   }
-  $('load-status').textContent=`已载入19张核心运行PNG、2张装饰运行PNG、1张运行地面及13个扩展SVG；六代设备与公共物流已装配。`;
-  document.documentElement.dataset.ready='true';
+  $('load-status').textContent='运行素材已载入：六坊、十二个固定机位、中央供料与成品回流、前庭公共配套。';document.documentElement.dataset.ready='true';
 }catch(error){$('load-status').textContent=error.message;document.documentElement.dataset.ready='error';console.error(error);}

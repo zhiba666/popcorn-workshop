@@ -1,0 +1,48 @@
+.workshop-ground-layer{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:0;isolation:isolate}
+.workshop-ground-layer *{pointer-events:none}
+.ground-platform-shadow{fill:#536447;opacity:.15}
+.ground-platform-top{fill:#e6d4ac;stroke:#b9a580;stroke-width:2;stroke-linejoin:round}
+.ground-side-edge{fill:#b39d75;stroke:#aa946e;stroke-width:1;stroke-linejoin:round}
+.ground-front-edge{fill:#c0a77e;stroke:#aa946e;stroke-width:1;stroke-linejoin:round}
+.ground-edge-highlight{fill:none;stroke:#f7eacc;stroke-width:2;stroke-linecap:round;opacity:.8}
+.ground-courtyard .ground-platform-top{fill:#e4d2ad;stroke:#ad9873;stroke-width:3}
+.ground-courtyard .ground-front-edge{fill:#b99e76}
+.ground-courtyard .ground-side-edge{fill:#a68e69}
+.ground-courtyard-rim{fill:none;stroke:#f5e7c8;stroke-width:4;stroke-linejoin:round}
+.ground-paving-joint{fill:none;stroke:#b4a485;stroke-width:1.5;stroke-linecap:round;opacity:.42}
+.ground-entry-lane{fill:#cfc8aa;stroke:none}
+.ground-entry-threshold{fill:#f6eacb;opacity:.9}
+.ground-entry-foot{fill:#ab9875;stroke:#95825f;stroke-width:1}
+.ground-spine .ground-platform-top{fill:#bbc6b9;stroke:#91a59c}
+.ground-spine .ground-side-edge{fill:#869c91;stroke:#7e9389}
+.ground-spine .ground-front-edge{fill:#97aa9a;stroke:#7e9389}
+.ground-spine .ground-edge-highlight{stroke:#dfe6d7}
+.ground-spine-inset{fill:none;stroke:#dce2cf;stroke-width:3;stroke-linejoin:round}
+.ground-service-guide{fill:none;stroke:#8fa499;stroke-width:2;opacity:.5}
+.ground-workshop-inset{fill:none;stroke:#f9edcf;stroke-width:2;stroke-linejoin:round;opacity:.75}
+.ground-workshop-connector{fill:#d1c5a6;stroke:#acaa8d;stroke-width:1.5;stroke-linejoin:round}
+.ground-workshop-threshold{fill:none;stroke:#f8edcd;stroke-width:4;stroke-linecap:round}
+.ground-workshop-accent{fill:var(--workshop-ground-accent,#8fa38b);opacity:.8}
+.ground-workshop.locked .ground-platform-top{fill:#bdc9aa;fill-opacity:.45;stroke:#91a181;stroke-dasharray:10 8;stroke-width:2}
+.ground-workshop.locked .ground-side-edge,.ground-workshop.locked .ground-front-edge{fill:#91a080;fill-opacity:.35;stroke:#93a382;stroke-opacity:.55}
+.ground-workshop.locked .ground-workshop-inset{stroke:#e1e7cf;stroke-dasharray:7 8;opacity:.35}
+.ground-workshop.locked .ground-edge-highlight{opacity:.25}
+.ground-workshop.locked .ground-workshop-connector{fill:#a8b69b;fill-opacity:.35;stroke:#91a181;stroke-dasharray:5 5}
+.ground-workshop.locked .ground-platform-shadow{opacity:.05}
+.ground-workshop.next .ground-platform-top{fill:#e5d9b6;fill-opacity:.8;stroke:#bd9e59;stroke-dasharray:11 7;stroke-width:2.5}
+.ground-workshop.next .ground-workshop-inset{stroke:#f6e9c7;stroke-dasharray:8 7;opacity:.7}
+.ground-workshop.next .ground-side-edge,.ground-workshop.next .ground-front-edge{fill:#baaa80;fill-opacity:.55;stroke:#b49e71}
+.ground-workshop.next .ground-workshop-connector{fill:#d8ca9c;stroke:#bba477;stroke-dasharray:5 5}
+.ground-installation-base .ground-platform-top{fill:#efe6cd;stroke:#c3b798;stroke-width:1.5}
+.ground-installation-base .ground-side-edge{fill:#c1b18b;stroke:#b5a581;stroke-width:1}
+.ground-installation-base .ground-front-edge{fill:#d3c29c;stroke:#b5a581;stroke-width:1}
+.ground-installation-base .ground-platform-shadow{opacity:.09}
+.ground-installation-base .ground-edge-highlight{stroke:#fff4d9;stroke-width:1.5}
+.ground-installation-inset{fill:none;stroke:#d8cdaf;stroke-width:1;stroke-linejoin:round}
+.ground-installation-base.locked .ground-platform-top{fill:#d0d6bb;fill-opacity:.25;stroke:#9daa89;stroke-dasharray:7 5}
+.ground-installation-base.locked .ground-side-edge,.ground-installation-base.locked .ground-front-edge{fill:#adb89a;fill-opacity:.3;stroke-opacity:.35}
+.ground-installation-base.locked .ground-installation-inset{opacity:.3;stroke-dasharray:6 5}
+.ground-installation-base.locked .ground-platform-shadow{opacity:.03}
+.ground-installation-base.locked .ground-edge-highlight{opacity:.3}
+.ground-installation-base.next .ground-platform-top{fill:#f1e6c5;fill-opacity:.7;stroke:#bd9e59;stroke-dasharray:7 5;stroke-width:2}
+.ground-installation-base.next .ground-installation-inset{stroke:#c9b57f;stroke-dasharray:6 5;opacity:.6}

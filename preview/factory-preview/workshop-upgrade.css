@@ -1,0 +1,40 @@
+.phone.upgrade-open{grid-template-rows:48px 0px 56px minmax(0,1fr) 64px 54px}
+.phone.upgrade-open .orders,.phone.upgrade-open .detail{visibility:hidden;pointer-events:none}
+.workshop-upgrade{position:absolute;left:0;right:0;bottom:54px;z-index:60;display:flex;flex-direction:column;max-height:calc(100% - 286px);min-height:0;border:2px solid #b9a17c;border-bottom:0;border-radius:22px 22px 0 0;background:#f8ecd3;box-shadow:0 -8px 24px #59452e35;overflow:hidden;overscroll-behavior:contain;touch-action:pan-y;color:#654831;text-align:left}
+.workshop-upgrade[hidden]{display:none}
+.workshop-upgrade *{box-sizing:border-box}
+.workshop-upgrade button{min-height:44px;font-family:inherit;touch-action:manipulation;cursor:pointer}
+.workshop-upgrade button:focus-visible{outline:3px solid #0d8793;outline-offset:-3px}
+.workshop-upgrade button:disabled{cursor:default}
+.upgrade-header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-shrink:0;padding:10px 14px 6px;border-bottom:1px solid #dcc7a4;background:#f3e2c6}
+.upgrade-heading{min-width:0}
+.upgrade-eyebrow{display:block;font-size:11px;color:#8b7358;line-height:1.5}
+.upgrade-heading h2{margin:0;font-size:20px;line-height:1.35;color:#6b4f31}
+.upgrade-close{width:44px;flex:0 0 44px;border:1px solid #ccb694;border-radius:12px;background:#f3e2c6;color:#7c6143;font-size:27px;line-height:1}
+.upgrade-body{flex:1 1 auto;padding:8px 14px 0;min-width:0;min-height:0;overflow-y:auto;overscroll-behavior:contain}
+.upgrade-device-name{display:block;font-size:16px;line-height:1.45;overflow-wrap:anywhere;color:#356e60}
+.upgrade-target{margin:3px 0 10px;font-size:12px;line-height:1.5;color:#8b7052}
+.upgrade-comparison{display:grid;grid-template-columns:minmax(0,1fr) 30px minmax(0,1fr);align-items:center;gap:5px}
+.upgrade-comparison[hidden]{display:none}
+.upgrade-level-card{display:flex;flex-direction:column;align-items:center;gap:4px;min-width:0;padding:9px 8px;border:1px solid #d5c29d;border-radius:13px;background:#efdfc3}
+.upgrade-level-card>span{font-size:12px;color:#856b4b}
+.upgrade-level-card>strong{font-size:25px;line-height:1.2;color:#786140}
+.upgrade-next{border-color:#a6bea0;background:#e2ecd2}
+.upgrade-next>strong{color:#2a7964}
+.upgrade-level-arrow{text-align:center;font-size:23px;color:#a28c63}
+.upgrade-effect{margin:10px 0 5px;font-size:13px;line-height:1.55;overflow-wrap:anywhere;color:#577456}
+.upgrade-scope{margin:4px 0 8px;color:#957c5e;font-size:11px;line-height:1.5;overflow-wrap:anywhere}
+.upgrade-footer{flex:0 0 auto;padding:2px 14px 12px;background:#f8ecd3}
+.upgrade-wallet{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:7px 10px;border:1px solid #ddc59a;border-radius:9px;background:#fff3d6;font-size:12px}
+.upgrade-wallet[hidden]{display:none}
+.upgrade-wallet strong{font-size:18px;color:#a17131;font-variant-numeric:tabular-nums}
+.upgrade-status{margin:7px 0;min-height:18px;font-size:12px;line-height:1.5;overflow-wrap:anywhere;color:#826747}
+.workshop-upgrade[data-state="insufficient"] .upgrade-status{color:#a5633b}
+.workshop-upgrade[data-state="max"] .upgrade-status{color:#3d7e66}
+.upgrade-submit{display:flex;align-items:center;justify-content:center;flex-wrap:nowrap;gap:5px 15px;width:100%;height:44px;min-height:44px;border:1px solid #1e7450;border-radius:12px;background:linear-gradient(#69cd96,#30b678 35%,#169b62);box-shadow:inset 0 1px 0 #b5efd0,inset 0 -3px 0 #1e74504d,0 2px 0 #2a815c30;padding:6px 12px 8px;color:#fff6da;font-size:16px;line-height:1.25;font-weight:800;text-shadow:0 1px #387b6550}
+.upgrade-submit strong{font-size:13px;font-weight:700;white-space:nowrap}
+.upgrade-submit:disabled{filter:saturate(.2);opacity:.65}
+.upgrade-submit:not(:disabled):active{filter:brightness(.9)}
+.upgrade-refill{display:block;width:100%;margin-top:6px;border:1px solid #cbb590;border-radius:10px;background:#fff4d9;color:#7e6138;font-size:12px;font-weight:700;padding:9px 12px}
+.upgrade-refill[hidden]{display:none}
+@media(max-width:350px){.upgrade-header{padding-left:11px;padding-right:11px}.upgrade-body{padding-left:11px;padding-right:11px}.upgrade-footer{padding-left:11px;padding-right:11px}.upgrade-device-name{font-size:15px}}

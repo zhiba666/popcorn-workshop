@@ -10233,7 +10233,7 @@ module.exports = {
         {
           "id": "discharging",
           "label": "出料",
-          "seconds": 1.7
+          "seconds": 2.7154377195000405
         }
       ],
       "layers": [
@@ -11300,7 +11300,7 @@ module.exports = {
         },
         {
           "id": "product-1",
-          "name": "球形成品",
+          "name": "左模脱模成球",
           "role": "material",
           "polygon": [
             [
@@ -11376,6 +11376,18 @@ module.exports = {
             "type": "flow",
             "path": [
               [
+                213.43678095,
+                288.85407863
+              ],
+              [
+                221.69884989,
+                311.35622466
+              ],
+              [
+                262.55019076,
+                358.65665407
+              ],
+              [
                 292.84444354,
                 399.5278989
               ],
@@ -11392,12 +11404,13 @@ module.exports = {
                 494.58798519000004
               ]
             ],
-            "duration": 1.2,
+            "duration": 1.8,
             "delay": 0,
             "amplitude": [
               0,
               0
-            ]
+            ],
+            "holdAtStart": true
           },
           "order": 65,
           "when": [
@@ -11407,7 +11420,7 @@ module.exports = {
         },
         {
           "id": "product-2",
-          "name": "后续球形成品",
+          "name": "中模脱模成球",
           "role": "material",
           "polygon": [
             [
@@ -11483,6 +11496,18 @@ module.exports = {
             "type": "flow",
             "path": [
               [
+                297.89348567,
+                302.63090273
+              ],
+              [
+                297.89348567,
+                325.13304876
+              ],
+              [
+                296.51647418,
+                365.08583865
+              ],
+              [
                 292.84444354,
                 399.5278989
               ],
@@ -11499,12 +11524,133 @@ module.exports = {
                 494.58798519000004
               ]
             ],
-            "duration": 1.2,
-            "delay": 0.5,
+            "duration": 1.5404054899382955,
+            "delay": 0.72,
             "amplitude": [
               0,
               0
+            ],
+            "holdAtStart": true
+          },
+          "order": 65,
+          "when": [
+            "discharging"
+          ],
+          "cleanPatch": true
+        },
+        {
+          "id": "product-3",
+          "name": "右模脱模成球",
+          "role": "material",
+          "polygon": [
+            [
+              351.13792995,
+              442.69528108000003
+            ],
+            [
+              357.10497974,
+              435.80686903000003
+            ],
+            [
+              366.28505634,
+              433.05150421
+            ],
+            [
+              375.46513294,
+              433.96995915
+            ],
+            [
+              383.72720188,
+              438.10300638
+            ],
+            [
+              391.07126316,
+              444.53219096000004
+            ],
+            [
+              395.66130146,
+              453.71674036
+            ],
+            [
+              395.66130146,
+              463.8197447
+            ],
+            [
+              390.61225933000003,
+              473.00429410000004
+            ],
+            [
+              383.26819805,
+              480.35193362
+            ],
+            [
+              374.08812145,
+              484.48498085000006
+            ],
+            [
+              363.53103336,
+              483.10729844
+            ],
+            [
+              355.26896442,
+              478.05579627000003
+            ],
+            [
+              349.30191463,
+              471.16738422000003
+            ],
+            [
+              346.54789165,
+              461.98283482000005
+            ],
+            [
+              347.46589931,
+              451.87983048
             ]
+          ],
+          "pivot": [
+            370.87509464,
+            459.68669747
+          ],
+          "motion": {
+            "type": "flow",
+            "path": [
+              [
+                382.80919422,
+                321.91845647
+              ],
+              [
+                371.7931023,
+                343.04292009
+              ],
+              [
+                331.85976909,
+                375.64807046000004
+              ],
+              [
+                292.84444354,
+                399.5278989
+              ],
+              [
+                329.56474994,
+                431.21459433
+              ],
+              [
+                371.7931023,
+                465.65665458
+              ],
+              [
+                397.49731678,
+                494.58798519000004
+              ]
+            ],
+            "duration": 1.6954377195000405,
+            "delay": 1.02,
+            "amplitude": [
+              0,
+              0
+            ],
+            "holdAtStart": true
           },
           "order": 65,
           "when": [
@@ -12018,7 +12164,7 @@ module.exports = {
         {
           "id": "discharging",
           "label": "出料",
-          "seconds": 1.6504521353150432
+          "seconds": 1.3004521353150431
         }
       ],
       "layers": [
@@ -12145,6 +12291,10 @@ module.exports = {
             "duration": 0.6,
             "repeat": true,
             "startPhase": "feeding",
+            "fillDelay": 0,
+            "fillSeconds": 0.35,
+            "drainDelay": 0,
+            "drainSeconds": 0.35,
             "clipPolygon": [
               [
                 118.18405004,
@@ -12167,7 +12317,8 @@ module.exports = {
           "order": 25,
           "when": [
             "feeding",
-            "processing"
+            "processing",
+            "discharging"
           ],
           "cleanPatch": true
         },
@@ -12228,6 +12379,10 @@ module.exports = {
             "duration": 0.6,
             "repeat": true,
             "startPhase": "feeding",
+            "fillDelay": 0.12,
+            "fillSeconds": 0.4,
+            "drainDelay": 0.12,
+            "drainSeconds": 0.4,
             "clipPolygon": [
               [
                 130.35582928,
@@ -12250,7 +12405,8 @@ module.exports = {
           "order": 25,
           "when": [
             "feeding",
-            "processing"
+            "processing",
+            "discharging"
           ],
           "cleanPatch": true
         },
@@ -12542,6 +12698,10 @@ module.exports = {
             "duration": 0.9,
             "repeat": true,
             "startPhase": "feeding",
+            "fillDelay": 0.24,
+            "fillSeconds": 0.45,
+            "drainDelay": 0.24,
+            "drainSeconds": 0.45,
             "clipPolygon": [
               [
                 130.74846732,
@@ -12568,7 +12728,8 @@ module.exports = {
           "order": 30,
           "when": [
             "feeding",
-            "processing"
+            "processing",
+            "discharging"
           ],
           "cleanPatch": true
         },
@@ -12653,6 +12814,10 @@ module.exports = {
             "duration": 0.9,
             "repeat": true,
             "startPhase": "feeding",
+            "fillDelay": 0.36,
+            "fillSeconds": 0.5,
+            "drainDelay": 0.36,
+            "drainSeconds": 0.5,
             "clipPolygon": [
               [
                 202.2085906,
@@ -12683,7 +12848,8 @@ module.exports = {
           "order": 35,
           "when": [
             "feeding",
-            "processing"
+            "processing",
+            "discharging"
           ],
           "cleanPatch": true
         },
@@ -12974,7 +13140,7 @@ module.exports = {
         },
         {
           "id": "product-1",
-          "name": "棒形成品",
+          "name": "切口送出脆棒",
           "role": "material",
           "polygon": [
             [
@@ -13047,21 +13213,23 @@ module.exports = {
               ]
             ],
             "duration": 1.3,
-            "delay": 0,
+            "delay": 1.46,
             "amplitude": [
               0,
               0
-            ]
+            ],
+            "startPhase": "processing"
           },
           "order": 65,
           "when": [
+            "processing",
             "discharging"
           ],
           "cleanPatch": true
         },
         {
           "id": "product-2",
-          "name": "后续棒形成品",
+          "name": "后续切口脆棒",
           "role": "material",
           "polygon": [
             [
@@ -13130,14 +13298,16 @@ module.exports = {
               ]
             ],
             "duration": 1.2504521353150433,
-            "delay": 0.4,
+            "delay": 1.95,
             "amplitude": [
               0,
               0
-            ]
+            ],
+            "startPhase": "processing"
           },
           "order": 65,
           "when": [
+            "processing",
             "discharging"
           ],
           "cleanPatch": true
@@ -13389,7 +13559,7 @@ module.exports = {
         {
           "id": "discharging",
           "label": "出料",
-          "seconds": 1.9500000000000002
+          "seconds": 2.507639111190382
         }
       ],
       "layers": [
@@ -13879,7 +14049,7 @@ module.exports = {
         },
         {
           "id": "product-1",
-          "name": "圆饼成品",
+          "name": "左烤模脱模圆饼",
           "role": "material",
           "polygon": [
             [
@@ -13963,6 +14133,22 @@ module.exports = {
             "type": "flow",
             "path": [
               [
+                201.76437825,
+                190.29623013
+              ],
+              [
+                217.581471,
+                209.59605063
+              ],
+              [
+                248.44409100000001,
+                227.35188549
+              ],
+              [
+                253.84504950000002,
+                235.07181369
+              ],
+              [
                 238.02795675000002,
                 260.16158034
               ],
@@ -13979,12 +14165,13 @@ module.exports = {
                 381.75044949
               ]
             ],
-            "duration": 1.35,
+            "duration": 2.05,
             "delay": 0,
             "amplitude": [
               0,
               0
-            ]
+            ],
+            "holdAtStart": true
           },
           "order": 65,
           "when": [
@@ -13994,7 +14181,7 @@ module.exports = {
         },
         {
           "id": "product-2",
-          "name": "后续圆饼成品",
+          "name": "右烤模脱模圆饼",
           "role": "material",
           "polygon": [
             [
@@ -14078,6 +14265,18 @@ module.exports = {
             "type": "flow",
             "path": [
               [
+                328.30112025,
+                225.42190344
+              ],
+              [
+                297.43850025,
+                227.73788190000002
+              ],
+              [
+                268.504794,
+                234.29982087000002
+              ],
+              [
                 238.02795675000002,
                 260.16158034
               ],
@@ -14094,12 +14293,13 @@ module.exports = {
                 381.75044949
               ]
             ],
-            "duration": 1.35,
-            "delay": 0.6,
+            "duration": 2.057639111190382,
+            "delay": 0.45,
             "amplitude": [
               0,
               0
-            ]
+            ],
+            "holdAtStart": true
           },
           "order": 65,
           "when": [
@@ -18728,5 +18928,1005 @@ module.exports = {
       ]
     },
     "path": "assets/factory/sandwich-square.png"
+  },
+  "factory/logistics-straight-h": {
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "ports": {
+      "west": {
+        "x": 8,
+        "y": 42.48,
+        "tangent": [
+          -1,
+          -0.138
+        ]
+      },
+      "east": {
+        "x": 88,
+        "y": 53.52,
+        "tangent": [
+          1,
+          0.138
+        ]
+      }
+    },
+    "paintOrder": [
+      "shadow",
+      "side",
+      "support",
+      "surface",
+      "hardware"
+    ],
+    "projection": [
+      1,
+      0.138,
+      -0.1333333333,
+      1,
+      48,
+      48
+    ],
+    "stride": {
+      "horizontal": [
+        80,
+        11.04
+      ],
+      "vertical": [
+        -10.6666666667,
+        80
+      ]
+    },
+    "size": [
+      96,
+      96
+    ],
+    "sourceSize": [
+      96,
+      96
+    ],
+    "rasterSize": [
+      192,
+      192
+    ],
+    "runtimePixelRatio": 2,
+    "anchorPixels": [
+      48,
+      48
+    ],
+    "transparent": true,
+    "path": "assets/factory/logistics-straight-h.png"
+  },
+  "factory/logistics-straight-v": {
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "ports": {
+      "north": {
+        "x": 53.3333333333,
+        "y": 8,
+        "tangent": [
+          0.1333333333,
+          -1
+        ]
+      },
+      "south": {
+        "x": 42.6666666667,
+        "y": 88,
+        "tangent": [
+          -0.1333333333,
+          1
+        ]
+      }
+    },
+    "paintOrder": [
+      "shadow",
+      "side",
+      "support",
+      "surface",
+      "hardware"
+    ],
+    "projection": [
+      1,
+      0.138,
+      -0.1333333333,
+      1,
+      48,
+      48
+    ],
+    "stride": {
+      "horizontal": [
+        80,
+        11.04
+      ],
+      "vertical": [
+        -10.6666666667,
+        80
+      ]
+    },
+    "size": [
+      96,
+      96
+    ],
+    "sourceSize": [
+      96,
+      96
+    ],
+    "rasterSize": [
+      192,
+      192
+    ],
+    "runtimePixelRatio": 2,
+    "anchorPixels": [
+      48,
+      48
+    ],
+    "transparent": true,
+    "path": "assets/factory/logistics-straight-v.png"
+  },
+  "factory/logistics-corner-ne": {
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "ports": {
+      "north": {
+        "x": 53.3333333333,
+        "y": 8,
+        "tangent": [
+          0.1333333333,
+          -1
+        ]
+      },
+      "east": {
+        "x": 88,
+        "y": 53.52,
+        "tangent": [
+          1,
+          0.138
+        ]
+      }
+    },
+    "paintOrder": [
+      "shadow",
+      "side",
+      "support",
+      "surface",
+      "hardware"
+    ],
+    "projection": [
+      1,
+      0.138,
+      -0.1333333333,
+      1,
+      48,
+      48
+    ],
+    "stride": {
+      "horizontal": [
+        80,
+        11.04
+      ],
+      "vertical": [
+        -10.6666666667,
+        80
+      ]
+    },
+    "size": [
+      96,
+      96
+    ],
+    "sourceSize": [
+      96,
+      96
+    ],
+    "rasterSize": [
+      192,
+      192
+    ],
+    "runtimePixelRatio": 2,
+    "anchorPixels": [
+      48,
+      48
+    ],
+    "transparent": true,
+    "path": "assets/factory/logistics-corner-ne.png"
+  },
+  "factory/logistics-corner-nw": {
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "ports": {
+      "north": {
+        "x": 53.3333333333,
+        "y": 8,
+        "tangent": [
+          0.1333333333,
+          -1
+        ]
+      },
+      "west": {
+        "x": 8,
+        "y": 42.48,
+        "tangent": [
+          -1,
+          -0.138
+        ]
+      }
+    },
+    "paintOrder": [
+      "shadow",
+      "side",
+      "support",
+      "surface",
+      "hardware"
+    ],
+    "projection": [
+      1,
+      0.138,
+      -0.1333333333,
+      1,
+      48,
+      48
+    ],
+    "stride": {
+      "horizontal": [
+        80,
+        11.04
+      ],
+      "vertical": [
+        -10.6666666667,
+        80
+      ]
+    },
+    "size": [
+      96,
+      96
+    ],
+    "sourceSize": [
+      96,
+      96
+    ],
+    "rasterSize": [
+      192,
+      192
+    ],
+    "runtimePixelRatio": 2,
+    "anchorPixels": [
+      48,
+      48
+    ],
+    "transparent": true,
+    "path": "assets/factory/logistics-corner-nw.png"
+  },
+  "factory/logistics-corner-se": {
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "ports": {
+      "east": {
+        "x": 88,
+        "y": 53.52,
+        "tangent": [
+          1,
+          0.138
+        ]
+      },
+      "south": {
+        "x": 42.6666666667,
+        "y": 88,
+        "tangent": [
+          -0.1333333333,
+          1
+        ]
+      }
+    },
+    "paintOrder": [
+      "shadow",
+      "side",
+      "support",
+      "surface",
+      "hardware"
+    ],
+    "projection": [
+      1,
+      0.138,
+      -0.1333333333,
+      1,
+      48,
+      48
+    ],
+    "stride": {
+      "horizontal": [
+        80,
+        11.04
+      ],
+      "vertical": [
+        -10.6666666667,
+        80
+      ]
+    },
+    "size": [
+      96,
+      96
+    ],
+    "sourceSize": [
+      96,
+      96
+    ],
+    "rasterSize": [
+      192,
+      192
+    ],
+    "runtimePixelRatio": 2,
+    "anchorPixels": [
+      48,
+      48
+    ],
+    "transparent": true,
+    "path": "assets/factory/logistics-corner-se.png"
+  },
+  "factory/logistics-corner-sw": {
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "ports": {
+      "west": {
+        "x": 8,
+        "y": 42.48,
+        "tangent": [
+          -1,
+          -0.138
+        ]
+      },
+      "south": {
+        "x": 42.6666666667,
+        "y": 88,
+        "tangent": [
+          -0.1333333333,
+          1
+        ]
+      }
+    },
+    "paintOrder": [
+      "shadow",
+      "side",
+      "support",
+      "surface",
+      "hardware"
+    ],
+    "projection": [
+      1,
+      0.138,
+      -0.1333333333,
+      1,
+      48,
+      48
+    ],
+    "stride": {
+      "horizontal": [
+        80,
+        11.04
+      ],
+      "vertical": [
+        -10.6666666667,
+        80
+      ]
+    },
+    "size": [
+      96,
+      96
+    ],
+    "sourceSize": [
+      96,
+      96
+    ],
+    "rasterSize": [
+      192,
+      192
+    ],
+    "runtimePixelRatio": 2,
+    "anchorPixels": [
+      48,
+      48
+    ],
+    "transparent": true,
+    "path": "assets/factory/logistics-corner-sw.png"
+  },
+  "factory/logistics-junction-east": {
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "ports": {
+      "north": {
+        "x": 53.3333333333,
+        "y": 8,
+        "tangent": [
+          0.1333333333,
+          -1
+        ]
+      },
+      "south": {
+        "x": 42.6666666667,
+        "y": 88,
+        "tangent": [
+          -0.1333333333,
+          1
+        ]
+      },
+      "east": {
+        "x": 88,
+        "y": 53.52,
+        "tangent": [
+          1,
+          0.138
+        ]
+      }
+    },
+    "paintOrder": [
+      "shadow",
+      "side",
+      "support",
+      "surface",
+      "hardware"
+    ],
+    "projection": [
+      1,
+      0.138,
+      -0.1333333333,
+      1,
+      48,
+      48
+    ],
+    "stride": {
+      "horizontal": [
+        80,
+        11.04
+      ],
+      "vertical": [
+        -10.6666666667,
+        80
+      ]
+    },
+    "size": [
+      96,
+      96
+    ],
+    "sourceSize": [
+      96,
+      96
+    ],
+    "rasterSize": [
+      192,
+      192
+    ],
+    "runtimePixelRatio": 2,
+    "anchorPixels": [
+      48,
+      48
+    ],
+    "transparent": true,
+    "path": "assets/factory/logistics-junction-east.png"
+  },
+  "factory/logistics-junction-west": {
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "ports": {
+      "north": {
+        "x": 53.3333333333,
+        "y": 8,
+        "tangent": [
+          0.1333333333,
+          -1
+        ]
+      },
+      "south": {
+        "x": 42.6666666667,
+        "y": 88,
+        "tangent": [
+          -0.1333333333,
+          1
+        ]
+      },
+      "west": {
+        "x": 8,
+        "y": 42.48,
+        "tangent": [
+          -1,
+          -0.138
+        ]
+      }
+    },
+    "paintOrder": [
+      "shadow",
+      "side",
+      "support",
+      "surface",
+      "hardware"
+    ],
+    "projection": [
+      1,
+      0.138,
+      -0.1333333333,
+      1,
+      48,
+      48
+    ],
+    "stride": {
+      "horizontal": [
+        80,
+        11.04
+      ],
+      "vertical": [
+        -10.6666666667,
+        80
+      ]
+    },
+    "size": [
+      96,
+      96
+    ],
+    "sourceSize": [
+      96,
+      96
+    ],
+    "rasterSize": [
+      192,
+      192
+    ],
+    "runtimePixelRatio": 2,
+    "anchorPixels": [
+      48,
+      48
+    ],
+    "transparent": true,
+    "path": "assets/factory/logistics-junction-west.png"
+  },
+  "factory/logistics-end-cap": {
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "ports": {
+      "west": {
+        "x": 8,
+        "y": 42.48,
+        "tangent": [
+          -1,
+          -0.138
+        ]
+      }
+    },
+    "paintOrder": [
+      "shadow",
+      "side",
+      "support",
+      "surface",
+      "hardware"
+    ],
+    "projection": [
+      1,
+      0.138,
+      -0.1333333333,
+      1,
+      48,
+      48
+    ],
+    "stride": {
+      "horizontal": [
+        80,
+        11.04
+      ],
+      "vertical": [
+        -10.6666666667,
+        80
+      ]
+    },
+    "size": [
+      96,
+      96
+    ],
+    "sourceSize": [
+      96,
+      96
+    ],
+    "rasterSize": [
+      192,
+      192
+    ],
+    "runtimePixelRatio": 2,
+    "anchorPixels": [
+      48,
+      48
+    ],
+    "transparent": true,
+    "path": "assets/factory/logistics-end-cap.png"
+  },
+  "factory/logistics-connector": {
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "ports": {
+      "west": {
+        "x": 8,
+        "y": 42.48,
+        "tangent": [
+          -1,
+          -0.138
+        ]
+      },
+      "east": {
+        "x": 88,
+        "y": 53.52,
+        "tangent": [
+          1,
+          0.138
+        ]
+      }
+    },
+    "paintOrder": [
+      "shadow",
+      "side",
+      "support",
+      "surface",
+      "hardware"
+    ],
+    "projection": [
+      1,
+      0.138,
+      -0.1333333333,
+      1,
+      48,
+      48
+    ],
+    "stride": {
+      "horizontal": [
+        80,
+        11.04
+      ],
+      "vertical": [
+        -10.6666666667,
+        80
+      ]
+    },
+    "size": [
+      96,
+      96
+    ],
+    "sourceSize": [
+      96,
+      96
+    ],
+    "rasterSize": [
+      192,
+      192
+    ],
+    "runtimePixelRatio": 2,
+    "anchorPixels": [
+      48,
+      48
+    ],
+    "transparent": true,
+    "path": "assets/factory/logistics-connector.png"
+  },
+  "factory/logistics-foreground-rail-h": {
+    "size": [
+      96,
+      96
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "projection": [
+      1,
+      0.138,
+      -0.1333333333,
+      1,
+      48,
+      48
+    ],
+    "sourceSize": [
+      96,
+      96
+    ],
+    "rasterSize": [
+      192,
+      192
+    ],
+    "runtimePixelRatio": 2,
+    "anchorPixels": [
+      48,
+      48
+    ],
+    "transparent": true,
+    "path": "assets/factory/logistics-foreground-rail-h.png"
+  },
+  "factory/logistics-foreground-rail-v": {
+    "size": [
+      96,
+      96
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "projection": [
+      1,
+      0.138,
+      -0.1333333333,
+      1,
+      48,
+      48
+    ],
+    "sourceSize": [
+      96,
+      96
+    ],
+    "rasterSize": [
+      192,
+      192
+    ],
+    "runtimePixelRatio": 2,
+    "anchorPixels": [
+      48,
+      48
+    ],
+    "transparent": true,
+    "path": "assets/factory/logistics-foreground-rail-v.png"
+  },
+  "factory/selection-ring": {
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "layer": "below-machine",
+    "inset": [
+      10,
+      11,
+      10,
+      11
+    ],
+    "size": [
+      240,
+      100
+    ],
+    "sourceSize": [
+      240,
+      100
+    ],
+    "rasterSize": [
+      480,
+      200
+    ],
+    "runtimePixelRatio": 2,
+    "anchorPixels": [
+      120,
+      50
+    ],
+    "transparent": true,
+    "path": "assets/factory/selection-ring.png"
+  },
+  "factory/contact-shadow": {
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "layer": "ground",
+    "size": [
+      240,
+      100
+    ],
+    "sourceSize": [
+      240,
+      100
+    ],
+    "rasterSize": [
+      480,
+      200
+    ],
+    "runtimePixelRatio": 2,
+    "anchorPixels": [
+      120,
+      50
+    ],
+    "transparent": true,
+    "path": "assets/factory/contact-shadow.png"
+  },
+  "factory/nameplate": {
+    "nineSlice": {
+      "left": 20,
+      "top": 16,
+      "right": 20,
+      "bottom": 18
+    },
+    "contentRect": [
+      22,
+      10,
+      196,
+      33
+    ],
+    "size": [
+      240,
+      56
+    ],
+    "sourceSize": [
+      240,
+      56
+    ],
+    "rasterSize": [
+      480,
+      112
+    ],
+    "runtimePixelRatio": 2,
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "anchorPixels": [
+      120,
+      28
+    ],
+    "transparent": true,
+    "path": "assets/factory/nameplate.png"
+  },
+  "factory/construction-platform": {
+    "label": "建设占位地台",
+    "size": [
+      256,
+      208
+    ],
+    "anchor": [
+      0.5,
+      0.46153846153846156
+    ],
+    "anchors": {
+      "center": [
+        128,
+        96
+      ],
+      "signFoot": [
+        128,
+        126
+      ]
+    },
+    "localBounds": [
+      -108,
+      -64,
+      216,
+      128
+    ],
+    "elevation": 7,
+    "projection": [
+      1,
+      0.138,
+      -0.1333333333,
+      1
+    ],
+    "sourceSize": [
+      256,
+      208
+    ],
+    "rasterSize": [
+      512,
+      416
+    ],
+    "runtimePixelRatio": 2,
+    "anchorPixels": [
+      128,
+      96
+    ],
+    "transparent": true,
+    "path": "assets/factory/construction-platform.png"
+  },
+  "factory/expansion-plus-sign": {
+    "label": "扩建入口加号牌",
+    "size": [
+      112,
+      144
+    ],
+    "anchor": [
+      0.5,
+      0.9166666666666666
+    ],
+    "anchors": {
+      "foot": [
+        56,
+        132
+      ],
+      "signCenter": [
+        56,
+        49
+      ]
+    },
+    "hitRect": [
+      11,
+      9,
+      90,
+      81
+    ],
+    "projection": [
+      1,
+      0.138,
+      -0.1333333333,
+      1
+    ],
+    "sourceSize": [
+      112,
+      144
+    ],
+    "rasterSize": [
+      224,
+      288
+    ],
+    "runtimePixelRatio": 2,
+    "anchorPixels": [
+      56,
+      132
+    ],
+    "transparent": true,
+    "path": "assets/factory/expansion-plus-sign.png"
+  },
+  "factory/floor-stone-tile": {
+    "label": "扩展石砖地面",
+    "size": [
+      192,
+      192
+    ],
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "anchors": {
+      "center": [
+        96,
+        96
+      ]
+    },
+    "localBounds": [
+      -80,
+      -64,
+      160,
+      128
+    ],
+    "stride": {
+      "horizontal": [
+        160,
+        22.08
+      ],
+      "vertical": [
+        -17.0666666624,
+        128
+      ]
+    },
+    "projection": [
+      1,
+      0.138,
+      -0.1333333333,
+      1
+    ],
+    "sourceSize": [
+      192,
+      192
+    ],
+    "rasterSize": [
+      384,
+      384
+    ],
+    "runtimePixelRatio": 2,
+    "anchorPixels": [
+      96,
+      96
+    ],
+    "transparent": true,
+    "path": "assets/factory/floor-stone-tile.png"
   }
 };

@@ -1,10 +1,41 @@
 'use strict';
 
 const { drawRotaryMachine } = require('./factory-rotary');
+const { PRODUCTION_CONFIG: CONFIG, PRODUCT_DEFINITIONS } = require('./production-config');
 
 const TAU = Math.PI * 2;
 const clamp = value => Math.max(0, Math.min(1, value));
 const smooth = value => { const t = clamp(value); return t * t * (3 - 2 * t); };
+const outputFlows = new WeakMap();
+
+function productionVisual(factory, product) {
+  const phase = factory.phase === 'discharge' ? 'discharging' : factory.phase;
+  const duration = factory.duration > 0 ? factory.duration : CONFIG.phaseDurations[phase] || 0;
+  const progress = duration > 0 ? clamp(factory.elapsed / duration) : 0;
+  const state = { renderPhase: phase, renderProgress: progress,
+    transferVisible: phase === 'transport' || phase === 'waiting-cache',
+    transferProgress: phase === 'waiting-cache' ? 1 : phase === 'transport' ? progress : 0 };
+  if (product === 'sandwich-square' || !['discharging', 'transport'].includes(phase)) return state;
+
+  // Normalize by the real current duration before entering this shared clock.
+  // Old batches can have different durations without needing the previous
+  // phase's duration in a save or a frame-dependent animation accumulator.
+  const discharge = CONFIG.phaseDurations.discharging, transport = CONFIG.phaseDurations.transport;
+  const inside = discharge + transport / 2, outside = transport / 2;
+  const age = phase === 'discharging' ? progress * discharge : discharge + progress * transport;
+  if (age < inside) {
+    state.renderPhase = 'discharging';
+    state.renderProgress = clamp(age / inside);
+    state.transferVisible = false;
+    state.transferProgress = 0;
+  } else {
+    state.renderPhase = 'transport';
+    state.transferProgress = clamp((age - inside) / outside);
+    state.renderProgress = state.transferProgress;
+    state.transferVisible = true;
+  }
+  return state;
+}
 
 function closingStroke(time, duration, hold = 0) {
   const travel = Math.max(0.01, (duration - hold) / 2);
@@ -160,6 +191,83 @@ function pointAlong(points, progress) {
   return points[0];
 }
 
+function finalOutputFlow(meta) {
+  if (outputFlows.has(meta)) return outputFlows.get(meta);
+  const animation = meta.animation, starts = {};
+  let elapsed = 0, last = null;
+  for (const phase of animation.phases) { starts[phase.id] = elapsed; elapsed += phase.seconds; }
+  for (const layer of animation.layers) {
+    const motion = layer.motion;
+    if (layer.eraseOnly || !layer.id.startsWith('product-') || motion.type !== 'flow' || !motion.path?.length) continue;
+    const anchor = motion.startPhase || motion.phase || layer.when[0];
+    const duration = Math.max(0.08, motion.duration || animation.phases.find(phase => phase.id === anchor)?.seconds || 0);
+    const end = (starts[anchor] || 0) + (motion.delay || 0) + duration;
+    if (last && (end < last.end || end === last.end && layer.id <= last.layer.id)) continue;
+    const path = motion.path;
+    const length = path.slice(1).reduce((sum, point, index) =>
+      sum + Math.hypot(point[0] - path[index][0], point[1] - path[index][1]), 0);
+    const endPoint = path[path.length - 1], previous = path[path.length - 2];
+    const dx = previous ? endPoint[0] - previous[0] : 0, dy = previous ? endPoint[1] - previous[1] : 0;
+    const lastLength = Math.hypot(dx, dy);
+    last = { layer, duration, end, length, endpoint: endPoint,
+      direction: lastLength > 0 ? [dx / lastLength, dy / lastLength] : null,
+      dischargeSeconds: animation.phases.find(phase => phase.id === 'discharging')?.seconds || 0 };
+  }
+  outputFlows.set(meta, last);
+  return last;
+}
+
+function machineOutputDirection(renderer, machine, product) {
+  const definition = PRODUCT_DEFINITIONS[product];
+  if (!definition || product === 'sandwich-square' || !(machine?.w > 0 && machine.h > 0)) return null;
+  const id = 'factory/' + definition.machineId, meta = renderer.assets.meta(id);
+  if (!renderer.assets.get(id) || !meta?.animation) return null;
+  const output = finalOutputFlow(meta);
+  // The machine contain transform is uniform, so source-image directions are
+  // also design-screen directions; no ground projection is applied to the art.
+  return output?.direction ? output.direction.slice() : null;
+}
+
+function machineOutputPort(renderer, machine, product) {
+  const definition = PRODUCT_DEFINITIONS[product];
+  if (!definition || product === 'sandwich-square' || !(machine?.w > 0 && machine.h > 0)) return null;
+  const id = 'factory/' + definition.machineId, image = renderer.assets.get(id), meta = renderer.assets.meta(id);
+  if (!image || !meta?.animation) return null;
+  const output = finalOutputFlow(meta);
+  if (!output) return null;
+  const source = meta.draw?.sourceRect || [0, 0, image.width, image.height];
+  const scale = Math.min(machine.w / source[2], machine.h / source[3]);
+  return [machine.x + (machine.w - source[2] * scale) / 2 + (output.endpoint[0] - source[0]) * scale,
+    machine.y + machine.h - source[3] * scale + (output.endpoint[1] - source[1]) * scale];
+}
+
+function drawMachineTransfer(renderer, machine, path, progress, product) {
+  const definition = PRODUCT_DEFINITIONS[product];
+  if (!definition || product === 'sandwich-square' || !path?.length) return false;
+  const id = 'factory/' + definition.machineId, image = renderer.assets.get(id), meta = renderer.assets.meta(id);
+  if (!image || !meta?.animation) return false;
+  const output = finalOutputFlow(meta);
+  if (!output) return false;
+  const source = meta.draw?.sourceRect || [0, 0, image.width, image.height];
+  const scale = Math.min(machine.w / source[2], machine.h / source[3]);
+  const outsideLength = path.slice(1).reduce((sum, point, index) =>
+    sum + Math.hypot(point[0] - path[index][0], point[1] - path[index][1]), 0);
+  const insideSeconds = CONFIG.phaseDurations.discharging + CONFIG.phaseDurations.transport / 2;
+  const outsideSeconds = CONFIG.phaseDurations.transport / 2;
+  const exitSpeed = output.length * scale / output.duration * output.dischargeSeconds / insideSeconds;
+  // Match the departing crop's speed at the port and settle at the cache.
+  // Bounding the initial derivative keeps the cubic monotone on short routes.
+  const tangent = outsideLength > 0 ? Math.max(0, Math.min(3, exitSpeed * outsideSeconds / outsideLength)) : 0;
+  const p = clamp(progress), travel = -2 * p ** 3 + 3 * p * p + tangent * (p ** 3 - 2 * p * p + p);
+  const position = pointAlong(path, travel), ctx = renderer.ctx, layer = output.layer;
+  // Use the same bitmap, source-space pivot and contain scale as drawMachine.
+  // There is no machine-box clip: the food can travel past the body and rails.
+  ctx.save(); ctx.translate(position[0], position[1]); ctx.scale(scale, scale);
+  ctx.translate(-layer.pivot[0], -layer.pivot[1]);
+  polygon(ctx, layer.polygon); ctx.clip(); ctx.drawImage(image, 0, 0); ctx.restore();
+  return true;
+}
+
 function nativePoint(meta, point) {
   return [(point[0] - meta.sourceCrop[0]) * meta.scale[0], (point[1] - meta.sourceCrop[1]) * meta.scale[1]];
 }
@@ -199,6 +307,39 @@ function tumble(ctx, image, meta, phase, progress, seconds, speed) {
   ctx.restore();
 }
 
+function flowingStream(ctx, image, layer, dx, dy, fillProgress, drainProgress, obstacles) {
+  if (fillProgress <= 0 || drainProgress >= 1) return;
+  const points = layer.motion.path, first = points[0], last = points[points.length - 1];
+  const vx = last[0] - first[0], vy = last[1] - first[1], lengthSquared = vx * vx + vy * vy;
+  const aperture = layer.motion.clipPolygon || layer.polygon;
+  const projection = ([x, y]) => lengthSquared ? (x * vx + y * vy) / lengthSquared : 0;
+  const clipExtent = aperture.map(projection), pieceExtent = layer.polygon.map(projection);
+  const offset = projection([dx, dy]);
+  const firstCopy = Math.ceil(Math.min(...clipExtent) - Math.max(...pieceExtent) - offset);
+  const lastCopy = Math.floor(Math.max(...clipExtent) - Math.min(...pieceExtent) - offset);
+  ctx.save(); polygon(ctx, aperture); ctx.clip();
+  for (const [progress, direction] of [[drainProgress, 1], [fillProgress, -1]]) {
+    if (!lengthSquared || direction === 1 && !(progress > 0) || direction === -1 && !(progress < 1)) continue;
+    const length = Math.sqrt(lengthSquared), ux = vx / length, uy = vy / length;
+    const extent = aperture.map(([x, y]) => x * ux + y * uy);
+    const cutoff = Math.min(...extent) + (Math.max(...extent) - Math.min(...extent)) * progress;
+    const x = ux * cutoff, y = uy * cutoff, span = image.width + image.height;
+    polygon(ctx, [[x - uy * span, y + ux * span], [x + uy * span, y - ux * span],
+      [x + (direction * ux + uy) * span, y + (direction * uy - ux) * span],
+      [x + (direction * ux - uy) * span, y + (direction * uy + ux) * span]]);
+    ctx.clip();
+  }
+  for (let copy = firstCopy; copy <= lastCopy; copy++) {
+    ctx.save(); ctx.translate(dx + copy * vx, dy + copy * vy);
+    polygon(ctx, layer.polygon); ctx.clip();
+    if (layer.id === 'sheet' || layer.id === 'cut-strips') {
+      obstacles.forEach(obstacle => excludePolygon(ctx, image, obstacle.polygon));
+    }
+    ctx.drawImage(image, 0, 0); ctx.restore();
+  }
+  ctx.restore();
+}
+
 function drawMachine(renderer, id, x, y, w, h, phase, progress, time, reducedMotion = false, line = null, firstStocked = false) {
   const assetId = id.startsWith('factory/') ? id : 'factory/' + id;
   const surface = sprite(renderer, assetId, x, y, w, h);
@@ -207,13 +348,18 @@ function drawMachine(renderer, id, x, y, w, h, phase, progress, time, reducedMot
   const clean = renderer.assets.get(assetId + '-body-clean') || image;
   if (!animation) { ctx.drawImage(clean, 0, 0); ctx.restore(); return; }
   const phaseId = phase === 'discharge' ? 'discharging' : phase;
-  // A fixed pose describes the real phase without rotating or vibrating the machine.
-  const poseProgress = reducedMotion ? (phaseId === 'feeding' ? 1 : 0.5) : clamp(progress);
+  // Freeze mechanical poses when requested, but keep the essential output
+  // handoff tied to real progress so transport starts at the same port.
+  const poseProgress = reducedMotion && phaseId !== 'discharging' ?
+    (phaseId === 'feeding' ? 1 : 0.5) : clamp(progress);
   if (animation.indexedTable) {
-    drawRotaryMachine(renderer, image, meta, phaseId, poseProgress, line, firstStocked); ctx.restore(); return;
+    drawRotaryMachine(renderer, image, meta, phaseId, clamp(progress), line,
+      { small: w <= 180, reducedMotion, machineWidth: w, machineHeight: h }); ctx.restore(); return;
   }
   const currentPhase = animation.phases.find(p => p.id === phaseId);
   const active = !!currentPhase, local = currentPhase ? poseProgress * currentPhase.seconds : 0;
+  // Material still crosses phase boundaries when mechanical motion is reduced.
+  const materialTime = currentPhase ? clamp(progress) * currentPhase.seconds : 0;
   const lid = animation.layers.find(layer => layer.motion.type === 'hinge');
   const lidMotion = lid && lid.motion;
   const closure = lidMotion && phaseId === lidMotion.phase ?
@@ -245,7 +391,7 @@ function drawMachine(renderer, id, x, y, w, h, phase, progress, time, reducedMot
     if (layer.eraseOnly) return;
     const motion = layer.motion || {}, enabled = active && layer.when.includes(phaseId);
     const input = /hopper|input/.test(layer.id), output = layer.id.startsWith('product-');
-    if (layer.role === 'material' && !(active && (input || (output ? phaseId === 'discharging' : enabled)))) return;
+    if (layer.role === 'material' && !(active && (input || enabled))) return;
     if (motion.type === 'tumble') {
       if (enabled) tumble(ctx, image, meta, phaseId, poseProgress, currentPhase.seconds, motion.speed);
       return;
@@ -262,12 +408,20 @@ function drawMachine(renderer, id, x, y, w, h, phase, progress, time, reducedMot
       if (!enabled) return;
       const duration = Math.max(0.08, motion.duration || currentPhase.seconds);
       const anchor = motion.startPhase || motion.phase || layer.when[0];
-      const age = phaseStart(phaseId) + local - phaseStart(anchor) - (motion.delay || 0);
-      if (age < 0 || !motion.repeat && age >= duration) return;
-      const travel = motion.repeat ? (age % duration) / duration : age / duration;
+      const age = phaseStart(phaseId) + materialTime - phaseStart(anchor) - (motion.delay || 0);
+      if (age < 0 && !motion.holdAtStart || !motion.repeat && age >= duration) return;
+      const travel = motion.repeat ? (age % duration) / duration : clamp(age / duration);
       const destination = pointAlong(motion.path, travel);
       dx = destination[0] - layer.pivot[0]; dy = destination[1] - layer.pivot[1];
-      alpha = !motion.repeat && travel > 0.94 ? clamp((1 - travel) / 0.06) : 1;
+      alpha = !output && !motion.repeat && travel > 0.94 ? clamp((1 - travel) / 0.06) : 1;
+      if (motion.repeat) {
+        const drainProgress = phaseId === 'discharging' && motion.drainSeconds
+          ? clamp((materialTime - (motion.drainDelay || 0)) / motion.drainSeconds) : 0;
+        const fillProgress = motion.fillSeconds
+          ? clamp((phaseStart(phaseId) + materialTime - phaseStart('feeding') - (motion.fillDelay || 0)) / motion.fillSeconds) : 1;
+        flowingStream(ctx, image, layer, dx, dy, fillProgress, drainProgress, foodObstacles);
+        return;
+      }
     } else if (enabled && motion.type === 'vibrate') {
       const amplitude = motion.amplitude || [0, 0];
       dx = Math.sin(local * TAU * motion.speed) * amplitude[0];
@@ -366,4 +520,4 @@ function drawPacker(renderer, x, y, w, h, phase, progress, productId = 'original
   ctx.restore();
 }
 
-module.exports = { drawMachine, drawSupply, drawPacker };
+module.exports = { productionVisual, machineOutputPort, machineOutputDirection, drawMachineTransfer, drawMachine, drawSupply, drawPacker };

@@ -1,0 +1,64 @@
+{
+  "recollected": true,
+  "game": "疯狂水世界",
+  "douyin_miniapp_id": "tt76340089e939a1bf02",
+  "captures": [
+    {
+      "file": "screens/main-near.jpeg",
+      "captured_at_utc": "2026-10-18T10:36:29.159Z",
+      "width": 406,
+      "height": 778,
+      "source": "sky selected-window screenshot"
+    },
+    {
+      "file": "screens/water-factory-production.jpeg",
+      "captured_at_utc": "2026-10-18T10:36:46.261Z",
+      "width": 406,
+      "height": 778,
+      "source": "sky selected-window screenshot"
+    },
+    {
+      "file": "screens/locked-product.jpeg",
+      "captured_at_utc": "2026-10-18T10:36:54.054Z",
+      "width": 406,
+      "height": 778,
+      "source": "sky selected-window screenshot"
+    },
+    {
+      "file": "screens/water-factory-upgrade.jpeg",
+      "captured_at_utc": "2026-10-18T10:37:02.594Z",
+      "width": 406,
+      "height": 778,
+      "source": "sky selected-window screenshot"
+    },
+    {
+      "file": "screens/water-factory-upgrade-stable.jpeg",
+      "captured_at_utc": "2026-10-18T10:37:24.595Z",
+      "width": 406,
+      "height": 778,
+      "source": "sky selected-window screenshot"
+    },
+    {
+      "file": "screens/material-factory-production.jpeg",
+      "captured_at_utc": "2026-10-18T10:37:43.816Z",
+      "width": 406,
+      "height": 778,
+      "source": "sky selected-window screenshot"
+    },
+    {
+      "file": "screens/fish-factory-production.jpeg",
+      "captured_at_utc": "2026-10-18T10:38:00.646Z",
+      "width": 406,
+      "height": 778,
+      "source": "sky selected-window screenshot"
+    },
+    {
+      "file": "screens/fish-factory-rules.jpeg",
+      "captured_at_utc": "2026-10-18T10:38:07.998Z",
+      "width": 406,
+      "height": 778,
+      "source": "sky selected-window screenshot"
+    }
+  ],
+  "source_note": "New captures of the running Douyin client; previous temporary files were deleted. The upgrade image without the stable suffix was captured during its opening animation."
+}

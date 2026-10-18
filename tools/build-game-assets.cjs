@@ -2,11 +2,87 @@
 
 const fs = require('node:fs');
 const path = require('node:path');
+const os = require('node:os');
 const vm = require('node:vm');
 const { pathToFileURL } = require('node:url');
 const { execFileSync } = require('node:child_process');
 const root = path.resolve(__dirname, '..');
 const game = path.join(root, 'douyin-game');
+const gameManifestFile = path.join(game, 'src/assets-manifest.js');
+
+// Scene artwork is authored in SVG, but the mini-game only loads PNGs. Keep
+// logical coordinates unchanged and bake a 2x transparent raster for each piece.
+function includeFactorySceneAssets(target) {
+  const sourceRoot = path.join(root, 'assets/source/factory');
+  const sceneCatalog = (relative, expression) => {
+    const file = path.join(sourceRoot, relative);
+    const source = fs.readFileSync(file, 'utf8').replace(/export const /g, 'const ')
+      .replace(/export default [^;]+;/g, '')
+      .replace(/import\.meta\.url/g, JSON.stringify(pathToFileURL(file).href));
+    return vm.runInNewContext(source + '\n' + expression, { URL });
+  };
+  const logistics = sceneCatalog('logistics/v1/manifest.js', 'factoryLogisticsAssets');
+  const states = sceneCatalog('states/v1/manifest.js', 'factoryStateAssets');
+  const ui = sceneCatalog('ui/v1/manifest.js', 'factoryUIAssets');
+  const expansion = sceneCatalog('expansion/v1/manifest.js', 'factoryExpansionAssets');
+  const jobs = [];
+  const add = (id, relative, item, extra = {}) => {
+    const size = item.size || [item.width, item.height];
+    const anchorPixels = item.anchor || size.map(value => value / 2);
+    const output = 'assets/factory/' + id + '.png';
+    const { src, width, height, id: unusedId, ...metadata } = item;
+    target['factory/' + id] = { ...metadata, ...extra, size, sourceSize: size,
+      rasterSize: size.map(value => value * 2), runtimePixelRatio: 2,
+      anchor: anchorPixels.map((value, index) => value / size[index]), anchorPixels,
+      transparent: true, path: output };
+    jobs.push({ source: path.join(sourceRoot, relative), destination: path.join(game, output),
+      width: size[0] * 2, height: size[1] * 2 });
+  };
+  for (const [id, item] of Object.entries(logistics.assets)) {
+    add('logistics-' + id, 'logistics/v1/' + item.src, item, {
+      projection: logistics.projection, stride: logistics.stride,
+    });
+  }
+  for (const axis of ['h', 'v']) {
+    add('logistics-foreground-rail-' + axis, 'logistics/v2/foreground-rail-' + axis + '.svg',
+      { size: logistics.tileSize, anchor: logistics.anchor }, { projection: logistics.projection });
+  }
+  for (const id of ['selection-ring', 'contact-shadow']) add(id, 'states/v1/' + id + '.svg', states[id]);
+  add('nameplate', 'ui/v1/nameplate.svg', ui.assets.nameplate);
+  for (const id of ['construction-platform', 'expansion-plus-sign', 'floor-stone-tile']) {
+    add(id, 'expansion/v1/' + id + '.svg', expansion.assets[id], { projection: expansion.projection });
+  }
+
+  let sharpModule;
+  try {
+    sharpModule = require.resolve('sharp', { paths: [root, ...module.paths,
+      ...(process.env.NODE_PATH || '').split(path.delimiter).filter(Boolean),
+      path.join(os.homedir(), '.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules')] });
+  } catch (_) {
+    throw new Error('Factory scene PNG generation requires sharp. Use the bundled Codex Node runtime or set NODE_PATH to an existing sharp installation.');
+  }
+  // A child process keeps this build synchronous while sharp completes its jobs.
+  // Write only changed bytes, so the scene-only path leaves unrelated art intact.
+  const rasterize = `const fs = require('node:fs'), path = require('node:path');
+const sharp = require(${JSON.stringify(sharpModule)});
+const jobs = JSON.parse(fs.readFileSync(0, 'utf8'));
+(async () => { for (const job of jobs) {
+  const bytes = await sharp(job.source, { density: 144 }).resize(job.width, job.height).png().toBuffer();
+  fs.mkdirSync(path.dirname(job.destination), { recursive: true });
+  if (!fs.existsSync(job.destination) || !fs.readFileSync(job.destination).equals(bytes)) fs.writeFileSync(job.destination, bytes);
+} })().catch(error => { console.error(error); process.exitCode = 1; });`;
+  execFileSync(process.execPath, ['-e', rasterize], { input: JSON.stringify(jobs), stdio: ['pipe', 'inherit', 'inherit'] });
+  return jobs.length;
+}
+
+if (process.argv.includes('--factory-scene-only')) {
+  const sceneManifest = require(gameManifestFile);
+  const count = includeFactorySceneAssets(sceneManifest);
+  const output = "'use strict';\n// Generated from the resource catalogs.\nmodule.exports = " + JSON.stringify(sceneManifest, null, 2) + ';\n';
+  if (fs.readFileSync(gameManifestFile, 'utf8') !== output) fs.writeFileSync(gameManifestFile, output);
+  console.log(JSON.stringify({ factorySceneImages: count, destination: game }));
+  process.exit(0);
+}
 const catalog = readRig(path.join(root, 'assets/catalog.js'), 'assetCatalog');
 const assetPath = relative => path.join(root, 'assets', relative);
 const boardFile = assetPath(catalog.catalogs.board);
@@ -619,9 +695,10 @@ fs.mkdirSync(path.join(game, 'src'), { recursive: true });
 for (const item of factoryUpgrade.reusedAssets || []) {
   if (item.type !== 'existing' || !manifest[item.id]) throw new Error('Unknown reused factory upgrade asset: ' + item.id);
 }
+includeFactorySceneAssets(manifest);
 for (const item of Object.values(manifest)) {
   if ('bytes' in item) item.bytes = fs.statSync(path.join(game, item.path)).size;
 }
-fs.writeFileSync(path.join(game, 'src/assets-manifest.js'), "'use strict';\n// Generated from the resource catalogs.\nmodule.exports = " + JSON.stringify(manifest, null, 2) + ';\n');
+fs.writeFileSync(gameManifestFile, "'use strict';\n// Generated from the resource catalogs.\nmodule.exports = " + JSON.stringify(manifest, null, 2) + ';\n');
 const bytes = Object.values(manifest).reduce((sum, item) => sum + fs.statSync(path.join(game, item.path)).size, 0);
 console.log(JSON.stringify({ images: Object.keys(manifest).length, imageBytes: bytes, destination: game }));

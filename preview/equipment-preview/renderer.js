@@ -169,7 +169,7 @@ export class EquipmentRenderer {
       const age = (motion.repeat ? machine.motionTime : machine.elapsed) - machine.phaseStart(anchor) - (motion.delay || 0);
       const duration = Math.max(.08, motion.duration || phase.seconds);
       const repeating = motion.repeat === true;
-      pose.visible = machine.hasInput && isActive && age >= 0 && (repeating || age < duration);
+      pose.visible = machine.hasInput && isActive && (age >= 0 || motion.holdAtStart) && (repeating || age < duration);
       if (!pose.visible) return pose;
       const progress = repeating ? (age % duration) / duration : clamp(age / duration);
       const destination = interpolatePath(motion.path, progress);
@@ -177,6 +177,11 @@ export class EquipmentRenderer {
       pose.x = destination[0] - pivot[0]; pose.y = destination[1] - pivot[1];
       pose.alpha = repeating ? 1 : progress > .94 ? clamp((1 - progress) / .06) : 1;
       pose.flowProgress = progress;
+      pose.drainProgress = repeating && phase.id === 'discharging' && motion.drainSeconds
+        ? clamp((phase.elapsed - (motion.drainDelay || 0)) / motion.drainSeconds) : 0;
+      pose.fillProgress = repeating && motion.fillSeconds
+        ? clamp((machine.elapsed - machine.phaseStart('feeding') - (motion.fillDelay || 0)) / motion.fillSeconds) : 1;
+      if (pose.drainProgress >= 1 || pose.fillProgress <= 0) pose.visible = false;
       return pose;
     }
     if (!isActive || !machine.inFlight) return getMechanicalPose(this, layer, machine, pose);
@@ -341,6 +346,19 @@ export class EquipmentRenderer {
     const lastCopy = Math.floor(Math.max(...clipExtent) - Math.min(...pieceExtent) - offset);
     ctx.save();
     polygonPath(ctx, aperture); ctx.clip();
+    for (const [progress, direction] of [[pose.drainProgress, 1], [pose.fillProgress, -1]]) {
+      if (!lengthSquared || direction === 1 && !(progress > 0) || direction === -1 && !(progress < 1)) continue;
+      // The batch tail moves downstream through the fixed opening; an entire
+      // sheet never disappears merely because the phase changed to discharge.
+      const length = Math.sqrt(lengthSquared), ux = dx / length, uy = dy / length;
+      const extent = aperture.map(([x, y]) => x * ux + y * uy);
+      const cutoff = Math.min(...extent) + (Math.max(...extent) - Math.min(...extent)) * progress;
+      const x = ux * cutoff, y = uy * cutoff, span = this.rig.width + this.rig.height;
+      polygonPath(ctx, [[x - uy * span, y + ux * span], [x + uy * span, y - ux * span],
+        [x + (direction * ux + uy) * span, y + (direction * uy - ux) * span],
+        [x + (direction * ux - uy) * span, y + (direction * uy + ux) * span]]);
+      ctx.clip();
+    }
     // Neighboring pieces wrap inside a stationary aperture rather than teleporting a whole strip.
     for (let copy = firstCopy; copy <= lastCopy; copy++) {
       ctx.drawImage(layer.piece, layer.box.x + pose.x + copy * dx, layer.box.y + pose.y + copy * dy);

@@ -5,7 +5,7 @@
 class ProductionSession {
   constructor({ model, now, writeSave, canWrite = true, isVisible = true,
     onSaveError = () => {}, onSaveSuccess = () => {}, onProductionError = () => {},
-    onProductionRecovery = () => {} }) {
+    onProductionRecovery = () => {}, onProduced = () => {} }) {
     this.model = model;
     this.now = now;
     this.writeSave = writeSave;
@@ -20,6 +20,7 @@ class ProductionSession {
     this.onSaveSuccess = onSaveSuccess;
     this.onProductionError = onProductionError;
     this.onProductionRecovery = onProductionRecovery;
+    this.onProduced = onProduced;
     this.settle(true);
     this.checkpoint();
   }
@@ -37,6 +38,7 @@ class ProductionSession {
       return result;
     }
     if (!wasHealthy) this.onProductionRecovery();
+    if (!offline && result.producedByLine?.length) this.onProduced(result);
     if (offline && result.seconds > 0) {
       this.pendingSummary = mergeOfflineSummary(this.pendingSummary, result);
     } else if (!offline && result.firstStockedProducts?.length) {

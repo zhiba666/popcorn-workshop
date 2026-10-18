@@ -1,6 +1,7 @@
 'use strict';
 
 const { PRODUCTION_CONFIG, PRODUCT_DEFINITIONS } = require('./production-config');
+const { lineProductionFeedback } = require('./production-feedback');
 
 const SAVE_KEY = 'popcorn-dual-product-v4';
 const LEGACY_SAVE_KEY = 'popcorn-original-single-line-v1';
@@ -96,10 +97,25 @@ function createDouyinPlatform(api) {
     readPreferences() { return api.getStorageSync(PREFERENCES_KEY) || null; },
     writePreferences(value) { api.setStorageSync(PREFERENCES_KEY, { reducedMotion: value.reducedMotion === true }); },
     onInput(handlers) {
-      api.onTouchStart(event => handlers.start(event.changedTouches || event.touches));
-      api.onTouchMove(event => handlers.move(event.changedTouches || event.touches));
-      api.onTouchEnd(event => handlers.end(event.changedTouches || []));
-      api.onTouchCancel(() => handlers.cancel());
+      const active = new Map();
+      const touchId = touch => touch.identifier == null ? touch.id : touch.identifier;
+      const points = (event, ending = false) => {
+        if (event.touches != null) {
+          active.clear();
+          Array.from(event.touches).forEach(touch => active.set(touchId(touch), touch));
+        } else Array.from(event.changedTouches || []).forEach(touch => {
+          if (ending) active.delete(touchId(touch));
+          else active.set(touchId(touch), touch);
+        });
+        return Array.from(active.values());
+      };
+      // start/move receive the complete active set. end keeps the original
+      // ended-touch first argument and provides the remaining set separately.
+      api.onTouchStart(event => handlers.start(points(event), event.changedTouches || []));
+      api.onTouchMove(event => handlers.move(points(event), event.changedTouches || []));
+      api.onTouchEnd(event => handlers.end(event.changedTouches || [], points(event, true)));
+      platform.cancelInput = () => { active.clear(); handlers.cancel(); };
+      api.onTouchCancel(platform.cancelInput);
     },
     onLifecycle(hide, show) {
       api.onHide(() => { platform.isVisible = false; hide(); });
@@ -135,6 +151,29 @@ function createBrowserPlatform() {
       const screen = recovery ? 'recovery' : ui && ui.entry ? 'entry' : state.page;
       canvas.setAttribute('data-screen', screen);
       canvas.setAttribute('data-reduced-motion', String(!!(ui && ui.reducedMotion)));
+      canvas.setAttribute('data-factory-view', ui?.factoryViewMode || 'detail');
+      canvas.setAttribute('data-factory-zoom', String(ui?.factoryCamera?.zoom || 1));
+      canvas.setAttribute('data-factory-camera', JSON.stringify(ui?.factoryCamera || null));
+      canvas.setAttribute('data-factory-dock', ui?.factoryDockExpanded ? 'expanded' : 'collapsed');
+      canvas.setAttribute('data-factory-order', ui?.factoryOrderExpanded ? 'expanded' : 'collapsed');
+      canvas.setAttribute('data-factory-service', ui?.factoryServiceFocus || '');
+      canvas.setAttribute('data-upgrade-tab', ui?.upgradeDialog ? ui.upgradeTab || 'capacity' : '');
+      canvas.setAttribute('data-upgrade-details', String(!!(ui?.upgradeDialog && ui.upgradeDetailsOpen)));
+      const factoryJourney = ui?.factoryPresentation?.construction;
+      const packagingRecovery = ui?.factoryPresentation?.packaging;
+      canvas.setAttribute('data-factory-journey-phase', factoryJourney?.phase || '');
+      canvas.setAttribute('data-factory-journey-line', factoryJourney?.lineId || '');
+      canvas.setAttribute('data-packaging-recovery', !packagingRecovery ? '' : packagingRecovery.cleared ? 'cleared' :
+        packagingRecovery.pending ? 'pending' : packagingRecovery.speedOnly ? 'upgraded' : 'draining');
+      const selectedLine = state.lines.find(line => line.id === state.selectedLineId);
+      const productionFeedback = factoryJourney && factoryJourney.lineId === selectedLine?.id ?
+        { ...factoryJourney, firstBatch: !factoryJourney.completed, batchId: factoryJourney.batchId } :
+        selectedLine ? lineProductionFeedback(state, selectedLine) : null;
+      canvas.setAttribute('data-production-feedback', productionFeedback?.text || '');
+      canvas.setAttribute('data-first-piece-phase', productionFeedback ?
+        (productionFeedback.firstBatch ? productionFeedback.phase : 'stocked') : '');
+      canvas.setAttribute('data-first-piece-line', productionFeedback?.firstBatch ? productionFeedback.lineId : '');
+      canvas.setAttribute('data-first-piece-batch-id', !productionFeedback?.firstBatch || productionFeedback.batchId == null ? '' : String(productionFeedback.batchId));
       if (recovery) {
         const label = '爆米花工坊，存档恢复，' + recovery.title + '，' + recovery.lines.join('，') +
           (recovery.message ? '，' + recovery.message : '') + (recovery.confirm ?
@@ -233,8 +272,9 @@ function createBrowserPlatform() {
       const upgradeOffers = ui && ui.upgradeOffers;
       const describeUpgrade = (name, offer) => name + (offer.maxed ? '已满级' :
         '费用' + offer.cost + '金币，' + (offer.affordable ? '可以升级' : '金币不足'));
-      const upgrade = ui && ui.upgradeDialog ? '，' + lineName(state.selectedLineId) + '统一升级面板已打开' + (upgradeOffers ?
-        '，' + describeUpgrade('提升产能', upgradeOffers.capacity) + '，' + describeUpgrade('出厂升阶', upgradeOffers.output) : '') : '';
+      const upgrade = ui && ui.upgradeDialog ? '，' + lineName(state.selectedLineId) + '升级面板已打开，当前页签' +
+        (ui.upgradeTab === 'output' ? '出厂升阶' : '加工提速') + (ui.upgradeDetailsOpen ? '，升级规则已展开，购买暂不可用' : '') + (upgradeOffers ?
+        '，' + describeUpgrade('加工提速', upgradeOffers.capacity) + '，' + describeUpgrade('出厂升阶', upgradeOffers.output) : '') : '';
       const sharedUpgrade = ui && ui.sharedUpgrade;
       const describeShared = (name, offer) => describeUpgrade(name, offer) + '，当前' + offer.level + '档，' +
         offer.currentSeconds + '秒' + (offer.maxed ? '' : '，升后' + offer.nextSeconds + '秒') +
@@ -266,10 +306,18 @@ function createBrowserPlatform() {
       }).join('');
       const firstStocked = offline?.firstStockedProducts?.length ? '，' + offline.firstStockedProducts.map(productName).join('、') + '首次入库' : '';
       const label = '爆米花工坊，' + (state.page === 'board' ? '棋盘' : '工厂') + '页，金币' + state.coins +
+        (state.page === 'factory' ? '，' + (ui?.factoryViewMode === 'overview' ? '工厂总览' : '设备近景') +
+          '，可切换产品、上一条或下一条产线，点击瓶颈提示定位设备' +
+          (ui?.factoryViewMode === 'overview' ? '' : '，可单指拖动、双指缩放，归位返回当前产线') +
+          '，设备面板已' + (ui?.factoryDockExpanded ? '展开' : '收起，点击产线摘要展开操作') +
+          '，订单' + (ui?.factoryOrderExpanded ? '已展开' : '摘要可展开') +
+          (ui?.factoryServiceFocus ? '，已定位' + ({ supply: '公共供料', packaging: '公共包装', warehouse: '仓储' }[ui.factoryServiceFocus] || '') : '') : '') +
         '，已交付' + state.completedOrders + '单，并行订单' + orders.length + '张，左右滑动切换关注。' +
         orderDescription + customerDescription +
-        '，当前选线' + lineName(state.selectedLineId) + '（' + state.selectedLineId + '）。' + lines + sharedState + packagingState +
-        upgrade + sharedDescription + bottleneckDescription + expansionDescription + constructionDescription + productProgress + returnedStock + firstStocked + '。' + occupied;
+        '，当前选线' + lineName(state.selectedLineId) + '（' + state.selectedLineId + '）。' +
+        (productionFeedback ? '当前生产状态：' + productionFeedback.text + '。' : '') + lines + sharedState + packagingState +
+        upgrade + sharedDescription + bottleneckDescription + expansionDescription + constructionDescription + productProgress + returnedStock + firstStocked +
+        (ui?.boardFlowDescription ? '。' + ui.boardFlowDescription : '') + '。' + occupied;
       if (label !== publishedLabel) {
         canvas.setAttribute('aria-label', label);
         publishedLabel = label;
@@ -310,25 +358,42 @@ function createBrowserPlatform() {
     },
     writePreferences(value) { window.localStorage.setItem(PREFERENCES_KEY, JSON.stringify({ reducedMotion: value.reducedMotion === true })); },
     onInput(handlers) {
-      let activePointer = null;
+      const activePointers = new Map();
       const point = event => {
         const rect = canvas.getBoundingClientRect();
-        return [{ identifier: event.pointerId, clientX: (event.clientX - rect.left) * platform.width / rect.width,
-          clientY: (event.clientY - rect.top) * platform.height / rect.height }];
+        return { identifier: event.pointerId, clientX: (event.clientX - rect.left) * platform.width / rect.width,
+          clientY: (event.clientY - rect.top) * platform.height / rect.height };
       };
+      canvas.style.touchAction = 'none';
       canvas.addEventListener('pointerdown', event => {
-        if (event.button !== 0 || activePointer !== null) return;
-        activePointer = event.pointerId;
-        event.preventDefault(); canvas.setPointerCapture(event.pointerId); handlers.start(point(event));
+        if (event.button !== 0 || activePointers.has(event.pointerId)) return;
+        const changed = point(event);
+        activePointers.set(event.pointerId, changed);
+        event.preventDefault(); canvas.setPointerCapture(event.pointerId);
+        handlers.start(Array.from(activePointers.values()), [changed]);
       });
-      canvas.addEventListener('pointermove', event => { if (event.pointerId !== activePointer) return; event.preventDefault(); handlers.move(point(event)); });
-      canvas.addEventListener('pointerup', event => { if (event.pointerId !== activePointer) return; event.preventDefault(); handlers.end(point(event));
-        activePointer = null;
-        if (canvas.hasPointerCapture(event.pointerId)) canvas.releasePointerCapture(event.pointerId); });
+      canvas.addEventListener('pointermove', event => {
+        if (!activePointers.has(event.pointerId)) return;
+        const changed = point(event);
+        activePointers.set(event.pointerId, changed);
+        event.preventDefault(); handlers.move(Array.from(activePointers.values()), [changed]);
+      });
+      canvas.addEventListener('pointerup', event => {
+        if (!activePointers.has(event.pointerId)) return;
+        const ended = point(event);
+        // Remove before releasing capture: its lostpointercapture event must
+        // never cancel another finger which is still holding the canvas.
+        activePointers.delete(event.pointerId);
+        event.preventDefault(); handlers.end([ended], Array.from(activePointers.values()));
+        if (canvas.hasPointerCapture(event.pointerId)) canvas.releasePointerCapture(event.pointerId);
+      });
       const cancel = event => {
-        if (event && event.pointerId !== activePointer) return;
-        const pointer = activePointer; activePointer = null;
-        if (pointer !== null && canvas.hasPointerCapture(pointer)) canvas.releasePointerCapture(pointer);
+        if (event && !activePointers.has(event.pointerId)) return;
+        const pointers = Array.from(activePointers.keys());
+        activePointers.clear();
+        pointers.forEach(pointer => {
+          if (canvas.hasPointerCapture(pointer)) canvas.releasePointerCapture(pointer);
+        });
         handlers.cancel();
       };
       platform.cancelInput = () => cancel();
@@ -337,10 +402,10 @@ function createBrowserPlatform() {
       window.addEventListener('blur', () => cancel());
       canvas.addEventListener('wheel', event => {
         if (typeof handlers.wheel !== 'function') return;
-        event.preventDefault();
         const pixels = event.deltaMode === 1 ? event.deltaY * 16 :
           event.deltaMode === 2 ? event.deltaY * platform.height : event.deltaY;
-        handlers.wheel(pixels);
+        if (handlers.wheel(pixels, [point(event)], { ctrlKey: event.ctrlKey, metaKey: event.metaKey }) !== false)
+          event.preventDefault();
       }, { passive: false });
     },
     onLifecycle(hide, show) {

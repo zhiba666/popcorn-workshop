@@ -3,6 +3,7 @@
 const { PRODUCTION_CONFIG: CONFIG, PRODUCT_DEFINITIONS, getBatchSpec, machineCycleSeconds,
   cacheCapacityBaseUnits, materialSpecification, processingSeconds, factoryPhaseSeconds } = require('./production-config');
 const { CUSTOMERS, getCustomer, getProgress, thresholds, CUSTOMER_BASE_REWARD } = require('./customer-config');
+const { createBoardRules } = require('./board-rules');
 const PRODUCTS = CONFIG.products;
 const LINE_IDS = Object.freeze(CONFIG.lines.map(line => line.id));
 const LEGACY_PRODUCTS = Object.freeze(['original', 'caramel']);
@@ -37,6 +38,7 @@ const RULES = Object.freeze({
   phaseDurations: Object.freeze({ ...CONFIG.phaseDurations, processing: CONFIG.processingSeconds[1],
     'waiting-supply': 0, 'waiting-cache': 0 }), products: PRODUCTS, lineIds: LINE_IDS
 });
+const BOARD_RULES = createBoardRules(RULES);
 
 function isRecord(value) {
   return value !== null && typeof value === 'object' && !Array.isArray(value);
@@ -322,16 +324,6 @@ function restoreOrder(saved, lines, legacyCustomer = false) {
     requirements.push({ product: requirement.product, level: requirement.level });
   }
   return { id: saved.id, kind: 'normal', customerId: saved.customerId || CONFIG.currentCustomerId, reward: saved.reward, requirements };
-}
-
-function findOrderProductIndex(board, requirement) {
-  let selected = -1;
-  for (let index = 0; index < board.length; index++) {
-    const item = board[index];
-    if (item?.kind !== 'product' || item.product !== requirement.product || item.level < requirement.level) continue;
-    if (selected < 0 || item.level < board[selected].level) selected = index;
-  }
-  return selected;
 }
 
 function sameOrder(left, right) {
@@ -1007,6 +999,7 @@ class GameModel {
     this.restored = Boolean(restored);
     this.recoveryRequired = saved !== undefined && saved !== null && !restored;
     this.firstStockedEvents = [];
+    this.discardedItem = null;
     for (const line of this.state.lines) this.settleLegacyGroup(line);
     this.dispatchShared();
   }
@@ -1522,6 +1515,48 @@ class GameModel {
     this.state.page = page; return { ok: true };
   }
 
+  boardOrderProgress(orderOrId = this.state.focusedOrderId) {
+    return BOARD_RULES.orderProgress(this.state, orderOrId);
+  }
+
+  previewDelivery(orderId = this.state.focusedOrderId) {
+    return BOARD_RULES.previewDelivery(this.state, orderId);
+  }
+
+  previewDrop(from, to) {
+    return BOARD_RULES.previewDrop(this.state, from, to);
+  }
+
+  previewDiscard(index) {
+    return BOARD_RULES.previewDiscard(this.state, index);
+  }
+
+  preparationPlan(product, level, quantity = 1, orderId = null) {
+    return BOARD_RULES.preparationPlan(this.state, product, level, quantity, orderId);
+  }
+
+  boardSources(product, targetLevel) {
+    return BOARD_RULES.boardSources(this.state, product, targetLevel);
+  }
+
+  restoreDiscard() {
+    const failure = reason => ({ ok: false, action: 'restore-discard', reason });
+    const discarded = this.discardedItem;
+    if (discarded?.item?.kind !== 'product') return failure('nothing-to-restore');
+    const item = { ...discarded.item };
+    const to = isCell(discarded.from) && this.state.board[discarded.from] === null
+      ? discarded.from : this.state.board.findIndex(cell => cell === null);
+    if (to < 0) return { ...failure('board-full'), from: discarded.from,
+      product: item.product, level: item.level, itemId: item.id };
+    const readyBefore = new Set(this.state.orders.filter(order => this.boardOrderProgress(order).ready).map(order => order.id));
+    this.state.board[to] = item;
+    this.state.selectedCell = to;
+    this.discardedItem = null;
+    return { ok: true, action: 'restore-discard', from: discarded.from, to,
+      product: item.product, level: item.level, itemId: item.id,
+      madeOrder: this.state.orders.some(order => !readyBefore.has(order.id) && this.boardOrderProgress(order).ready) };
+  }
+
   launch(lineId = this.state.selectedLineId) {
     const line = this.getLine(lineId);
     if (!line) return { ok: false, reason: 'invalid-line' };
@@ -1570,6 +1605,7 @@ class GameModel {
     const item = this.state.board[index];
     if (!item) return { ok: false, reason: 'empty-cell' };
     if (item.kind === 'launcher') return { ok: false, reason: 'launcher-protected' };
+    this.discardedItem = { item: { ...item }, from: index };
     this.state.board[index] = null;
     return { ok: true, action: 'discard', from: index, product: item.product, level: item.level, itemId: item.id };
   }
@@ -1647,8 +1683,9 @@ class GameModel {
   orderProgress(orderId = this.state.focusedOrderId) {
     const order = this.getOrder(orderId);
     if (!order) return null;
-    const requirements = order.requirements.map(requirement => {
-      const ready = findOrderProductIndex(this.state.board, requirement) >= 0;
+    const allocation = this.boardOrderProgress(order);
+    const requirements = allocation.requirements.map(requirement => {
+      const ready = requirement.ready;
       const requiredBaseUnits = baseUnits(requirement.level);
       let availableBaseUnits = ready ? requiredBaseUnits : 0;
       if (!ready) {
@@ -1668,7 +1705,7 @@ class GameModel {
           availableBaseUnits = Math.min(requiredBaseUnits, availableBaseUnits + contribution);
         }
       }
-      return { product: requirement.product, level: requirement.level, ready, boardUnits: ready ? 1 : 0,
+      return { ...requirement, ready, boardUnits: ready ? 1 : 0,
         requiredBaseUnits, availableBaseUnits, missingBaseUnits: requiredBaseUnits - availableBaseUnits };
     });
     const ready = requirements.every(requirement => requirement.ready);
@@ -1678,8 +1715,7 @@ class GameModel {
   }
 
   orderReady(orderId = this.state.focusedOrderId) {
-    const order = this.getOrder(orderId);
-    return Boolean(order && order.requirements.every(requirement => findOrderProductIndex(this.state.board, requirement) >= 0));
+    return Boolean(this.boardOrderProgress(orderId)?.ready);
   }
 
   deliver(orderId = this.state.focusedOrderId) {
@@ -1690,11 +1726,9 @@ class GameModel {
     }
     const customerId = order.customerId;
     const completed = this.state.customerSuperOrderCounts[customerId];
-    const consumed = order.requirements.map(requirement => {
-      const index = findOrderProductIndex(this.state.board, requirement);
-      return { index, product: requirement.product, level: this.state.board[index]?.level };
-    });
-    if (consumed.some(item => item.index < 0)) return { ok: false, action: 'deliver', reason: 'order-not-ready', orderId };
+    const delivery = this.previewDelivery(orderId);
+    if (!delivery.ok) return { ok: false, action: 'deliver', reason: delivery.reason, orderId };
+    const consumed = delivery.items.map(item => ({ index: item.index, product: item.product, level: item.level }));
     const serviceCount = this.customerServiceCount(customerId);
     const progress = getProgress(completed, CUSTOMER_BASE_REWARD);
     const starReward = 0;
@@ -1732,6 +1766,8 @@ class GameModel {
     return { ok: true, action: 'deliver', from: consumed[0].index, level: consumed[0].level,
       consumed, reward: order.reward, starReward, totalReward, previousStars: progress.stars, stars: progress.stars,
       orderId: order.id, slot, newOrderId: replacement.id,
+      orderLabel: delivery.orderLabel, deliveredItems: delivery.items,
+      effects: delivery.effects, hasNewMissing: delivery.hasNewMissing,
       orderKind: order.kind, customerId, customerServiceCount: serviceCount + 1,
       firstCollection: serviceCount === 0, collectedNew: serviceCount === 0, starAdvanced: false, superOrdersCompleted: completed };
   }

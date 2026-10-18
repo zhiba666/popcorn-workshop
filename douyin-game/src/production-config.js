@@ -114,15 +114,15 @@ function getBatchSpec(product, outputLevel, capacityLevel) {
 }
 
 // Keep the injection and sealing dwell readable after a speed upgrade.
-// Missing passes identify an already-running batch from an older save.
 function processingSeconds(product, capacityLevel, rotaryPasses = 1) {
   const seconds = PRODUCTION_CONFIG.processingSeconds[capacityLevel];
-  return product === 'sandwich-square' && rotaryPasses !== undefined ?
+  return product === 'sandwich-square' ?
     Math.max(seconds, 1.5) * rotaryPasses : seconds;
 }
 
 function factoryPhaseSeconds(product, factory, phase) {
   const spec = getBatchSpec(product, factory.outputLevel, factory.capacityLevel);
+  // An unmarked factory is a legacy batch; finish it at its original speed.
   if (phase !== 'processing' || product !== 'sandwich-square' || factory.rotaryPasses === undefined)
     return spec.phaseDurations[phase];
   return processingSeconds(product, factory.capacityLevel, factory.rotaryPasses);

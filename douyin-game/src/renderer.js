@@ -1,10 +1,16 @@
 'use strict';
 
 const { drawMachine, drawSupply, drawPacker } = require('./factory-animation');
-const { buildFactoryLayout } = require('./factory-layout');
+const { FactoryCamera } = require('./factory-camera');
+const { drawFactoryOrderSummary } = require('./factory-hud');
+const { drawFactoryView } = require('./factory-view');
+const { hitFactoryNavigation, handleFactoryNavigation } = require('./factory-navigation');
+const { hitFactoryOverview, handleFactoryOverview } = require('./factory-overview');
+const { drawFactoryUpgrade, getFactoryUpgradeHit } = require('./factory-upgrade-view');
 const { createEntryLayout, entryHitTest, drawEntry } = require('./entry-scene');
 const { PRODUCTION_CONFIG: CONFIG, PRODUCT_DEFINITIONS } = require('./production-config');
 const { drawCustomers, drawCustomerResponse, customerHitTest, setCustomerScroll } = require('./customer-scene');
+const { configureBoardViewport, boardCellRect, drawBoardView, hitBoardView } = require('./board-view');
 
 const DESIGN_WIDTH = 390;
 const DESIGN_HEIGHT = 844;
@@ -55,6 +61,17 @@ class Renderer {
     this.productConstructionProduct = null;
     this.productConstructionBuyEnabled = false;
     this.factoryScroll = 0;
+    this.factoryCamera = new FactoryCamera();
+    this.factoryPanVelocity = { x: 0, y: 0 };
+    this.factoryDockExpanded = false;
+    this.factoryOrderExpanded = false;
+    this.factoryViewMode = 'detail';
+    this.factoryServiceFocus = null;
+    this.upgradeTab = 'capacity';
+    this.upgradeDetailsOpen = false;
+    this.factoryScrollVelocity = 0;
+    this.factoryScrollMotion = null;
+    this.reducedMotion = false;
     this.factoryLayout = null;
     this.factoryLineKey = '';
     this.lastFactorySelection = null;
@@ -70,6 +87,8 @@ class Renderer {
     this.customerReturnPage = 'customers';
     this.customerRecordExpanded = Object.create(null);
     this.customerLastOrders = Object.create(null);
+    this.boardFlow = { mode: null, scroll: 0 };
+    this.boardViewportActive = false;
     this.setViewport(390, 844);
   }
 
@@ -103,8 +122,11 @@ class Renderer {
       accelerate: { x: 103, y: 719, w: 64, h: 48 },
       upgradeOpen: { x: 174, y: 719, w: 108, h: 48 },
       lineExpansionOpen: { x: 289, y: 719, w: 68, h: 48 },
-      factoryViewport: { x: 19, y: 273, w: 352, h: 383 },
-      sharedUpgradeOpen: { x: 265, y: 223, w: 98, h: 44 },
+      factoryViewport: { x: 12, y: 291, w: 366, h: 375 },
+      factorySceneViewport: { x: 12, y: 335, w: 366, h: 331 },
+      factoryMode: { x: 278, y: 292, w: 92, h: 44 },
+      factoryService: { x: 16, y: 292, w: 242, h: 44 },
+      sharedUpgradeOpen: { x: 181, y: 29, w: 44, h: 44 },
       sharedUpgradePanel: { x: 27, y: 166, w: 336, h: 574 },
       sharedUpgradeTitle: { x: 91, y: 146, w: 208, h: 54 },
       sharedUpgradeClose: { x: 303, y: 174, w: 44, h: 44 },
@@ -136,14 +158,47 @@ class Renderer {
     this.layout.orderNextHit = { x: 371 - orderArrowWidth, y: 217 - orderArrowHeight, w: orderArrowWidth, h: orderArrowHeight };
     this.layout.deliver.w = Math.max(52, Math.min(94, this.layout.orderNextHit.x - this.layout.deliver.x - 2));
     createEntryLayout(this);
+    this.configureFactoryViewport();
+    configureBoardViewport(this);
+  }
+
+  configureFactoryViewport() {
+    const expanded = this.factoryDockExpanded;
+    Object.assign(this.layout, {
+      factoryOrder: { x: 19, y: 80, w: 352, h: 50 },
+      factoryProducts: { x: 19, y: 136, w: 352, h: 54 },
+      factoryBottleneck: { x: 19, y: 190, w: 352, h: 54 },
+      factoryViewport: { x: 12, y: 244, w: 366, h: expanded ? 382 : 460 },
+      factorySceneViewport: { x: 12, y: 244, w: 366, h: expanded ? 382 : 460 },
+      factoryDock: { x: 19, y: expanded ? 626 : 704, w: 352, h: expanded ? 147 : 69 },
+      factoryDockToggle: { x: 74, y: expanded ? 630 : 706, w: 242, h: expanded ? 56 : 62 },
+      factoryPrev: { x: 20, y: expanded ? 633 : 711, w: 54, h: 54 },
+      factoryNext: { x: 316, y: expanded ? 633 : 711, w: 54, h: 54 },
+      factoryMode: { x: 278, y: 252, w: 92, h: 54 },
+      factoryHome: { x: 298, y: expanded ? 566 : 644, w: 72, h: 54 },
+      factoryService: { x: 20, y: 252, w: 246, h: 54 },
+      accelerate: { x: 28, y: 714, w: 90, h: 48 },
+      upgradeOpen: { x: 125, y: 714, w: 139, h: 48 },
+      lineExpansionOpen: { x: 272, y: 714, w: 84, h: 48 },
+      factoryOrderClose: { x: 270, y: 302, w: 101, h: 54 }
+    });
+    this.factoryCamera.setViewport(this.layout.factorySceneViewport);
+    this.factoryPanVelocity = { x: 0, y: 0 };
   }
 
   logicalPoint(x, y) { return { x: (x - this.offsetX) / this.scale, y: (y - this.offsetY) / this.scale }; }
   screenPoint(x, y) { return { x: this.offsetX + x * this.scale, y: this.offsetY + y * this.scale }; }
   setCustomerScroll(value) { setCustomerScroll(this, value); }
+  boardPoint(x, y) { return { x, y }; }
+  setBoardScroll(value) {
+    if (this.boardFlow) this.boardFlow.scroll = Math.max(0, Math.min(this.boardScrollMax || 0, Number(value) || 0));
+  }
 
   hitTest(x, y) {
     if (this.entryOpen) return entryHitTest(this, x, y);
+    if (this.page === 'board' && this.boardViewportActive && !this.offlineSummaryOpen &&
+        !this.productConstructionDialogOpen && !this.sharedUpgradeDialogOpen &&
+        !this.lineExpansionDialogOpen && !this.upgradeDialogOpen) return hitBoardView(this, x, y);
     const p = this.logicalPoint(x, y);
     const within = r => p.x >= r.x && p.y >= r.y && p.x <= r.x + r.w && p.y <= r.y + r.h;
     const minimumHitArea = r => {
@@ -187,10 +242,26 @@ class Renderer {
         return within({ x: r.x - padding, y: r.y - padding, w: r.w + padding * 2, h: r.h + padding * 2 });
       };
       if (touchTarget(this.layout.upgradeClose)) return { type: 'upgrade-close' };
+      const upgradeHit = getFactoryUpgradeHit(this, p);
+      if (upgradeHit) return upgradeHit;
       if (touchTarget(this.layout.capacityBuy)) return this.capacityBuyEnabled ? { type: 'capacity-buy', lineId: this.upgradeLineId } : null;
       if (touchTarget(this.layout.outputBuy)) return this.outputBuyEnabled ? { type: 'output-buy', lineId: this.upgradeLineId } : null;
       if (!within(this.layout.upgradePanel) && !within(this.layout.upgradeTitle)) return { type: 'upgrade-close' };
       return null;
+    }
+    if (this.page === 'factory' && this.factoryOrderExpanded) {
+      const orderWithin = rect => within({ ...rect, y: rect.y + 70 });
+      if (within(this.layout.factoryOrderClose)) return { type: 'factory-order-close' };
+      if (orderWithin(this.layout.orderArea)) {
+        const orderId = this.visibleOrderId;
+        if ((orderWithin(this.layout.orderCustomer) || this.visibleCustomerRect && orderWithin(this.visibleCustomerRect)) && this.visibleCustomerId)
+          return { type: 'customer-open', customerId: this.visibleCustomerId };
+        if (orderWithin(this.layout.orderPrevHit) && this.orderPreviousEnabled) return { type: 'order-prev', orderId };
+        if (orderWithin(this.layout.orderNextHit) && this.orderNextEnabled) return { type: 'order-next', orderId };
+        if (orderWithin(this.layout.deliver) && this.orderDeliverEnabled) return { type: 'deliver', orderId };
+        return { type: 'order-swipe', orderId };
+      }
+      return { type: 'factory-order-close' };
     }
     if (within(this.layout.factoryNav)) return { type: 'page', page: 'factory' };
     if (within(this.layout.boardNav)) return { type: 'page', page: 'board' };
@@ -200,40 +271,51 @@ class Renderer {
       if (within({ x: 327, y: 670, w: 44, h: 44 })) return { type: 'customer-response-close' };
       if (within({ x: 19, y: 670, w: 352, h: 99 })) return { type: 'customer-open', customerId: this.customerResponseId };
     }
-    if (within(this.layout.orderArea)) {
+    const orderWithin = r => within(r);
+    if (this.page !== 'factory' && orderWithin(this.layout.orderArea)) {
       const orderId = this.visibleOrderId;
-      if ((within(this.layout.orderCustomer) || this.visibleCustomerRect && within(this.visibleCustomerRect)) && this.visibleCustomerId) return { type: 'customer-open', customerId: this.visibleCustomerId };
-      if (within(this.layout.orderPrevHit) && this.orderPreviousEnabled) return { type: 'order-prev', orderId };
-      if (within(this.layout.orderNextHit) && this.orderNextEnabled) return { type: 'order-next', orderId };
-      if (within(this.layout.deliver) && this.orderDeliverEnabled) return { type: 'deliver', orderId };
+      if ((orderWithin(this.layout.orderCustomer) || this.visibleCustomerRect && orderWithin(this.visibleCustomerRect)) && this.visibleCustomerId) return { type: 'customer-open', customerId: this.visibleCustomerId };
+      if (orderWithin(this.layout.orderPrevHit) && this.orderPreviousEnabled) return { type: 'order-prev', orderId };
+      if (orderWithin(this.layout.orderNextHit) && this.orderNextEnabled) return { type: 'order-next', orderId };
+      if (orderWithin(this.layout.deliver) && this.orderDeliverEnabled) return { type: 'deliver', orderId };
       return { type: 'order-swipe', orderId };
     }
-    if (this.page === 'factory' && minimumHitArea(this.layout.upgradeOpen)) return { type: 'upgrade-open' };
-    if (this.page === 'factory' && minimumHitArea(this.layout.accelerate)) return { type: 'accelerate' };
-    if (this.page === 'factory' && minimumHitArea(this.layout.lineExpansionOpen)) {
+    if (this.page === 'factory' && this.factoryDockExpanded && minimumHitArea(this.layout.upgradeOpen)) return { type: 'upgrade-open' };
+    if (this.page === 'factory' && this.factoryDockExpanded && minimumHitArea(this.layout.accelerate)) return { type: 'accelerate' };
+    if (this.page === 'factory' && this.factoryDockExpanded && minimumHitArea(this.layout.lineExpansionOpen)) {
       return { type: 'line-expansion-open', product: this.factorySelectedProduct, scrollable: false };
     }
     if (this.page === 'factory' && minimumHitArea(this.layout.sharedUpgradeOpen)) {
       return { type: 'shared-upgrade-open' };
     }
     if (this.page === 'factory') {
-      if (within(this.layout.factoryViewport) && this.factoryLayout) {
-        const world = { x: p.x, y: p.y - this.layout.factoryViewport.y + this.factoryScroll };
+      if (minimumHitArea(this.layout.factoryOrder)) return { type: 'factory-order-open' };
+      const navigationHit = hitFactoryNavigation(this, p);
+      if (navigationHit) return navigationHit;
+      if (within(this.layout.factoryDockToggle)) return { type: 'factory-dock-toggle' };
+      if (within(this.layout.factoryMode)) return { type: 'factory-view-toggle', mode: this.factoryViewMode === 'overview' ? 'detail' : 'overview' };
+      if (this.factoryViewMode === 'overview') return hitFactoryOverview(this, p);
+      if (within(this.layout.factoryHome)) return { type: 'factory-home' };
+      if (this.factoryServiceFocus && within(this.layout.factoryService))
+        return ['supply', 'packaging'].includes(this.factoryServiceFocus) ?
+          { type: 'factory-service-open', service: this.factoryServiceFocus } : null;
+      if (within(this.layout.factorySceneViewport) && this.factoryLayout) {
+        const world = this.factoryCamera.designToWorld(p);
         const worldWithin = r => world.x >= r.x && world.x <= r.x + r.w && world.y >= r.y && world.y <= r.y + r.h;
         if (worldWithin({ ...this.factoryLayout.supply, h: this.factoryLayout.supply.h + 30 })) {
           return { type: 'shared-upgrade-open', service: 'supply', scrollable: true };
         }
         if (worldWithin({ ...this.factoryLayout.packaging, x: this.factoryLayout.packaging.x - 3,
-          w: this.factoryLayout.packaging.w + 3, h: this.factoryLayout.packaging.h + 48 })) {
+          w: this.factoryLayout.packaging.w + 3, h: this.factoryLayout.packaging.h + 24 })) {
           return { type: 'shared-upgrade-open', service: 'packaging', scrollable: true };
         }
         const scene = this.factoryLayout.scenes.find(scene => worldWithin(scene.hit));
         if (scene) return { type: 'line', lineId: scene.lineId, scrollable: true };
         const construction = this.factoryLayout.construction;
-        if (construction && worldWithin(construction)) {
+        if (construction && worldWithin(construction.hit || construction)) {
           return { type: 'product-construction-open', product: construction.product, scrollable: true };
         }
-        const slot = this.factoryLayout.slots.find(worldWithin);
+        const slot = this.factoryLayout.slots.find(slot => worldWithin(slot.hit || slot));
         if (slot) return { type: 'line-expansion-open', product: slot.product, scrollable: true };
         return { type: 'factory-scroll', scrollable: true };
       }
@@ -249,6 +331,7 @@ class Renderer {
   }
 
   cellRect(index) {
+    if (this.page === 'board' && this.boardViewportActive) return boardCellRect(this, index);
     const b = this.layout.board;
     return { x: b.x + (index % 7) * b.pitch, y: b.y + Math.floor(index / 7) * b.pitch, w: b.size, h: b.size };
   }
@@ -368,14 +451,10 @@ class Renderer {
   background(factory) {
     this.ctx.fillStyle = '#f1e8d8'; this.ctx.fillRect(0, 0, 390, 844);
     this.image('ui/background-table', 0, 196, 390, 648);
-    this.image('ui/background-room', 0, 0, 390, 150);
+    this.image('ui/background-room', 0, factory ? -22 : 0, 390, factory ? 130 : 150);
     if (factory) {
-      this.ctx.save();
-      this.roundRect(19, 235, 352, 432, 15, '#efe0c7'); this.ctx.clip();
-      this.image('factory/floor', 19, 235, 352, 432);
-      this.image('factory/wall-back', 19, 232, 352, 113, 0.85);
-      this.image('factory/wall-left', 17, 234, 37, 434, 0.9);
-      this.ctx.restore();
+      const view = this.layout.factoryViewport;
+      this.roundRect(view.x, view.y, view.w, view.h, 12, '#ead7b5');
     }
   }
 
@@ -608,147 +687,136 @@ class Renderer {
     this.text(value, x + w / 2, y + 11, 11, '#fff6e6', 'center', true);
   }
 
+  factoryScrollLimit() {
+    const camera = this.factoryCamera;
+    return camera.bounds ? Math.max(0, camera.bounds.h - camera.viewport.h / camera.zoom) : 0;
+  }
+
   setFactoryScroll(value) {
-    const max = this.factoryLayout ? Math.max(0, this.factoryLayout.height - this.layout.factoryViewport.h) : 0;
-    this.factoryScroll = Math.max(0, Math.min(max, value));
+    this.factoryCamera.setView({ y: value + this.factoryCamera.viewport.h / this.factoryCamera.zoom / 2 });
+    this.factoryScroll = this.factoryCamera.visibleBounds().top;
   }
 
-  scrollFactory(distance) { this.setFactoryScroll(this.factoryScroll + distance / this.scale); }
+  stopFactoryScroll() {
+    this.factoryScrollVelocity = 0;
+    this.factoryScrollMotion = null;
+    this.factoryPanVelocity = { x: 0, y: 0 };
+    this.factoryCamera.stop();
+    this.pendingFactoryFocus = null;
+  }
 
-  focusLine(lineId) {
-    this.pendingFactoryFocus = lineId;
+  factoryScrollEnabled() {
+    return this.page === 'factory' && this.factoryViewMode !== 'overview' && !this.entryOpen && !this.upgradeDialogOpen &&
+      !this.sharedUpgradeDialogOpen && !this.lineExpansionDialogOpen &&
+      !this.productConstructionDialogOpen && !this.offlineSummaryOpen && !this.factoryOrderExpanded;
+  }
+
+  factoryGestureEnabled() { return this.factoryScrollEnabled(); }
+
+  factoryScenePoint(x, y) {
+    if (!this.factoryGestureEnabled()) return false;
+    return !!this.hitTest(x, y)?.scrollable;
+  }
+
+  panFactory(dx, dy) {
+    if (!this.factoryGestureEnabled()) return;
+    this.factoryFollowCancelled = true;
+    this.pendingFactoryServiceFocus = null;
+    this.factoryPanVelocity = { x: 0, y: 0 };
+    this.factoryCamera.panBy(dx / this.scale, dy / this.scale);
+    this.factoryScroll = this.factoryCamera.visibleBounds().top;
+  }
+
+  beginFactoryPinch(x, y) {
+    this.stopFactoryScroll();
+    return { zoom: this.factoryCamera.zoom, world: this.factoryCamera.designToWorld(this.logicalPoint(x, y)) };
+  }
+
+  applyFactoryPinch(baseline, ratio, x, y) {
+    if (!baseline || !this.factoryGestureEnabled() || !Number.isFinite(ratio) || ratio <= 0) return;
+    const camera = this.factoryCamera, point = this.logicalPoint(x, y), view = camera.viewport;
+    const zoom = Math.max(camera.minZoom, Math.min(camera.maxZoom, baseline.zoom * ratio));
+    camera.setView({ zoom,
+      x: baseline.world.x - (point.x - view.x - view.w / 2) / zoom,
+      y: baseline.world.y - (point.y - view.y - view.h / 2) / zoom });
+    this.factoryFollowCancelled = true;
+    this.pendingFactoryServiceFocus = null;
+    this.factoryScroll = camera.visibleBounds().top;
+  }
+
+  zoomFactory(factor, x, y) {
+    if (!this.factoryGestureEnabled()) return;
+    this.stopFactoryScroll();
+    this.factoryFollowCancelled = true;
+    this.pendingFactoryServiceFocus = null;
+    this.factoryCamera.zoomAt(factor, this.logicalPoint(x, y));
+    this.factoryScroll = this.factoryCamera.visibleBounds().top;
+  }
+
+  scrollFactory(distance) {
+    if (Number.isFinite(distance)) this.panFactory(0, -distance);
+  }
+
+  releaseFactoryPan(vx, vy) {
+    this.stopFactoryScroll();
+    if (!this.factoryGestureEnabled() || this.reducedMotion || !Number.isFinite(vx) || !Number.isFinite(vy) || Math.hypot(vx, vy) < 100) return;
+    this.factoryPanVelocity = { x: Math.max(-1800, Math.min(1800, vx / this.scale)),
+      y: Math.max(-1800, Math.min(1800, vy / this.scale)) };
+  }
+
+  releaseFactoryScroll(velocity) { this.releaseFactoryPan(0, -velocity * this.scale); }
+
+  updateFactoryScroll(seconds) {
+    if (!this.factoryGestureEnabled()) {
+      this.stopFactoryScroll();
+      return;
+    }
+    if (!Number.isFinite(seconds) || seconds <= 0) return;
+    const camera = this.factoryCamera;
+    camera.update(seconds);
+    const velocity = this.factoryPanVelocity;
+    if (!this.reducedMotion && (velocity.x || velocity.y)) {
+      const decay = Math.exp(-7 * seconds), before = { x: camera.x, y: camera.y };
+      camera.panBy(velocity.x * (1 - decay) / 7, velocity.y * (1 - decay) / 7);
+      velocity.x = Math.abs(camera.x - before.x) < .0001 || Math.abs(velocity.x) < 12 ? 0 : velocity.x * decay;
+      velocity.y = Math.abs(camera.y - before.y) < .0001 || Math.abs(velocity.y) < 12 ? 0 : velocity.y * decay;
+    }
+    this.factoryScroll = camera.visibleBounds().top;
+  }
+
+  focusFactoryRect(rect, immediate = false, zoom) {
+    if (!rect) return;
+    this.stopFactoryScroll();
+    this.factoryCamera.focusRect(rect, { duration: immediate || this.reducedMotion ? 0 : .28, zoom });
+  }
+
+  focusLine(lineId, immediate = false) {
+    this.stopFactoryScroll();
     const scene = this.factoryLayout && this.factoryLayout.scenes.find(scene => scene.lineId === lineId);
-    if (scene) {
-      this.setFactoryScroll(scene === this.factoryLayout.scenes[0] ? 0 :
-        scene.machine.y + scene.machine.h / 2 - this.layout.factoryViewport.h / 2);
-      this.pendingFactoryFocus = null;
+    if (!scene) {
+      this.pendingFactoryFocus = lineId;
+      return;
     }
+    const visible = this.factoryCamera.visibleBounds(), hit = scene.hit;
+    if (hit.x < visible.left + 12 || hit.x + hit.w > visible.right - 12 ||
+        hit.y < visible.top + 12 || hit.y + hit.h > visible.bottom - 12 || immediate)
+      this.focusFactoryRect(hit, immediate);
   }
 
-  factory(model, visual) {
-    const s = model.state, selected = model.getLine(), f = selected.factory;
-    const firstStockedProducts = s.firstStockedProducts || [];
-    const key = s.lines.map(line => line.id).join('|') + ':' + firstStockedProducts.join('|');
-    if (key !== this.factoryLineKey) {
-      this.factoryLayout = buildFactoryLayout(s.lines);
-      this.factoryLineKey = key;
-      this.setFactoryScroll(this.factoryScroll);
+  factory(model, visual) { drawFactoryView(this, model, visual); }
+
+  handleFactoryAction(model, hit) {
+    if (hit.type === 'factory-dock-toggle' || hit.type === 'factory-order-open' || hit.type === 'factory-order-close' || hit.type === 'factory-home')
+      return { ok: true, action: hit.type };
+    if (hit.type === 'factory-view-toggle') return { ok: true, action: 'factory-view-toggle', mode: hit.mode };
+    if (hit.type === 'factory-service-open') return { ok: true, action: 'shared-upgrade-open', service: hit.service };
+    const overview = handleFactoryOverview(this, model, hit);
+    if (overview) {
+      if (overview.type === 'line') return model.selectLine(overview.lineId);
+      if (overview.type === 'factory-focus-service') return { ok: true, action: 'factory-focus', service: overview.service };
+      return { ok: true, action: overview.type, product: overview.product };
     }
-    this.factorySelectedProduct = selected.product;
-    if (selected.id !== this.lastFactorySelection || this.pendingFactoryFocus) {
-      this.focusLine(this.pendingFactoryFocus || selected.id);
-      this.lastFactorySelection = selected.id;
-    }
-    const layout = this.factoryLayout, view = this.layout.factoryViewport, time = visual.time || 0;
-    const supply = s.shared.supply, packaging = s.shared.packaging, materials = s.shared.materials;
-    const supplyRect = layout.supply, packRect = layout.packaging, warehouseRect = layout.warehouse;
-    const stockSlot = this.factorySlot('factory/warehouse', warehouseRect, 'stock');
-    const supplyPoint = this.factoryPoint('factory/supply-body-clean', supplyRect, 'output');
-    const packInput = this.factoryPoint('factory/packer-body-clean', packRect, 'input');
-    const packOutput = this.factoryPoint('factory/packer-body-clean', packRect, 'output');
-    const stockPath = [packOutput, [336, packRect.y + 96], [182, packRect.y + 96],
-      [stockSlot.x + stockSlot.w / 2, stockSlot.y + stockSlot.h / 2]];
-    const bottleneck = model.productionBottleneck();
-    this.roundRect(19, 221, 352, 50, 10, '#fff6e6');
-    this.text(layout.construction ? '已建 ' + s.lines.length + ' 条线 · 下滑扩建' + this.productName(layout.construction.product) :
-      '已投产 ' + s.lines.length + ' 条线 · 上下滑动查看', 25, 233, 12, COLORS.muted);
-    this.text(bottleneck.text, 25, 253, 12,
-      ['supply', 'packaging'].includes(bottleneck.kind) ? COLORS.teal : COLORS.muted);
-    this.button('ui/upgrade-button-green', '公共升级', this.layout.sharedUpgradeOpen);
-    this.ctx.save();
-    this.ctx.beginPath(); this.ctx.rect(view.x, view.y, view.w, view.h); this.ctx.clip();
-    this.ctx.translate(0, view.y - this.factoryScroll);
-    for (let y = 0; y < layout.height; y += 235) this.image('factory/floor', 19, y, 352, 235);
-    this.image('factory/wall-back', 19, 0, 352, 113, .85);
-    this.image('factory/wall-left', 17, 0, 37, layout.height, .9);
-    const scenes = layout.scenes.map(scene => {
-      const line = model.getLine(scene.lineId), id = 'factory/' + this.machineId(line.product);
-      const input = this.factoryPoint(id, scene.machine, 'input'), output = this.factoryPoint(id, scene.machine, 'output');
-      return { ...scene, line, id,
-        supplyPath: [supplyPoint, [49, supplyPoint[1]], [49, input[1]], input],
-        outputPath: [output, [225, output[1]], [262, scene.cache.y + 19]],
-        packPath: [[262, scene.cache.y + 19], [336, scene.cache.y + 19], [336, packInput[1]], packInput] };
-    });
-    scenes.forEach(scene => { this.belt(scene.supplyPath); this.belt(scene.outputPath); this.belt(scene.packPath); });
-    this.belt(stockPath);
-    layout.groups.forEach(group => {
-      this.slice('ui/panel-cream', 64, group.y - 12, 252, 30);
-      this.text(this.workshopName(group.product), 78, group.y + 3, 15, COLORS.text, 'left', true);
-      this.text(group.count + '/' + model.lineExpansionOffer(group.product).maxLines + '条线', 301, group.y + 3, 13, COLORS.teal, 'right', true);
-    });
-    this.factoryAsset('factory/platform', supplyRect.x - 7, supplyRect.y + 79, 126, 40);
-    drawSupply(this, supplyRect.x, supplyRect.y, supplyRect.w, supplyRect.h, !!supply.lineId, time,
-      materials.baseUnits / materials.capacityBaseUnits);
-    this.label('供料' + (supply.level || 1) + '档 · 原料' + materials.baseUnits, 219, supplyRect.y + 104, 120, !!supply.lineId);
-    scenes.forEach(scene => {
-      const line = scene.line, batch = line.factory, phase = batch.phase, { machine, cache } = scene;
-      const p = Math.max(0, Math.min(1, batch.elapsed / Math.max(.0001, batch.duration)));
-      const active = line.id === s.selectedLineId;
-      this.factoryAsset('factory/platform', machine.x - 8, machine.y + 98, 154, 40);
-      if (active) this.roundRect(machine.x - 4, machine.y + 3, machine.w + 4, machine.h + 9, 8, null, '#43bfd0');
-      drawMachine(this, this.machineId(line.product), machine.x, machine.y, machine.w, machine.h, phase, p, time,
-        visual.reducedMotion, line, firstStockedProducts.includes(line.product));
-      this.factoryAsset('factory/buffer-bin', cache.x, cache.y, cache.w, cache.h);
-      const material = MATERIAL_ASSETS[line.product];
-      if (line.buffer.length)
-        this.contain(material, cache.x + 13, cache.y + 4, 37, 27);
-      this.label(this.productName(line.product) + ' · ' + lineNumber(line.id) + '号线',
-        63, machine.y + 120, 145, active);
-      this.text(productionLabel(line), 301, machine.y + 131, 12, COLORS.muted, 'right');
-      this.text('出厂 Lv.' + line.outputLevel + ' · 库存 ' + displayStock(line.inventory), 64, machine.y + 154, 12, COLORS.text);
-      if (PRODUCT_DEFINITIONS[line.product].generation > 1 && lineNumber(line.id) === 1) {
-        this.text(firstStockedProducts.includes(line.product) ? '首批已入库' : '待首次入库',
-          301, machine.y + 154, 11, COLORS.teal, 'right');
-      }
-      if (phase === 'feeding') this.transfer(scene.supplyPath, p, 'factory/loose-popcorn', 18);
-      if (phase === 'transport') this.transfer(scene.outputPath, p, material, 20);
-      line.warehouse.forEach(item => this.transfer(stockPath, Math.max(0, Math.min(1, item.elapsed / item.duration)),
-        'product/' + line.product + '/' + item.outputLevel, 22));
-    });
-    layout.slots.forEach(slot => {
-      const offer = model.lineExpansionOffer(slot.product);
-      this.slice('ui/panel-cream', slot.x, slot.y, slot.w, slot.h);
-      this.contain('factory/' + this.machineId(slot.product), slot.x + 5, slot.y + 8, 65, 58, .4);
-      this.text('增开' + this.productName(slot.product), slot.x + 82, slot.y + 22, 16, COLORS.teal, 'left', true);
-      this.contain('icon/coin', slot.x + 82, slot.y + 38, 23, 23);
-      this.text(offer.cost + ' · ' + slot.number + '号线 · Lv.1', slot.x + 110, slot.y + 50, 13, COLORS.text);
-      this.text('+', slot.x + slot.w - 22, slot.y + 23, 28, COLORS.teal, 'center', true);
-    });
-    if (layout.construction) this.productConstructionSlot(model, layout.construction);
-    const packingLine = model.getLine(packaging.lineId);
-    drawPacker(this, packRect.x, packRect.y, packRect.w, packRect.h,
-      packingLine ? 'packaging' : 'idle', packaging.elapsed / Math.max(.0001, packaging.duration),
-      packingLine ? packingLine.product : selected.product, packaging.batch ? packaging.batch.outputLevel : selected.outputLevel);
-    this.label('公共包装 · ' + (packaging.level || 1) + '档',
-      241, packRect.y + 77, 122, !!packingLine);
-    this.text(packaging.batch ? this.productName(packingLine.product) + lineNumber(packingLine.id) + '号 · ' + packaging.batch.batchUnits + '份' : '成品按批包装',
-      302, packRect.y + 113, 12, COLORS.text, 'center');
-    this.factoryAsset('factory/warehouse', warehouseRect.x, warehouseRect.y, warehouseRect.w, warehouseRect.h);
-    layout.groups.forEach((group, index) => {
-      const stocked = s.lines.find(line => line.product === group.product && line.inventory > 0);
-      if (stocked)
-        this.contain('product/' + group.product + '/' + stocked.outputLevel, stockSlot.x + index * stockSlot.w / layout.groups.length,
-          stockSlot.y, stockSlot.w / layout.groups.length, stockSlot.h);
-    });
-    this.label('仓储 · 各线独立记账', 77, warehouseRect.y + 72, 155, s.lines.some(line => line.warehouse.length));
-    this.ctx.restore();
-    const maxScroll = Math.max(1, layout.height - view.h), thumbH = Math.max(34, view.h * view.h / layout.height);
-    this.roundRect(366, view.y + 5, 3, view.h - 10, 1.5, '#8b795342');
-    this.roundRect(366, view.y + 5 + (view.h - 10 - thumbH) * this.factoryScroll / maxScroll, 3, thumbH, 1.5, '#2d9b87');
-    const progress = Math.max(0, Math.min(1, f.elapsed / Math.max(.0001, f.duration)));
-    this.slice('ui/panel-cream', 19, 666, 352, 107);
-    this.contain('factory/' + this.machineId(selected.product), 28, 680, 65, 70);
-    this.text(this.lineName(selected), 104, 686, 15, COLORS.text, 'left', true);
-    this.text('库存 ' + displayStock(selected.inventory), 350, 686, 13, COLORS.text, 'right', true);
-    const awaitingFirstStock = PRODUCT_DEFINITIONS[selected.product].generation > 1 && !firstStockedProducts.includes(selected.product);
-    this.text(awaitingFirstStock ? '首批' + productionLabel(selected) + ' · 入库后可取货' :
-      productionLabel(selected) + ' · Lv.' + f.outputLevel + ' / ' + f.batchUnits + '份 · 缓存 ' + selected.buffer.length + '批',
-      104, 705, 12, COLORS.muted);
-    this.roundRect(104, 713, 253, 3, 1.5, '#ded0b7');
-    this.roundRect(104, 713, Math.max(2, 253 * progress), 3, 1.5, '#2d9b87');
-    this.button('ui/button-teal', '加速', this.layout.accelerate, f.phase === 'processing');
-    this.button('ui/upgrade-button-green', '流水线升级', this.layout.upgradeOpen);
-    this.button('ui/button-teal', '扩线', this.layout.lineExpansionOpen);
+    return handleFactoryNavigation(this, model, hit);
   }
 
   productConstructionSlot(model, slot) {
@@ -786,116 +854,7 @@ class Renderer {
     this.text(label, r.x + 230, r.y + r.h / 2, enabled ? 19 : 15, color, 'center', true);
   }
 
-  upgradeDialog(model) {
-    const line = model.getLine(), capacity = model.capacityOffer(), output = model.outputOffer();
-    const r = this.layout.upgradePanel, title = this.layout.upgradeTitle, close = this.layout.upgradeClose;
-    this.capacityBuyEnabled = !capacity.maxed && capacity.affordable;
-    this.outputBuyEnabled = !output.maxed && output.affordable;
-    this.upgradeLineId = line.id;
-    this.ctx.fillStyle = '#3f3028a8';
-    this.ctx.fillRect(0, 0, DESIGN_WIDTH, DESIGN_HEIGHT);
-    this.slice('ui/upgrade-panel-cream', r.x, r.y, r.w, r.h);
-    this.slice('ui/upgrade-title-sign', title.x, title.y, title.w, title.h);
-    this.text('流水线升级', 195, 128, 24, '#5f341c', 'center', true);
-    this.contain('ui/upgrade-button-close', close.x, close.y, close.w, close.h);
-    this.slice('ui/upgrade-well-mint', 31, 161, 100, 82);
-    this.contain('factory/' + this.machineId(line.product), 29, 157, 104, 90);
-    this.text(this.lineName(line), 146, 180, 20, '#5f341c', 'left', true);
-    this.slice('ui/upgrade-inset-cream', 144, 203, 211, 34);
-    this.contain('icon/upgrade-level', 150, 209, 23, 23);
-    this.text('出厂 Lv.' + line.outputLevel, 179, 220, 13, '#8f7656', 'left', true);
-    this.ctx.fillStyle = '#d7c5a3'; this.ctx.fillRect(255, 211, 1, 18);
-    this.contain('icon/upgrade-inventory', 260, 211, 19, 19);
-    this.text((line.inventory >= 1e11 ? '' : '库存 ') + displayStock(line.inventory) + '份', 282, 220, 12, '#5f341c', 'left', true);
-    this.upgradeCapacityCard(capacity, model.state.coins);
-    this.upgradeOutputCard(output, line, model.state.coins);
-    this.ctx.fillStyle = '#ddc8a6';
-    this.ctx.fillRect(83, 815, 55, 1); this.ctx.fillRect(252, 815, 55, 1);
-    this.text('仅升级当前流水线', 195, 816, 11, '#8f7656', 'center');
-  }
-
-  upgradeCapacityCard(offer, coins) {
-    const r = this.layout.capacityCard;
-    this.slice('ui/upgrade-card-mint', r.x, r.y, r.w, r.h);
-    this.contain('icon/upgrade-capacity', 42, 260, 31, 31);
-    this.text('提升产能', 78, 274, 21, '#075731', 'left', true);
-    this.slice('ui/upgrade-badge-level', 249, 261, 98, 29);
-    if (offer.maxed) this.text(offer.level + '档 · 已满', 298, 275, 13, '#075731', 'center', true);
-    else {
-      this.text(offer.level + '档', 271, 275, 14, '#075731', 'center', true);
-      this.contain('icon/upgrade-arrow-right-mint', 290, 266, 19, 19);
-      this.text((offer.level + 1) + '档', 328, 275, 14, '#075731', 'center', true);
-    }
-    this.slice('ui/upgrade-inset-cream', 41, 297, 308, 55);
-    if (offer.maxed) {
-      this.text('每批份数 / 机器周期', 195, 309, 12, '#8f7656', 'center');
-      this.text(offer.batchUnits + '份 / ' + displaySeconds(offer.currentCycleSeconds) + '秒', 195, 332, 22, '#075731', 'center', true);
-    } else {
-      this.text('当前', 116, 309, 12, '#8f7656', 'center');
-      this.text('升级后', 278, 309, 12, '#8f7656', 'center');
-      this.text(offer.batchUnits + '份 / ' + displaySeconds(offer.currentCycleSeconds) + '秒', 116, 332, 20, '#5f341c', 'center', true);
-      this.contain('icon/upgrade-arrow-right', 184, 317, 25, 29);
-      this.text(offer.batchUnits + '份 / ' + displaySeconds(offer.nextCycleSeconds) + '秒', 278, 332, 20, '#075731', 'center', true);
-    }
-    this.slice('ui/upgrade-ribbon-mint', 41, 357, 308, 22);
-    this.text(offer.maxed ? (offer.pending ? '下一批启用新产能' : '本线产能已满') :
-      '机器周期速度 +' + offer.speedGainPercent + '%', 195, 368, 15, '#075731', 'center', true);
-    this.upgradePurchaseButton(offer, 'capacity', this.layout.capacityBuy, coins);
-    this.text(offer.maxed ? '供料、缓存与包装等待另计' : '下一批生效 · 供料、缓存与包装等待另计',
-      195, 442, 11, '#8f7656', 'center');
-  }
-
-  upgradeOutputCard(offer, line, coins) {
-    const r = this.layout.outputCard, nextLevel = offer.maxed ? offer.level : offer.level + 1;
-    this.slice('ui/upgrade-card-gold', r.x, r.y, r.w, r.h);
-    this.contain('icon/upgrade-output-level', 42, 479, 31, 31);
-    this.text('出厂升阶', 78, 494, 21, '#5f341c', 'left', true);
-    this.slice('ui/upgrade-inset-cream', 41, 516, 308, 201);
-    if (offer.maxed) {
-      this.contain('product/' + line.product + '/' + offer.level, 151, 517, 88, 68);
-      this.text('出厂 Lv.' + offer.level + ' · 本轮已满', 195, 589, 13, '#5f341c', 'center', true);
-    } else {
-      this.contain('product/' + line.product + '/' + offer.level, 89, 515, 84, 68);
-      this.contain('product/' + line.product + '/' + nextLevel, 223, 515, 84, 68);
-      this.contain('icon/upgrade-arrow-right', 184, 539, 26, 30);
-      this.text('Lv.' + offer.level, 131, 589, 13, '#5f341c', 'center', true);
-      this.text('Lv.' + nextLevel, 265, 589, 13, '#5f341c', 'center', true);
-    }
-    this.text('备齐一份 Lv.' + offer.targetLevel + ' 及以上商品', 195, 610, 14, '#5f341c', 'center', true);
-    this.slice('ui/upgrade-inset-cream', 45, 622, 300, 47);
-    if (offer.maxed) this.text(offer.currentShots + '发 · ' + offer.currentMerges + '次合成', 195, 647, 18, '#075731', 'center', true);
-    else {
-      this.text('当前', 119, 633, 11, '#8f7656', 'center');
-      this.text('升级后', 279, 633, 11, '#8f7656', 'center');
-      this.text(offer.currentShots + '发 · ' + offer.currentMerges + '次合成', 119, 654, 15, '#5f341c', 'center', true);
-      this.contain('icon/upgrade-arrow-right', 184, 635, 25, 28);
-      this.text(offer.nextShots + '发 · ' + offer.nextMerges + '次合成', 279, 654, 15, '#075731', 'center', true);
-    }
-    this.slice('ui/upgrade-inset-cream', 45, 674, 300, 28);
-    this.contain('icon/upgrade-inventory', 49, 679, 20, 20);
-    if (offer.maxed) {
-      this.text('当前库存 ' + displayStock(offer.inventoryBefore) + '份', 77, 689, 14, '#5f341c', 'left', true);
-      this.slice('ui/upgrade-badge-success', 263, 678, 76, 22);
-      this.text('Lv.' + offer.level, 301, 689, 12, '#fff8e7', 'center', true);
-    } else {
-      this.text('库存 ' + displayStock(offer.inventoryBefore) + '份', 76, 689, 13, '#5f341c', 'left', true);
-      this.contain('icon/upgrade-arrow-right', 172, 681, 18, 19);
-      this.text(displayStock(offer.inventoryAfter) + '份', 202, 689, 16, '#075731', 'left', true);
-      if (offer.discardedBaseUnits) {
-        this.text('舍弃' + offer.discardedBaseUnits + '份', 305, 689, 12, COLORS.red, 'center', true);
-      } else {
-        this.slice('ui/upgrade-badge-success', 271, 678, 68, 22);
-        this.text('无舍弃', 305, 689, 12, '#fff8e7', 'center', true);
-      }
-    }
-    this.text('新批 Lv.' + nextLevel + ' · ' + offer.nextBatchUnits + '份 / ' + displaySeconds(offer.cycleSeconds) + '秒',
-      195, 710, 13, '#8f7656', 'center', true);
-    this.upgradePurchaseButton(offer, 'output', this.layout.outputBuy, coins);
-    this.text(offer.pending || !offer.maxed ? '旧批全部包装后统一折算入库' : '当前规格已启用 · 正常生产中',
-      195, 779, 11, '#8f7656', 'center');
-    this.text(offer.discardedBaseUnits && !offer.maxed ? '舍弃量按一级材料计 · 棋盘商品保留原等级' : '棋盘等级保留 · 旧单目标与奖励不变',
-      195, 793, 11, '#8f7656', 'center');
-  }
+  upgradeDialog(model) { drawFactoryUpgrade(this, model); }
 
   sharedUpgradeDialog(model, shared) {
     const r = this.layout.sharedUpgradePanel, title = this.layout.sharedUpgradeTitle;
@@ -1155,8 +1114,10 @@ class Renderer {
   draw(model, visual = {}) {
     this.recovery = visual.recovery || null;
     if (visual.entry !== undefined) this.entryOpen = !!visual.entry;
+    this.reducedMotion = !!visual.reducedMotion;
     this.entrySettingsOpen = this.entryOpen && !!visual.settingsOpen;
     if (this.entryOpen) {
+      this.stopFactoryScroll();
       this.upgradeDialogOpen = false;
       this.lineExpansionDialogOpen = false;
       this.productConstructionDialogOpen = false;
@@ -1166,20 +1127,32 @@ class Renderer {
       return;
     }
     this.page = model.state.page || 'board';
+    if (this.page !== 'factory') this.factoryOrderExpanded = false;
     this.upgradeDialogOpen = !!visual.upgradeDialog;
     this.lineExpansionDialogOpen = !!visual.lineExpansion;
     this.productConstructionDialogOpen = !!visual.productConstruction;
     this.sharedUpgradeDialogOpen = !!visual.sharedUpgrade;
     this.offlineSummaryOpen = !!visual.offlineSummary;
+    this.updateFactoryScroll(visual.delta || 0);
+    this.boardViewportActive = this.page === 'board' && !this.upgradeDialogOpen && !this.lineExpansionDialogOpen &&
+      !this.productConstructionDialogOpen && !this.sharedUpgradeDialogOpen && !this.offlineSummaryOpen;
+    if (this.boardViewportActive) {
+      this.begin(); drawBoardView(this, model, visual); return;
+    }
     this.begin();
     this.background(this.page === 'factory');
+    this.ctx.save();
+    if (this.page === 'factory') this.ctx.translate(0, -32);
     this.header(model.state);
+    this.ctx.restore();
+    if (this.page === 'factory') this.button('ui/button-teal', '配套', this.layout.sharedUpgradeOpen);
     this.customerUnreadCount = model.customerCollection().filter(info => info.unread).length;
     this.customerResponseVisible = !!visual.customerResponse && this.page !== 'customers';
     this.customerResponseId = visual.customerResponse?.customerId;
     if (this.page === 'customers') drawCustomers(this, model, visual);
     else {
-      this.order(model, visual);
+      if (this.page === 'factory') drawFactoryOrderSummary(this, model);
+      else this.order(model, visual);
       this.visibleCustomerId = model.getOrder()?.customerId;
       if (this.visibleCustomerId) this.customerLastOrders[this.visibleCustomerId] = this.visibleOrderId;
       if (this.page === 'factory') this.factory(model, visual);
@@ -1187,6 +1160,16 @@ class Renderer {
     }
     if (this.customerResponseVisible) drawCustomerResponse(this, visual.customerResponse);
     this.navigation(model.state);
+    if (this.page === 'factory' && this.factoryOrderExpanded) {
+      this.ctx.fillStyle = '#3f3028a8';
+      this.ctx.fillRect(0, 0, DESIGN_WIDTH, DESIGN_HEIGHT);
+      this.slice('ui/panel-cream', 12, 143, 366, 220);
+      this.text('当前订单', 195, 169, 20, COLORS.text, 'center', true);
+      this.ctx.save(); this.ctx.translate(0, 70);
+      this.order(model, visual);
+      this.ctx.restore();
+      this.button('ui/button-teal', '收起订单', this.layout.factoryOrderClose);
+    }
     if (this.upgradeDialogOpen) this.upgradeDialog(model);
     if (this.lineExpansionDialogOpen) this.lineExpansionDialog(model, visual.lineExpansion);
     if (this.productConstructionDialogOpen) this.productConstructionDialog(model, visual.productConstruction);

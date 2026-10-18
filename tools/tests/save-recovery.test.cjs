@@ -34,8 +34,8 @@ function storedPlatform(kind, entries) {
   const context = {
     module: { exports: {} },
     require: specifier => {
-      assert.equal(specifier, './production-config');
-      return require('../../douyin-game/src/production-config');
+      assert.ok(['./production-config', './production-feedback'].includes(specifier));
+      return require(path.resolve(__dirname, '../../douyin-game/src', specifier));
     },
     console: { error() {} },
   };
