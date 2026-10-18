@@ -14,7 +14,7 @@ export const factoryLayoutPresets = Object.freeze({
 
 const WIDTH = 1320, HEIGHT = 2380, MAX_LINES = 3;
 const SUPPLY_X = 520, RETURN_X = 590, ROW_STEP = 620, COURT_Y = 1960;
-const WORKSHOP_DEPTH = 570, LINE_STEP = 195, ORIGIN_X = 290;
+const WORKSHOP_DEPTH = 570, LINE_DEPTHS = [535, 340, 140], ORIGIN_X = 290;
 const ROW_PRODUCTS = [['wafer', 'sandwich-square'], ['popcorn-ball', 'crisp-stick'], ['original', 'caramel']];
 
 // One oblique ground plane for paving, pads, installations and service routes.
@@ -84,7 +84,7 @@ function makeSlot(product, index, row, column, number, groundRect) {
   // Left-facing discharge assets keep their native orientation and cache side.
   const u = column === 0 ? (front ? 260 : product.frontReturn ? 230 : 220)
     : product.frontReturn ? (front ? 890 : 925) : (front ? 840 : 900);
-  const groundAnchor = [u, groundRect.y + 535 - (number - 1) * LINE_STEP];
+  const groundAnchor = [u, groundRect.y + LINE_DEPTHS[number - 1]];
   const [machineCx, foot] = projectGround(groundAnchor);
   const cacheWidth = 42, cacheOffset = product.width / 2 + cacheWidth / 2 + 18;
   // Cache offsets follow the same projected ground axis as the platform edges.

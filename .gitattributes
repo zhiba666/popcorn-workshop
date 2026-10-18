@@ -1,0 +1,7 @@
+# Generated text is byte-hashed by the asset ownership manifest.
+# Keep checkout bytes stable even when core.autocrlf is enabled.
+/assets/build-outputs.json text eol=lf
+/assets/runtime/**/*.json text eol=lf
+/assets/runtime/**/*.js text eol=lf
+/douyin-game/src/generated/*.js text eol=lf
+/preview/_generated/*.js text eol=lf
