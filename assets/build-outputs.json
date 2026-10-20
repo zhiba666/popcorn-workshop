@@ -782,67 +782,67 @@
       "scope": "runtime"
     },
     "douyin-game/assets/board-states/cell-blocked.png": {
-      "sha256": "4fda459284d4ef66a2a4530d828a37fab20955bce66880ea70b595ad051f84d4",
+      "sha256": "a2cd0e131b4fc68940e62769cf5a3e52d795600d2f07e46a383e5e5fb5b033c6",
       "scope": "release"
     },
     "douyin-game/assets/board-states/cell-mergeable.png": {
-      "sha256": "6d79f8f7b4e98ed0d1de53eed7749ea03fbed360b7670090bdd660fce9626381",
+      "sha256": "d4b9a6a4afa7153c4f50104999dba33005df5b7e0df7282fdcebec60cef59427",
       "scope": "release"
     },
     "douyin-game/assets/board-states/cell-order-match.png": {
-      "sha256": "e04dec4bed4a0f31b7fa21fb8bc8a9160e0a880bf4a59ad993df59b4a7e456a7",
+      "sha256": "155bf2468096755ff38ade2c475bcfeb717d6534e7d52d46f0a47d22efb17880",
       "scope": "release"
     },
     "douyin-game/assets/board-states/cell-selected.png": {
-      "sha256": "b7ad09d25f7d21e9efbfd5d3dac643c10fa06d8a0c82eb9dd39f240653a97c6e",
+      "sha256": "c31c8d3f624579b084167af95d9ca02a82eb0a0c799bb68d151c6fd9ec275878",
       "scope": "release"
     },
     "douyin-game/assets/customer-details/badger-potter.png": {
-      "sha256": "db426417d81d2ccbef2e779c86f466d21f9ae07a8667765b8e79fa1de6e5f261",
+      "sha256": "b150bf0251674d333ce43bdcd24977d09a9657aa2882387ed0767d5f44780c85",
       "scope": "release"
     },
     "douyin-game/assets/customer-details/bear-neighbor.png": {
-      "sha256": "19ef1f2962974739fc0b73c1076806a397391ac2ce14e3af6e8cdf98dbeea23e",
+      "sha256": "f00668c7ae1a5aa58fc6fb00db3aee116a82e3ae8e521a43ce379dbf9db674f6",
       "scope": "release"
     },
     "douyin-game/assets/customer-details/cat-teacher.png": {
-      "sha256": "69b40a33f97ef28057b3ec28d3c570e031083624c54922925ad9d8a269fbcd7e",
+      "sha256": "0a511016258bbffe65df81c912bd9d9ec64e24e797a8c174e55b1ad0217929a0",
       "scope": "release"
     },
     "douyin-game/assets/customer-details/dog-mechanic.png": {
-      "sha256": "480b12d6a7672c4e8d52393b902fb80a912293861696a4230e429458433cd6b1",
+      "sha256": "83eaa5d14c33bc3cf1147b549a8efe3c5059fc6bad3d247202e94783aa09b67b",
       "scope": "release"
     },
     "douyin-game/assets/customer-details/fox-traveler.png": {
-      "sha256": "315259b6c9ecd091f8b21caaba7c7c2c5da3b78704a2dbc871e92e86feb3e167",
+      "sha256": "a4483b91d0cbc0f65b3e07c3a5e7ca03325f0906f8b94d6420ce2b795372cd29",
       "scope": "release"
     },
     "douyin-game/assets/customer-details/goat-orchard-owner.png": {
-      "sha256": "970695f9db6989e7db24f92bce4adad93f8a9f894c06fd142227f3efd4933601",
+      "sha256": "65e882d7c130bd5c730f8da2583fb838c447aac4c77144cf11bc123e65329804",
       "scope": "release"
     },
     "douyin-game/assets/customer-details/hedgehog-florist.png": {
-      "sha256": "e4995942b0faa964afccf71e31c91ed3998ed13cdc2513db76dc0684d5f62c96",
+      "sha256": "0552aba8d51ae185a1bc1ee3fb92167968e06accf3e6d64ff7e292fb4620b9fe",
       "scope": "release"
     },
     "douyin-game/assets/customer-details/otter-ferryman.png": {
-      "sha256": "cf040ba094949eedd11fbb4bf78c794a7a614059155a44e3f20d3cfbe79c4f5e",
+      "sha256": "2b03d29dc38b3cbdc2b01f00f1bf796e0cdce5957b6c0174dafe940467716b83",
       "scope": "release"
     },
     "douyin-game/assets/customer-details/owl-librarian.png": {
-      "sha256": "f641b2840a4beabcf980b58ec9895e8f40f3b0f62ed3e474ff86702e5ff6b82f",
+      "sha256": "c7d69b5a3411ce8b1a3daf77fb9ad8ee88b826ca17aa90c877181187fdb5fbf3",
       "scope": "release"
     },
     "douyin-game/assets/customer-details/rabbit-courier.png": {
-      "sha256": "4aeef113551dbf364d792399d685a58fede8e4f708c97321b72d41edc1047f00",
+      "sha256": "844d29f84f479399f9900b50bff369efc4cd434711861d842ec24ddc1d29e674",
       "scope": "release"
     },
     "douyin-game/assets/customer-details/red-panda-projectionist.png": {
-      "sha256": "a9f0ab1ac4ba4de1809b4d7b2539bcaa539747eed6581d6e84cd5fc13e1ab2ae",
+      "sha256": "8d51aa46a8f506ba57d71008fd38292c5593371f886e88720503564f28156be5",
       "scope": "release"
     },
     "douyin-game/assets/customer-details/squirrel-tailor.png": {
-      "sha256": "e0353bc56016f2442e8fc7747dbcfdefaf47fb31f1d9e533545597c487bcf8b3",
+      "sha256": "7228f79aedc6ea01a242c3f93c63174259c5bb11636151c7eb52473de63d1f60",
       "scope": "release"
     },
     "douyin-game/assets/customer-selection/detail-selected.png": {
@@ -910,11 +910,11 @@
       "scope": "release"
     },
     "douyin-game/assets/customer-status/badges/max-star.png": {
-      "sha256": "c3ecd0561ae5dd0c4cfcd3d63ad871eb08bed05837db9466d9af84042d46e3f0",
+      "sha256": "d1b18167c6450c3862c7efb954a0f953e997f84ab01c0b391fde512ac790989e",
       "scope": "release"
     },
     "douyin-game/assets/customer-status/badges/new-customer.png": {
-      "sha256": "56704db8d080c4957c1c622e0477ed6e4f331ebcea0fcfb031488504e0af6d84",
+      "sha256": "7a4a95d5bdad6283654d18b163ebf168499126de03bd4efa822eb54294d68ea6",
       "scope": "release"
     },
     "douyin-game/assets/customer-ui/collection-card.png": {
@@ -934,51 +934,51 @@
       "scope": "release"
     },
     "douyin-game/assets/customers/badger-potter.png": {
-      "sha256": "773ea127ab118e9183065e2a20a028425081ebda6037427bfe3eca260d72da15",
+      "sha256": "e54598f9bc76d6c833926cee3b4467e7ecb14afe0fdccb51d6e622a8a1475e7c",
       "scope": "release"
     },
     "douyin-game/assets/customers/bear-neighbor.png": {
-      "sha256": "f4ff45003a40652194c7cdeb8aa737b00ba0cb7e1b6937db1887411828cd9093",
+      "sha256": "ff0e5803c1ef2e7fb66696e4329e5d14ef35829b5926b3fb600c190746b8f25f",
       "scope": "release"
     },
     "douyin-game/assets/customers/cat-teacher.png": {
-      "sha256": "475186e0c8d6f580adaadb87f0d5fa64e857fd1b2211e0f206c962a5094bd09d",
+      "sha256": "2c39d065b95c04d5f508ebbf4a06be57e694bb5e1e1e5013af134bab8b2ad3dd",
       "scope": "release"
     },
     "douyin-game/assets/customers/dog-mechanic.png": {
-      "sha256": "79ab4341e4b0e1a023e193bd69f08c740c17e37f2b6c382529e09269a352b3f3",
+      "sha256": "df101bb0e3124699a9b862c58d2a8882d4a60c500f7c01261d6b8fc09f328bf3",
       "scope": "release"
     },
     "douyin-game/assets/customers/fox-traveler.png": {
-      "sha256": "ed9c7eaee0480a31f86b99d916ad82876872c7e40238b22329181117fddd4d41",
+      "sha256": "fc4a03f49a980bdcf0f2dfe8980ebdeaf710125cda73d1e9d02c892947a2a0ce",
       "scope": "release"
     },
     "douyin-game/assets/customers/goat-orchard-owner.png": {
-      "sha256": "2e830d302a7ef59e6f59bf4728bc56d16d74aa3fd9cffe61e111bc0095a7a77a",
+      "sha256": "49d21fdefb330fb4e4e8dccff7d61e5686f2be6fefb9f00c8191d67332eb7c20",
       "scope": "release"
     },
     "douyin-game/assets/customers/hedgehog-florist.png": {
-      "sha256": "045d45080f07db6ca6cdbe458d63948a822a42bbfcea3d1f1b27a16f22a418de",
+      "sha256": "d4ec5b040e6848cc26ed37803b180f4db184d1d56364a8db2d2e34e80ce13d3a",
       "scope": "release"
     },
     "douyin-game/assets/customers/otter-ferryman.png": {
-      "sha256": "436831c5f284ef0c7afa696c5c9d9be3a9f80cb5a23f38b668f0fb981130bb27",
+      "sha256": "c39d818419f3ab598cee3cbdd00ff4bc08b4717a2f7ebed4d19b3b4f5a3d1a57",
       "scope": "release"
     },
     "douyin-game/assets/customers/owl-librarian.png": {
-      "sha256": "f48219fb0650e5ee699eb40b971aee529baaa2bf06ab12111b81d72d12860a8c",
+      "sha256": "e4e97f2542c20d8081feb0fe35c05401ed5327f278a98ed41886fe1e13e96f8f",
       "scope": "release"
     },
     "douyin-game/assets/customers/rabbit-courier.png": {
-      "sha256": "f64c2909ce15d8443f763c0ce3bfd228717a13f32aa932d369b6d93aa65071ba",
+      "sha256": "a3f2a7bfa847b0065f8b76c69f3ede394ac260f40ed4ae1a27e7a4eee6039c82",
       "scope": "release"
     },
     "douyin-game/assets/customers/red-panda-projectionist.png": {
-      "sha256": "7b33f65a3ea95a0c0f457d2d61248e2a54c33555853f3d4506921395b672e69b",
+      "sha256": "7f2ec650b8133172117492ffc37d0fd83cc115aed9a2a0a84a9765e2fa7e6b84",
       "scope": "release"
     },
     "douyin-game/assets/customers/squirrel-tailor.png": {
-      "sha256": "12afb8c62cf8a26ebb5374194768a34cccf887e9bd39c5f634b37950840843ae",
+      "sha256": "12954cca4017b0abaec88f2be1131c40aae1106a283b6ae1248bafa896348e06",
       "scope": "release"
     },
     "douyin-game/assets/effects/focus-ring.png": {
@@ -1086,7 +1086,7 @@
       "scope": "release"
     },
     "douyin-game/assets/factory-upgrade/ui/panel-cream.png": {
-      "sha256": "59f5daa612b9d9a2e6f3ab980e67ec0aa568207ef77704fa264d89a4433a447e",
+      "sha256": "946d9eaf2dda80d1ea7509a97ce11414801f0cfb9b9ee2c3552e0efbcb84311a",
       "scope": "release"
     },
     "douyin-game/assets/factory-upgrade/ui/ribbon-mint.png": {
@@ -1102,7 +1102,7 @@
       "scope": "release"
     },
     "douyin-game/assets/factory/air-popper-body-clean.png": {
-      "sha256": "6cd030568ffa65169986ac515582204ee98cdb41ff09051d939cfb8f500806ff",
+      "sha256": "8e5a93d284b1e5063cdc9cd4d1f1de5a0b4148a3c321f297ed3dfa7378eadca6",
       "scope": "release"
     },
     "douyin-game/assets/factory/air-popper.png": {
@@ -1110,7 +1110,7 @@
       "scope": "release"
     },
     "douyin-game/assets/factory/ball-mold-press-body-clean.png": {
-      "sha256": "624a12ab464c1267f6c59649e9308230df6d22a99a0592b41cae35485b463e01",
+      "sha256": "bbb74d2deee74fa4b915846765cb13aca7fabb79621056d021cf7b9146dd3fd2",
       "scope": "release"
     },
     "douyin-game/assets/factory/ball-mold-press.png": {
@@ -1122,7 +1122,7 @@
       "scope": "release"
     },
     "douyin-game/assets/factory/caramel-drum-body-clean.png": {
-      "sha256": "c5c1a82a414ac6edc888b971bb5672be434acc6f84f3757eb2cac5ca24acf336",
+      "sha256": "fb23b2cab5edb937ec2b0e5fdb8242315152f0a356d3ec8348e61d409f066795",
       "scope": "release"
     },
     "douyin-game/assets/factory/caramel-drum.png": {
@@ -1134,39 +1134,39 @@
       "scope": "release"
     },
     "douyin-game/assets/factory/construction-platform.png": {
-      "sha256": "16138c5cd937ea456b18efa83d2b2bdb37805c1d016ebbc486229c86b3e185f9",
+      "sha256": "d3f878c0fcdc590d5df61384c4031960f186c93166c06ac32bf187f2faf9ec56",
       "scope": "factory-scene"
     },
     "douyin-game/assets/factory/contact-shadow.png": {
-      "sha256": "f5de7710878c4803c97f1713306aa633694c537154a605143553509fb2764f10",
+      "sha256": "9051b1b9e89bcf6053b5f60d5c99b4c55b26516010badbc43f7c2ab95dceecfe",
       "scope": "factory-scene"
     },
     "douyin-game/assets/factory/crisp-stick.png": {
-      "sha256": "ebe4ac41a1a9313f12f66f631392849baf833b021617908b507f2cb4ab735526",
+      "sha256": "c4acd38ce2cef56481a5d14c7813150f2e8bc51c14cfceef014c8ea0779ba09d",
       "scope": "release"
     },
     "douyin-game/assets/factory/expansion-plus-sign.png": {
-      "sha256": "f2b0d678db94acfe5486d839ece28a80de7b96ca19a20946909320aa8e5ebf69",
+      "sha256": "8f26899c4911103ec6aff79021c4265c7eba2a6236c2acf8688c936aedca2262",
       "scope": "factory-scene"
     },
     "douyin-game/assets/factory/flip-wafer-mold-body-clean.png": {
-      "sha256": "22a7d513fa86c5522739775109ffeabd9da6550590c7b67d9ff77b5c0059cba5",
+      "sha256": "64f9b73d5249856b2bd0ff78d76db5ca97ffcf6db8a9e8e9df8ca2e6cd310230",
       "scope": "release"
     },
     "douyin-game/assets/factory/flip-wafer-mold-closed.png": {
-      "sha256": "10eb946ae3e071701eada58a83163838202f75c575ffcb3372c0b1559ff59034",
+      "sha256": "7d82e9b663c25e1415e7e9fce41f755d2a7f87feded1b2ba284646e6d08e1c63",
       "scope": "release"
     },
     "douyin-game/assets/factory/flip-wafer-mold-flip-front.png": {
-      "sha256": "e0583e9b72aa99e4ed891035821ba8ac12d9aa3b48ef286ca98c4bd4065845aa",
+      "sha256": "2ee7a3afafb0b96b06c86a6b6944d5498819332f17b5b242b7923f990862edd3",
       "scope": "release"
     },
     "douyin-game/assets/factory/flip-wafer-mold-flip-rear.png": {
-      "sha256": "7a348bb010f71d090f463245605be16f771ef45df4347afc8eac4c13a2c38114",
+      "sha256": "8ff10727fcc28e15a0111ad7de5cffa4cd576d12bc2268479d0c6a72f7670477",
       "scope": "release"
     },
     "douyin-game/assets/factory/flip-wafer-mold-frame-clean.png": {
-      "sha256": "3e1d99b497321844c8d59646887326ab57d09165f3677487f98168ff96e146f2",
+      "sha256": "f3f8e0967d73911752499d16b977f9caa76f32e9cdfb33720ae6c506d835bb99",
       "scope": "release"
     },
     "douyin-game/assets/factory/flip-wafer-mold.png": {
@@ -1174,55 +1174,55 @@
       "scope": "release"
     },
     "douyin-game/assets/factory/floor-stone-tile.png": {
-      "sha256": "f03e8dc62cd26c6466fbb240d3c202dae7e7fb18de449a457a9e4fdecd5fc310",
+      "sha256": "da763ad9beb15ffb76d0db621773a8e6da85e1f5025903f6f78271ef874f99cd",
       "scope": "factory-scene"
     },
     "douyin-game/assets/factory/logistics-connector.png": {
-      "sha256": "7a04b99c6159bab35e9a4f1daaa19be6ea885c6191e6397560900adbb288c33c",
+      "sha256": "057a7ea15480f6db27864756dd8478c1a350cbb719b5f62a5d9c53b6a38a3ae7",
       "scope": "factory-scene"
     },
     "douyin-game/assets/factory/logistics-corner-ne.png": {
-      "sha256": "bc6dd7207fa9ed3199c6e0079c2d7ff12d73196252892c93b7d84915a75bb2f8",
+      "sha256": "d6a8bf9ff15a58b99158b0714c165a4703e1b89b3e476566646598038e7e10a1",
       "scope": "factory-scene"
     },
     "douyin-game/assets/factory/logistics-corner-nw.png": {
-      "sha256": "19aa584d45f4a1621139695194dbb16e50b50a99851ee9e0569185183bbcd410",
+      "sha256": "ca71cc66833521d9bac739350c0769e448331e6d1864f4ad666012a7240a909f",
       "scope": "factory-scene"
     },
     "douyin-game/assets/factory/logistics-corner-se.png": {
-      "sha256": "0026487503ee514ca91f9f0e8d1f256b1026096eb105249952f300d0ac1c28db",
+      "sha256": "d4816697f1aec6cd2762ea1e2d86163fa8677c17adb49af3298eff2ab29da703",
       "scope": "factory-scene"
     },
     "douyin-game/assets/factory/logistics-corner-sw.png": {
-      "sha256": "9a00b42ae93b8d5cc2c46eecda5ba055b3339bddca23eeb2fc1d38d73ae13773",
+      "sha256": "bcc2d44732a562ac6ee3c215ae090bc437c84808824ad63984511ee6af5b1261",
       "scope": "factory-scene"
     },
     "douyin-game/assets/factory/logistics-end-cap.png": {
-      "sha256": "d6b8d9f23d09fb319819619c689ef14a9269007e1c070ef1d32a6fee2c1e283f",
+      "sha256": "e44a48693256aeae8e3ca20858ced829bfbb12d5a211cd137752698332c0a995",
       "scope": "factory-scene"
     },
     "douyin-game/assets/factory/logistics-foreground-rail-h.png": {
-      "sha256": "40803b5e7cd1ca17af9c5048cf2f55283299ae32abf09a2d907ae7fc18d3bacc",
+      "sha256": "3615d51a33f3b59dbdc8797719f180a4a17dc8bdb3f4e498fdf448621a493760",
       "scope": "factory-scene"
     },
     "douyin-game/assets/factory/logistics-foreground-rail-v.png": {
-      "sha256": "6355c8a4edecc47219e59154835ad1ab7c0de711e5d841a3106ec56edefc3736",
+      "sha256": "a90a9ffab5863af6bc74c699c4418c7ab3bd279233b01605fcaa3e2c30f2ebc3",
       "scope": "factory-scene"
     },
     "douyin-game/assets/factory/logistics-junction-east.png": {
-      "sha256": "936c2a58e2035e2bd2948171c0114caad2920d33369580f3495ffc633f65c3be",
+      "sha256": "8ebbac5504de74623c5d540c3e2a4713e6d5f91ad46afebb150e6554e9d64bc0",
       "scope": "factory-scene"
     },
     "douyin-game/assets/factory/logistics-junction-west.png": {
-      "sha256": "e8ff492e3883138cc5bc1ec4c7277e45d03f8651ad0986c15fe92715886b8cf8",
+      "sha256": "c664f76752bb470c6a0daac5684375ec471eb148c743da5c7e89185d75a0b564",
       "scope": "factory-scene"
     },
     "douyin-game/assets/factory/logistics-straight-h.png": {
-      "sha256": "4baa366f99c8a3a6ab615f98bae3c2840de166aa2e571fe955b28015e0a4d461",
+      "sha256": "119cc4d9c05eb8772e894626afabb177f035ba11946b48ccf3ca8bff15fbe47f",
       "scope": "factory-scene"
     },
     "douyin-game/assets/factory/logistics-straight-v.png": {
-      "sha256": "4048d1826f253627f48ff2550061d0c397c79b957253ba237f137daf4ebc8da7",
+      "sha256": "0eca8c010f0ebcddffdf91215c9e98d5343dc1f6392229b14501e8cfafb1a116",
       "scope": "factory-scene"
     },
     "douyin-game/assets/factory/loose-popcorn.png": {
@@ -1230,7 +1230,7 @@
       "scope": "release"
     },
     "douyin-game/assets/factory/nameplate.png": {
-      "sha256": "937b81647e0c4e62b2fc8b94534c0cc606bcbb856242deea2a4b228afdf91ce0",
+      "sha256": "ec8a46fbbf35944aa2e283ee87e816800538161b824339b8d63d3c06d400ed4b",
       "scope": "factory-scene"
     },
     "douyin-game/assets/factory/packer-body-clean.png": {
@@ -1246,27 +1246,27 @@
       "scope": "release"
     },
     "douyin-game/assets/factory/popcorn-ball.png": {
-      "sha256": "e56c304ebdadb6c01b1b4e0cf0a64568a40301c0f4f96480bda31f2302167553",
+      "sha256": "f9c5f7e296eeb218f8c978d28c42429283daf4aa354b746e654e9c5cb02555d9",
       "scope": "release"
     },
     "douyin-game/assets/factory/rotary-sandwich-assembler-body-clean.png": {
-      "sha256": "57f51a5ac85028ff97f9fc66ff03ca2a87f560f720fc2fa2cca23564cfbf8634",
+      "sha256": "8689be63277e3dadad0467b729aaa3a4e2e9ac22c8098933bf040ed7fef60b5a",
       "scope": "release"
     },
     "douyin-game/assets/factory/rotary-sandwich-assembler-food-cap.png": {
-      "sha256": "69ab2ec401301200f4fad1d26a8a4c8c8efa540adead6f374991ccf1a27d778e",
+      "sha256": "3bf6216575fc8a2159271d1e1804593cac8cf737aa46275b5987e93726e85677",
       "scope": "release"
     },
     "douyin-game/assets/factory/rotary-sandwich-assembler-food-top.png": {
-      "sha256": "36ed3ec0219ffcaffed795a374cb2b378e910dd21842fe835c826679f8492b15",
+      "sha256": "9dbab7898cc5918ba885df50313e229a86810f4af7e1344cbcea8d4bd4ea70c4",
       "scope": "release"
     },
     "douyin-game/assets/factory/rotary-sandwich-assembler-nozzle-tip.png": {
-      "sha256": "bdeb302cf271b1bf8db0b6b487ccf3f3a5ba540331731966dc8759ebe47c888f",
+      "sha256": "3fba7a87824359077d0dcc168d09d70f80ea2f40e15237ba1242f0f97c9e2312",
       "scope": "release"
     },
     "douyin-game/assets/factory/rotary-sandwich-assembler-press-tip.png": {
-      "sha256": "7cf30ae955549b9d3e02fb0f1663664321b96cbebbd5609ed17594d1141d999b",
+      "sha256": "ab0c6e6bfb5f3fa537bf907b9585d61474327df3598cbc8f501c63bb46a2124f",
       "scope": "release"
     },
     "douyin-game/assets/factory/rotary-sandwich-assembler.png": {
@@ -1274,15 +1274,15 @@
       "scope": "release"
     },
     "douyin-game/assets/factory/sandwich-square.png": {
-      "sha256": "7062ab114fdf181f44c3d44f27f3a41adb8e3abfa7688a5c3882f4a423dd40e4",
+      "sha256": "85b645c4bd4f3f228a11628dd3c18300dd4058805cf9fa70c6cbd383ede17fa6",
       "scope": "release"
     },
     "douyin-game/assets/factory/selection-ring.png": {
-      "sha256": "9c39ba86f139d69ef59738430a7456d1342886d1f7758f79f0d982f91ccbc01c",
+      "sha256": "3b9757d11de88cbc597474293493d683dbb67b85af3928d5343a886c17b2a650",
       "scope": "factory-scene"
     },
     "douyin-game/assets/factory/sheeting-strip-cutter-body-clean.png": {
-      "sha256": "4f945806b769646416f0e5f1484b1d882a4d28b0075eb6f68b0316803804eada",
+      "sha256": "b0ebb0a0d62b1d06acaf4a966d46f86f1dee1afaaca9e3d31cd44ac1ad116b07",
       "scope": "release"
     },
     "douyin-game/assets/factory/sheeting-strip-cutter.png": {
@@ -1298,7 +1298,7 @@
       "scope": "release"
     },
     "douyin-game/assets/factory/wafer.png": {
-      "sha256": "506099b2a9e1eb3d8c8abea487d843e2aa9d8948e005ca29961c7be65d3f2328",
+      "sha256": "8ebdf39a6802b35e40b6223a25eba78846d9386f060aca6bb035cf4289e11b34",
       "scope": "release"
     },
     "douyin-game/assets/factory/wall-back.png": {
@@ -1354,423 +1354,423 @@
       "scope": "release"
     },
     "douyin-game/assets/launchers/caramel/lv-01.png": {
-      "sha256": "44159f7671af1065f804562d9476fcdb6a42325fdc6816972b5ac531f38d23cb",
+      "sha256": "ab3b46f0cfb0a015b45b9ced66c24d62238a11d36abc7f32ae2cd7a6d5eb96ab",
       "scope": "release"
     },
     "douyin-game/assets/launchers/caramel/lv-02.png": {
-      "sha256": "55469ac9bc5a73914b1127ad76486217b69e8608b0b328390a38243619376ba2",
+      "sha256": "e28ca6f216756c32b16e5ef6b97c5e0a60a0415b5b8c381faa2cae46f98b9cc4",
       "scope": "release"
     },
     "douyin-game/assets/launchers/caramel/lv-03.png": {
-      "sha256": "c679723f09e971b8a76407a5d78b035e44fdb3222a7dad7d56f36695df342476",
+      "sha256": "ef2c7a594985113a9bfe7ad3e44a4eeb98d640d852e479438ee83f7399bc59f2",
       "scope": "release"
     },
     "douyin-game/assets/launchers/caramel/lv-04.png": {
-      "sha256": "d2fa1e2a2422da4228a2109be7fd53d38695eec8335ba8475d1b053da1224879",
+      "sha256": "60606d3e7d855f7210c280176316544585af449297b122f3c14458a737c55973",
       "scope": "release"
     },
     "douyin-game/assets/launchers/caramel/lv-05.png": {
-      "sha256": "5c14ea12fe54d2b5a3e61dd686d041f6d472fb282115f9879a09448d592c7aca",
+      "sha256": "191d0cb9761deaf231e7ea00aa419a4d0d9ab8e75bdfac29f0aabdbdef93a770",
       "scope": "release"
     },
     "douyin-game/assets/launchers/caramel/lv-06.png": {
-      "sha256": "0681f60129ea19a7db946d971ffc6e902b9e95047603dab617de52b76530d7a8",
+      "sha256": "93e019d925aa8d4770c52689895b471a6763a040cb570c91d7023542c92c8c2a",
       "scope": "release"
     },
     "douyin-game/assets/launchers/crisp-stick/lv-01.png": {
-      "sha256": "c40071736ad8cb63d9ef6170fb8241a5413c273da6e1ed211089ee537693b75d",
+      "sha256": "277690eece33f5b20983f94d481a6dd517cd86fd982b694899564870b062f2e5",
       "scope": "release"
     },
     "douyin-game/assets/launchers/crisp-stick/lv-02.png": {
-      "sha256": "14a6edb810a15f612813b88189a05a39b15ae77b92e0a612e75871ed85e5e70d",
+      "sha256": "5acd5c66437cad325b9800a29f9125f36420497a4c4755c60c3ccbc16caf5e8d",
       "scope": "release"
     },
     "douyin-game/assets/launchers/crisp-stick/lv-03.png": {
-      "sha256": "c46bdeef666b199dddfbbf11bf9c1e3ffa66c25c6219f1ebd9d290d8504b4194",
+      "sha256": "3ae9a1c3810c3b0d05f95b861e6d7f4ce4358576b623c6f0e8a5da7b67416587",
       "scope": "release"
     },
     "douyin-game/assets/launchers/crisp-stick/lv-04.png": {
-      "sha256": "bcacad40121a5def93f133193545ffc769c505f5c6661a453a0b639c0484a163",
+      "sha256": "34fcd5830720278effba4a1146261984dd7905760921249187f32a8b78aa9b86",
       "scope": "release"
     },
     "douyin-game/assets/launchers/crisp-stick/lv-05.png": {
-      "sha256": "3f9bf8f9a39c14c33f907a09bec5b6b338efec027bbdf25528fbb8320887c9fc",
+      "sha256": "f0d4c69b98f705b5178189c17f296847b714a850c4642f6da4eb8b52f8f0aaa6",
       "scope": "release"
     },
     "douyin-game/assets/launchers/crisp-stick/lv-06.png": {
-      "sha256": "c22f0ca5d904cab18bbb0ce659dec8feb02d5a1fa72abe55037b38f47e96df97",
+      "sha256": "4ac6627fe01a8691ca3d92f13f41254bbebc4b013ced8f1713c75bfc2c90ee45",
       "scope": "release"
     },
     "douyin-game/assets/launchers/original/lv-01.png": {
-      "sha256": "862e34302ffba0b06650af41b900a503d16bcb0efebdfa09569973ef36f0447a",
+      "sha256": "ac4d9162061693153023cd5c10aab4d0892517da05eec7e6830367e2c9e7d9d6",
       "scope": "release"
     },
     "douyin-game/assets/launchers/original/lv-02.png": {
-      "sha256": "713640aab7b89bda0dcb1cfad4badd1ce774f951c4ae07aa7979e53e596c7111",
+      "sha256": "e20ef36ab2075c40b52b4248fd20078753343c58b0d77f4d5fc77e2dc76f827d",
       "scope": "release"
     },
     "douyin-game/assets/launchers/original/lv-03.png": {
-      "sha256": "d18a453a475529e28df18674560d7b686666052a1c69617700478ba11830e06a",
+      "sha256": "008f3a6a586ce9ec4f55d7eeb4c4e2ac56e319675d60411478353c17be889707",
       "scope": "release"
     },
     "douyin-game/assets/launchers/original/lv-04.png": {
-      "sha256": "27d2fb0b2fd251b1cca0c380d85349075380ee83dc825dc946d6f70880b91edb",
+      "sha256": "03496e145ad4458109f76baf62de0cbfe50fb90e24fb9dc8c9b861e63e2c9105",
       "scope": "release"
     },
     "douyin-game/assets/launchers/original/lv-05.png": {
-      "sha256": "fb9b96cecb95f5a46c1d852fa974957a3c2ee33079a4e8e77cd7c924b6dfe706",
+      "sha256": "2feac0ba7819be635e75b70541c7abaef1dcdb8a2e3fa343e5988e0bb792888f",
       "scope": "release"
     },
     "douyin-game/assets/launchers/original/lv-06.png": {
-      "sha256": "09adb588c6dc543dd22ea4e271a5788e92beba195c6feb44faef9b0bc4b3b224",
+      "sha256": "b11f15c864c548205c40175c037e129bd98b872f55068b0b8bfec7048361b9b6",
       "scope": "release"
     },
     "douyin-game/assets/launchers/popcorn-ball/lv-01.png": {
-      "sha256": "ce19cec61fe7d3f45d6fea53631bf8502f5eb171868b159af08ef9f41ab31730",
+      "sha256": "8b5bad03a3aeb287d53f42c3b84b2d0593e738eefb4591c7ee352c8c79fc86a0",
       "scope": "release"
     },
     "douyin-game/assets/launchers/popcorn-ball/lv-02.png": {
-      "sha256": "717f6c861959a31abdd8a65107abb2f19c830e010e3445fdeb538467c87a01e1",
+      "sha256": "1c7d1c9959710e6c373774f640050aa7cc0b9f884a1178b68d30fe020cc6cddb",
       "scope": "release"
     },
     "douyin-game/assets/launchers/popcorn-ball/lv-03.png": {
-      "sha256": "887b427b7bab24edb6b1295d0add22c66ad8ec449d73f331c71160c4cd0a27ea",
+      "sha256": "e071b670df3788d02cd581a4fd04b3d568d2538dba65700c6a303cf9241ff276",
       "scope": "release"
     },
     "douyin-game/assets/launchers/popcorn-ball/lv-04.png": {
-      "sha256": "2c853e429bc0b050af54184d8e76adb188c2f1f3a31a7182dbd17d6e4e860316",
+      "sha256": "2f0af6e15de20dee14dff66e1562b9dd79e947c4375d3889050e15aeb60c0df2",
       "scope": "release"
     },
     "douyin-game/assets/launchers/popcorn-ball/lv-05.png": {
-      "sha256": "33ff67c1cdcc05d7f39f4ef8045a7982caf03d2a1cb331d692f9fce41733c400",
+      "sha256": "6cb4da960c4e0140a3fbd4f44ae8594cc7fdf35c6f3cf13ba914438cd09b2b71",
       "scope": "release"
     },
     "douyin-game/assets/launchers/popcorn-ball/lv-06.png": {
-      "sha256": "29cb8b1d99752ce9b6804992bf761e06bd8b893074e3c74aca02b03b3140d8fe",
+      "sha256": "2733f6177ce7fd452cccd2494773ee5cddfee8fd1cc6049d500c5b7a9d8b3f3d",
       "scope": "release"
     },
     "douyin-game/assets/launchers/sandwich-square/lv-01.png": {
-      "sha256": "2f42d970c3d3b9af4115e0c60857b1df9eff960c9a71bdfe58771eff885bcc5c",
+      "sha256": "0fa279b291f4637b704c3eb2e9c0ef729134a020b0510d00699816b590317bb2",
       "scope": "release"
     },
     "douyin-game/assets/launchers/sandwich-square/lv-02.png": {
-      "sha256": "880b9dcb6805ce39bf850b17d790830f38e612b82eea7659a1777ba0c97426a3",
+      "sha256": "45f62f276dabda90f17f3498d6297d9db944e29bae10331a5c9652eed930a88f",
       "scope": "release"
     },
     "douyin-game/assets/launchers/sandwich-square/lv-03.png": {
-      "sha256": "a7019ee95de2ed216360333544150dc41dc4853571d295fd7a82fe2bd688af8f",
+      "sha256": "256461423555907dabaf5513dc2acd92c7d2b917a02c42751603af6bbdbc651a",
       "scope": "release"
     },
     "douyin-game/assets/launchers/sandwich-square/lv-04.png": {
-      "sha256": "01503d0f6ebafc6d8df58896c1c83eb2f314ded2638394105c93d4ec23864119",
+      "sha256": "c1b5aba793e5ec5b414def942450ea04157e5733a50ec32e1bf918ec9f305f16",
       "scope": "release"
     },
     "douyin-game/assets/launchers/sandwich-square/lv-05.png": {
-      "sha256": "834aa38c8e144eea2a8e16a4b72a9f9b04dd050810c053b4692995bf5636dc38",
+      "sha256": "37c8ff346917bc528bc7f2dd3f4b1b698f8712e044d5e0b0c0b9d98606f6371a",
       "scope": "release"
     },
     "douyin-game/assets/launchers/sandwich-square/lv-06.png": {
-      "sha256": "2c73cfdf8f711366abde1eb8f265f1bcba042b1383b146a3517aee3776f450f4",
+      "sha256": "4f798ac9004ba04cd8497e14f25f5e3d2c939617716498d838b9ea1b03d18e57",
       "scope": "release"
     },
     "douyin-game/assets/launchers/wafer/lv-01.png": {
-      "sha256": "a540e573d439aa6bddeeee936efa4a213eb8b9a06c4ec7e677b828058369f5cc",
+      "sha256": "e7fe1848529536420e8e011b27e26f2b7221f991d1c98a0eb8f34995f5f711b9",
       "scope": "release"
     },
     "douyin-game/assets/launchers/wafer/lv-02.png": {
-      "sha256": "9aba8905529f77021819e7766c4d56861f3c418253af2f2d972c37cbfa0b825d",
+      "sha256": "b51a661d75c5f3a72ab655ebbc39eab7dc65ff2deda5aa66eb6e835710a1118e",
       "scope": "release"
     },
     "douyin-game/assets/launchers/wafer/lv-03.png": {
-      "sha256": "656bfe342efd9baf73ab80cda90216620afa83c4946e3f7b746bd1dfa531bc07",
+      "sha256": "ce2c758cfadd18bbcab00e23ef3fc400822cd18144e35ee45004a175c30913e1",
       "scope": "release"
     },
     "douyin-game/assets/launchers/wafer/lv-04.png": {
-      "sha256": "bd4576fc890ca1128f09b82bb3656622c776810355492a895420dcf279d89dc5",
+      "sha256": "3e391963f16494f93dcce0015885d8eaefd6070067dc384c7760dbe77e12f031",
       "scope": "release"
     },
     "douyin-game/assets/launchers/wafer/lv-05.png": {
-      "sha256": "27bb447caf0760875afa37c12ce9e5591d9d432edab2c8227410c17b4c2b1957",
+      "sha256": "16680c18d37b722d52a9d1d20a8402b01a4d5ce5bc2ab438b42b32bd32ba45da",
       "scope": "release"
     },
     "douyin-game/assets/launchers/wafer/lv-06.png": {
-      "sha256": "9d9daaf75cb7dd72f426c5a6690c98dcde031c6f7c6c2d4463fadfc3abe7d534",
+      "sha256": "63096b01491f1fd9666a41d37fd60d5ca8242421c932c435dc3933a2adf5a41d",
       "scope": "release"
     },
     "douyin-game/assets/products/caramel/lv-01.png": {
-      "sha256": "fd9dc9ec31b6d3227822299d16d25c0d231731b2c3aea2fbf0ee9aed91c1d8ab",
+      "sha256": "8cfb01eccf545154f1600b58d2cd52307f0e4231b15b00de8bc381a23c520f7f",
       "scope": "release"
     },
     "douyin-game/assets/products/caramel/lv-02.png": {
-      "sha256": "690f699bd49845701e5dda3daa25f9fd6ae302fd033cf5a6c62a6f495480adc1",
+      "sha256": "1d4eb42cae441cb6a5fe83cbad4e90cacf30bf9511c1b89151149c1a5d8db2ba",
       "scope": "release"
     },
     "douyin-game/assets/products/caramel/lv-03.png": {
-      "sha256": "be85a827ad8b2f76045d07493d855da9937fbe129a3d232ea3e365b7190685c6",
+      "sha256": "f1f7cd43c35d8697cc23a6fb71cff35a6c06eea9d0009cbcd2c189faa40c2e53",
       "scope": "release"
     },
     "douyin-game/assets/products/caramel/lv-04.png": {
-      "sha256": "0138ef8362841eafa6a4bb5bb974c823d9c9d486cfdaff2c6fa816d254b7fafb",
+      "sha256": "42a20394686e00949c90934bc30ce0e5e34c0cb86d2fd10edabfaeaa42a83beb",
       "scope": "release"
     },
     "douyin-game/assets/products/caramel/lv-05.png": {
-      "sha256": "d46d6ce9e18cbf75b4f601f4aca225dbdc2d1b6a280d4e0619da1386201bf00c",
+      "sha256": "58cea00d85a5ec812b550093c7dbb092d4e629402426109e4a947e445aa80f12",
       "scope": "release"
     },
     "douyin-game/assets/products/caramel/lv-06.png": {
-      "sha256": "b87ab946dc353e8988ec7fc3dd1470dfb8b1946f6c78dbe51dcca46dcec71621",
+      "sha256": "ddaed2bd6485223f7d9ceba07de787a7a8da1b769e62de028fe32d0f3b9f2052",
       "scope": "release"
     },
     "douyin-game/assets/products/caramel/lv-07.png": {
-      "sha256": "b571910a6315194dd8f7cf63ffdbbe80e6d9085df4988c1a847f8228518a50c0",
+      "sha256": "573c16a9b163200b8ae5853d995e52996eb4cfa135f0d8036e4369fd7e4ad3a6",
       "scope": "release"
     },
     "douyin-game/assets/products/caramel/lv-08.png": {
-      "sha256": "2312de190c4e1c70f3a5aefd32aec87f06c0e19644c7bf16cc1814c7032356b9",
+      "sha256": "7b4cafce8f2fb4cbcf8c93d6464ad422e0c02e4f8fd80dcc200dae32018d7b45",
       "scope": "release"
     },
     "douyin-game/assets/products/caramel/lv-09.png": {
-      "sha256": "31381a5fb03414ea388d3f1209441b50d86b83e120ed1d7b4f469e1b462a09ea",
+      "sha256": "36bcb840fbdb23a4adeb8c5ead53b36982cc10c2298decaf4faa6ed6d3e02e7c",
       "scope": "release"
     },
     "douyin-game/assets/products/caramel/lv-10.png": {
-      "sha256": "dc2fb646d155c5d916e0b5f2fbe46993d41abd4b2359783dd33819b5557af9ea",
+      "sha256": "f111c2763e0a953994e956e64d4d76fc3593a8db95b218b1e6f1dde3b9741557",
       "scope": "release"
     },
     "douyin-game/assets/products/crisp-stick/lv-01.png": {
-      "sha256": "30ef4745cf7fcf7c8f494cd3426f60e4fa015e74f6042516951e85ad7e3aad8c",
+      "sha256": "2f0f427aafe8f5296f4161f6beb4deeb38186525eb82df0798ebe8d107544461",
       "scope": "release"
     },
     "douyin-game/assets/products/crisp-stick/lv-02.png": {
-      "sha256": "64d72314c147d4cb4e2f857e16b001d3b64758ccb32b15ae47143db0a6abdf59",
+      "sha256": "148f20ffda2c285e566ac2890d110d4928e749f47be93afaf845a90f67a8c684",
       "scope": "release"
     },
     "douyin-game/assets/products/crisp-stick/lv-03.png": {
-      "sha256": "6634632e428b4ff6ae3f77f3163f306cb8fab190be5eb554d85b2800eddb81e9",
+      "sha256": "779d2534804e58791d07e779c81c2374f5a1b31d256f2414c834d2de83d0598c",
       "scope": "release"
     },
     "douyin-game/assets/products/crisp-stick/lv-04.png": {
-      "sha256": "2222ddb7872430046c2fa90890b30d91c5bb40755ad60ed405892d2e008a91b2",
+      "sha256": "3d1818f17befac17611e98481e3314a0dcd8728361fb86e1d81ae7c5b4a3ecca",
       "scope": "release"
     },
     "douyin-game/assets/products/crisp-stick/lv-05.png": {
-      "sha256": "aa19fe7f433a56e13e26748397a9a215fb23cd6ef5fbd6acac6ed4dd86357d18",
+      "sha256": "3abf35d169cfb80ae1747cd521c19b9841f30fc0cdef276b4f22f2a5313ccd48",
       "scope": "release"
     },
     "douyin-game/assets/products/crisp-stick/lv-06.png": {
-      "sha256": "b40b86d59d964dc9870a72c82162e15b04aacf8aee6679dd9a86370ab0954715",
+      "sha256": "ba54355595e8e2f6cb299e24604c3281d47f3128677e1f973cb1b0fe303c6bad",
       "scope": "release"
     },
     "douyin-game/assets/products/crisp-stick/lv-07.png": {
-      "sha256": "54aad3439b252cb6a00fe676f30506a6b65504f54975e600b0e51ef63b896130",
+      "sha256": "150cb41397cfe47b45cf889e52db0179cf95612cbde9ef6e07eb965db524144d",
       "scope": "release"
     },
     "douyin-game/assets/products/crisp-stick/lv-08.png": {
-      "sha256": "4eae8a13b2f746f1b39a9ec186952fba62abfcba7408f4160d3baaaade6fd05c",
+      "sha256": "c7d510ad798581eb5300b1fadff6997f0c80f2b1ab1df67335e9749ebbf2ed9c",
       "scope": "release"
     },
     "douyin-game/assets/products/crisp-stick/lv-09.png": {
-      "sha256": "bc018e908ab177095ace00c5abd7a183b186e864725c0395bbab32876541eb59",
+      "sha256": "9588dda4f35949b946f71cc8508817a7a0254ade2bb697545a96b2d52f36d815",
       "scope": "release"
     },
     "douyin-game/assets/products/crisp-stick/lv-10.png": {
-      "sha256": "b61f7e16f66129429619dda4d48a4ca9ad04c4a5d10e7669c6fd943267359b14",
+      "sha256": "395b56918fbad7df2589d13b5780f6cec5164bafd64706f919433a65f2a622bb",
       "scope": "release"
     },
     "douyin-game/assets/products/original/lv-01.png": {
-      "sha256": "52e5cd4c22aac764ca73d6387db34786ad72385c7f3f5c23fdf9096318e4d9d2",
+      "sha256": "e5eafe33e3b18235901b4b0e6511c588a0f56979d69eccac206548dc6cf6cb04",
       "scope": "release"
     },
     "douyin-game/assets/products/original/lv-02.png": {
-      "sha256": "0e97c6c69241c4dcd97fa6fcdc0e382313ae20a3c13c0cc7c984b6fc6482693d",
+      "sha256": "e1daede2542b87164cbaf6809cc408e6b07089a7057e36c657d554095256635a",
       "scope": "release"
     },
     "douyin-game/assets/products/original/lv-03.png": {
-      "sha256": "bfa71d7138493314fdf17958e7e1f4133893bb9b7d21b7429da74581562b43f3",
+      "sha256": "4947b2573a0a8bdc2d0387313749dd1e8c98bef60ca45e65676d61a064b7129b",
       "scope": "release"
     },
     "douyin-game/assets/products/original/lv-04.png": {
-      "sha256": "584ca51bc1df975e424b200440af5f231e23a81ac44b556acdb63578d75e6cf0",
+      "sha256": "33919766040318e2a257431e9625c743d543fd516c7d683ddeb2b459f5197657",
       "scope": "release"
     },
     "douyin-game/assets/products/original/lv-05.png": {
-      "sha256": "c88ed482be6a73233b34a61b00998d625d0af4adf5a6d1926d68f0ac68debe80",
+      "sha256": "e89958a21af379b1c897e7bd721f90fffdd9b8d312a7fc322046b8917d6992ea",
       "scope": "release"
     },
     "douyin-game/assets/products/original/lv-06.png": {
-      "sha256": "5fc0ea436037bb3c6292b1e5d10f2261c735308b43b5cbdd4b7328955655c570",
+      "sha256": "d003f0b0af24580692478ba5bc72e52e6c73f37aecb440cdd42628f970e60a78",
       "scope": "release"
     },
     "douyin-game/assets/products/original/lv-07.png": {
-      "sha256": "0be98a51aacc8d73c533c3af6bcaf664e7fda0fa3c1464288b52c9a13fe84ad1",
+      "sha256": "06fea1b50f53a238daa9af4f8dfa57412322e807fa1046e4af74eb51d4461dfe",
       "scope": "release"
     },
     "douyin-game/assets/products/original/lv-08.png": {
-      "sha256": "0bcbf266aef5c587e3d585436aa91af31383aa3aeec064b274047e2e869c603a",
+      "sha256": "8bad2e60acb65085b3020da10b919bb747b938049038e5ee09ccca3b932387e7",
       "scope": "release"
     },
     "douyin-game/assets/products/original/lv-09.png": {
-      "sha256": "39fb7929394065604edd6d2b5dced51b4f2d2d619f11b2ce59eeb3cc54369ef5",
+      "sha256": "55b7f64ef5a029bd00b26f35a9e9ef06c85682d21a824c4335503ed2f35b46f1",
       "scope": "release"
     },
     "douyin-game/assets/products/original/lv-10.png": {
-      "sha256": "f6d3a8252bfcd6fafe673458e50543ab35745e3be2eb95a416382a0be6108153",
+      "sha256": "cc89245f156e2c344823c7c743a996e29c965ec94e98a3e7dc493f4d6ba793f8",
       "scope": "release"
     },
     "douyin-game/assets/products/popcorn-ball/lv-01.png": {
-      "sha256": "991b02cd883e2518ae3b8e0ff23c01bdc3b6847fe894a12026392853110fe951",
+      "sha256": "5e0f0d7d9644579bd92706d4c6ef0ec154603da9341572bb9be14e156ab56b94",
       "scope": "release"
     },
     "douyin-game/assets/products/popcorn-ball/lv-02.png": {
-      "sha256": "98a3a5e1a3f5422e7e8b789295a2cc132b405aa2bad57e35d52db4d4ea5c74c6",
+      "sha256": "a7a4dbb8fba1d612e69a102791b171c5791fe37221bbd0834e3fc79d76db5ae8",
       "scope": "release"
     },
     "douyin-game/assets/products/popcorn-ball/lv-03.png": {
-      "sha256": "46c1aecdecf17250423f7a231a1fe17bf56069882c5cb0eaa10b49651c6f89bd",
+      "sha256": "2081c3766f4c5181a97400434f2fbef5652f858e58237f56557c0f4cee8af8ec",
       "scope": "release"
     },
     "douyin-game/assets/products/popcorn-ball/lv-04.png": {
-      "sha256": "dfe170473fb1a10353762a1fa093d60fa34a91d821c146d61084155c1b2b520b",
+      "sha256": "c1575c4f13e89af64c76628eb758d32d0c9e74feeb47dc2098eea062b4bcb162",
       "scope": "release"
     },
     "douyin-game/assets/products/popcorn-ball/lv-05.png": {
-      "sha256": "d1933070336d2ac1da432390c73f6da0e5fa10bd0b163a757dc63209d8782175",
+      "sha256": "395951d0725daeadfa6b68c1e631ec3d559a2883ad08b29b724e2d82318ef1d6",
       "scope": "release"
     },
     "douyin-game/assets/products/popcorn-ball/lv-06.png": {
-      "sha256": "cc63619fdc7ee33dbc41d3401fc6b08f70051fffae955c7cae0304774ed45c13",
+      "sha256": "10abdae90c49871cbb5f98196386857c9c0e61d0be45e7e36c8b462d5e3cae4f",
       "scope": "release"
     },
     "douyin-game/assets/products/popcorn-ball/lv-07.png": {
-      "sha256": "876f4a05d6c940cd92f8ba9c76231021d380b95a4b205124c096f0de9cd50546",
+      "sha256": "9a3db28382305c36cc97dd55852ca868a17eb10db2586adde57d83e7bea4e1ec",
       "scope": "release"
     },
     "douyin-game/assets/products/popcorn-ball/lv-08.png": {
-      "sha256": "18f9bb279bb10b1a1457ca9bcb913f7d9481fd8abdb9c7c3d3a0e6e9b07473d5",
+      "sha256": "a39d4b80a14c9f62d89a2adbf60b70ce5ac75feee30f02ba8787de4713721b3c",
       "scope": "release"
     },
     "douyin-game/assets/products/popcorn-ball/lv-09.png": {
-      "sha256": "7dade1150140c4efc86c1095b9790254bd94f5f2f5d265fa499473d6457bfc32",
+      "sha256": "72c22ef5117c7eced73936ae849e43ab0bfb6273f1f7d91e53a19095535b2a85",
       "scope": "release"
     },
     "douyin-game/assets/products/popcorn-ball/lv-10.png": {
-      "sha256": "3953e346069de8116480529d28251c322a29bebcb9c39b1d04eb20b6a51fe37f",
+      "sha256": "36641fbf1061133559e2da16e577ec69c861867b3635863fa8b95a08a1216f72",
       "scope": "release"
     },
     "douyin-game/assets/products/sandwich-square/lv-01.png": {
-      "sha256": "bfa56e640eb8909ce1c4ce4bea11f419dc4138c083b4c8551fe6535d3896ac0d",
+      "sha256": "f4cf561974fffd59fb7be1192a2b0b2d3f31f2457a2e196838012b17fce4c837",
       "scope": "release"
     },
     "douyin-game/assets/products/sandwich-square/lv-02.png": {
-      "sha256": "a9a6f5a36aee6613d7a9eb5f5e6469b763d2d741418b72c36287316c3c43717a",
+      "sha256": "790d718f08b1d0a8adc37c5b64c4a867a213b3958cb8da0850d26dd2a00e526b",
       "scope": "release"
     },
     "douyin-game/assets/products/sandwich-square/lv-03.png": {
-      "sha256": "54ee4e6d27e0092e2cd5ac353d1058607e2aec7ae3051cb7a888a1a98dfaf37f",
+      "sha256": "2691b0dd4f8b8287c43add2ef0aac2e146b42c4884d0af5a20f885c4b052cee1",
       "scope": "release"
     },
     "douyin-game/assets/products/sandwich-square/lv-04.png": {
-      "sha256": "6416f9aefa3d90534330dc1d6e21fe562451407b6f1422b259a386796673d15e",
+      "sha256": "ecab44a7f92df60a7745067b20b7aa7272ed092e8fc4ca497115ca12b34a59a8",
       "scope": "release"
     },
     "douyin-game/assets/products/sandwich-square/lv-05.png": {
-      "sha256": "12aad5267d6ccbb9704a54b599a1e668843f970bbc72a8de21ca1325afe20e0f",
+      "sha256": "eb962c78bd19d266bf717b3c0ddf248c9faab5a629d71bff009377f03d199c07",
       "scope": "release"
     },
     "douyin-game/assets/products/sandwich-square/lv-06.png": {
-      "sha256": "d1e5837dbae29ee9c3ee57bb2f5ae1196488b64f70fe284c020ae1b417f5a4a7",
+      "sha256": "f16a93a8f94b8394715758e748a8f95cb65a9cf115f1d630d4ee69d0e6ac9f88",
       "scope": "release"
     },
     "douyin-game/assets/products/sandwich-square/lv-07.png": {
-      "sha256": "44656d71c46eb9a61a39ad96317cc527c09bcb5df7f32edbbe9be85c4a7e8885",
+      "sha256": "46294494574f3f8a4f76935b205a5cd09a00ff9ab29d4120a579a06b4730ab37",
       "scope": "release"
     },
     "douyin-game/assets/products/sandwich-square/lv-08.png": {
-      "sha256": "eb1f3f44e30f43f3d230f7a37535070cf42b05cf20c38da02523cca6042352da",
+      "sha256": "878d3a749873e3405f7c316353e7520086ca06775cba727f3b3e95b0d43eb922",
       "scope": "release"
     },
     "douyin-game/assets/products/sandwich-square/lv-09.png": {
-      "sha256": "9d53d855499d4c0d6cd9dcd1f9623429cb33119a3a19211f956e3a535640610d",
+      "sha256": "3d02aafa9029becbb3ac8cb1435fbfb9c0c915e9b423707559eaef9a91328356",
       "scope": "release"
     },
     "douyin-game/assets/products/sandwich-square/lv-10.png": {
-      "sha256": "cf840dc378ce7deffcabc8aa68783e37473fdf5c250a09f363c01af9f82d8129",
+      "sha256": "04ee3971794b6c365b6fade3f8ec55551245fae0f5265a9931ff7e8dc094ff5c",
       "scope": "release"
     },
     "douyin-game/assets/products/wafer/lv-01.png": {
-      "sha256": "32b79cf4bb7e6921b6dda8321e4838643aba23f39ba490fc57d0bd6357aa7704",
+      "sha256": "7a0b2663b1e53de06d95053234b2248feba50febf47e1a300ba71d21c5cd3266",
       "scope": "release"
     },
     "douyin-game/assets/products/wafer/lv-02.png": {
-      "sha256": "1881a6aeaf078284f7342b86950d0d8fbf5039d1576168aa5f74b5c313da4b97",
+      "sha256": "cca225d23a834c2c59154c8b75e145177a48f2968d1cd12fb2ddf6065d054cbf",
       "scope": "release"
     },
     "douyin-game/assets/products/wafer/lv-03.png": {
-      "sha256": "5628ff06afcd71b6c521e8894f5566e9add55ca89785c8c9319ad4b4b3a1b92d",
+      "sha256": "ff3a825676baa36cc09dadd772466a24b1f292926c06a151e31ef7a015fbabb5",
       "scope": "release"
     },
     "douyin-game/assets/products/wafer/lv-04.png": {
-      "sha256": "432f66ed5494be4898537501a8e2fa65c008a34eef53825993f487f2edf627ce",
+      "sha256": "d3ee31e3ba39c9e7954863324796442fc5f4185b40608fc4ca3cf8691413416b",
       "scope": "release"
     },
     "douyin-game/assets/products/wafer/lv-05.png": {
-      "sha256": "6b889281096a612f22d687d331114a8658adccbe51ba3f047f6c84df3cbcf1f2",
+      "sha256": "60ceb2dde6016be1b3330b7f34f6ebcff77ed1a66f93933ed26f375c220c2f1e",
       "scope": "release"
     },
     "douyin-game/assets/products/wafer/lv-06.png": {
-      "sha256": "072c759bf4381a208d7e6ebec7175b44bde0de80660196a100baf26e3a755968",
+      "sha256": "7e6edced0dd605bb23c0cdcb8101d04d15451c0d6b744be514ccebbbbc21b5a6",
       "scope": "release"
     },
     "douyin-game/assets/products/wafer/lv-07.png": {
-      "sha256": "e7aea8c7fd2b74138bcf460ae22648c9e0bb9303809f914a63858c59b0e56365",
+      "sha256": "a0b1d4f5258facd6e7ad904fc29fb12b56df9d892b4bbd5b3a20a44cb7704ff9",
       "scope": "release"
     },
     "douyin-game/assets/products/wafer/lv-08.png": {
-      "sha256": "55d532f072a16859b51bd707718f7cdd27166577884428df17ba71ea1ad2b752",
+      "sha256": "c374f78dfb53ef4b400fb9222a3b279fd4364574dea91e82e5aef39349c5e7de",
       "scope": "release"
     },
     "douyin-game/assets/products/wafer/lv-09.png": {
-      "sha256": "d3403149e94120389bf6a43943ca090a997e4faa7137b5e421731cc9f4ee7e15",
+      "sha256": "0dbfdd5d49a06487ff6ce536faefef84549e87a9a5f073965ffd5ed36d731ff3",
       "scope": "release"
     },
     "douyin-game/assets/products/wafer/lv-10.png": {
-      "sha256": "7da07d4222c819232a5b2598b72b904e6646c20fce4a6b836ea8967cd14fe66c",
+      "sha256": "4bc06da77b0332855cfe06eceaaa96068a4ed2b747dd78c41a23b9830c2a7dea",
       "scope": "release"
     },
     "douyin-game/assets/ui/background-room.png": {
-      "sha256": "25ca43cc500008274537537692d2fbf9dbf07b7086fd9e4b0331d69daef4646f",
+      "sha256": "171264623401c87bc3f9e6a4c54b50ef347181c0762cb5d5ebcdfe192bec8b87",
       "scope": "release"
     },
     "douyin-game/assets/ui/background-table.png": {
-      "sha256": "fbe73a9b953cb24114d286b129bb5f27de5ce4f803b4aa1aa164c6c40799f0c0",
+      "sha256": "030b56fa87b98fef2665181b77a3936d4ce071aec1088d0ba5e461d55d69c1bf",
       "scope": "release"
     },
     "douyin-game/assets/ui/board-frame.png": {
-      "sha256": "60e4cc16f0830394aabc164ad5ea1dfab35399836ef25cd9b1e07d538b6ab300",
+      "sha256": "26a4b19d1f6cc10980c17eb01375e8cff92730dab6789a5cf1bcbd2a610f4c8d",
       "scope": "release"
     },
     "douyin-game/assets/ui/button-red.png": {
-      "sha256": "04efbc0420d1c5296662e08af5e0e654ffca4a70b13d136ba9f0dca624517e92",
+      "sha256": "b70680876a79626d0f4bb771a3ddb1303b7df4297875bd51a98d1d1c2f155cfc",
       "scope": "release"
     },
     "douyin-game/assets/ui/button-teal.png": {
-      "sha256": "fd233f64efcf3b011c01cd8249f9994956198283165c821b10c3c6ea752d0b8c",
+      "sha256": "49be32890e5f28b20c7727b68facf8d6c9ba82abb6dd5f8bca643b1dc90fa32b",
       "scope": "release"
     },
     "douyin-game/assets/ui/cell-base.png": {
-      "sha256": "2711a8947f89d038fd75ea8a51ae4b3b045bf3fc3652d38f993ec99974928e67",
+      "sha256": "515e3bec4ca9d42cb8ac64342bbddfee0f9faacfa095c6494d4247f16bd948bc",
       "scope": "release"
     },
     "douyin-game/assets/ui/currency-pill.png": {
-      "sha256": "3b1160ae71ed239ba44e5027d2befb62cf6ba81785eedc4b569b3a11df99adb7",
+      "sha256": "f14efff8d3cb87c981f839e53dbbfec19464f8ba53da949fc303b2bd64e56a81",
       "scope": "release"
     },
     "douyin-game/assets/ui/nav-active.png": {
-      "sha256": "cd2b08371a14ce17ede0ea088d5ceaa57df7c1982bc039cde7ae34bd42430aca",
+      "sha256": "dbf56e1e7bba1b7a9e309716a8ab4118bf2245032bdf1eb018f3cfa86908cf7d",
       "scope": "release"
     },
     "douyin-game/assets/ui/nav-idle.png": {
-      "sha256": "c5822e8e0df999ce52e488e2ac5cd18dcad792e9a3425f33866add4c99fbcbb0",
+      "sha256": "48b5b1f7b8e23b71bdf5e187954cfc7bf5fc336f8158c14c37057f81d2b3a0dc",
       "scope": "release"
     },
     "douyin-game/assets/ui/panel-cream.png": {
@@ -1778,15 +1778,15 @@
       "scope": "release"
     },
     "douyin-game/assets/ui/portrait-well.png": {
-      "sha256": "913201f4a674b4c770699d306dcb8a850208598c5329db39f151461e71f40857",
+      "sha256": "a02dfdcc270209bfbbbda4e9ff16bd2f3c5b523dc9bb1ce28e10151440ce9b62",
       "scope": "release"
     },
     "douyin-game/assets/ui/title-sign.png": {
-      "sha256": "731515d625fd7a968a64d95cd9713c21d773dfbd45efeaae138eccfc819ec55b",
+      "sha256": "e0220ac3236c78ba14ee48e54b6db30185288d64e7f1ed704586a9cef1adf8e4",
       "scope": "release"
     },
     "douyin-game/src/generated/assets-manifest.js": {
-      "sha256": "96d0a9036156f71c2bd849574ce34065efd59f02431a7b7c7fa2bdfe4875ea28",
+      "sha256": "59948bd44c7565f00287cd3c5d11c518bcbe5116478f3f62d68251350549db98",
       "scope": "shared"
     },
     "douyin-game/src/generated/customer-content.js": {

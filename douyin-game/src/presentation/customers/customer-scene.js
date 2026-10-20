@@ -74,7 +74,9 @@ function relationship(info) {
   if (info.progress.stars) return info.progress.label;
   return info.collected ? '已结识 · 零星' : '新面孔·未收录';
 }
-function milestoneCount(entry) { return Math.max(0, Number(entry.superOrders ?? entry.services) || 0); }
+function milestoneCount(entry) {
+  return Math.max(0, Number(entry.superOrders == null ? entry.services : entry.superOrders) || 0);
+}
 function target(info) {
   if (!info.eligible) return opening(info.customer);
   if (!info.collected) return '完成首次订单即可结识';

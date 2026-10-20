@@ -32,9 +32,15 @@ const PRODUCTION_CONFIG = Object.freeze({
     Object.freeze({ id: 'popcorn-ball-2', product: 'popcorn-ball', number: 2 }),
     Object.freeze({ id: 'crisp-stick-2', product: 'crisp-stick', number: 2 }),
     Object.freeze({ id: 'wafer-2', product: 'wafer', number: 2 }),
-    Object.freeze({ id: 'sandwich-square-2', product: 'sandwich-square', number: 2 })
+    Object.freeze({ id: 'sandwich-square-2', product: 'sandwich-square', number: 2 }),
+    Object.freeze({ id: 'original-3', product: 'original', number: 3 }),
+    Object.freeze({ id: 'caramel-3', product: 'caramel', number: 3 }),
+    Object.freeze({ id: 'popcorn-ball-3', product: 'popcorn-ball', number: 3 }),
+    Object.freeze({ id: 'crisp-stick-3', product: 'crisp-stick', number: 3 }),
+    Object.freeze({ id: 'wafer-3', product: 'wafer', number: 3 }),
+    Object.freeze({ id: 'sandwich-square-3', product: 'sandwich-square', number: 3 })
   ]),
-  maxLinesPerProduct: 2,
+  maxLinesPerProduct: 3,
   lineExpansionCost: 180,
   productConstructionCost: 180,
   // Stage two retains the original two-product production specifications.

@@ -11,8 +11,14 @@ const { getCustomer } = require('../domain/customers/customer-config');
 const { FactoryPresentation } = require('../presentation/factory/factory-presentation');
 const { BoardController } = require('../presentation/board/board-controller');
 
-const productName = product => PRODUCT_DEFINITIONS[product]?.name || '产品';
-const workshopName = product => PRODUCT_DEFINITIONS[product]?.workshopName || '新工坊';
+const productName = product => {
+  const definition = PRODUCT_DEFINITIONS[product];
+  return (definition == null ? undefined : definition.name) || '产品';
+};
+const workshopName = product => {
+  const definition = PRODUCT_DEFINITIONS[product];
+  return (definition == null ? undefined : definition.workshopName) || '新工坊';
+};
 
 function recoveryView(issue, confirm = false, message = '') {
   return {
@@ -28,7 +34,8 @@ function startGame() {
   const platform = createPlatform();
   const saveRecovery = new SaveRecovery(platform);
   let model = saveRecovery.model;
-  if (saveRecovery.issue?.error) platform.reportError(saveRecovery.issue.error);
+  const recoveryIssue = saveRecovery.issue;
+  if (recoveryIssue == null ? undefined : recoveryIssue.error) platform.reportError(saveRecovery.issue.error);
   const assets = new Assets(platform);
   const renderer = new Renderer(platform.canvas, assets);
   const boardController = new BoardController(() => model);
@@ -141,7 +148,9 @@ function startGame() {
     if (!summary.producedByLine.length) return;
     const stockText = summary.producedByLine.map(item =>
       lineName(item.lineId, item.product) + item.level + '级' + item.units + '份').join('、');
-    if (summary.seconds >= 60 || offlineSummary || summary.producedByLine.length > 2 || stockText.length > 24 || summary.firstStockedProducts?.length || summary.saveFailed) {
+    const firstStockedProducts = summary.firstStockedProducts;
+    if (summary.seconds >= 60 || offlineSummary || summary.producedByLine.length > 2 || stockText.length > 24 ||
+        (firstStockedProducts == null ? undefined : firstStockedProducts.length) || summary.saveFailed) {
       offlineSummary = summary;
       offlinePage = 0;
       upgradeDialog = false;
@@ -160,8 +169,9 @@ function startGame() {
     const products = session.takeFirstStockedProducts();
     if (!products.length) return;
     const savedSuccessfully = session.checkpoint();
-    if (products.length === 1 && products[0] === factoryFeedback.construction?.product &&
-        factoryFeedback.construction.completed && savedSuccessfully) return;
+    const construction = factoryFeedback.construction;
+    if (products.length === 1 && products[0] === (construction == null ? undefined : construction.product) &&
+        construction.completed && savedSuccessfully) return;
     const name = products.length === 1 ? productName(products[0]) : products.length + '种产品';
     toast = { text: name + '首批已入库，去棋盘发射取货' + (savedSuccessfully ? '' : '（未保存）'), at: time, duration: 5 };
   };
@@ -250,7 +260,7 @@ function startGame() {
       input.cancel();
       renderer.factoryFollowCancelled = true;
       renderer.factoryServiceFocus = null;
-      renderer.focusFactoryRect(renderer.factoryLayout?.scenes.find(scene => scene.lineId === model.state.selectedLineId)?.hit, false, 1);
+      renderer.focusLine(model.state.selectedLineId);
       return;
     }
     if (type === 'factory-view-toggle') {
@@ -258,6 +268,11 @@ function startGame() {
       renderer.factoryFollowCancelled = true;
       renderer.pendingFactoryServiceFocus = null;
       renderer.factoryViewMode = result.mode === 'overview' ? 'overview' : 'detail';
+      if (renderer.factoryViewMode === 'detail') {
+        renderer.factoryServiceFocus = null;
+        renderer.factorySelectedPart = 'machine';
+        renderer.pendingFactoryFocus = model.state.selectedLineId;
+      }
       return;
     }
     if (type === 'factory-focus') {
@@ -276,8 +291,10 @@ function startGame() {
         renderer.configureFactoryViewport();
       }
       renderer.factoryServiceFocus = null;
+      renderer.factorySelectedPart = result.part || 'machine';
       renderer.factoryFollowCancelled = true;
       renderer.focusLine(result.lineId);
+      renderer.pendingFactoryFocus = result.lineId;
       save();
       return;
     }
@@ -347,8 +364,12 @@ function startGame() {
       } else if (type === 'customer-orders') {
         const customerId = result.customerId || renderer.customerSelectedId;
         const current = model.getOrder();
-        const order = current?.customerId === customerId && current.kind !== 'super' ? current :
-          model.state.orders.find(item => item.customerId === customerId && item.id === renderer.customerLastOrders?.[customerId]) ||
+        const order = (current == null ? undefined : current.customerId) === customerId && current.kind !== 'super' ? current :
+          model.state.orders.find(item => {
+            if (item.customerId !== customerId) return false;
+            const lastOrders = renderer.customerLastOrders;
+            return item.id === (lastOrders == null ? undefined : lastOrders[customerId]);
+          }) ||
           model.state.orders.find(item => item.customerId === customerId);
         if (order) { model.focusOrder(order.id); model.setPage('board'); save(); }
         renderer.customerBubbleOpen = false;
@@ -393,9 +414,12 @@ function startGame() {
       return;
     }
     if (type === 'upgrade-open' || type === 'upgrade-close') {
+      if (type === 'upgrade-open') renderer.upgradeCameraState = renderer.captureFactoryView();
       upgradeDialog = type === 'upgrade-open';
       renderer.upgradeDialogOpen = upgradeDialog;
       if (upgradeDialog) { renderer.upgradeDetailsOpen = false; closeLineExpansion(); closeSharedUpgrade(); closeProductConstruction(); }
+      if (upgradeDialog) renderer.frameFactoryUpgrade(model.state.selectedLineId);
+      else { renderer.restoreFactoryView(renderer.upgradeCameraState); renderer.upgradeCameraState = null; }
       input.cancel();
       return;
     }
@@ -420,6 +444,8 @@ function startGame() {
       if (result.service === 'packaging') {
         factoryPresentation.startPackaging(model, time);
         closeSharedUpgrade();
+        renderer.factoryViewMode = 'detail';
+        renderer.factoryServiceFocus = 'packaging';
         renderer.pendingFactoryServiceFocus = 'packaging';
         renderer.factoryFollowCancelled = false;
       }
@@ -526,9 +552,9 @@ function startGame() {
       input.cancel();
       const customer = getCustomer(result.customerId);
       const services = result.customerServiceCount, completed = model.customerInfo(customer.id).superOrdersCompleted || 0;
-      const stage = customer.stages.filter(item => item.superOrders <= completed).slice(-1)[0];
+      const stage = customer.stages.filter(item => item.superOrders <= completed).slice(-1)[0] || customer.stages[0];
       customerResponse = { customerId: customer.id, reward: result.reward,
-        text: (services === 1 ? '已结识。' : '') + (stage?.reply || '谢谢，这份我带走啦。'),
+        text: (services === 1 ? '已结识。' : '') + ((stage == null ? undefined : stage.reply) || '谢谢，这份我带走啦。'),
         kind: services === 1 ? '初次结识' : '普通交单',
         startedAt: time, duration: 5 };
       toast = { text: '订单收入 +' + result.reward + (services === 1 ? ' · 已结识' + customer.name :

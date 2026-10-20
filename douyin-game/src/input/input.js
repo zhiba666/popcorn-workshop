@@ -31,12 +31,16 @@ class Input {
   }
   contextKey() {
     const r = this.renderer;
-    const board = r.boardFlow, protect = board?.protect;
-    return [r.page, this.model.state.page, r.factoryViewMode, r.entryOpen, r.entrySettingsOpen,
+    const board = r.boardFlow || {}, protect = board.protect || {}, preview = protect.preview || {};
+    const sourceId = protect.sourceId, targetId = protect.targetId;
+    // Scene zoom may switch presentation tiers during one continuous pinch.
+    // Explicit view buttons already cancel input through the application.
+    return [r.page, this.model.state.page, r.entryOpen, r.entrySettingsOpen,
       !!r.recovery, r.offlineSummaryOpen, r.productConstructionDialogOpen, r.sharedUpgradeDialogOpen,
       r.lineExpansionDialogOpen, r.upgradeDialogOpen, r.factoryOrderExpanded,
-      board?.mode, board?.orderId, board?.product, board?.level, board?.revision,
-      protect?.sourceId ?? protect?.preview?.sourceId, protect?.targetId ?? protect?.preview?.targetId].join('|');
+      board.mode, board.orderId, board.product, board.level, board.revision,
+      sourceId == null ? preview.sourceId : sourceId,
+      targetId == null ? preview.targetId : targetId].join('|');
   }
   validGesture(g) {
     return g.context === this.contextKey() && !this.dialogBlocksHit(g.hit) &&
@@ -49,7 +53,7 @@ class Input {
     this.blockedUntilRelease = active.length > 0;
   }
   finishPickup(g, reason = 'released') {
-    if (!g?.lineId || g.pickupEnded || (!g.count && !g.stopReason)) return;
+    if (!g || !g.lineId || g.pickupEnded || (!g.count && !g.stopReason)) return;
     g.pickupEnded = true;
     this.onAction({ ok: true, action: 'board-pickup-end', lineId: g.lineId,
       from: g.sourceIndex, sourceId: g.sourceId, count: g.count, reason: g.stopReason || reason });
@@ -60,7 +64,7 @@ class Input {
   }
   scheduleHold(g) {
     this.clearHoldTimer();
-    if (this.gesture !== g || !g?.lineId || g.stopped || g.dragging || this.blockedUntilRelease) return;
+    if (this.gesture !== g || !g || !g.lineId || g.stopped || g.dragging || this.blockedUntilRelease) return;
     const elapsed = Math.max(g.elapsed, (this.now() - g.holdStartedAt) / 1000);
     const delay = Math.max(1, Math.ceil((g.nextShot - elapsed) * 1000));
     // Fire deadlines must not wait for the next rendered frame. The frame loop
@@ -74,12 +78,13 @@ class Input {
   }
   launchShot(g) {
     const item = this.model.state.board[g.sourceIndex];
-    const result = item?.kind === 'launcher' && item.id === g.sourceId
+    const result = item && item.kind === 'launcher' && item.id === g.sourceId
       ? this.model.launch(g.lineId) : { ok: false, reason: 'missing-launcher' };
     if (result.ok) {
       g.count++;
+      const line = this.model.getLine(g.lineId);
       if (!this.model.state.board.some(cell => cell === null)) g.stopReason = 'board-full';
-      else if (this.model.getLine(g.lineId)?.inventory < 1) g.stopReason = 'empty-inventory';
+      else if (line != null && line.inventory < 1) g.stopReason = 'empty-inventory';
     } else g.stopReason = result.reason;
     if (g.stopReason) { g.stopped = true; this.clearHoldTimer(); }
     this.onAction({ ...result, action: 'launch', lineId: g.lineId, from: g.sourceIndex,
@@ -182,7 +187,7 @@ class Input {
     if (this.renderer.upgradeDialogOpen) return !['upgrade-close', 'capacity-buy', 'output-buy', 'upgrade-tab', 'upgrade-details'].includes(hit.type);
     if (this.renderer.factoryOrderExpanded) return !['factory-order-close', 'order-swipe', 'order-prev',
       'order-next', 'deliver', 'customer-open'].includes(hit.type);
-    if (this.renderer.page === 'board' && this.renderer.boardFlow?.mode) return !hit.type.startsWith('board-');
+    if (this.renderer.page === 'board' && this.renderer.boardFlow && this.renderer.boardFlow.mode) return !hit.type.startsWith('board-');
     return false;
   }
   start(touches) {
@@ -213,7 +218,7 @@ class Input {
       dragging: false, longPress: false, stopped: false, count: 0, stopReason: null, pickupEnded: false,
       orderArea: ['order-swipe', 'order-prev', 'order-next', 'deliver'].includes(hit.type),
       orderDragging: false, orderDirection: 0,
-      scrolling: false, scrollStart: (hit.boardScrollable ? this.renderer.boardFlow?.scroll :
+      scrolling: false, scrollStart: (hit.boardScrollable ? this.renderer.boardFlow && this.renderer.boardFlow.scroll :
         hit.customerScrollable ? this.renderer.customerScroll : this.renderer.factoryScroll) || 0,
       scrollSamples: [{ at: this.now(), position: this.renderer.factoryScroll }],
       sourceIndex: hit.type === 'cell' ? hit.index : -1, targetIndex: -1 };
@@ -221,10 +226,11 @@ class Input {
     if (hit.type === 'cell') {
       this.model.select(hit.index);
       const item = this.model.state.board[hit.index], g = this.gesture;
-      if (item?.kind === 'launcher') {
+      if (item && item.kind === 'launcher') {
         g.lineId = item.lineId; g.sourceId = item.id;
+        const line = this.model.getLine(item.lineId);
         const reason = !this.model.state.board.some(cell => cell === null) ? 'board-full' :
-          this.model.getLine(item.lineId)?.inventory < 1 ? 'empty-inventory' : null;
+          line != null && line.inventory < 1 ? 'empty-inventory' : null;
         if (reason) {
           g.stopped = true; g.stopReason = reason;
           this.onAction({ ok: false, action: 'launch', reason, lineId: item.lineId,
@@ -255,7 +261,7 @@ class Input {
       if (Math.abs(dy) > DRAG_DISTANCE && Math.abs(dy) > Math.abs(dx)) g.scrolling = true;
       if (g.scrolling) {
         const distance = wasScrolling ? previousY - g.y : -Math.sign(dy) * (Math.abs(dy) - DRAG_DISTANCE);
-        this.renderer.setBoardScroll((this.renderer.boardFlow?.scroll || 0) + distance);
+        this.renderer.setBoardScroll((this.renderer.boardFlow && this.renderer.boardFlow.scroll || 0) + distance);
       }
       return;
     }
@@ -421,8 +427,11 @@ class Input {
     if (g.orderArea && g.hit.orderId !== endHit.orderId) return;
     if ((g.hit.type === 'capacity-buy' || g.hit.type === 'output-buy') &&
         (g.hit.lineId !== endHit.lineId || g.hit.lineId !== this.model.state.selectedLineId)) return;
-    if (g.hit.type === 'shared-upgrade-buy' && (g.hit.service !== endHit.service ||
-        g.hit.level !== endHit.level || this.model.sharedUpgradeOffer(g.hit.service)?.level !== g.hit.level)) return;
+    if (g.hit.type === 'shared-upgrade-buy') {
+      if (g.hit.service !== endHit.service || g.hit.level !== endHit.level) return;
+      const offer = this.model.sharedUpgradeOffer(g.hit.service);
+      if ((offer == null ? undefined : offer.level) !== g.hit.level) return;
+    }
     if (g.hit.type.startsWith('entry-')) {
       this.onAction({ ok: true, action: g.hit.type });
     } else if (g.hit.type.startsWith('customer-')) {
@@ -466,7 +475,8 @@ class Input {
       this.onAction({ ok: true, action: 'product-construction-close' });
     } else if (g.hit.type === 'product-construction-buy' && g.hit.product === endHit.product) {
       this.onAction(this.model.buildProduct(g.hit.product));
-    } else if (g.hit.type === 'line' && g.hit.lineId === endHit.lineId) this.onAction(this.model.selectLine(g.hit.lineId));
+    } else if (g.hit.type === 'line' && g.hit.lineId === endHit.lineId)
+      this.onAction({ ...this.model.selectLine(g.hit.lineId), part: endHit.part || 'machine' });
     else if (g.hit.type === 'accelerate') this.onAction(this.model.accelerate());
     else if (g.hit.type === 'deliver') this.onAction(this.renderer.page === 'board'
       ? { ok: true, action: 'board-deliver', orderId: g.hit.orderId } : this.model.deliver(g.hit.orderId));
@@ -479,13 +489,13 @@ class Input {
   }
   scroll(distance, points, modifiers = {}) {
     if (this.renderer.page === 'board') {
-      const point = points?.[0];
+      const point = points == null ? undefined : points[0];
       if (!point || modifiers.ctrlKey || this.renderer.entryOpen || this.renderer.offlineSummaryOpen ||
           this.renderer.recovery || typeof this.renderer.setBoardScroll !== 'function') return false;
       const hit = this.renderer.hitTest(coordinate(point, 'x'), coordinate(point, 'y'));
-      if (!hit?.boardScrollable || this.dialogBlocksHit(hit)) return false;
+      if (!hit || !hit.boardScrollable || this.dialogBlocksHit(hit)) return false;
       this.cancelUntilRelease('scroll');
-      this.renderer.setBoardScroll((this.renderer.boardFlow?.scroll || 0) + distance);
+      this.renderer.setBoardScroll((this.renderer.boardFlow && this.renderer.boardFlow.scroll || 0) + distance);
       return true;
     }
     if (this.renderer.entryOpen || !['factory', 'customers'].includes(this.renderer.page) || this.renderer.upgradeDialogOpen ||

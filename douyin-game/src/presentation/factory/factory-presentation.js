@@ -34,7 +34,11 @@ function findBatch(state, line, id) {
   const cached = (line.buffer || []).find(batch => batch.id === id);
   if (cached) {
     const packer = state.shared.packaging;
-    const active = packer.lineId === line.id && packer.batch?.id === id;
+    let active = false;
+    if (packer.lineId === line.id) {
+      const packingBatch = packer.batch;
+      active = (packingBatch == null ? undefined : packingBatch.id) === id;
+    }
     return { ...cached, phase: active ? 'packaging' : 'waiting-packaging',
       elapsed: active ? packer.elapsed : 0, duration: active ? packer.duration : 0 };
   }
@@ -67,8 +71,8 @@ class FactoryPresentation {
     const first = lineBatches(line).sort((left, right) => left.id - right.id)[0];
     this.construction = {
       lineId, product: line.product, startedAt: time,
-      inventoryBefore: line.inventory, batchId: first?.id ?? null,
-      phase: 'waiting-supply', progress: 0, outputLevel: first?.outputLevel || line.outputLevel,
+      inventoryBefore: line.inventory, batchId: first && first.id != null ? first.id : null,
+      phase: 'waiting-supply', progress: 0, outputLevel: (first == null ? undefined : first.outputLevel) || line.outputLevel,
       completedAt: null
     };
   }
@@ -81,8 +85,9 @@ class FactoryPresentation {
 
   observeProduction(result, time) {
     const event = this.construction;
-    if (!event || event.completedAt !== null || !result?.ok) return;
-    const produced = result.producedByLine?.find(item => item.lineId === event.lineId && item.units > 0);
+    if (!event || event.completedAt !== null || result == null || !result.ok) return;
+    const producedByLine = result.producedByLine;
+    const produced = producedByLine == null ? undefined : producedByLine.find(item => item.lineId === event.lineId && item.units > 0);
     if (!produced) return;
     // A player may take the newly credited goods before the next render.
     // The foreground settlement result still proves that this line stocked.

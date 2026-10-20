@@ -6,7 +6,7 @@ const { getCustomer } = require('../customers/customer-config');
 function createBoardRules(rules) {
   const PRODUCTS = rules.products, MAX_LEVEL = rules.maxLevel;
   const validCell = index => Number.isInteger(index) && index >= 0 && index < rules.boardSize;
-  const qualifies = (item, requirement) => item?.kind === 'product'
+  const qualifies = (item, requirement) => item != null && item.kind === 'product'
     && item.product === requirement.product && item.level >= requirement.level;
 
   function orderProgress(state, orderOrId) {
@@ -17,7 +17,7 @@ function createBoardRules(rules) {
       ...requirement, requirementIndex, ready: false, cell: -1,
       itemId: null, actualLevel: null, substituted: false,
     }));
-    const available = state.board.flatMap((item, index) => item?.kind === 'product' ? [{ item, index }] : [])
+    const available = state.board.flatMap((item, index) => item != null && item.kind === 'product' ? [{ item, index }] : [])
       .sort((left, right) => left.item.level - right.item.level || left.index - right.index);
     const used = new Set();
     for (const requirement of [...requirements].sort((left, right) =>
@@ -34,7 +34,12 @@ function createBoardRules(rules) {
       if (existing) existing.quantity++;
       else missing.push({ product: requirement.product, level: requirement.level, quantity: 1 });
     }
-    return { orderId: order.id, orderLabel: order.label || getCustomer(order.customerId)?.name || ('订单 ' + order.id), ready: used.size === requirements.length,
+    let orderLabel = order.label;
+    if (!orderLabel) {
+      const customer = getCustomer(order.customerId);
+      orderLabel = (customer == null ? undefined : customer.name) || ('订单 ' + order.id);
+    }
+    return { orderId: order.id, orderLabel, ready: used.size === requirements.length,
       matchedCount: used.size, missingCount: requirements.length - used.size,
       requirements, missing, cells: requirements.filter(entry => entry.ready).map(entry => entry.cell),
       substitutionCount: requirements.filter(entry => entry.substituted).length };
@@ -42,13 +47,14 @@ function createBoardRules(rules) {
 
   function requiredCells(state, order) {
     const progress = orderProgress(state, order);
-    return progress?.ready ? progress.cells : null;
+    return progress != null && progress.ready ? progress.cells : null;
   }
 
   function missingIncrease(before, after) {
     return after.missing.flatMap(entry => {
       const previous = before.missing.find(other => other.product === entry.product && other.level === entry.level);
-      const quantity = entry.quantity - (previous?.quantity ?? 0);
+      const previousQuantity = previous == null ? undefined : previous.quantity;
+      const quantity = entry.quantity - (previousQuantity != null ? previousQuantity : 0);
       return quantity > 0 ? [{ product: entry.product, level: entry.level, quantity }] : [];
     });
   }
@@ -101,7 +107,9 @@ function createBoardRules(rules) {
   }
 
   function nextLaunchCell(state, index) {
-    if (!validCell(index) || state.board[index]?.kind !== 'launcher') return -1;
+    if (!validCell(index)) return -1;
+    const launcher = state.board[index];
+    if (launcher == null || launcher.kind !== 'launcher') return -1;
     const row = Math.floor(index / rules.columns), column = index % rules.columns;
     const candidates = state.board.flatMap((item, target) => {
       if (item !== null) return [];
@@ -109,12 +117,14 @@ function createBoardRules(rules) {
       return [{ index: target, distance: dx * dx + dy * dy,
         angle: (Math.atan2(dx, -dy) + Math.PI * 2) % (Math.PI * 2) }];
     }).sort((left, right) => left.distance - right.distance || left.angle - right.angle);
-    return candidates[0]?.index ?? -1;
+    const candidate = candidates[0];
+    const candidateIndex = candidate == null ? undefined : candidate.index;
+    return candidateIndex != null ? candidateIndex : -1;
   }
 
   function getSources(state, product, targetLevel) {
     return state.board.flatMap((item, index) => {
-      if (item?.kind !== 'launcher' || item.product !== product) return [];
+      if (item == null || item.kind !== 'launcher' || item.product !== product) return [];
       const line = state.lines.find(entry => entry.id === item.lineId);
       if (!line) return [];
       const canSupply = Number.isInteger(targetLevel) && targetLevel >= 1 && targetLevel <= MAX_LEVEL;
@@ -133,16 +143,19 @@ function createBoardRules(rules) {
         waitingPackaging: line.buffer.filter(batch => batch.status === 'waiting').length,
         warehouseCount: line.warehouse.length,
       };
+      const definition = CONFIG.lines.find(entry => entry.id === line.id);
+      const lineNumber = definition == null ? undefined : definition.number;
       return [{ index, itemId: item.id, lineId: line.id, product: line.product, level: line.outputLevel,
         outputLevel: line.outputLevel, stock: line.inventory, inventory: line.inventory,
-        lineNumber: CONFIG.lines.find(entry => entry.id === line.id)?.number ?? 1,
+        lineNumber: lineNumber != null ? lineNumber : 1,
         status, canSupply, mergesNeeded: canSupply ? 2 ** Math.max(0, targetLevel - line.outputLevel) - 1 : null }];
     }).sort((left, right) => left.lineNumber - right.lineNumber || left.index - right.index);
   }
 
   function getPreparationPlan(state, product, targetLevel, quantity = 1, orderId = null) {
     const context = orderId == null ? null : orderProgress(state, orderId);
-    const contextRequirements = context?.requirements.filter(entry => entry.product === product && entry.level === targetLevel) ?? [];
+    const matchingRequirements = context == null ? undefined : context.requirements.filter(entry => entry.product === product && entry.level === targetLevel);
+    const contextRequirements = matchingRequirements != null ? matchingRequirements : [];
     const requested = contextRequirements.length || (Number.isInteger(quantity) && quantity > 0 ? quantity : 1);
     const valid = PRODUCTS.includes(product)
       && Number.isInteger(targetLevel) && targetLevel >= 1 && targetLevel <= MAX_LEVEL;
@@ -172,7 +185,7 @@ function createBoardRules(rules) {
 
     if (valid) {
       state.board.forEach((item, index) => {
-        if (item?.kind === 'product' && item.product === product && item.level < targetLevel) {
+        if (item != null && item.kind === 'product' && item.product === product && item.level < targetLevel) {
           cellsByLevel[item.level].push(index);
         }
       });
@@ -253,9 +266,10 @@ function createBoardRules(rules) {
       }
       let lower = 0;
       const sourceLevel = Math.min(source.level, targetLevel);
-      const priorityDraws = source.level > targetLevel ? context?.requirements.filter(requirement =>
+      const priorityDrawCount = source.level > targetLevel ? (context == null ? undefined : context.requirements.filter(requirement =>
         requirement.product === product && !requirement.ready
-        && requirement.level > targetLevel && requirement.level <= source.level).length ?? 0 : 0;
+        && requirement.level > targetLevel && requirement.level <= source.level).length) : 0;
+      const priorityDraws = priorityDrawCount != null ? priorityDrawCount : 0;
       const canSupplyGoal = draws => canMake(sourceLevel, Math.max(0, draws - priorityDraws));
       let upper = missing * 2 ** (targetLevel - sourceLevel) + priorityDraws;
       while (!canSupplyGoal(upper)) upper *= 2;
@@ -275,17 +289,22 @@ function createBoardRules(rules) {
     const availableMerges = mergeCandidates.filter(pair => guidanceWork.some(work =>
       work.boardUsedByLevel[pair.level] >= 2 && work.mergesByLevel[pair.resultLevel] > 0));
     const reservedCount = reservedByLevel.reduce((total, entry) => total + entry.count, 0);
+    const boardMergesNeeded = boardWork == null ? undefined : boardWork.mergesNeeded;
+    const boardItemsUsed = boardWork == null ? undefined : boardWork.boardItemsUsed;
+    const safetyReserveByLevel = boardWork == null ? undefined : boardWork.safetyReserveByLevel;
+    const futureReserveCount = boardWork == null ? undefined : boardWork.futureReserveCount;
+    const nextMerge = availableMerges[0];
     return {
       valid, product, level: targetLevel, quantity: requested, owned, missing,
       ownedCells: qualifiedItems.map(item => item.index), qualifiedItems,
       complete: valid && !missing,
       canCompleteFromBoard,
-      boardMergesNeeded: boardWork?.mergesNeeded ?? null,
-      boardItemsUsed: boardWork?.boardItemsUsed ?? 0,
-      safetyReserveByLevel: boardWork?.safetyReserveByLevel ?? [],
-      futureReserveCount: boardWork?.futureReserveCount ?? 0,
+      boardMergesNeeded: boardMergesNeeded != null ? boardMergesNeeded : null,
+      boardItemsUsed: boardItemsUsed != null ? boardItemsUsed : 0,
+      safetyReserveByLevel: safetyReserveByLevel != null ? safetyReserveByLevel : [],
+      futureReserveCount: futureReserveCount != null ? futureReserveCount : 0,
       reservedCount, hasReservedMaterials: reservedCount > 0, reservedByLevel,
-      availableMerges, protectedMerges, nextMerge: availableMerges[0] ?? null, sources,
+      availableMerges, protectedMerges, nextMerge: nextMerge != null ? nextMerge : null, sources,
     };
   }
 
@@ -296,7 +315,11 @@ function createBoardRules(rules) {
     };
     const order = state.orders.find(entry => entry.id === orderId);
     if (!order) return { ...result, reason: 'order-not-found' };
-    result.orderLabel = order.label || getCustomer(order.customerId)?.name || ('订单 ' + order.id);
+    result.orderLabel = order.label;
+    if (!result.orderLabel) {
+      const customer = getCustomer(order.customerId);
+      result.orderLabel = (customer == null ? undefined : customer.name) || ('订单 ' + order.id);
+    }
     const cells = requiredCells(state, order);
     if (!cells) return { ...result, reason: 'order-not-ready' };
     const progress = orderProgress(state, order);
@@ -318,8 +341,13 @@ function createBoardRules(rules) {
         else sharedItems.push({ product: item.product, level: item.level, quantity: 1 });
       }
       const readyBefore = beforeProgress.ready, readyAfter = afterProgress.ready;
+      let orderLabel = other.label;
+      if (!orderLabel) {
+        const customer = getCustomer(other.customerId);
+        orderLabel = (customer == null ? undefined : customer.name) || ('订单 ' + other.id);
+      }
       return {
-        orderId: other.id, orderLabel: other.label || getCustomer(other.customerId)?.name || ('订单 ' + other.id), readyBefore, readyAfter,
+        orderId: other.id, orderLabel, readyBefore, readyAfter,
         lostReadiness: readyBefore && !readyAfter,
         missingBefore, missingAfter, newMissing, sharedItems, hasNewMissing: newMissing.length > 0,
         requirementsBefore: beforeProgress.requirements, requirementsAfter: afterProgress.requirements,

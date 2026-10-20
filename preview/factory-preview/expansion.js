@@ -19,7 +19,7 @@ const world=$('world'),viewport=$('scene-viewport');
 const overlay=document.createElement('div');overlay.className='overview-labels';overlay.setAttribute('aria-label','工坊总览定位');viewport.append(overlay);
 const presentation=new WorkshopPresentation(viewport,world);
 const motion=new WorkshopMotion(viewport);
-let counts=[...factoryLayoutPresets.six],layout,selected,logistics,camera,upgrade,upgradeCameraState,upgradeStartSelectionId,overview=false,courtyardView=false;
+let counts=[...factoryLayoutPresets.six],layout,selected,logistics,camera,upgrade,upgradeCameraState,upgradeStartSelectionId,overview=false,courtyardView=false,workshopView=false,viewWidth=0,viewHeight=0;
 if(params.get('capture')==='phone')document.body.classList.add('capture-mode');
 
 function loadImage(src){
@@ -62,10 +62,10 @@ function construction(slot){
 }
 function focusGroup(group){
   if(!group||(!group.built&&layout.next?.id!==group.product.id))return;
-  courtyardView=false;
-  selectNode(selected?.product?.id===group.product.id?selected:nodes.get(`${group.product.id}-1`));camera.focus(group.bounds,{padding:20});
+  selectNode(selected?.product?.id===group.product.id?selected:nodes.get(`${group.product.id}-1`));frameGroup(group);
   if(upgrade?.isOpen)frameUpgradeSelection();
 }
+function frameGroup(group){courtyardView=false;workshopView=true;camera.fit(group.bounds,{padding:20,mode:'detail'});}
 function renderGround(){
   renderWorkshopGround(world,layout);
   for(const group of layout.groups){
@@ -127,7 +127,7 @@ function selectNode(node){
 }
 function updatePresentation(state=camera?.getState()){
   const safeBottom=upgrade?.isOpen?upgrade.sheet.offsetTop-viewport.offsetTop-8:viewport.clientHeight;
-  presentation.update({nodes,selected,layout,camera,state,overview,levels,safeBottom,overviewLabels});
+  presentation.update({nodes,selected,layout,camera,state,overview,workshopView,levels,safeBottom,overviewLabels});
 }
 function getUpgradeNode(node=selected){return node?.type==='cache'&&node.lineId?nodes.get(node.lineId):node;}
 function getUpgradeSelection(){
@@ -146,7 +146,9 @@ function frameUpgradeSelection(){
   camera.setState({x:node.left+node.width/2,y:node.top+node.height/2+(viewport.clientHeight-visibleHeight)/2/zoom,zoom,mode:'detail'});
 }
 function updateCamera(state){
-  overview=!courtyardView&&(state.mode==='overview'||(overview?state.zoom<.58:state.zoom<=.50));$('phone').classList.toggle('overview',overview);viewport.classList.toggle('overview',overview);overlay.hidden=!overview;
+  const resized=viewWidth!==viewport.clientWidth||viewHeight!==viewport.clientHeight;viewWidth=viewport.clientWidth;viewHeight=viewport.clientHeight;
+  if(resized&&workshopView&&camera&&!upgrade?.isOpen){const group=layout.groups.find(item=>item.product.id===selected?.product?.id);if(group){frameGroup(group);return;}}
+  overview=!courtyardView&&!workshopView&&(state.mode==='overview'||(overview?state.zoom<.58:state.zoom<=.50));$('phone').classList.toggle('overview',overview);viewport.classList.toggle('overview',overview);overlay.hidden=!overview;
   $('zoom-level').textContent=`${Math.round(state.zoom*100)}%`;
   const currentGroup=layout?.groups.find(group=>group.product.id===selected?.product?.id);
   $('overview-view').setAttribute('aria-pressed',String(state.zoom<=state.minZoom+.0001));
@@ -163,7 +165,7 @@ function updateCamera(state){
   motion.setView(state,overview);
   updatePresentation(state);
 }
-function fitInitial(){courtyardView=false;camera.fit(layout.lines.length<=2?layout.activeBounds:layout.bounds,{padding:20});}
+function fitInitial(){courtyardView=false;workshopView=false;camera.fit(layout.lines.length<=2?layout.activeBounds:layout.bounds,{padding:20});}
 function applyPreset(value){upgrade?.close();counts=[...factoryLayoutPresets[value]];levels.clear();renderWorld('original-1');upgrade?.reset();$('layout-select').value=value;if(camera)fitInitial();}
 
 $('layout-select').addEventListener('change',event=>{applyPreset(event.target.value);$('demo-feedback').textContent='布局已切换；六坊及公共庭院位置固定，演示等级重置。';});
@@ -178,24 +180,31 @@ $('level-select').addEventListener('change',event=>{
   const node=getUpgradeNode();if(node?.type!=='line')return;const level=Number(event.target.value);setLineLevel(node,level);$('demo-feedback').textContent=`${node.name}显示为${level}级，其他产线显示等级保留。`;
 });
 $('upgrade-entry').addEventListener('click',()=>{
-  if(!upgrade)return;if(!upgrade.isOpen){upgradeCameraState=camera.getState();upgradeStartSelectionId=getUpgradeNode()?.id;}
+  if(!upgrade)return;if(!upgrade.isOpen){upgradeCameraState={...camera.getState(),workshopView,courtyardView,width:viewport.clientWidth,height:viewport.clientHeight};upgradeStartSelectionId=getUpgradeNode()?.id;}
   upgrade.open(getUpgradeSelection());frameUpgradeSelection();
 });
 $('collapse-detail').addEventListener('click',()=>{const collapsed=$('phone').classList.toggle('collapsed');$('collapse-detail').setAttribute('aria-expanded',String(!collapsed));$('collapse-detail').setAttribute('aria-label',collapsed?'展开设备详情':'收起设备详情');if(selected)selectNode(selected);});
-$('overview-view').addEventListener('click',()=>{courtyardView=false;camera.fit(layout.bounds,{padding:20});});
+$('overview-view').addEventListener('click',()=>{courtyardView=false;workshopView=false;camera.fit(layout.bounds,{padding:20});});
 $('focus-view').addEventListener('click',()=>focusGroup(layout.groups.find(g=>g.product.id===selected?.product?.id)));
 $('zoom-out').addEventListener('click',()=>camera.zoomBy(1/1.25));$('zoom-in').addEventListener('click',()=>camera.zoomBy(1.25));
-$('warehouse-view').addEventListener('click',()=>{selectNode(nodes.get('warehouse'));courtyardView=true;camera.fit(layout.courtyard.bounds,{padding:18,mode:'detail'});if(upgrade?.isOpen)frameUpgradeSelection();});
+$('warehouse-view').addEventListener('click',()=>{selectNode(nodes.get('warehouse'));courtyardView=true;workshopView=false;camera.fit(layout.courtyard.bounds,{padding:18,mode:'detail'});if(upgrade?.isOpen)frameUpgradeSelection();});
 $('catalog-view').addEventListener('click',()=>{const show=$('catalog').hidden;$('catalog').hidden=!show;$('catalog-view').setAttribute('aria-expanded',String(show));if(show)$('catalog').scrollIntoView({behavior:'smooth',block:'start'});});
 
 try{
   await Promise.all([...runtimeFactoryAssets,...factoryDecorationAssets,...Object.values(vectors),runtimeFactoryFloor].map(asset=>loadImage(asset.src)));
   const preset=Object.hasOwn(factoryLayoutPresets,params.get('layout'))?params.get('layout'):'six';applyPreset(preset);
-  camera=new WorkshopCamera(viewport,world,{onChange:updateCamera,onActivate:({type})=>{if(type!=='pan')courtyardView=false;}});camera.setBounds(layout.bounds);fitInitial();
+  camera=new WorkshopCamera(viewport,world,{onChange:updateCamera,onActivate:({type})=>{if(type!=='pan'){courtyardView=false;workshopView=false;}}});camera.setBounds(layout.bounds);fitInitial();
   upgrade=new WorkshopUpgrade({host:$('phone'),getSelection:getUpgradeSelection,onClose:()=>{
     camera.resize();const previous=upgradeCameraState,changed=getUpgradeNode()?.id!==upgradeStartSelectionId;upgradeCameraState=null;upgradeStartSelectionId=null;
-    if(changed){const group=layout.groups.find(item=>item.product.id===selected?.product?.id);courtyardView=!group;if(group)camera.focus(group.bounds,{padding:20});else camera.fit(layout.courtyard.bounds,{padding:18,mode:'detail'});}
-    else if(previous)camera.setState(previous);
+    if(changed){const group=layout.groups.find(item=>item.product.id===selected?.product?.id);courtyardView=!group;if(group)frameGroup(group);else{workshopView=false;camera.fit(layout.courtyard.bounds,{padding:18,mode:'detail'});}}
+    else if(previous){
+      workshopView=previous.workshopView;courtyardView=previous.courtyardView;
+      const resized=previous.width!==viewport.clientWidth||previous.height!==viewport.clientHeight;
+      const group=layout.groups.find(item=>item.product.id===selected?.product?.id);
+      if(resized&&workshopView&&group)frameGroup(group);
+      else if(resized&&courtyardView)camera.fit(layout.courtyard.bounds,{padding:18,mode:'detail'});
+      else camera.setState(previous);
+    }
   },onUpgrade:({id,fromLevel,toLevel})=>{
     const node=getUpgradeNode();if(node?.type!=='line'||node.id!==id||(levels.get(id)||1)!==fromLevel)return false;
     setLineLevel(node,toLevel);$('demo-feedback').textContent=`${node.name}已升至 Lv.${toLevel}，其他产线等级保留。`;return true;

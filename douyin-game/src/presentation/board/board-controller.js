@@ -2,7 +2,10 @@
 
 const { PRODUCTION_CONFIG: CONFIG, PRODUCT_DEFINITIONS } = require('../../domain/production/production-config');
 
-const productName = product => PRODUCT_DEFINITIONS[product]?.name || '商品';
+const productName = product => {
+  const definition = PRODUCT_DEFINITIONS[product];
+  return (definition == null ? undefined : definition.name) || '商品';
+};
 const defaults = () => ({ mode: null, orderId: null, previewOrderId: null, product: null, level: 1, protect: null,
   receipt: null, discarded: null, sourceId: null, recoveryReason: null, preparation: null,
   scroll: 0, locatedItemId: null, locatedUntil: 0, run: null });
@@ -30,18 +33,22 @@ class BoardController {
   openChain(product, level, orderId = null) {
     const model = this.getModel();
     if (!PRODUCT_DEFINITIONS[product] || !Number.isInteger(level) || level < 1 || level > CONFIG.maxProductLevel) return;
-    Object.assign(this.flow, { product, level, orderId: model.getOrder(orderId)?.id ?? null });
+    const matchedOrder = model.getOrder(orderId);
+    const matchedOrderId = matchedOrder == null ? undefined : matchedOrder.id;
+    Object.assign(this.flow, { product, level, orderId: matchedOrderId != null ? matchedOrderId : null });
     this.flow.preparation = this.flow.orderId == null ? null : { product, level, orderId: this.flow.orderId };
     this.open('chain');
   }
   nextGap(orderId) {
-    const model = this.getModel(), effects = this.flow.receipt?.effects || [];
+    const model = this.getModel(), receipt = this.flow.receipt;
+    const effects = (receipt == null ? undefined : receipt.effects) || [];
     let order = null, gap = null;
     for (const effect of effects) {
       const candidate = model.getOrder(effect.orderId);
       if (!candidate) continue;
       const missing = model.boardOrderProgress(candidate).missing;
-      const next = effect.newMissing?.find(entry => missing.some(current =>
+      const newMissing = effect.newMissing;
+      const next = newMissing == null ? undefined : newMissing.find(entry => missing.some(current =>
         current.product === entry.product && current.level === entry.level));
       if (next) { order = candidate; gap = next; break; }
     }
@@ -57,13 +64,14 @@ class BoardController {
   protect(operation, preview) {
     const model = this.getModel(), item = model.state.board[preview.from];
     if (!item) return;
+    const target = model.state.board[preview.to];
     this.flow.protect = { action: operation, from: preview.from, to: preview.to,
-      sourceId: item.id, targetId: model.state.board[preview.to]?.id, item: { ...item }, orderIds: preview.orderIds || [] };
+      sourceId: item.id, targetId: target == null ? undefined : target.id, item: { ...item }, orderIds: preview.orderIds || [] };
     this.open('protect');
   }
   handle(event, time) {
     const model = this.getModel(), f = this.flow, action = event.action;
-    if (!action?.startsWith('board-')) return null;
+    if (action == null || !action.startsWith('board-')) return null;
     switch (action) {
       case 'board-orders': this.open('orders'); return {};
       case 'board-close': this.close(); return {};
@@ -84,7 +92,7 @@ class BoardController {
         return { result: model.cycleOrder(action === 'board-order-prev' ? -1 : 1) };
       case 'board-chain': {
         const item = model.state.board[model.state.selectedCell];
-        this.openChain(event.product || item?.product, event.level || item?.level,
+        this.openChain(event.product || (item == null ? undefined : item.product), event.level || (item == null ? undefined : item.level),
           event.orderId === undefined ? null : event.orderId);
         return {};
       }
@@ -92,16 +100,21 @@ class BoardController {
         this.openChain(event.product || f.product, event.level,
           event.level === f.level ? f.orderId : null);
         return {};
-      case 'board-preview':
-        f.orderId = event.orderId ?? model.state.focusedOrderId;
+      case 'board-preview': {
+        const requestedOrderId = event.orderId;
+        f.orderId = requestedOrderId != null ? requestedOrderId : model.state.focusedOrderId;
         if (!model.getOrder(f.orderId)) return { message: '订单已更新，请重新选择' };
         f.previewOrderId = f.orderId;
         this.open('delivery'); return {};
+      }
       case 'board-receipt': if (f.receipt) this.open('receipt'); return {};
-      case 'board-deliver':
-        this.close(); return { result: model.deliver(event.orderId ?? model.state.focusedOrderId) };
+      case 'board-deliver': {
+        const requestedOrderId = event.orderId;
+        this.close(); return { result: model.deliver(requestedOrderId != null ? requestedOrderId : model.state.focusedOrderId) };
+      }
       case 'board-discard': {
-        const index = event.index ?? model.state.selectedCell, preview = model.previewDiscard(index);
+        const requestedIndex = event.index;
+        const index = requestedIndex != null ? requestedIndex : model.state.selectedCell, preview = model.previewDiscard(index);
         if (preview.kind === 'protected') { this.protect('discard', preview); return {}; }
         return { result: model.discard(index) };
       }
@@ -114,21 +127,30 @@ class BoardController {
       }
       case 'board-confirm': {
         const pending = f.protect; this.close();
-        if (!pending || model.state.board[pending.from]?.id !== pending.sourceId ||
-            (pending.action === 'merge' && model.state.board[pending.to]?.id !== pending.targetId)) {
+        if (!pending) return { message: '商品已变化，请重新选择' };
+        const source = model.state.board[pending.from];
+        if ((source == null ? undefined : source.id) !== pending.sourceId) {
           return { message: '商品已变化，请重新选择' };
+        }
+        if (pending.action === 'merge') {
+          const target = model.state.board[pending.to];
+          if ((target == null ? undefined : target.id) !== pending.targetId) return { message: '商品已变化，请重新选择' };
         }
         return { result: pending.action === 'discard' ? model.discard(pending.from) : model.drop(pending.from, pending.to) };
       }
       case 'board-restore': return { result: model.restoreDiscard() };
       case 'board-locate': {
-        let index = event.itemId != null ? model.state.board.findIndex(item => item?.id === event.itemId)
+        let index = event.itemId != null ? model.state.board.findIndex(item => (item == null ? undefined : item.id) === event.itemId)
           : event.lineId ? model.launcherIndex(event.lineId) : event.index;
         if (!Number.isInteger(index)) {
           const order = model.getOrder(f.orderId);
-          const quantity = order?.requirements.filter(entry => entry.product === f.product && entry.level === f.level).length || 1;
+          const quantity = (order == null ? undefined : order.requirements.filter(entry => entry.product === f.product && entry.level === f.level).length) || 1;
           const plan = model.preparationPlan(f.product, f.level, quantity, f.orderId);
-          index = plan.complete ? plan.ownedCells[0] : plan.nextMerge?.from;
+          if (plan.complete) index = plan.ownedCells[0];
+          else {
+            const nextMerge = plan.nextMerge;
+            index = nextMerge == null ? undefined : nextMerge.from;
+          }
         }
         return this.locate(index, time);
       }
@@ -170,7 +192,8 @@ class BoardController {
         return;
       }
       f.receipt = null;
-      f.run = { lineId, count: result.pickupCount || result.count || (f.run?.lineId === lineId ? f.run.count + 1 : 1),
+      const previousRun = f.run;
+      f.run = { lineId, count: result.pickupCount || result.count || ((previousRun == null ? undefined : previousRun.lineId) === lineId ? previousRun.count + 1 : 1),
         label: productName(line.product), reason: result.stopReason || null };
       const full = model.state.board.every(Boolean), empty = line.inventory < 1;
       f.sourceId = full || empty ? lineId : null;
@@ -180,7 +203,8 @@ class BoardController {
     if (['merge', 'move', 'discard', 'restore-discard'].includes(result.action)) f.receipt = null;
     if (result.action === 'deliver') {
       f.receipt = { ...result, at: time }; this.close();
-      if (!model.getOrder(f.preparation?.orderId)) f.preparation = null;
+      const preparation = f.preparation;
+      if (!model.getOrder(preparation == null ? undefined : preparation.orderId)) f.preparation = null;
     }
     if (result.action === 'page') this.reset();
     if (result.action === 'restore-discard') {
@@ -197,22 +221,26 @@ class BoardController {
       return progress.orderLabel + (progress.ready ? '已齐货' : '缺' + progress.missingCount + '件');
     }).join('；');
     if (f.mode === 'chain') {
-      const quantity = order?.id === f.orderId ? order.requirements.filter(entry => entry.product === f.product && entry.level === f.level).length || 1 : 1;
+      const quantity = (order == null ? undefined : order.id) === f.orderId ? order.requirements.filter(entry => entry.product === f.product && entry.level === f.level).length || 1 : 1;
       const plan = model.preparationPlan(f.product, f.level, quantity, f.orderId);
       return productName(f.product) + f.level + '级图鉴已打开，已备' + plan.owned + '份，还缺' + plan.missing + '份';
     }
     if (f.mode === 'delivery') {
-      const preview = model.previewDelivery(order?.id);
+      const preview = model.previewDelivery(order == null ? undefined : order.id);
       return preview.ok ? '交付预览：' + preview.items.map(item => productName(item.product) + item.level + '级' +
         (item.substituted ? '代交' + item.requiredLevel + '级' : '')).join('、') +
         (preview.hasNewMissing ? '，其他订单将新增缺口' : '，不增加其他订单缺口') : '订单尚未齐货';
     }
     if (f.mode === 'protect') return '订单保护确认已打开，继续操作将增加订单缺口';
-    if (f.mode === 'receipt') return '实际交付回执：消耗' + (f.receipt?.consumed?.length || 0) + '件，腾出相同数量空格，收入' + (f.receipt?.reward || 0) + '金币';
+    if (f.mode === 'receipt') {
+      const receipt = f.receipt, consumed = receipt == null ? undefined : receipt.consumed;
+      return '实际交付回执：消耗' + ((consumed == null ? undefined : consumed.length) || 0) + '件，腾出相同数量空格，收入' + ((receipt == null ? undefined : receipt.reward) || 0) + '金币';
+    }
     const empty = model.state.board.filter(item => !item).length;
+    const sourceLine = f.sourceId && empty !== 0 ? model.getLine(f.sourceId) : undefined;
     return '棋盘剩余' + empty + '格' + (model.discardedItem ? '，可恢复最近丢弃商品' : '') +
       (f.sourceId ? '，原来源' + f.sourceId + (empty === 0 ? '已停止取货，请先腾位' :
-        model.getLine(f.sourceId)?.inventory > 0 ? '已有货，重新按下取货' : '等待真实产线入库，补货后重新按下取货') : '');
+        (sourceLine == null ? undefined : sourceLine.inventory) > 0 ? '已有货，重新按下取货' : '等待真实产线入库，补货后重新按下取货') : '');
   }
 }
 

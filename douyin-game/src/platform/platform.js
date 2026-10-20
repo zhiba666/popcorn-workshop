@@ -147,33 +147,34 @@ function createBrowserPlatform() {
     createImage: () => new Image(),
     now: () => Date.now(),
     publishState(state, ui) {
+      if (ui == null) ui = {};
       const recovery = ui && ui.recovery;
       const screen = recovery ? 'recovery' : ui && ui.entry ? 'entry' : state.page;
       canvas.setAttribute('data-screen', screen);
       canvas.setAttribute('data-reduced-motion', String(!!(ui && ui.reducedMotion)));
-      canvas.setAttribute('data-factory-view', ui?.factoryViewMode || 'detail');
-      canvas.setAttribute('data-factory-zoom', String(ui?.factoryCamera?.zoom || 1));
-      canvas.setAttribute('data-factory-camera', JSON.stringify(ui?.factoryCamera || null));
-      canvas.setAttribute('data-factory-dock', ui?.factoryDockExpanded ? 'expanded' : 'collapsed');
-      canvas.setAttribute('data-factory-order', ui?.factoryOrderExpanded ? 'expanded' : 'collapsed');
-      canvas.setAttribute('data-factory-service', ui?.factoryServiceFocus || '');
-      canvas.setAttribute('data-upgrade-tab', ui?.upgradeDialog ? ui.upgradeTab || 'capacity' : '');
-      canvas.setAttribute('data-upgrade-details', String(!!(ui?.upgradeDialog && ui.upgradeDetailsOpen)));
-      const factoryJourney = ui?.factoryPresentation?.construction;
-      const packagingRecovery = ui?.factoryPresentation?.packaging;
-      canvas.setAttribute('data-factory-journey-phase', factoryJourney?.phase || '');
-      canvas.setAttribute('data-factory-journey-line', factoryJourney?.lineId || '');
+      canvas.setAttribute('data-factory-view', ui.factoryViewMode || 'detail');
+      canvas.setAttribute('data-factory-zoom', String(ui.factoryCamera && ui.factoryCamera.zoom || 1));
+      canvas.setAttribute('data-factory-camera', JSON.stringify(ui.factoryCamera || null));
+      canvas.setAttribute('data-factory-dock', ui.factoryDockExpanded ? 'expanded' : 'collapsed');
+      canvas.setAttribute('data-factory-order', ui.factoryOrderExpanded ? 'expanded' : 'collapsed');
+      canvas.setAttribute('data-factory-service', ui.factoryServiceFocus || '');
+      canvas.setAttribute('data-upgrade-tab', ui.upgradeDialog ? ui.upgradeTab || 'capacity' : '');
+      canvas.setAttribute('data-upgrade-details', String(!!(ui.upgradeDialog && ui.upgradeDetailsOpen)));
+      const factoryJourney = ui.factoryPresentation && ui.factoryPresentation.construction;
+      const packagingRecovery = ui.factoryPresentation && ui.factoryPresentation.packaging;
+      canvas.setAttribute('data-factory-journey-phase', factoryJourney && factoryJourney.phase || '');
+      canvas.setAttribute('data-factory-journey-line', factoryJourney && factoryJourney.lineId || '');
       canvas.setAttribute('data-packaging-recovery', !packagingRecovery ? '' : packagingRecovery.cleared ? 'cleared' :
         packagingRecovery.pending ? 'pending' : packagingRecovery.speedOnly ? 'upgraded' : 'draining');
       const selectedLine = state.lines.find(line => line.id === state.selectedLineId);
-      const productionFeedback = factoryJourney && factoryJourney.lineId === selectedLine?.id ?
+      const productionFeedback = factoryJourney && factoryJourney.lineId === (selectedLine == null ? undefined : selectedLine.id) ?
         { ...factoryJourney, firstBatch: !factoryJourney.completed, batchId: factoryJourney.batchId } :
         selectedLine ? lineProductionFeedback(state, selectedLine) : null;
-      canvas.setAttribute('data-production-feedback', productionFeedback?.text || '');
+      canvas.setAttribute('data-production-feedback', productionFeedback && productionFeedback.text || '');
       canvas.setAttribute('data-first-piece-phase', productionFeedback ?
         (productionFeedback.firstBatch ? productionFeedback.phase : 'stocked') : '');
-      canvas.setAttribute('data-first-piece-line', productionFeedback?.firstBatch ? productionFeedback.lineId : '');
-      canvas.setAttribute('data-first-piece-batch-id', !productionFeedback?.firstBatch || productionFeedback.batchId == null ? '' : String(productionFeedback.batchId));
+      canvas.setAttribute('data-first-piece-line', productionFeedback && productionFeedback.firstBatch ? productionFeedback.lineId : '');
+      canvas.setAttribute('data-first-piece-batch-id', !productionFeedback || !productionFeedback.firstBatch || productionFeedback.batchId == null ? '' : String(productionFeedback.batchId));
       if (recovery) {
         const label = '爆米花工坊，存档恢复，' + recovery.title + '，' + recovery.lines.join('，') +
           (recovery.message ? '，' + recovery.message : '') + (recovery.confirm ?
@@ -187,10 +188,10 @@ function createBrowserPlatform() {
         if (label !== publishedLabel) { canvas.setAttribute('aria-label', label); publishedLabel = label; }
         return;
       }
-      const customers = ui?.customers || [];
+      const customers = ui.customers || [];
       if (state.page === 'customers') {
         const info = customers.find(item => item.customer.id === ui.selectedCustomerId);
-        canvas.setAttribute('data-customer', info?.customer.id || '');
+        canvas.setAttribute('data-customer', info && info.customer.id || '');
         const status = item => !item.eligible ? '尚未开放' : !item.collected ? '新面孔，未收录' :
           item.progress.stars + '星，' + item.progress.label + '，已完成超级订单' + item.superOrdersCompleted + '张，累计服务' + item.services + '次';
         const next = item => item.progress.stars === 5 ? '五星老朋友' :
@@ -208,8 +209,8 @@ function createBrowserPlatform() {
         return;
       }
       canvas.removeAttribute('data-customer');
-      const productName = id => PRODUCT_DEFINITIONS[id]?.name || '产品';
-      const workshopName = id => PRODUCT_DEFINITIONS[id]?.workshopName || '新工坊';
+      const productName = id => PRODUCT_DEFINITIONS[id] && PRODUCT_DEFINITIONS[id].name || '产品';
+      const workshopName = id => PRODUCT_DEFINITIONS[id] && PRODUCT_DEFINITIONS[id].workshopName || '新工坊';
       const lineName = (id, product) => {
         const line = state.lines.find(candidate => candidate.id === id);
         const number = String(id || '').match(/-(\d+)$/);
@@ -304,20 +305,20 @@ function createBrowserPlatform() {
         return '，' + workshopName(product) + (!built ? '尚未建设' :
           (state.firstStockedProducts || []).includes(product) ? '已完成首次入库' : '已建成，首批自动生产中');
       }).join('');
-      const firstStocked = offline?.firstStockedProducts?.length ? '，' + offline.firstStockedProducts.map(productName).join('、') + '首次入库' : '';
+      const firstStocked = offline && offline.firstStockedProducts && offline.firstStockedProducts.length ? '，' + offline.firstStockedProducts.map(productName).join('、') + '首次入库' : '';
       const label = '爆米花工坊，' + (state.page === 'board' ? '棋盘' : '工厂') + '页，金币' + state.coins +
-        (state.page === 'factory' ? '，' + (ui?.factoryViewMode === 'overview' ? '工厂总览' : '设备近景') +
+        (state.page === 'factory' ? '，' + (ui.factoryViewMode === 'overview' ? '工厂总览' : '设备近景') +
           '，可切换产品、上一条或下一条产线，点击瓶颈提示定位设备' +
-          (ui?.factoryViewMode === 'overview' ? '' : '，可单指拖动、双指缩放，归位返回当前产线') +
-          '，设备面板已' + (ui?.factoryDockExpanded ? '展开' : '收起，点击产线摘要展开操作') +
-          '，订单' + (ui?.factoryOrderExpanded ? '已展开' : '摘要可展开') +
-          (ui?.factoryServiceFocus ? '，已定位' + ({ supply: '公共供料', packaging: '公共包装', warehouse: '仓储' }[ui.factoryServiceFocus] || '') : '') : '') +
+          (ui.factoryViewMode === 'overview' ? '' : '，可单指拖动、双指缩放，归位返回当前产线') +
+          '，设备面板已' + (ui.factoryDockExpanded ? '展开' : '收起，点击产线摘要展开操作') +
+          '，订单' + (ui.factoryOrderExpanded ? '已展开' : '摘要可展开') +
+          (ui.factoryServiceFocus ? '，已定位' + ({ supply: '公共供料', packaging: '公共包装', warehouse: '仓储' }[ui.factoryServiceFocus] || '') : '') : '') +
         '，已交付' + state.completedOrders + '单，并行订单' + orders.length + '张，左右滑动切换关注。' +
         orderDescription + customerDescription +
         '，当前选线' + lineName(state.selectedLineId) + '（' + state.selectedLineId + '）。' +
         (productionFeedback ? '当前生产状态：' + productionFeedback.text + '。' : '') + lines + sharedState + packagingState +
         upgrade + sharedDescription + bottleneckDescription + expansionDescription + constructionDescription + productProgress + returnedStock + firstStocked +
-        (ui?.boardFlowDescription ? '。' + ui.boardFlowDescription : '') + '。' + occupied;
+        (ui.boardFlowDescription ? '。' + ui.boardFlowDescription : '') + '。' + occupied;
       if (label !== publishedLabel) {
         canvas.setAttribute('aria-label', label);
         publishedLabel = label;

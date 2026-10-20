@@ -15,7 +15,10 @@ const feedbackProgress = batch => {
 };
 const isCacheBlocked = line => line.factory.phase === 'waiting-cache' || line.factory.phase === 'waiting-supply' &&
   (line.buffer || []).reduce((sum, batch) => sum + batch.baseUnits, 0) + line.factory.baseUnits > line.cacheCapacityBaseUnits;
-const arrivalStage = phase => ({ warehouse: 0, packaging: 1, 'waiting-packaging': 2 }[phase] ?? 3);
+const arrivalStage = phase => {
+  const stage = { warehouse: 0, packaging: 1, 'waiting-packaging': 2 }[phase];
+  return stage == null ? 3 : stage;
+};
 function nearerToStock(left, right) {
   const stage = arrivalStage(left.phase) - arrivalStage(right.phase);
   if (stage) return stage < 0 ? left : right;
@@ -41,7 +44,11 @@ function lineProductionFeedback(state, line) {
     state.lines.filter(candidate => candidate.product === line.product).forEach(candidate => {
       const blocked = isCacheBlocked(candidate), current = candidate.factory;
       (candidate.buffer || []).forEach(batch => {
-        const active = packaging.lineId === candidate.id && packaging.batch?.id === batch.id;
+        let active = false;
+        if (packaging.lineId === candidate.id) {
+          const packingBatch = packaging.batch;
+          active = (packingBatch == null ? undefined : packingBatch.id) === batch.id;
+        }
         pending.push({ id: batch.id, lineId: candidate.id, cacheBlocked: blocked,
           phase: active ? 'packaging' : 'waiting-packaging', elapsed: active ? packaging.elapsed : 0,
           duration: active ? packaging.duration : 0 });

@@ -233,8 +233,8 @@ function createOrderBook(order, lines, completedOrders, initial = false) {
   let nextOrderId = order.id + 1;
   while (orders.length < CONFIG.parallelOrderSlots) {
     const customer = initial ? CUSTOMERS[orders.length] : null;
-    orders.push({ ...makeOrder(nextOrderId++, lines, initial || !hasQuickOrder(orders, lines), customer?.primaryProduct),
-      customerId: customer?.id || CONFIG.currentCustomerId });
+    orders.push({ ...makeOrder(nextOrderId++, lines, initial || !hasQuickOrder(orders, lines), customer == null ? undefined : customer.primaryProduct),
+      customerId: (customer == null ? undefined : customer.id) || CONFIG.currentCustomerId });
   }
   const customerState = createCustomerState(completedOrders);
   for (const visiting of orders) customerState.customerLastVisit[visiting.customerId] =
@@ -723,7 +723,7 @@ function restoreProductionState(saved, allowLegacyOrderBook = false, legacyCusto
   if (saved.schemaVersion === 9) {
     // Version nine owns only the first five products. Keep their exact saved
     // state and introductory orders without granting the final workshop.
-    if (!Array.isArray(saved.lines) || saved.lines.some(line => !SCHEMA_NINE_PRODUCTS.includes(line?.product)) ||
+    if (!Array.isArray(saved.lines) || saved.lines.some(line => !SCHEMA_NINE_PRODUCTS.includes(line == null ? undefined : line.product)) ||
         !Array.isArray(saved.firstStockedProducts) || saved.firstStockedProducts.some(product => !SCHEMA_NINE_PRODUCTS.includes(product)) ||
         !Array.isArray(saved.pendingProductOrders) || saved.pendingProductOrders.some(product => !SCHEMA_NINE_PRODUCTS.includes(product))) return null;
     return restoreProductionState({ ...saved, schemaVersion: SCHEMA_VERSION }, false, true);
@@ -731,7 +731,7 @@ function restoreProductionState(saved, allowLegacyOrderBook = false, legacyCusto
   if (saved.schemaVersion === 8) {
     // Version eight has no thin-wafer workshop. Migrate only its four known
     // products, preserving all existing production and order state.
-    if (!Array.isArray(saved.lines) || saved.lines.some(line => !SCHEMA_EIGHT_PRODUCTS.includes(line?.product)) ||
+    if (!Array.isArray(saved.lines) || saved.lines.some(line => !SCHEMA_EIGHT_PRODUCTS.includes(line == null ? undefined : line.product)) ||
         !Array.isArray(saved.firstStockedProducts) || saved.firstStockedProducts.some(product => !SCHEMA_EIGHT_PRODUCTS.includes(product)) ||
         !Array.isArray(saved.pendingProductOrders) || saved.pendingProductOrders.some(product => !SCHEMA_EIGHT_PRODUCTS.includes(product))) return null;
     return restoreProductionState({ ...saved, schemaVersion: SCHEMA_VERSION }, false, true);
@@ -739,7 +739,7 @@ function restoreProductionState(saved, allowLegacyOrderBook = false, legacyCusto
   if (saved.schemaVersion === 7) {
     // Version seven owns at most the first three products. Retain its batches,
     // paid levels, active timings, milestones and introductory order queue.
-    if (!Array.isArray(saved.lines) || saved.lines.some(line => !SCHEMA_SEVEN_PRODUCTS.includes(line?.product)) ||
+    if (!Array.isArray(saved.lines) || saved.lines.some(line => !SCHEMA_SEVEN_PRODUCTS.includes(line == null ? undefined : line.product)) ||
         !Array.isArray(saved.firstStockedProducts) || saved.firstStockedProducts.some(product => !SCHEMA_SEVEN_PRODUCTS.includes(product)) ||
         !Array.isArray(saved.pendingProductOrders) || saved.pendingProductOrders.some(product => !SCHEMA_SEVEN_PRODUCTS.includes(product))) return null;
     return restoreProductionState({ ...saved, schemaVersion: SCHEMA_VERSION }, false, true);
@@ -747,7 +747,7 @@ function restoreProductionState(saved, allowLegacyOrderBook = false, legacyCusto
   if (saved.schemaVersion === 6) {
     // Version six can contain only the first two products. Keep its precise
     // milestone and pending introductory order without awarding a new product.
-    if (!Array.isArray(saved.lines) || saved.lines.some(line => !LEGACY_PRODUCTS.includes(line?.product)) ||
+    if (!Array.isArray(saved.lines) || saved.lines.some(line => !LEGACY_PRODUCTS.includes(line == null ? undefined : line.product)) ||
         !(saved.pendingProductOrder === null || saved.pendingProductOrder === 'caramel') ||
         !Array.isArray(saved.firstStockedProducts) || saved.firstStockedProducts.some(product => !LEGACY_PRODUCTS.includes(product))) return null;
     return restoreProductionState({ ...saved, schemaVersion: SCHEMA_VERSION,
@@ -756,8 +756,8 @@ function restoreProductionState(saved, allowLegacyOrderBook = false, legacyCusto
   if (saved.schemaVersion === 5) {
     // Existing players keep both products and their exact public capacity.
     // Old saves cannot prove first-stock history after their stock was spent.
-    if (!Array.isArray(saved.lines) || saved.lines.some(line => !LEGACY_PRODUCTS.includes(line?.product)) ||
-        LEGACY_LINE_IDS.some(id => !saved.lines.some(line => line?.id === id)) ||
+    if (!Array.isArray(saved.lines) || saved.lines.some(line => !LEGACY_PRODUCTS.includes(line == null ? undefined : line.product)) ||
+        LEGACY_LINE_IDS.some(id => !saved.lines.some(line => (line == null ? undefined : line.id) === id)) ||
         !isRecord(saved.shared) || !isRecord(saved.shared.supply) || !isRecord(saved.shared.packaging)) return null;
     const hasSupplyLevel = Object.prototype.hasOwnProperty.call(saved.shared.supply, 'level');
     const hasPackagingLevel = Object.prototype.hasOwnProperty.call(saved.shared.packaging, 'level');
@@ -810,7 +810,7 @@ function restoreProductionState(saved, allowLegacyOrderBook = false, legacyCusto
     physicalIds.add(batch.id); return true;
   };
   for (const previous of saved.lines) {
-    const definition = CONFIG.lines.find(line => line.id === previous?.id);
+    const definition = CONFIG.lines.find(line => line.id === (previous == null ? undefined : previous.id));
     if (!definition || lines.some(line => line.id === definition.id) || previous.product !== definition.product ||
         !isOutputLevel(previous.outputLevel) || !isCapacityLevel(previous.capacityLevel) ||
         !isCount(previous.inventory) || !isCount(previous.discardedBaseUnits) ||
@@ -902,7 +902,8 @@ function restoreProductionState(saved, allowLegacyOrderBook = false, legacyCusto
   lines.sort(configuredLineOrder);
   const completedIds = new Set();
   for (const line of lines) {
-    for (const batch of line.legacyGroup?.completedBatches || []) {
+    const group = line.legacyGroup;
+    for (const batch of (group == null ? undefined : group.completedBatches) || []) {
       if (completedIds.has(batch.id)) return null;
       completedIds.add(batch.id);
       if (physicalIds.has(batch.id) && !line.warehouse.some(transit =>
@@ -910,7 +911,7 @@ function restoreProductionState(saved, allowLegacyOrderBook = false, legacyCusto
     }
     const pendingBaseUnits = (line.factory.batchId === null ? 0 : line.factory.baseUnits) + cacheLoad(line) +
       line.warehouse.reduce((sum, batch) => sum + (batch.credited ? 0 : batch.baseUnits), 0) +
-      (line.legacyGroup?.completedBaseUnits || 0);
+      ((group == null ? undefined : group.completedBaseUnits) || 0);
     if (!Number.isSafeInteger(pendingBaseUnits) ||
         !Number.isSafeInteger(line.inventory + Math.floor(pendingBaseUnits / baseUnits(line.outputLevel))) ||
         !Number.isSafeInteger(line.discardedBaseUnits + pendingBaseUnits)) return null;
@@ -918,7 +919,7 @@ function restoreProductionState(saved, allowLegacyOrderBook = false, legacyCusto
   const boardResult = restoreBoard(saved.board, lines);
   if (!boardResult || saved.nextItemId <= boardResult.largestId) return null;
   if (lines.some(line => line.inventory > 0 && !saved.firstStockedProducts.includes(line.product)) ||
-      boardResult.board.some(item => item?.kind === 'product' && !saved.firstStockedProducts.includes(item.product))) return null;
+      boardResult.board.some(item => (item == null ? undefined : item.kind) === 'product' && !saved.firstStockedProducts.includes(item.product))) return null;
   const m = saved.shared.materials;
   const materialSpec = materialSpecification(lines);
   if (!isRecord(m) || !isCount(m.baseUnits) || m.baseUnits > materialSpec.capacityBaseUnits ||
@@ -944,13 +945,15 @@ function restoreProductionState(saved, allowLegacyOrderBook = false, legacyCusto
     if (waiting.length !== service.queue.length || waiting.some(line => !service.queue.includes(line.id))) return null;
     if (name === 'supply') {
       const active = lines.filter(line => line.factory.phase === 'supply');
-      if (active.length > 1 || service.lineId !== (active[0]?.id || null) ||
-          service.elapsed !== (active[0]?.factory.elapsed || 0)) return null;
+      const activeLine = active[0];
+      if (active.length > 1 || service.lineId !== ((activeLine == null ? undefined : activeLine.id) || null) ||
+          service.elapsed !== ((activeLine == null ? undefined : activeLine.factory.elapsed) || 0)) return null;
       shared.supply = { level: levels.supply, lineId: service.lineId, elapsed: service.elapsed,
         duration: service.duration, queue: [...service.queue] };
     } else {
       const active = lines.flatMap(line => line.buffer.filter(batch => batch.status === 'packaging'));
-      if (active.length > 1 || service.lineId !== (active[0]?.lineId || null) ||
+      const activeBatch = active[0];
+      if (active.length > 1 || service.lineId !== ((activeBatch == null ? undefined : activeBatch.lineId) || null) ||
           (!active.length && (service.batch !== null || service.elapsed !== 0))) return null;
       const batch = active.length ? restoreBatch(service.batch, lines.find(line => line.id === service.lineId)) : null;
       if (active.length && (!batch || JSON.stringify(batch) !== JSON.stringify(batchDescriptor(active[0])))) return null;
@@ -1017,7 +1020,11 @@ class GameModel {
     return PRODUCTS.slice(1).find(product => !this.state.lines.some(line => line.product === product)) || null;
   }
 
-  sharedSpecification(serviceName, level = this.state.shared[serviceName]?.level) {
+  sharedSpecification(serviceName, level) {
+    if (level === undefined) {
+      const service = this.state.shared[serviceName];
+      level = service == null ? undefined : service.level;
+    }
     return sharedSpec(serviceName, level, productionStage(this.state.lines));
   }
 
@@ -1084,7 +1091,11 @@ class GameModel {
   }
 
   lineExpansionOffer(target = this.state.selectedLineId) {
-    const product = PRODUCTS.includes(target) ? target : this.getLine(target)?.product;
+    let product = target;
+    if (!PRODUCTS.includes(target)) {
+      const line = this.getLine(target);
+      product = line == null ? undefined : line.product;
+    }
     if (!product) return null;
     const lineCount = this.state.lines.filter(line => line.product === product).length;
     const maxed = lineCount >= CONFIG.maxLinesPerProduct;
@@ -1255,9 +1266,10 @@ class GameModel {
     if (!Number.isSafeInteger(upperMaterial) || this.state.nextBatchId > Number.MAX_SAFE_INTEGER - Math.ceil(seconds / fastestSupply) - 1 ||
         this.state.shared.materials.refilledBaseUnits > Number.MAX_SAFE_INTEGER - upperMaterial ||
         this.state.lines.some(line => {
+          const group = line.legacyGroup;
           const pending = (line.factory.batchId === null ? 0 : line.factory.baseUnits) + cacheLoad(line) +
             line.warehouse.reduce((sum, batch) => sum + (batch.credited ? 0 : batch.baseUnits), 0) +
-            (line.legacyGroup?.completedBaseUnits || 0);
+            ((group == null ? undefined : group.completedBaseUnits) || 0);
           const potential = pending + this.state.shared.materials.baseUnits + upperMaterial;
           return Math.floor(potential / baseUnits(line.outputLevel)) > Number.MAX_SAFE_INTEGER - line.inventory ||
             (line.outputLevel > 1 && potential > Number.MAX_SAFE_INTEGER - line.discardedBaseUnits);
@@ -1449,9 +1461,11 @@ class GameModel {
   outputOffer(lineId = this.state.selectedLineId) {
     const line = this.getLine(lineId);
     if (!line) return null;
+    const group = line.legacyGroup;
     const f = line.factory, level = line.outputLevel, maxed = level === CONFIG.maxOutputLevel;
     const nextLevel = maxed ? level : level + 1, ratio = baseUnits(nextLevel) / baseUnits(level);
-    const target = this.state.order.requirements.find(requirement => requirement.product === line.product)?.level ||
+    const requirement = this.state.order.requirements.find(requirement => requirement.product === line.product);
+    const target = (requirement == null ? undefined : requirement.level) ||
       Math.min(RULES.maxLevel, level + 4);
     const currentShots = 2 ** Math.max(0, target - level), nextShots = 2 ** Math.max(0, target - nextLevel);
     return { lineId, product: line.product, level, maxed, cost: CONFIG.outputUpgradeCost,
@@ -1462,7 +1476,8 @@ class GameModel {
       pending: !!line.legacyGroup, nextBatchUnits: batchUnits(nextLevel),
       cycleSeconds: this.machineCycle(line, line.capacityLevel, nextLevel),
       targetLevel: target, currentShots, nextShots, currentMerges: currentShots - 1, nextMerges: nextShots - 1,
-      oldBatchCount: (line.legacyGroup?.batchIds.length || 0) + (line.legacyGroup?.completedBatches.length || 0) };
+      oldBatchCount: ((group == null ? undefined : group.batchIds.length) || 0) +
+        ((group == null ? undefined : group.completedBatches.length) || 0) };
   }
 
   upgradeOutput(lineId = this.state.selectedLineId) {
@@ -1476,16 +1491,16 @@ class GameModel {
     const completed = line.warehouse.filter(batch => !batch.credited).map(batchDescriptor);
     const oldGroup = line.legacyGroup;
     const material = offer.discardedBaseUnits + pending.reduce((sum, batch) => sum + batch.baseUnits, 0) +
-      completed.reduce((sum, batch) => sum + batch.baseUnits, 0) + (oldGroup?.completedBaseUnits || 0);
+      completed.reduce((sum, batch) => sum + batch.baseUnits, 0) + ((oldGroup == null ? undefined : oldGroup.completedBaseUnits) || 0);
     if (material > Number.MAX_SAFE_INTEGER - line.discardedBaseUnits) return { ok: false, reason: 'numeric-limit' };
     this.state.coins -= offer.cost; line.inventory = offer.inventoryAfter;
     line.discardedBaseUnits += offer.discardedBaseUnits; line.outputLevel++;
     line.cacheCapacityBaseUnits = cacheCapacityBaseUnits(line.outputLevel);
     Object.assign(this.state.shared.materials, materialSpecification(this.state.lines));
     line.legacyGroup = pending.length || completed.length || oldGroup ? {
-      batchIds: [...new Set([...(oldGroup?.batchIds || []), ...pending.map(batch => batch.id)])],
-      completedBaseUnits: (oldGroup?.completedBaseUnits || 0) + completed.reduce((sum, batch) => sum + batch.baseUnits, 0),
-      completedBatches: [...(oldGroup?.completedBatches || []), ...completed]
+      batchIds: [...new Set([...((oldGroup == null ? undefined : oldGroup.batchIds) || []), ...pending.map(batch => batch.id)])],
+      completedBaseUnits: ((oldGroup == null ? undefined : oldGroup.completedBaseUnits) || 0) + completed.reduce((sum, batch) => sum + batch.baseUnits, 0),
+      completedBatches: [...((oldGroup == null ? undefined : oldGroup.completedBatches) || []), ...completed]
     } : null;
     line.warehouse.forEach(batch => { batch.credited = true; });
     this.refreshWaiting(line); this.state.board[from].level = line.outputLevel;
@@ -1542,7 +1557,8 @@ class GameModel {
   restoreDiscard() {
     const failure = reason => ({ ok: false, action: 'restore-discard', reason });
     const discarded = this.discardedItem;
-    if (discarded?.item?.kind !== 'product') return failure('nothing-to-restore');
+    const discardedProduct = discarded == null ? undefined : discarded.item;
+    if ((discardedProduct == null ? undefined : discardedProduct.kind) !== 'product') return failure('nothing-to-restore');
     const item = { ...discarded.item };
     const to = isCell(discarded.from) && this.state.board[discarded.from] === null
       ? discarded.from : this.state.board.findIndex(cell => cell === null);
@@ -1715,7 +1731,8 @@ class GameModel {
   }
 
   orderReady(orderId = this.state.focusedOrderId) {
-    return Boolean(this.boardOrderProgress(orderId)?.ready);
+    const progress = this.boardOrderProgress(orderId);
+    return Boolean(progress == null ? undefined : progress.ready);
   }
 
   deliver(orderId = this.state.focusedOrderId) {

@@ -45,9 +45,10 @@ function drawFactoryControls(r, model, visual = {}) {
   const layout = r.layout || {}, expanded = !!r.factoryDockExpanded;
   const dock = layout.factoryDock || { x: 19, y: expanded ? 626 : 704, w: 352, h: expanded ? 147 : 69 };
   const feedback = lineProductionFeedback(model.state, selected);
-  const journey = visual.factoryPresentation?.construction;
+  const presentation = visual.factoryPresentation;
+  const journey = presentation == null ? undefined : presentation.construction;
   const currentJourney = journey && journey.lineId === selected.id ? journey : null;
-  const status = (currentJourney?.text || feedback.text).split(' · ')[0];
+  const status = ((currentJourney == null ? undefined : currentJourney.text) || feedback.text).split(' · ')[0];
   const progress = Math.max(0, Math.min(1, currentJourney ? currentJourney.progress : feedback.progress));
   r.slice('ui/panel-cream', dock.x, dock.y, dock.w, dock.h);
   r.contain('factory/' + r.machineId(selected.product), dock.x + 48, dock.y + 9, 40, 43);
@@ -56,7 +57,7 @@ function drawFactoryControls(r, model, visual = {}) {
   r.text(expanded ? '⌄' : '⌃', dock.x + dock.w - 68, dock.y + 17, 17, COLORS.teal, 'center', true);
   r.text('库存 ' + stockText(selected.inventory), dock.x + 94, dock.y + 40, 12, COLORS.text, 'left', true);
   clippedText(r, status, { x: dock.x + 201, y: dock.y + 29, w: 94, h: 22 },
-    12, currentJourney?.completed ? COLORS.teal : COLORS.muted, 'right');
+    12, currentJourney != null && currentJourney.completed ? COLORS.teal : COLORS.muted, 'right');
   r.roundRect(dock.x + 94, dock.y + 56, 196, 3, 1.5, '#ded0b7');
   r.roundRect(dock.x + 94, dock.y + 56, Math.max(2, 196 * progress), 3, 1.5, '#2d9b87');
   if (expanded) {
@@ -76,7 +77,8 @@ function drawFactoryControls(r, model, visual = {}) {
 function drawFactoryOrderSummary(r, model) {
   const order = model.getOrder(), progress = order && model.orderProgress(order.id);
   if (!order || !progress) return;
-  const rect = r.layout?.factoryOrder || { x: 19, y: 80, w: 352, h: 50 };
+  const layout = r.layout;
+  const rect = (layout == null ? undefined : layout.factoryOrder) || { x: 19, y: 80, w: 352, h: 50 };
   const centerY = rect.y + rect.h / 2;
   r.visibleOrderId = order.id;
   r.slice('ui/panel-cream', rect.x, rect.y, rect.w, rect.h);

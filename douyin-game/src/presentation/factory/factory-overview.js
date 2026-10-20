@@ -1,145 +1,188 @@
 'use strict';
 
 const { PRODUCTION_CONFIG: CONFIG, PRODUCT_DEFINITIONS } = require('../../domain/production/production-config');
+const { lineProductionFeedback } = require('./production-feedback');
 
-const COLORS = { text: '#4d2d18', muted: '#9b7c60', teal: '#237b72', mint: '#e3f0d8',
-  cream: '#fff6e6', gold: '#fff0ce', goldText: '#956224', border: '#d7c3a1' };
+const COLORS = { text: '#4d2d18', muted: '#9b7c60', teal: '#237b72', cream: '#fff8e9',
+  gold: '#fff0ce', goldText: '#956224', border: '#d7c3a1' };
+const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 const contains = (rect, point) => point.x >= rect.x && point.x <= rect.x + rect.w &&
   point.y >= rect.y && point.y <= rect.y + rect.h;
-const stockText = amount => {
-  if (amount < 10000) return String(amount);
-  const [unit, label] = amount >= 1e11 ? [1e12, '万亿'] : amount >= 1e7 ? [1e8, '亿'] : [1e4, '万'];
-  const value = amount / unit;
-  return (value < 10 ? value.toFixed(1) : Math.round(value)) + label;
-};
+const intersection = (a, b) => Math.max(0, Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x)) *
+  Math.max(0, Math.min(a.y + a.h, b.y + b.h) - Math.max(a.y, b.y));
+const stockText = amount => amount < 10000 ? String(amount) :
+  (amount / 10000 < 10 ? (amount / 10000).toFixed(1) : Math.round(amount / 10000)) + '万';
+const numberOf = line => Number(String(line.id).split('-').pop()) || 1;
 
-// The overview uses its own readable composition. No scene scale or production
-// state changes when moving between this map and the detailed factory.
-function overviewLayout(view) {
-  const inset = 6, gap = 8, width = (view.w - inset * 2 - gap) / 2;
-  const serviceHeight = 54, gridTop = view.y + 70;
-  const gridHeight = view.h - 124, rowGap = 6, cardHeight = (gridHeight - rowGap * 2) / 3;
-  return {
-    // The upper-right corner belongs to the renderer's overview/detail switch.
-    supply: { x: view.x + 4, y: view.y + 3, w: view.w - 124, h: serviceHeight },
-    cards: CONFIG.products.map((product, index) => ({ product,
-      x: view.x + inset + index % 2 * (width + gap),
-      y: gridTop + Math.floor(index / 2) * (cardHeight + rowGap), w: width, h: cardHeight })),
-    packaging: { x: view.x + inset, y: view.y + view.h - 44, w: width, h: 40 },
-    warehouse: { x: view.x + inset + width + gap, y: view.y + view.h - 44, w: width, h: 40 }
-  };
+function screenRect(r, rect) {
+  const point = r.factoryCamera.worldToDesign(rect);
+  return { x: point.x, y: point.y, w: rect.w * r.factoryCamera.zoom, h: rect.h * r.factoryCamera.zoom };
 }
 
-function lineStatus(state, line, bottleneck) {
-  const batch = line.factory;
-  const cacheLoad = (line.buffer || []).reduce((sum, item) => sum + item.baseUnits, 0);
-  const blocked = batch.phase === 'waiting-cache' || batch.phase === 'waiting-supply' &&
-    cacheLoad + batch.baseUnits > line.cacheCapacityBaseUnits;
-  if (blocked) return { label: '缓存满', problem: true };
-  if (batch.phase === 'waiting-supply' && state.shared.materials.baseUnits < batch.baseUnits)
-    return { label: '缺料', problem: true };
-  if (batch.phase === 'waiting-supply') return { label: '待供料', problem: bottleneck.kind === 'supply' };
-  if ((line.buffer || []).some(item => item.status === 'waiting')) return { label: '待包装', problem: true };
-  const labels = { supply: '备料', feeding: '进料', processing: '加工', discharging: '转运',
-    transport: '转运', packaging: '包装', warehouse: '入库' };
-  return { label: labels[batch.phase] || '流转中', problem: false };
+function workshopAnchor(r, group) {
+  const anchor = group.labelAnchor || group.center || [group.x, group.y];
+  return r.factoryCamera.worldToDesign(Array.isArray(anchor) ? { x: anchor[0], y: anchor[1] } : anchor);
 }
 
-function drawService(r, rect, image, title, detail, active) {
-  r.roundRect(rect.x, rect.y, rect.w, rect.h, 9, active ? COLORS.gold : COLORS.cream,
-    active ? '#d5ae68' : COLORS.border);
-  r.factoryAsset(image, rect.x + 5, rect.y + 2, 37, rect.h - 5);
-  const compact = rect.w < 200;
-  r.text(title, rect.x + 46, rect.y + (compact ? 12 : 14), 12, COLORS.text, 'left', true);
-  r.text(detail, rect.x + 46, rect.y + (compact ? 29 : 29), 12,
-    active ? COLORS.goldText : COLORS.teal);
-  r.text('›', rect.x + rect.w - 11, rect.y + rect.h / 2, 19, active ? COLORS.goldText : COLORS.teal, 'center', true);
+function drawLeader(r, from, target) {
+  const c = r.ctx;
+  c.save(); c.strokeStyle = '#5b9b82aa'; c.lineWidth = 1.1;
+  c.beginPath(); c.moveTo(from.x, from.y); c.lineTo(target.x, target.y); c.stroke();
+  c.restore();
 }
 
-function drawBuiltWorkshop(r, state, rect, lines, bottleneck, hits) {
-  const active = lines.some(line => line.id === state.selectedLineId);
-  const statuses = lines.map(line => lineStatus(state, line, bottleneck));
-  const problem = statuses.some(status => status.problem);
-  r.roundRect(rect.x, rect.y, rect.w, rect.h, 10, active ? '#f2f6e7' : COLORS.cream,
-    active ? '#479d85' : COLORS.border);
-  r.roundRect(rect.x + 5, rect.y + 6, 56, 49, 9, COLORS.mint);
-  r.factoryAsset('factory/' + PRODUCT_DEFINITIONS[rect.product].machineId,
-    rect.x + 4, rect.y + 5, 60, 53);
-  r.text(PRODUCT_DEFINITIONS[rect.product].name, rect.x + 69, rect.y + 18, 14, COLORS.text, 'left', true);
-  r.text(lines.length + '/' + CONFIG.maxLinesPerProduct + ' 条产线', rect.x + 69, rect.y + 39, 12, COLORS.muted);
-  if (problem) {
-    r.roundRect(rect.x + rect.w - 17, rect.y + 5, 12, 12, 6, '#e6b75e');
-    r.text('!', rect.x + rect.w - 11, rect.y + 11, 11, '#70471d', 'center', true);
-  }
-  const defaultLine = lines.find(line => line.id === state.selectedLineId) || lines[0];
-  hits.push({ rect, hit: { type: 'factory-overview-line', lineId: defaultLine.id, product: rect.product } });
-  // A product can have at most two lines. Both remain individually selectable
-  // with a 44px-tall target; the illustrated machine selects the current line.
-  const cellWidth = (rect.w - 12) / lines.length;
-  lines.forEach((line, index) => {
-    const status = statuses[index], x = rect.x + 6 + index * cellWidth;
-    const selected = line.id === state.selectedLineId;
-    const badge = { x: x + 1, y: rect.y + rect.h - 29, w: cellWidth - 3, h: 23 };
-    r.roundRect(badge.x, badge.y, badge.w, badge.h, 6,
-      status.problem ? COLORS.gold : selected ? '#d1e7d4' : '#eee6d6');
-    const number = line.id.match(/-([1-9][0-9]*)$/)?.[1] || String(index + 1);
-    r.text(number + '号·' + status.label, badge.x + badge.w / 2, badge.y + 11.5, 12,
-      status.problem ? COLORS.goldText : COLORS.teal, 'center', selected);
-    hits.push({ rect: { x, y: rect.y + rect.h - 44, w: cellWidth, h: 44 },
-      hit: { type: 'factory-overview-line', lineId: line.id, product: rect.product } });
+// Screen-space labels stay readable above the same scene and camera.
+function drawFactoryOverview(r, model) {
+  const view = r.layout.factorySceneViewport || r.layout.factoryViewport;
+  const state = model.state, layout = r.factoryLayout, hits = [];
+  if (!layout || !r.factoryCamera) { r.factoryOverviewHits = hits; return; }
+  const bottleneck = model.productionBottleneck(), selected = model.getLine();
+  const groups = layout.groups || [], nextProduct = model.nextProduct();
+  const center = r.factoryCamera.worldToDesign({ x: layout.bounds.x + layout.bounds.w / 2,
+    y: layout.bounds.y + layout.bounds.h / 2 }).x;
+  const labels = groups.map(group => {
+    const product = typeof group.product === 'string' ? group.product : group.product.id;
+    const lines = state.lines.filter(line => line.product === product);
+    const anchor = workshopAnchor(r, group), side = group.column === 0 || group.column === 1 ? group.column : anchor.x < center ? 0 : 1;
+    const width = 86, height = 42;
+    return { group, product, lines, anchor, side, rect: {
+      x: clamp(anchor.x + (side ? 12 : -width - 12), view.x + 4, view.x + view.w - width - 4),
+      y: clamp(anchor.y - height / 2, view.y + 64, view.y + view.h - height - 54), w: width, h: height } };
   });
-}
-
-function drawUnbuiltWorkshop(r, rect, nextProduct, hits) {
-  const next = rect.product === nextProduct, definition = PRODUCT_DEFINITIONS[rect.product];
-  r.roundRect(rect.x, rect.y, rect.w, rect.h, 10, next ? COLORS.gold : '#e9e2d4',
-    next ? '#d7b778' : '#d4c9b7');
-  r.ctx.save(); r.ctx.globalAlpha *= next ? .74 : .3;
-  r.factoryAsset('factory/' + definition.machineId, rect.x + 4, rect.y + 5, 60, 53);
-  r.ctx.restore();
-  r.text(definition.name, rect.x + 69, rect.y + 18, 14, next ? COLORS.text : '#9b8c78', 'left', true);
-  r.text('0/' + CONFIG.maxLinesPerProduct + ' 条产线', rect.x + 69, rect.y + 39, 12, COLORS.muted);
-  if (next) {
-    r.roundRect(rect.x + 7, rect.y + rect.h - 30, rect.w - 14, 24, 6, '#e6c785');
-    r.text('去建设 ›', rect.x + rect.w / 2, rect.y + rect.h - 18, 13, '#714a27', 'center', true);
-    hits.push({ rect, hit: { type: 'factory-overview-build', product: rect.product } });
-  } else {
-    const previous = CONFIG.products[CONFIG.products.indexOf(rect.product) - 1];
-    r.text('先建' + PRODUCT_DEFINITIONS[previous].name + '工坊', rect.x + rect.w / 2,
-      rect.y + rect.h - 18, 12, '#9b8c78', 'center');
+  for (const side of [0, 1]) {
+    const column = labels.filter(label => label.side === side).sort((a, b) => a.rect.y - b.rect.y);
+    for (let index = 1; index < column.length; index++) column[index].rect.y =
+      Math.max(column[index].rect.y, column[index - 1].rect.y + column[index - 1].rect.h + 4);
+    if (column.length) {
+      const overflow = Math.max(0, column[column.length - 1].rect.y + 42 - (view.y + view.h - 52));
+      column.forEach(label => { label.rect.y -= overflow; });
+    }
   }
-}
-
-function drawFactoryOverview(r, model, visual) {
-  const state = model.state, view = r.layout.factoryViewport, layout = overviewLayout(view);
-  const bottleneck = model.productionBottleneck(), materials = state.shared.materials;
-  const hits = [], nextProduct = CONFIG.products.find(product => !state.lines.some(line => line.product === product));
-  r.roundRect(view.x, view.y, view.w, view.h, 12, '#e8dbbf');
-  drawService(r, layout.supply, 'factory/supply-body-clean', '公共供料',
-    '余料 ' + stockText(materials.baseUnits) + '/' + stockText(materials.capacityBaseUnits), bottleneck.kind === 'supply');
-  hits.push({ rect: { ...layout.supply, y: view.y, h: 58 },
-    hit: { type: 'factory-overview-service', service: 'supply' } });
-  layout.cards.forEach(rect => {
-    const lines = state.lines.filter(line => line.product === rect.product);
-    if (lines.length) drawBuiltWorkshop(r, state, rect, lines, bottleneck, hits);
-    else drawUnbuiltWorkshop(r, rect, nextProduct, hits);
+  for (const label of labels) {
+    const { product, lines, anchor, side, rect } = label;
+    const built = lines.length > 0, next = product === nextProduct, active = (selected == null ? undefined : selected.product) === product;
+    const problem = lines.some(line => {
+      const blocked = bottleneck.blockedLineIds;
+      if (blocked != null && blocked.includes(line.id)) return true;
+      if (bottleneck.kind !== 'supply') return false;
+      const affected = bottleneck.affectedLineIds;
+      return affected == null ? undefined : affected.includes(line.id);
+    });
+    drawLeader(r, { x: side ? rect.x : rect.x + rect.w, y: rect.y + rect.h / 2 }, anchor);
+    r.roundRect(rect.x, rect.y, rect.w, rect.h, 8,
+      active ? '#e1f1df' : next || problem ? COLORS.gold : built ? COLORS.cream : '#eae7d8',
+      active ? '#448d70' : next ? '#c9a05b' : COLORS.border);
+    r.text(PRODUCT_DEFINITIONS[product].name, rect.x + rect.w / 2, rect.y + 13, 12,
+      active ? COLORS.teal : built || next ? COLORS.text : '#9c927d', 'center', true);
+    r.text(built ? lines.length + '/' + CONFIG.maxLinesPerProduct + '线' + (problem ? ' · !' : '  ›') :
+      next ? '待建设  +' : '未解锁', rect.x + rect.w / 2, rect.y + 30, 11,
+      problem ? COLORS.goldText : built ? COLORS.teal : COLORS.muted, 'center');
+    if (built) {
+      const line = lines.find(item => item.id === (selected == null ? undefined : selected.id)) ||
+        lines.find(item => {
+          const recent = r.factoryRecentProductLines;
+          return item.id === (recent == null ? undefined : recent[product]);
+        }) || lines[0];
+      hits.push({ rect, hit: { type: 'factory-overview-line', lineId: line.id, product } });
+    } else if (next) hits.push({ rect, hit: { type: 'factory-overview-build', product } });
+  }
+  const serviceY = view.y + view.h - 45, gap = 5, width = (view.w - 16 - gap * 2) / 3;
+  const services = [
+    { service: 'supply', title: '公共供料', detail: '余料 ' + stockText(state.shared.materials.baseUnits) },
+    { service: 'packaging', title: '公共包装', detail: bottleneck.queuedBatchCount ? '排队 ' + bottleneck.queuedBatchCount + '批' : '正常流转' },
+    { service: 'warehouse', title: '统一仓储', detail: '库存 ' + stockText(state.lines.reduce((sum, line) => sum + line.inventory, 0)) }
+  ];
+  services.forEach((service, index) => {
+    const rect = { x: view.x + 8 + index * (width + gap), y: serviceY, w: width, h: 40 };
+    const problem = bottleneck.kind === service.service;
+    r.roundRect(rect.x, rect.y, rect.w, rect.h, 8, problem ? COLORS.gold : COLORS.cream,
+      problem ? '#c9a05b' : COLORS.border);
+    r.text(service.title + ' ›', rect.x + width / 2, rect.y + 12, 12, COLORS.teal, 'center', true);
+    r.text(service.detail, rect.x + width / 2, rect.y + 28, 11,
+      problem ? COLORS.goldText : COLORS.muted, 'center');
+    hits.push({ rect: { ...rect, y: rect.y - 2, h: 44 }, hit: { type: 'factory-overview-service', service: service.service } });
   });
-  drawService(r, layout.packaging, 'factory/packer-body-clean', '公共包装',
-    bottleneck.queuedBatchCount ? '排队 ' + bottleneck.queuedBatchCount + ' 批' :
-      state.shared.packaging.lineId ? '正在包装' : '暂无排队', bottleneck.kind === 'packaging');
-  drawService(r, layout.warehouse, 'factory/warehouse', '仓储',
-    '库存 ' + stockText(state.lines.reduce((sum, line) => sum + line.inventory, 0)), false);
-  hits.push({ rect: { ...layout.packaging, h: 44 }, hit: { type: 'factory-overview-service', service: 'packaging' } });
-  hits.push({ rect: { ...layout.warehouse, h: 44 }, hit: { type: 'factory-overview-service', service: 'warehouse' } });
   r.factoryOverviewHits = hits;
+}
+
+function drawFactorySceneLabels(r, model) {
+  if (r.factoryViewMode === 'overview') return;
+  const layout = r.factoryLayout, selected = model.getLine(), view = r.layout.factorySceneViewport;
+  if (!layout || !selected || !view) return;
+  const visible = { ...view, y: view.y + 64, h: view.h - 64 };
+  const scenes = layout.scenes || [], selectedScene = scenes.find(scene => scene.lineId === selected.id);
+  const service = r.factoryServiceFocus;
+  const serviceRects = { supply: layout.supply, packaging: layout.packaging, warehouse: layout.warehouse };
+  const targetWorld = service ? serviceRects[service] :
+    r.factorySelectedPart === 'cache' ? (selectedScene == null ? undefined : selectedScene.cache) :
+      (selectedScene == null ? undefined : selectedScene.machine);
+  if (!targetWorld) return;
+  const target = screenRect(r, targetWorld);
+  const targetVisible = intersection(target, visible);
+  if (targetVisible < Math.min(120, target.w * target.h * .2)) return;
+
+  for (const scene of scenes) {
+    if (scene.product !== selected.product || service) continue;
+    const line = model.getLine(scene.lineId), rect = screenRect(r, scene.machine);
+    if (!line || intersection(rect, visible) < rect.w * rect.h * .35) continue;
+    const active = line.id === selected.id;
+    const x = clamp(rect.x + rect.w - 12, view.x + 20, view.x + view.w - 20), y = rect.y + 8;
+    if (y < visible.y + 8 || y > view.y + view.h - 10) continue;
+    r.roundRect(x - 18, y - 10, 36, 20, 6, active ? '#d9efdc' : '#fff7e7', active ? '#548f70' : '#d8c7a7');
+    r.text(numberOf(line) + '号', x, y, 11, COLORS.teal, 'center', active);
+    if (active) {
+      const cache = screenRect(r, scene.cache);
+      if (intersection(cache, visible) >= cache.w * cache.h * .5 && cache.w >= 16) {
+        const cx = cache.x + cache.w / 2, cy = cache.y + cache.h + 10;
+        if (cy + 9 < view.y + view.h) {
+          r.roundRect(cx - 21, cy - 9, 42, 18, 5, '#fff8e9', '#a5bc92');
+          r.text(numberOf(line) + '号缓存', cx, cy, 10, COLORS.teal, 'center');
+        }
+      }
+    }
+  }
+
+  const obstacles = [...scenes.flatMap(scene => [scene.machine, scene.cache]),
+    layout.supply, layout.packaging, layout.warehouse].filter(rect => rect && rect !== targetWorld)
+    .map(rect => screenRect(r, rect));
+  if (r.layout.factoryHome) obstacles.push(r.layout.factoryHome);
+  const width = 132, height = 44, gap = 8;
+  const middle = { x: target.x + target.w / 2, y: target.y + target.h / 2 };
+  const candidates = [
+    { x: target.x + target.w + gap, y: target.y + 24 },
+    { x: target.x - width - gap, y: target.y + 24 },
+    { x: middle.x - width / 2, y: target.y - height - gap },
+    { x: middle.x - width / 2, y: target.y + target.h + gap }
+  ].map((candidate, index) => {
+    const rect = { x: clamp(candidate.x, view.x + 8, view.x + view.w - width - 8),
+      y: clamp(candidate.y, visible.y + 4, view.y + view.h - height - 8), w: width, h: height };
+    const overlap = obstacles.reduce((sum, obstacle) => sum + intersection(rect, obstacle), 0);
+    const own = intersection(rect, target);
+    return { rect, overlap, own, score: own * 100 + overlap * 4 + index };
+  }).sort((a, b) => a.score - b.score);
+  const placement = candidates[0];
+  if (placement.overlap > 90 || placement.own > 44) return;
+  const rect = placement.rect;
+  drawLeader(r, { x: clamp(middle.x, rect.x, rect.x + rect.w), y: clamp(middle.y, rect.y, rect.y + rect.h) },
+    { x: clamp(rect.x + rect.w / 2, target.x, target.x + target.w),
+      y: clamp(rect.y + rect.h / 2, target.y, target.y + target.h) });
+  r.roundRect(rect.x, rect.y, rect.w, rect.h, 8, COLORS.cream, '#7ca883');
+  const title = service ? { supply: '公共供料', packaging: '公共包装', warehouse: '统一仓储' }[service] :
+    PRODUCT_DEFINITIONS[selected.product].name + ' · ' + numberOf(selected) + '号' + (r.factorySelectedPart === 'cache' ? '缓存' : '线');
+  const feedback = lineProductionFeedback(model.state, selected);
+  const description = service ? service === 'warehouse' ? '全厂成品入库' : '所有产线共用' :
+    'Lv.' + selected.outputLevel + ' · ' + (r.factorySelectedPart === 'cache' ? '本线独立缓存' : feedback.text.split(' · ')[0]);
+  r.text(title, rect.x + 9, rect.y + 14, 12, COLORS.teal, 'left', true);
+  r.text(description, rect.x + 9, rect.y + 31, 11, COLORS.muted);
 }
 
 function hitFactoryOverview(r, point) {
   if (r.factoryViewMode !== 'overview') return null;
-  // Later entries are the more specific line targets inside a workshop card.
   const entries = r.factoryOverviewHits || [];
   for (let index = entries.length - 1; index >= 0; index--) {
-    if (contains(entries[index].rect, point)) return { ...entries[index].hit, scrollable: false };
+    const rect = entries[index].rect, padding = Math.max(0, (44 / (r.scale || 1) - rect.h) / 2);
+    if (contains({ ...rect, y: rect.y - padding, h: rect.h + padding * 2 }, point))
+      return { ...entries[index].hit, scrollable: true };
   }
   return null;
 }
@@ -155,4 +198,4 @@ function handleFactoryOverview(r, model, hit) {
   return null;
 }
 
-module.exports = { drawFactoryOverview, hitFactoryOverview, handleFactoryOverview };
+module.exports = { drawFactoryOverview, drawFactorySceneLabels, hitFactoryOverview, handleFactoryOverview };

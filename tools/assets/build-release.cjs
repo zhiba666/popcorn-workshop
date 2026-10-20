@@ -8,6 +8,24 @@ const { execFileSync } = require('node:child_process');
 const { buildCustomerContent } = require('../content/build-customer-content.cjs');
 const { normalizeAssetMetadata } = require('./asset-metadata.cjs');
 
+// Preserve decoded pixels while reducing the local mini-game package size.
+// Source and runtime artwork stay untouched.
+function optimizeReleasePngs(game, entries) {
+  const sharpModule = require.resolve('sharp');
+  const optimize = `const fs = require('node:fs');
+const sharp = require(${JSON.stringify(sharpModule)});
+const files = JSON.parse(fs.readFileSync(0, 'utf8'));
+(async () => { for (const file of files) {
+  const original = fs.readFileSync(file);
+  const encoded = await sharp(original).png({ compressionLevel: 9, adaptiveFiltering: true, palette: false }).toBuffer();
+  if (encoded.length < original.length) fs.writeFileSync(file, encoded);
+} })().catch(error => { console.error(error); process.exitCode = 1; });`;
+  execFileSync(process.execPath, ['-e', optimize], {
+    input: JSON.stringify(Object.values(entries).map(item => path.join(game, item.path))),
+    stdio: ['pipe', 'inherit', 'inherit'],
+  });
+}
+
 function buildReleaseAssets({ root, sceneOnly = false }) {
 const game = path.join(root, 'douyin-game');
 const gameManifestFile = path.join(game, 'src/generated/assets-manifest.js');
@@ -67,7 +85,8 @@ function includeFactorySceneAssets(target) {
 const sharp = require(${JSON.stringify(sharpModule)});
 const jobs = JSON.parse(fs.readFileSync(0, 'utf8'));
 (async () => { for (const job of jobs) {
-  const bytes = await sharp(job.source, { density: 144 }).resize(job.width, job.height).png().toBuffer();
+  const bytes = await sharp(job.source, { density: 144 }).resize(job.width, job.height)
+    .png({ compressionLevel: 9, adaptiveFiltering: true, palette: false }).toBuffer();
   fs.mkdirSync(path.dirname(job.destination), { recursive: true });
   if (!fs.existsSync(job.destination) || !fs.readFileSync(job.destination).equals(bytes)) fs.writeFileSync(job.destination, bytes);
 } })().catch(error => { console.error(error); process.exitCode = 1; });`;
@@ -697,6 +716,7 @@ fs.mkdirSync(path.dirname(gameManifestFile), { recursive: true });
 for (const item of factoryUpgrade.reusedAssets || []) {
   if (item.type !== 'existing' || !manifest[item.id]) throw new Error('Unknown reused factory upgrade asset: ' + item.id);
 }
+optimizeReleasePngs(game, manifest);
 includeFactorySceneAssets(manifest);
 normalizeManifest(manifest);
 writeManifest(manifest);
@@ -720,4 +740,4 @@ function writeManifest(entries) {
 }
 }
 
-module.exports = { buildReleaseAssets };
+module.exports = { buildReleaseAssets, optimizeReleasePngs };

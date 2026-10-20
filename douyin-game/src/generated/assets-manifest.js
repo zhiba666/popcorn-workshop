@@ -53,7 +53,7 @@ module.exports = {
     ],
     "runtimePixelRatio": 2,
     "path": "assets/ui/background-room.png",
-    "bytes": 758460
+    "bytes": 400880
   },
   "ui/background-table": {
     "sourceSize": [
@@ -107,7 +107,7 @@ module.exports = {
     ],
     "runtimePixelRatio": 2,
     "path": "assets/ui/background-table.png",
-    "bytes": 241386
+    "bytes": 205909
   },
   "ui/title-sign": {
     "sourceSize": [
@@ -167,7 +167,7 @@ module.exports = {
     ],
     "runtimePixelRatio": 2,
     "path": "assets/ui/title-sign.png",
-    "bytes": 179765
+    "bytes": 135086
   },
   "ui/panel-cream": {
     "sourceSize": [
@@ -313,7 +313,7 @@ module.exports = {
     ],
     "runtimePixelRatio": 2,
     "path": "assets/ui/portrait-well.png",
-    "bytes": 78408
+    "bytes": 61935
   },
   "ui/currency-pill": {
     "sourceSize": [
@@ -386,7 +386,7 @@ module.exports = {
     ],
     "runtimePixelRatio": 2,
     "path": "assets/ui/currency-pill.png",
-    "bytes": 69754
+    "bytes": 60570
   },
   "ui/board-frame": {
     "sourceSize": [
@@ -459,7 +459,7 @@ module.exports = {
     ],
     "runtimePixelRatio": 2,
     "path": "assets/ui/board-frame.png",
-    "bytes": 152696
+    "bytes": 110838
   },
   "ui/board-cell": {
     "sourceSize": [
@@ -532,7 +532,7 @@ module.exports = {
     ],
     "runtimePixelRatio": 2,
     "path": "assets/ui/cell-base.png",
-    "bytes": 31143
+    "bytes": 29332
   },
   "ui/button-teal": {
     "sourceSize": [
@@ -605,7 +605,7 @@ module.exports = {
     ],
     "runtimePixelRatio": 2,
     "path": "assets/ui/button-teal.png",
-    "bytes": 95179
+    "bytes": 66135
   },
   "ui/button-red": {
     "sourceSize": [
@@ -678,7 +678,7 @@ module.exports = {
     ],
     "runtimePixelRatio": 2,
     "path": "assets/ui/button-red.png",
-    "bytes": 90401
+    "bytes": 64913
   },
   "ui/nav-active": {
     "sourceSize": [
@@ -751,7 +751,7 @@ module.exports = {
     ],
     "runtimePixelRatio": 2,
     "path": "assets/ui/nav-active.png",
-    "bytes": 145437
+    "bytes": 101361
   },
   "ui/nav-idle": {
     "sourceSize": [
@@ -824,7 +824,7 @@ module.exports = {
     ],
     "runtimePixelRatio": 2,
     "path": "assets/ui/nav-idle.png",
-    "bytes": 131463
+    "bytes": 101798
   },
   "icon/coin": {
     "size": [
@@ -1696,7 +1696,7 @@ module.exports = {
       "width": 716,
       "height": 1272
     },
-    "bytes": 19816,
+    "bytes": 18604,
     "metadataSchemaVersion": 2,
     "logicalSize": [
       360,
@@ -3286,7 +3286,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/original/lv-01.png",
-    "bytes": 59182
+    "bytes": 48140
   },
   "product/original/2": {
     "size": [
@@ -3343,7 +3343,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/original/lv-02.png",
-    "bytes": 58595
+    "bytes": 47139
   },
   "product/original/3": {
     "size": [
@@ -3400,7 +3400,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/original/lv-03.png",
-    "bytes": 52059
+    "bytes": 42955
   },
   "product/original/4": {
     "size": [
@@ -3457,7 +3457,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/original/lv-04.png",
-    "bytes": 61717
+    "bytes": 50501
   },
   "product/original/5": {
     "size": [
@@ -3514,7 +3514,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/original/lv-05.png",
-    "bytes": 65197
+    "bytes": 50447
   },
   "product/original/6": {
     "size": [
@@ -3571,7 +3571,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/original/lv-06.png",
-    "bytes": 67346
+    "bytes": 52455
   },
   "product/original/7": {
     "size": [
@@ -3628,7 +3628,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/original/lv-07.png",
-    "bytes": 67274
+    "bytes": 57189
   },
   "product/original/8": {
     "size": [
@@ -3685,7 +3685,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/original/lv-08.png",
-    "bytes": 77517
+    "bytes": 61189
   },
   "product/original/9": {
     "size": [
@@ -3742,7 +3742,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/original/lv-09.png",
-    "bytes": 78592
+    "bytes": 63873
   },
   "product/original/10": {
     "size": [
@@ -3799,7 +3799,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/original/lv-10.png",
-    "bytes": 85989
+    "bytes": 70451
   },
   "product/caramel/1": {
     "size": [
@@ -3856,7 +3856,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/caramel/lv-01.png",
-    "bytes": 57758
+    "bytes": 45738
   },
   "product/caramel/2": {
     "size": [
@@ -3913,7 +3913,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/caramel/lv-02.png",
-    "bytes": 63154
+    "bytes": 48419
   },
   "product/caramel/3": {
     "size": [
@@ -3970,7 +3970,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/caramel/lv-03.png",
-    "bytes": 59019
+    "bytes": 45444
   },
   "product/caramel/4": {
     "size": [
@@ -4027,7 +4027,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/caramel/lv-04.png",
-    "bytes": 70822
+    "bytes": 52658
   },
   "product/caramel/5": {
     "size": [
@@ -4084,7 +4084,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/caramel/lv-05.png",
-    "bytes": 70111
+    "bytes": 53031
   },
   "product/caramel/6": {
     "size": [
@@ -4141,7 +4141,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/caramel/lv-06.png",
-    "bytes": 71338
+    "bytes": 58030
   },
   "product/caramel/7": {
     "size": [
@@ -4198,7 +4198,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/caramel/lv-07.png",
-    "bytes": 78880
+    "bytes": 61921
   },
   "product/caramel/8": {
     "size": [
@@ -4255,7 +4255,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/caramel/lv-08.png",
-    "bytes": 79568
+    "bytes": 63357
   },
   "product/caramel/9": {
     "size": [
@@ -4312,7 +4312,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/caramel/lv-09.png",
-    "bytes": 81099
+    "bytes": 64881
   },
   "product/caramel/10": {
     "size": [
@@ -4369,7 +4369,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/caramel/lv-10.png",
-    "bytes": 79589
+    "bytes": 65164
   },
   "product/popcorn-ball/1": {
     "size": [
@@ -4426,7 +4426,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/popcorn-ball/lv-01.png",
-    "bytes": 59330
+    "bytes": 46040
   },
   "product/popcorn-ball/2": {
     "size": [
@@ -4483,7 +4483,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/popcorn-ball/lv-02.png",
-    "bytes": 74409
+    "bytes": 58858
   },
   "product/popcorn-ball/3": {
     "size": [
@@ -4540,7 +4540,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/popcorn-ball/lv-03.png",
-    "bytes": 68091
+    "bytes": 53822
   },
   "product/popcorn-ball/4": {
     "size": [
@@ -4597,7 +4597,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/popcorn-ball/lv-04.png",
-    "bytes": 67640
+    "bytes": 52672
   },
   "product/popcorn-ball/5": {
     "size": [
@@ -4654,7 +4654,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/popcorn-ball/lv-05.png",
-    "bytes": 59885
+    "bytes": 47032
   },
   "product/popcorn-ball/6": {
     "size": [
@@ -4711,7 +4711,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/popcorn-ball/lv-06.png",
-    "bytes": 74472
+    "bytes": 60480
   },
   "product/popcorn-ball/7": {
     "size": [
@@ -4768,7 +4768,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/popcorn-ball/lv-07.png",
-    "bytes": 76645
+    "bytes": 64423
   },
   "product/popcorn-ball/8": {
     "size": [
@@ -4825,7 +4825,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/popcorn-ball/lv-08.png",
-    "bytes": 78051
+    "bytes": 62829
   },
   "product/popcorn-ball/9": {
     "size": [
@@ -4882,7 +4882,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/popcorn-ball/lv-09.png",
-    "bytes": 83953
+    "bytes": 68588
   },
   "product/popcorn-ball/10": {
     "size": [
@@ -4939,7 +4939,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/popcorn-ball/lv-10.png",
-    "bytes": 84844
+    "bytes": 71702
   },
   "product/crisp-stick/1": {
     "size": [
@@ -4996,7 +4996,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/crisp-stick/lv-01.png",
-    "bytes": 49636
+    "bytes": 43634
   },
   "product/crisp-stick/2": {
     "size": [
@@ -5053,7 +5053,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/crisp-stick/lv-02.png",
-    "bytes": 59232
+    "bytes": 48658
   },
   "product/crisp-stick/3": {
     "size": [
@@ -5110,7 +5110,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/crisp-stick/lv-03.png",
-    "bytes": 43415
+    "bytes": 35551
   },
   "product/crisp-stick/4": {
     "size": [
@@ -5167,7 +5167,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/crisp-stick/lv-04.png",
-    "bytes": 59088
+    "bytes": 47838
   },
   "product/crisp-stick/5": {
     "size": [
@@ -5224,7 +5224,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/crisp-stick/lv-05.png",
-    "bytes": 58266
+    "bytes": 48011
   },
   "product/crisp-stick/6": {
     "size": [
@@ -5281,7 +5281,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/crisp-stick/lv-06.png",
-    "bytes": 62632
+    "bytes": 48838
   },
   "product/crisp-stick/7": {
     "size": [
@@ -5338,7 +5338,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/crisp-stick/lv-07.png",
-    "bytes": 69952
+    "bytes": 56071
   },
   "product/crisp-stick/8": {
     "size": [
@@ -5395,7 +5395,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/crisp-stick/lv-08.png",
-    "bytes": 76913
+    "bytes": 59889
   },
   "product/crisp-stick/9": {
     "size": [
@@ -5452,7 +5452,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/crisp-stick/lv-09.png",
-    "bytes": 83567
+    "bytes": 64531
   },
   "product/crisp-stick/10": {
     "size": [
@@ -5509,7 +5509,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/crisp-stick/lv-10.png",
-    "bytes": 71732
+    "bytes": 62020
   },
   "product/wafer/1": {
     "size": [
@@ -5566,7 +5566,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/wafer/lv-01.png",
-    "bytes": 59836
+    "bytes": 49430
   },
   "product/wafer/2": {
     "size": [
@@ -5623,7 +5623,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/wafer/lv-02.png",
-    "bytes": 61246
+    "bytes": 46357
   },
   "product/wafer/3": {
     "size": [
@@ -5680,7 +5680,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/wafer/lv-03.png",
-    "bytes": 58558
+    "bytes": 48413
   },
   "product/wafer/4": {
     "size": [
@@ -5737,7 +5737,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/wafer/lv-04.png",
-    "bytes": 53807
+    "bytes": 45487
   },
   "product/wafer/5": {
     "size": [
@@ -5794,7 +5794,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/wafer/lv-05.png",
-    "bytes": 66130
+    "bytes": 56771
   },
   "product/wafer/6": {
     "size": [
@@ -5851,7 +5851,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/wafer/lv-06.png",
-    "bytes": 65867
+    "bytes": 54739
   },
   "product/wafer/7": {
     "size": [
@@ -5908,7 +5908,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/wafer/lv-07.png",
-    "bytes": 73845
+    "bytes": 59655
   },
   "product/wafer/8": {
     "size": [
@@ -5965,7 +5965,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/wafer/lv-08.png",
-    "bytes": 77620
+    "bytes": 63684
   },
   "product/wafer/9": {
     "size": [
@@ -6022,7 +6022,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/wafer/lv-09.png",
-    "bytes": 61647
+    "bytes": 52226
   },
   "product/wafer/10": {
     "size": [
@@ -6079,7 +6079,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/wafer/lv-10.png",
-    "bytes": 68595
+    "bytes": 58243
   },
   "product/sandwich-square/1": {
     "size": [
@@ -6136,7 +6136,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/sandwich-square/lv-01.png",
-    "bytes": 45328
+    "bytes": 38897
   },
   "product/sandwich-square/2": {
     "size": [
@@ -6193,7 +6193,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/sandwich-square/lv-02.png",
-    "bytes": 53921
+    "bytes": 44194
   },
   "product/sandwich-square/3": {
     "size": [
@@ -6250,7 +6250,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/sandwich-square/lv-03.png",
-    "bytes": 62502
+    "bytes": 47565
   },
   "product/sandwich-square/4": {
     "size": [
@@ -6307,7 +6307,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/sandwich-square/lv-04.png",
-    "bytes": 66563
+    "bytes": 54045
   },
   "product/sandwich-square/5": {
     "size": [
@@ -6364,7 +6364,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/sandwich-square/lv-05.png",
-    "bytes": 65570
+    "bytes": 56333
   },
   "product/sandwich-square/6": {
     "size": [
@@ -6421,7 +6421,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/sandwich-square/lv-06.png",
-    "bytes": 82414
+    "bytes": 65178
   },
   "product/sandwich-square/7": {
     "size": [
@@ -6478,7 +6478,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/sandwich-square/lv-07.png",
-    "bytes": 73761
+    "bytes": 61425
   },
   "product/sandwich-square/8": {
     "size": [
@@ -6535,7 +6535,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/sandwich-square/lv-08.png",
-    "bytes": 78041
+    "bytes": 58785
   },
   "product/sandwich-square/9": {
     "size": [
@@ -6592,7 +6592,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/sandwich-square/lv-09.png",
-    "bytes": 83276
+    "bytes": 64415
   },
   "product/sandwich-square/10": {
     "size": [
@@ -6649,7 +6649,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/products/sandwich-square/lv-10.png",
-    "bytes": 85691
+    "bytes": 68246
   },
   "launcher/original/1": {
     "size": [
@@ -6706,7 +6706,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/launchers/original/lv-01.png",
-    "bytes": 66797
+    "bytes": 52150
   },
   "launcher/original/2": {
     "size": [
@@ -6763,7 +6763,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/launchers/original/lv-02.png",
-    "bytes": 70114
+    "bytes": 54680
   },
   "launcher/original/3": {
     "size": [
@@ -6820,7 +6820,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/launchers/original/lv-03.png",
-    "bytes": 55925
+    "bytes": 44133
   },
   "launcher/original/4": {
     "size": [
@@ -6877,7 +6877,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/launchers/original/lv-04.png",
-    "bytes": 51402
+    "bytes": 40859
   },
   "launcher/original/5": {
     "size": [
@@ -6934,7 +6934,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/launchers/original/lv-05.png",
-    "bytes": 54661
+    "bytes": 44211
   },
   "launcher/original/6": {
     "size": [
@@ -6991,7 +6991,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/launchers/original/lv-06.png",
-    "bytes": 52012
+    "bytes": 42316
   },
   "launcher/caramel/1": {
     "size": [
@@ -7048,7 +7048,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/launchers/caramel/lv-01.png",
-    "bytes": 56878
+    "bytes": 46518
   },
   "launcher/caramel/2": {
     "size": [
@@ -7105,7 +7105,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/launchers/caramel/lv-02.png",
-    "bytes": 58717
+    "bytes": 48894
   },
   "launcher/caramel/3": {
     "size": [
@@ -7162,7 +7162,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/launchers/caramel/lv-03.png",
-    "bytes": 58756
+    "bytes": 49605
   },
   "launcher/caramel/4": {
     "size": [
@@ -7219,7 +7219,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/launchers/caramel/lv-04.png",
-    "bytes": 62893
+    "bytes": 52789
   },
   "launcher/caramel/5": {
     "size": [
@@ -7276,7 +7276,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/launchers/caramel/lv-05.png",
-    "bytes": 59526
+    "bytes": 49250
   },
   "launcher/caramel/6": {
     "size": [
@@ -7333,7 +7333,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/launchers/caramel/lv-06.png",
-    "bytes": 53762
+    "bytes": 44907
   },
   "launcher/popcorn-ball/1": {
     "size": [
@@ -7390,7 +7390,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/launchers/popcorn-ball/lv-01.png",
-    "bytes": 67880
+    "bytes": 52481
   },
   "launcher/popcorn-ball/2": {
     "size": [
@@ -7447,7 +7447,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/launchers/popcorn-ball/lv-02.png",
-    "bytes": 65659
+    "bytes": 52310
   },
   "launcher/popcorn-ball/3": {
     "size": [
@@ -7504,7 +7504,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/launchers/popcorn-ball/lv-03.png",
-    "bytes": 59287
+    "bytes": 48956
   },
   "launcher/popcorn-ball/4": {
     "size": [
@@ -7561,7 +7561,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/launchers/popcorn-ball/lv-04.png",
-    "bytes": 56450
+    "bytes": 46902
   },
   "launcher/popcorn-ball/5": {
     "size": [
@@ -7618,7 +7618,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/launchers/popcorn-ball/lv-05.png",
-    "bytes": 64627
+    "bytes": 53015
   },
   "launcher/popcorn-ball/6": {
     "size": [
@@ -7675,7 +7675,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/launchers/popcorn-ball/lv-06.png",
-    "bytes": 64498
+    "bytes": 53918
   },
   "launcher/crisp-stick/1": {
     "size": [
@@ -7732,7 +7732,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/launchers/crisp-stick/lv-01.png",
-    "bytes": 66174
+    "bytes": 52046
   },
   "launcher/crisp-stick/2": {
     "size": [
@@ -7789,7 +7789,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/launchers/crisp-stick/lv-02.png",
-    "bytes": 67811
+    "bytes": 54134
   },
   "launcher/crisp-stick/3": {
     "size": [
@@ -7846,7 +7846,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/launchers/crisp-stick/lv-03.png",
-    "bytes": 55071
+    "bytes": 41876
   },
   "launcher/crisp-stick/4": {
     "size": [
@@ -7903,7 +7903,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/launchers/crisp-stick/lv-04.png",
-    "bytes": 56570
+    "bytes": 44038
   },
   "launcher/crisp-stick/5": {
     "size": [
@@ -7960,7 +7960,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/launchers/crisp-stick/lv-05.png",
-    "bytes": 62003
+    "bytes": 49188
   },
   "launcher/crisp-stick/6": {
     "size": [
@@ -8017,7 +8017,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/launchers/crisp-stick/lv-06.png",
-    "bytes": 61614
+    "bytes": 49055
   },
   "launcher/wafer/1": {
     "size": [
@@ -8074,7 +8074,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/launchers/wafer/lv-01.png",
-    "bytes": 61007
+    "bytes": 48323
   },
   "launcher/wafer/2": {
     "size": [
@@ -8131,7 +8131,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/launchers/wafer/lv-02.png",
-    "bytes": 69750
+    "bytes": 56274
   },
   "launcher/wafer/3": {
     "size": [
@@ -8188,7 +8188,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/launchers/wafer/lv-03.png",
-    "bytes": 63118
+    "bytes": 49802
   },
   "launcher/wafer/4": {
     "size": [
@@ -8245,7 +8245,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/launchers/wafer/lv-04.png",
-    "bytes": 66789
+    "bytes": 53065
   },
   "launcher/wafer/5": {
     "size": [
@@ -8302,7 +8302,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/launchers/wafer/lv-05.png",
-    "bytes": 69344
+    "bytes": 56195
   },
   "launcher/wafer/6": {
     "size": [
@@ -8359,7 +8359,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/launchers/wafer/lv-06.png",
-    "bytes": 65315
+    "bytes": 53595
   },
   "launcher/sandwich-square/1": {
     "size": [
@@ -8416,7 +8416,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/launchers/sandwich-square/lv-01.png",
-    "bytes": 65356
+    "bytes": 54160
   },
   "launcher/sandwich-square/2": {
     "size": [
@@ -8473,7 +8473,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/launchers/sandwich-square/lv-02.png",
-    "bytes": 64870
+    "bytes": 54571
   },
   "launcher/sandwich-square/3": {
     "size": [
@@ -8530,7 +8530,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/launchers/sandwich-square/lv-03.png",
-    "bytes": 63429
+    "bytes": 53525
   },
   "launcher/sandwich-square/4": {
     "size": [
@@ -8587,7 +8587,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/launchers/sandwich-square/lv-04.png",
-    "bytes": 61635
+    "bytes": 53613
   },
   "launcher/sandwich-square/5": {
     "size": [
@@ -8644,7 +8644,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/launchers/sandwich-square/lv-05.png",
-    "bytes": 64655
+    "bytes": 55306
   },
   "launcher/sandwich-square/6": {
     "size": [
@@ -8701,7 +8701,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/launchers/sandwich-square/lv-06.png",
-    "bytes": 62423
+    "bytes": 54291
   },
   "board-state/cell-blocked": {
     "size": [
@@ -8756,7 +8756,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/board-states/cell-blocked.png",
-    "bytes": 20675
+    "bytes": 16926
   },
   "board-state/cell-mergeable": {
     "size": [
@@ -8811,7 +8811,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/board-states/cell-mergeable.png",
-    "bytes": 17658
+    "bytes": 14311
   },
   "board-state/cell-order-match": {
     "size": [
@@ -8866,7 +8866,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/board-states/cell-order-match.png",
-    "bytes": 21039
+    "bytes": 16710
   },
   "board-state/cell-selected": {
     "size": [
@@ -8921,7 +8921,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/board-states/cell-selected.png",
-    "bytes": 16805
+    "bytes": 13708
   },
   "customer-badge/max-star": {
     "size": [
@@ -8977,7 +8977,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/customer-status/badges/max-star.png",
-    "bytes": 17699
+    "bytes": 14662
   },
   "customer-badge/new-customer": {
     "size": [
@@ -9033,7 +9033,7 @@ module.exports = {
       0.5
     ],
     "path": "assets/customer-status/badges/new-customer.png",
-    "bytes": 16752
+    "bytes": 13106
   },
   "effect/focus-ring": {
     "size": [
@@ -9327,7 +9327,7 @@ module.exports = {
     "transparent": true,
     "customerId": "rabbit-courier",
     "customerIndex": 1,
-    "bytes": 70408,
+    "bytes": 58643,
     "path": "assets/customers/rabbit-courier.png",
     "metadataSchemaVersion": 2,
     "logicalSize": [
@@ -9364,7 +9364,7 @@ module.exports = {
     "transparent": true,
     "customerId": "rabbit-courier",
     "customerIndex": 1,
-    "bytes": 246931,
+    "bytes": 187540,
     "path": "assets/customer-details/rabbit-courier.png",
     "metadataSchemaVersion": 2,
     "logicalSize": [
@@ -9438,7 +9438,7 @@ module.exports = {
     "transparent": true,
     "customerId": "bear-neighbor",
     "customerIndex": 2,
-    "bytes": 108183,
+    "bytes": 86254,
     "path": "assets/customers/bear-neighbor.png",
     "metadataSchemaVersion": 2,
     "logicalSize": [
@@ -9475,7 +9475,7 @@ module.exports = {
     "transparent": true,
     "customerId": "bear-neighbor",
     "customerIndex": 2,
-    "bytes": 320456,
+    "bytes": 246307,
     "path": "assets/customer-details/bear-neighbor.png",
     "metadataSchemaVersion": 2,
     "logicalSize": [
@@ -9549,7 +9549,7 @@ module.exports = {
     "transparent": true,
     "customerId": "fox-traveler",
     "customerIndex": 3,
-    "bytes": 87672,
+    "bytes": 71260,
     "path": "assets/customers/fox-traveler.png",
     "metadataSchemaVersion": 2,
     "logicalSize": [
@@ -9586,7 +9586,7 @@ module.exports = {
     "transparent": true,
     "customerId": "fox-traveler",
     "customerIndex": 3,
-    "bytes": 266687,
+    "bytes": 205020,
     "path": "assets/customer-details/fox-traveler.png",
     "metadataSchemaVersion": 2,
     "logicalSize": [
@@ -9660,7 +9660,7 @@ module.exports = {
     "transparent": true,
     "customerId": "dog-mechanic",
     "customerIndex": 4,
-    "bytes": 111186,
+    "bytes": 86201,
     "path": "assets/customers/dog-mechanic.png",
     "metadataSchemaVersion": 2,
     "logicalSize": [
@@ -9697,7 +9697,7 @@ module.exports = {
     "transparent": true,
     "customerId": "dog-mechanic",
     "customerIndex": 4,
-    "bytes": 351580,
+    "bytes": 259814,
     "path": "assets/customer-details/dog-mechanic.png",
     "metadataSchemaVersion": 2,
     "logicalSize": [
@@ -9771,7 +9771,7 @@ module.exports = {
     "transparent": true,
     "customerId": "squirrel-tailor",
     "customerIndex": 5,
-    "bytes": 95298,
+    "bytes": 74665,
     "path": "assets/customers/squirrel-tailor.png",
     "metadataSchemaVersion": 2,
     "logicalSize": [
@@ -9808,7 +9808,7 @@ module.exports = {
     "transparent": true,
     "customerId": "squirrel-tailor",
     "customerIndex": 5,
-    "bytes": 342256,
+    "bytes": 256933,
     "path": "assets/customer-details/squirrel-tailor.png",
     "metadataSchemaVersion": 2,
     "logicalSize": [
@@ -9882,7 +9882,7 @@ module.exports = {
     "transparent": true,
     "customerId": "cat-teacher",
     "customerIndex": 6,
-    "bytes": 112151,
+    "bytes": 88861,
     "path": "assets/customers/cat-teacher.png",
     "metadataSchemaVersion": 2,
     "logicalSize": [
@@ -9919,7 +9919,7 @@ module.exports = {
     "transparent": true,
     "customerId": "cat-teacher",
     "customerIndex": 6,
-    "bytes": 322593,
+    "bytes": 247358,
     "path": "assets/customer-details/cat-teacher.png",
     "metadataSchemaVersion": 2,
     "logicalSize": [
@@ -9993,7 +9993,7 @@ module.exports = {
     "transparent": true,
     "customerId": "hedgehog-florist",
     "customerIndex": 7,
-    "bytes": 133291,
+    "bytes": 106692,
     "path": "assets/customers/hedgehog-florist.png",
     "metadataSchemaVersion": 2,
     "logicalSize": [
@@ -10030,7 +10030,7 @@ module.exports = {
     "transparent": true,
     "customerId": "hedgehog-florist",
     "customerIndex": 7,
-    "bytes": 367104,
+    "bytes": 276808,
     "path": "assets/customer-details/hedgehog-florist.png",
     "metadataSchemaVersion": 2,
     "logicalSize": [
@@ -10104,7 +10104,7 @@ module.exports = {
     "transparent": true,
     "customerId": "otter-ferryman",
     "customerIndex": 8,
-    "bytes": 107528,
+    "bytes": 87586,
     "path": "assets/customers/otter-ferryman.png",
     "metadataSchemaVersion": 2,
     "logicalSize": [
@@ -10141,7 +10141,7 @@ module.exports = {
     "transparent": true,
     "customerId": "otter-ferryman",
     "customerIndex": 8,
-    "bytes": 327535,
+    "bytes": 256621,
     "path": "assets/customer-details/otter-ferryman.png",
     "metadataSchemaVersion": 2,
     "logicalSize": [
@@ -10215,7 +10215,7 @@ module.exports = {
     "transparent": true,
     "customerId": "goat-orchard-owner",
     "customerIndex": 9,
-    "bytes": 108392,
+    "bytes": 91045,
     "path": "assets/customers/goat-orchard-owner.png",
     "metadataSchemaVersion": 2,
     "logicalSize": [
@@ -10252,7 +10252,7 @@ module.exports = {
     "transparent": true,
     "customerId": "goat-orchard-owner",
     "customerIndex": 9,
-    "bytes": 307910,
+    "bytes": 244602,
     "path": "assets/customer-details/goat-orchard-owner.png",
     "metadataSchemaVersion": 2,
     "logicalSize": [
@@ -10326,7 +10326,7 @@ module.exports = {
     "transparent": true,
     "customerId": "owl-librarian",
     "customerIndex": 10,
-    "bytes": 111890,
+    "bytes": 92667,
     "path": "assets/customers/owl-librarian.png",
     "metadataSchemaVersion": 2,
     "logicalSize": [
@@ -10363,7 +10363,7 @@ module.exports = {
     "transparent": true,
     "customerId": "owl-librarian",
     "customerIndex": 10,
-    "bytes": 352987,
+    "bytes": 275893,
     "path": "assets/customer-details/owl-librarian.png",
     "metadataSchemaVersion": 2,
     "logicalSize": [
@@ -10437,7 +10437,7 @@ module.exports = {
     "transparent": true,
     "customerId": "badger-potter",
     "customerIndex": 11,
-    "bytes": 108879,
+    "bytes": 88446,
     "path": "assets/customers/badger-potter.png",
     "metadataSchemaVersion": 2,
     "logicalSize": [
@@ -10474,7 +10474,7 @@ module.exports = {
     "transparent": true,
     "customerId": "badger-potter",
     "customerIndex": 11,
-    "bytes": 331989,
+    "bytes": 255128,
     "path": "assets/customer-details/badger-potter.png",
     "metadataSchemaVersion": 2,
     "logicalSize": [
@@ -10548,7 +10548,7 @@ module.exports = {
     "transparent": true,
     "customerId": "red-panda-projectionist",
     "customerIndex": 12,
-    "bytes": 114084,
+    "bytes": 93303,
     "path": "assets/customers/red-panda-projectionist.png",
     "metadataSchemaVersion": 2,
     "logicalSize": [
@@ -10585,7 +10585,7 @@ module.exports = {
     "transparent": true,
     "customerId": "red-panda-projectionist",
     "customerIndex": 12,
-    "bytes": 330901,
+    "bytes": 253389,
     "path": "assets/customer-details/red-panda-projectionist.png",
     "metadataSchemaVersion": 2,
     "logicalSize": [
@@ -21569,7 +21569,7 @@ module.exports = {
     "padding": 2,
     "maxEdge": 600,
     "sourceBytes": 1523973,
-    "bytes": 447193,
+    "bytes": 301812,
     "draw": {
       "sourceRect": [
         4.2324,
@@ -21690,7 +21690,7 @@ module.exports = {
     "padding": 2,
     "maxEdge": 600,
     "sourceBytes": 1641583,
-    "bytes": 442768,
+    "bytes": 319629,
     "draw": {
       "sourceRect": [
         2.4872,
@@ -21811,7 +21811,7 @@ module.exports = {
     "padding": 2,
     "maxEdge": 600,
     "sourceBytes": 1433102,
-    "bytes": 415867,
+    "bytes": 290545,
     "draw": {
       "sourceRect": [
         66.0966,
@@ -21924,7 +21924,7 @@ module.exports = {
       0.5,
       0.5
     ],
-    "bytes": 26144
+    "bytes": 18689
   },
   "factory/sheeting-strip-cutter-body-clean": {
     "id": "sheeting-strip-cutter",
@@ -21973,7 +21973,7 @@ module.exports = {
     "padding": 2,
     "maxEdge": 600,
     "sourceBytes": 1191212,
-    "bytes": 276536,
+    "bytes": 216124,
     "draw": {
       "sourceRect": [
         30.6258,
@@ -22086,7 +22086,7 @@ module.exports = {
       0.5,
       0.5
     ],
-    "bytes": 35456
+    "bytes": 25670
   },
   "factory/flip-wafer-mold-body-clean": {
     "id": "flip-wafer-mold",
@@ -22135,7 +22135,7 @@ module.exports = {
     "padding": 2,
     "maxEdge": 600,
     "sourceBytes": 1494770,
-    "bytes": 245963,
+    "bytes": 194538,
     "draw": {
       "sourceRect": [
         1.5431,
@@ -22256,7 +22256,7 @@ module.exports = {
     "padding": 2,
     "maxEdge": 600,
     "sourceBytes": 1494770,
-    "bytes": 226229,
+    "bytes": 186033,
     "draw": {
       "sourceRect": [
         1.5431,
@@ -22377,7 +22377,7 @@ module.exports = {
     "padding": 2,
     "maxEdge": 600,
     "sourceBytes": 1494770,
-    "bytes": 182608,
+    "bytes": 146032,
     "draw": {
       "sourceRect": [
         1.5431,
@@ -22498,7 +22498,7 @@ module.exports = {
     "padding": 2,
     "maxEdge": 600,
     "sourceBytes": 1494770,
-    "bytes": 64217,
+    "bytes": 52921,
     "draw": {
       "sourceRect": [
         1.5431,
@@ -22619,7 +22619,7 @@ module.exports = {
     "padding": 2,
     "maxEdge": 600,
     "sourceBytes": 1494770,
-    "bytes": 35865,
+    "bytes": 28674,
     "draw": {
       "sourceRect": [
         1.5431,
@@ -22732,7 +22732,7 @@ module.exports = {
       0.5,
       0.5
     ],
-    "bytes": 38491
+    "bytes": 29290
   },
   "factory/rotary-sandwich-assembler-body-clean": {
     "id": "rotary-sandwich-assembler",
@@ -22781,7 +22781,7 @@ module.exports = {
     "padding": 2,
     "maxEdge": 600,
     "sourceBytes": 1404853,
-    "bytes": 306635,
+    "bytes": 234913,
     "draw": {
       "sourceRect": [
         17.3769,
@@ -22882,7 +22882,7 @@ module.exports = {
       0.5,
       0.5
     ],
-    "bytes": 100056
+    "bytes": 50864
   },
   "factory/rotary-sandwich-assembler-food-cap": {
     "size": [
@@ -22911,7 +22911,7 @@ module.exports = {
       0.5,
       0.5
     ],
-    "bytes": 96643
+    "bytes": 53710
   },
   "factory/rotary-sandwich-assembler-nozzle-tip": {
     "size": [
@@ -22940,7 +22940,7 @@ module.exports = {
       0.5,
       0.5
     ],
-    "bytes": 1839
+    "bytes": 1305
   },
   "factory/rotary-sandwich-assembler-press-tip": {
     "size": [
@@ -22969,7 +22969,7 @@ module.exports = {
       0.5,
       0.5
     ],
-    "bytes": 4438
+    "bytes": 3147
   },
   "factory/sandwich-square": {
     "id": "sandwich-square",
@@ -23010,7 +23010,7 @@ module.exports = {
       0.5,
       0.5
     ],
-    "bytes": 54478
+    "bytes": 41378
   },
   "factory/logistics-straight-h": {
     "anchor": [
@@ -23096,7 +23096,7 @@ module.exports = {
       0.5,
       0.5
     ],
-    "bytes": 12277
+    "bytes": 12064
   },
   "factory/logistics-straight-v": {
     "anchor": [
@@ -23182,7 +23182,7 @@ module.exports = {
       0.5,
       0.5
     ],
-    "bytes": 14263
+    "bytes": 12727
   },
   "factory/logistics-corner-ne": {
     "anchor": [
@@ -23268,7 +23268,7 @@ module.exports = {
       0.5,
       0.5
     ],
-    "bytes": 14783
+    "bytes": 15494
   },
   "factory/logistics-corner-nw": {
     "anchor": [
@@ -23354,7 +23354,7 @@ module.exports = {
       0.5,
       0.5
     ],
-    "bytes": 14656
+    "bytes": 14652
   },
   "factory/logistics-corner-se": {
     "anchor": [
@@ -23440,7 +23440,7 @@ module.exports = {
       0.5,
       0.5
     ],
-    "bytes": 14213
+    "bytes": 13873
   },
   "factory/logistics-corner-sw": {
     "anchor": [
@@ -23526,7 +23526,7 @@ module.exports = {
       0.5,
       0.5
     ],
-    "bytes": 14265
+    "bytes": 14343
   },
   "factory/logistics-junction-east": {
     "anchor": [
@@ -23620,7 +23620,7 @@ module.exports = {
       0.5,
       0.5
     ],
-    "bytes": 16716
+    "bytes": 15830
   },
   "factory/logistics-junction-west": {
     "anchor": [
@@ -23714,7 +23714,7 @@ module.exports = {
       0.5,
       0.5
     ],
-    "bytes": 16644
+    "bytes": 15825
   },
   "factory/logistics-end-cap": {
     "anchor": [
@@ -23792,7 +23792,7 @@ module.exports = {
       0.5,
       0.5
     ],
-    "bytes": 10583
+    "bytes": 10459
   },
   "factory/logistics-connector": {
     "anchor": [
@@ -23878,7 +23878,7 @@ module.exports = {
       0.5,
       0.5
     ],
-    "bytes": 14177
+    "bytes": 13725
   },
   "factory/logistics-foreground-rail-h": {
     "size": [
@@ -23929,7 +23929,7 @@ module.exports = {
       0.5,
       0.5
     ],
-    "bytes": 1182
+    "bytes": 1324
   },
   "factory/logistics-foreground-rail-v": {
     "size": [
@@ -23980,7 +23980,7 @@ module.exports = {
       0.5,
       0.5
     ],
-    "bytes": 1428
+    "bytes": 1481
   },
   "factory/selection-ring": {
     "anchor": [
@@ -24030,7 +24030,7 @@ module.exports = {
       0.5,
       0.5
     ],
-    "bytes": 22353
+    "bytes": 26692
   },
   "factory/contact-shadow": {
     "anchor": [
@@ -24074,7 +24074,7 @@ module.exports = {
       0.5,
       0.5
     ],
-    "bytes": 14295
+    "bytes": 20224
   },
   "factory/nameplate": {
     "nineSlice": {
@@ -24129,7 +24129,7 @@ module.exports = {
       0.5,
       0.5
     ],
-    "bytes": 5472
+    "bytes": 4651
   },
   "factory/construction-platform": {
     "label": "建设占位地台",
@@ -24196,7 +24196,7 @@ module.exports = {
       0.5,
       0.46153846153846156
     ],
-    "bytes": 43851
+    "bytes": 44292
   },
   "factory/expansion-plus-sign": {
     "label": "扩建入口加号牌",
@@ -24262,7 +24262,7 @@ module.exports = {
       0.5,
       0.9166666666666666
     ],
-    "bytes": 15642
+    "bytes": 13298
   },
   "factory/floor-stone-tile": {
     "label": "扩展石砖地面",
@@ -24334,6 +24334,6 @@ module.exports = {
       0.5,
       0.5
     ],
-    "bytes": 26285
+    "bytes": 24747
   }
 };

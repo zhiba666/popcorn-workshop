@@ -198,20 +198,27 @@ function finalOutputFlow(meta) {
   for (const phase of animation.phases) { starts[phase.id] = elapsed; elapsed += phase.seconds; }
   for (const layer of animation.layers) {
     const motion = layer.motion;
-    if (layer.eraseOnly || !layer.id.startsWith('product-') || motion.type !== 'flow' || !motion.path?.length) continue;
+    if (layer.eraseOnly || !layer.id.startsWith('product-') || motion.type !== 'flow') continue;
+    const path = motion.path;
+    if (path == null || !path.length) continue;
     const anchor = motion.startPhase || motion.phase || layer.when[0];
-    const duration = Math.max(0.08, motion.duration || animation.phases.find(phase => phase.id === anchor)?.seconds || 0);
+    let phaseSeconds = motion.duration;
+    if (!phaseSeconds) {
+      const anchorPhase = animation.phases.find(phase => phase.id === anchor);
+      phaseSeconds = anchorPhase == null ? undefined : anchorPhase.seconds;
+    }
+    const duration = Math.max(0.08, phaseSeconds || 0);
     const end = (starts[anchor] || 0) + (motion.delay || 0) + duration;
     if (last && (end < last.end || end === last.end && layer.id <= last.layer.id)) continue;
-    const path = motion.path;
     const length = path.slice(1).reduce((sum, point, index) =>
       sum + Math.hypot(point[0] - path[index][0], point[1] - path[index][1]), 0);
     const endPoint = path[path.length - 1], previous = path[path.length - 2];
     const dx = previous ? endPoint[0] - previous[0] : 0, dy = previous ? endPoint[1] - previous[1] : 0;
     const lastLength = Math.hypot(dx, dy);
+    const dischargePhase = animation.phases.find(phase => phase.id === 'discharging');
     last = { layer, duration, end, length, endpoint: endPoint,
       direction: lastLength > 0 ? [dx / lastLength, dy / lastLength] : null,
-      dischargeSeconds: animation.phases.find(phase => phase.id === 'discharging')?.seconds || 0 };
+      dischargeSeconds: (dischargePhase == null ? undefined : dischargePhase.seconds) || 0 };
   }
   outputFlows.set(meta, last);
   return last;
@@ -219,23 +226,24 @@ function finalOutputFlow(meta) {
 
 function machineOutputDirection(renderer, machine, product) {
   const definition = PRODUCT_DEFINITIONS[product];
-  if (!definition || product === 'sandwich-square' || !(machine?.w > 0 && machine.h > 0)) return null;
+  if (!definition || product === 'sandwich-square' || !((machine == null ? undefined : machine.w) > 0 && machine.h > 0)) return null;
   const id = 'factory/' + definition.machineId, meta = renderer.assets.meta(id);
-  if (!renderer.assets.get(id) || !meta?.animation) return null;
+  if (!renderer.assets.get(id) || meta == null || !meta.animation) return null;
   const output = finalOutputFlow(meta);
   // The machine contain transform is uniform, so source-image directions are
   // also design-screen directions; no ground projection is applied to the art.
-  return output?.direction ? output.direction.slice() : null;
+  return output != null && output.direction ? output.direction.slice() : null;
 }
 
 function machineOutputPort(renderer, machine, product) {
   const definition = PRODUCT_DEFINITIONS[product];
-  if (!definition || product === 'sandwich-square' || !(machine?.w > 0 && machine.h > 0)) return null;
+  if (!definition || product === 'sandwich-square' || !((machine == null ? undefined : machine.w) > 0 && machine.h > 0)) return null;
   const id = 'factory/' + definition.machineId, image = renderer.assets.get(id), meta = renderer.assets.meta(id);
-  if (!image || !meta?.animation) return null;
+  if (!image || meta == null || !meta.animation) return null;
   const output = finalOutputFlow(meta);
   if (!output) return null;
-  const source = meta.draw?.sourceRect || [0, 0, image.width, image.height];
+  const draw = meta.draw;
+  const source = (draw == null ? undefined : draw.sourceRect) || [0, 0, image.width, image.height];
   const scale = Math.min(machine.w / source[2], machine.h / source[3]);
   return [machine.x + (machine.w - source[2] * scale) / 2 + (output.endpoint[0] - source[0]) * scale,
     machine.y + machine.h - source[3] * scale + (output.endpoint[1] - source[1]) * scale];
@@ -243,12 +251,13 @@ function machineOutputPort(renderer, machine, product) {
 
 function drawMachineTransfer(renderer, machine, path, progress, product) {
   const definition = PRODUCT_DEFINITIONS[product];
-  if (!definition || product === 'sandwich-square' || !path?.length) return false;
+  if (!definition || product === 'sandwich-square' || path == null || !path.length) return false;
   const id = 'factory/' + definition.machineId, image = renderer.assets.get(id), meta = renderer.assets.meta(id);
-  if (!image || !meta?.animation) return false;
+  if (!image || meta == null || !meta.animation) return false;
   const output = finalOutputFlow(meta);
   if (!output) return false;
-  const source = meta.draw?.sourceRect || [0, 0, image.width, image.height];
+  const draw = meta.draw;
+  const source = (draw == null ? undefined : draw.sourceRect) || [0, 0, image.width, image.height];
   const scale = Math.min(machine.w / source[2], machine.h / source[3]);
   const outsideLength = path.slice(1).reduce((sum, point, index) =>
     sum + Math.hypot(point[0] - path[index][0], point[1] - path[index][1]), 0);

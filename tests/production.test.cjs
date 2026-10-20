@@ -189,6 +189,43 @@ test('production, launch and output upgrades conserve real material', () => {
   for (let step = 0; step < 100; step += 1) { model.update(0.2); assertConserved(model); }
 });
 
+test('eighteen lines share real supply and packaging without losing material or starving a line', () => {
+  const model = new GameModel();
+  for (const product of PRODUCTION_CONFIG.products) {
+    if (!model.getLine(`${product}-1`)) {
+      model.state.coins = model.productConstructionOffer(product).cost;
+      assert.equal(model.buildProduct(product).ok, true);
+    }
+    while (!model.lineExpansionOffer(product).maxed) {
+      model.state.coins = model.lineExpansionOffer(product).cost;
+      assert.equal(model.buyLine(product).ok, true);
+    }
+  }
+  assert.equal(model.state.lines.length, 18);
+  assertConserved(model);
+  const continuous = new GameModel(model.serialize());
+  assert.equal(continuous.recoveryRequired, false);
+  assert.equal(continuous.update(120).ok, true);
+  for (let step = 0; step < 600; step += 1) {
+    assert.equal(model.update(0.2).ok, true);
+    assertConserved(model);
+    assertWithinCacheCapacity(model);
+  }
+  assertEquivalent(model.serialize(), continuous.serialize());
+  for (const line of model.state.lines) {
+    assert.ok(line.inventory > 0, `${line.id} receives shared supply and completes packaging`);
+  }
+  assert.equal(model.launch('original-3').ok, true);
+  assertConserved(model);
+  model.state.coins = model.outputOffer('original-3').cost;
+  assert.equal(model.upgradeOutput('original-3').ok, true);
+  assertConserved(model);
+  assert.equal(model.update(20).ok, true);
+  assertConserved(model);
+  assertWithinCacheCapacity(model);
+  assert.equal(new GameModel(model.serialize()).recoveryRequired, false);
+});
+
 test('a full line cache waits safely while another line can progress, then recovers', () => {
   const model = backloggedModel();
   const original = model.getLine('original-1');

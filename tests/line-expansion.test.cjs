@@ -76,6 +76,18 @@ function allLinesModel() {
   return model;
 }
 
+function sixWorkshopModel(linesPerProduct) {
+  const model = new GameModel();
+  for (const product of PRODUCTION_CONFIG.products) {
+    if (!model.getLine(`${product}-1`)) {
+      model.state.coins = model.productConstructionOffer(product).cost;
+      assert.equal(model.buildProduct(product).ok, true);
+    }
+    while (model.state.lines.filter(line => line.product === product).length < linesPerProduct) purchase(model, product);
+  }
+  return model;
+}
+
 function protectedState(model) {
   const { board, coins, completedOrders, order } = model.state;
   return clone({ board, coins, completedOrders, order });
@@ -116,7 +128,7 @@ test('buying a second line charges its offer and adds one independent level-one 
   assert.deepEqual(model.state.shared.packaging, before.shared.packaging);
 });
 
-test('insufficient money, full board, existing second line and invalid products fail atomically', () => {
+test('insufficient money, full board, maximum line count and invalid products fail atomically', () => {
   const poor = twoProductModel();
   failedPurchase(poor, 'original', 'insufficient-coins');
   failedPurchase(poor, 'unknown-product', 'invalid-product');
@@ -132,7 +144,8 @@ test('insufficient money, full board, existing second line and invalid products 
   failedPurchase(full, 'original', 'board-full');
 
   const expanded = twoProductModel();
-  const result = purchase(expanded, 'original');
+  let result;
+  while (!expanded.lineExpansionOffer('original').maxed) result = purchase(expanded, 'original');
   expanded.state.coins = result.cost;
   assert.equal(expanded.lineExpansionOffer('original').maxed, true);
   failedPurchase(expanded, 'original', 'line-max');
@@ -298,4 +311,94 @@ test('four lines share online and offline production consistently with a two-hou
   const settled = offline.serialize();
   assert.equal(offline.resumeProduction(settled.productionAt).seconds, 0);
   assertEquivalent(offline.serialize(), settled);
+});
+
+test('each workshop purchases its third line with real coins and one independent launcher', () => {
+  const model = sixWorkshopModel(2);
+  model.update(13.37);
+  for (const product of PRODUCTION_CONFIG.products) {
+    const offer = model.lineExpansionOffer(product);
+    assert.equal(offer.nextLineId, `${product}-3`);
+    assert.equal(offer.nextLineNumber, 3);
+    model.state.coins = offer.cost - 1;
+    failedPurchase(model, product, 'insufficient-coins');
+    model.state.coins = offer.cost + 17;
+    const before = model.serialize();
+    const result = model.buyLine(product);
+    assert.equal(result.ok, true);
+    assert.equal(result.lineId, `${product}-3`);
+    assert.equal(model.state.coins, before.coins - offer.cost);
+    for (const line of before.lines) assert.deepEqual(model.getLine(line.id), line);
+    const added = model.getLine(result.lineId);
+    assert.equal(added.outputLevel, 1);
+    assert.equal(added.capacityLevel, 1);
+    assert.equal(added.inventory, 0);
+    assert.deepEqual(added.buffer, []);
+    assert.deepEqual(added.warehouse, []);
+    assert.equal(added.factory.phase, 'waiting-supply');
+    assert.deepEqual(model.state.shared.supply.queue, [...before.shared.supply.queue, added.id]);
+    assert.deepEqual(model.state.shared.packaging, before.shared.packaging);
+    const launchers = model.state.board.filter(item => item?.kind === 'launcher' && item.lineId === added.id);
+    assert.equal(launchers.length, 1);
+    assert.equal(launchers[0].product, product);
+    assert.equal(launchers[0].level, 1);
+    assert.equal(model.state.selectedLineId, added.id);
+    assert.equal(model.lineExpansionOffer(product).maxed, true);
+    failedPurchase(model, product, 'line-max');
+  }
+  assert.equal(model.state.lines.length, 18);
+});
+
+test('eighteen lines preserve upgrades, active batches and selection across save restoration', () => {
+  const model = sixWorkshopModel(3);
+  for (const lineId of ['original-3', 'wafer-3']) {
+    model.state.coins = model.outputOffer(lineId).cost;
+    assert.equal(model.upgradeOutput(lineId).ok, true);
+  }
+  model.state.coins = model.capacityOffer('original-3').cost;
+  assert.equal(model.upgradeCapacity('original-3').ok, true);
+  model.update(17.37);
+  model.selectLine('sandwich-square-3');
+  model.setPage('factory');
+  const saved = model.serialize();
+  const originalBytes = JSON.stringify(saved);
+  assert.equal(saved.lines.length, 18);
+  assert.ok(saved.lines.some(line => line.factory.batchId !== null || line.buffer.length || line.warehouse.length));
+  const restored = new GameModel(saved);
+  assert.equal(restored.recoveryRequired, false);
+  assertEquivalent(restored.serialize(), saved);
+  assert.equal(JSON.stringify(saved), originalBytes, 'restoring must not mutate the saved value');
+  assert.equal(restored.state.selectedLineId, 'sandwich-square-3');
+  assert.equal(restored.state.page, 'factory');
+  assert.equal(restored.getLine('original-3').capacityLevel, 2);
+  assert.equal(restored.getLine('original-3').outputLevel, 2);
+  assert.equal(restored.getLine('wafer-3').outputLevel, 2);
+  for (const line of restored.state.lines) {
+    assert.equal(restored.state.board.filter(item => item?.kind === 'launcher' && item.lineId === line.id).length, 1);
+  }
+  assert.equal(model.update(3.27).ok, true);
+  assert.equal(restored.update(3.27).ok, true);
+  assertEquivalent(restored.serialize(), model.serialize());
+});
+
+test('an existing twelve-line save restores intact without granting third lines', () => {
+  const previous = sixWorkshopModel(2);
+  previous.update(17.23);
+  previous.state.coins = previous.outputOffer('wafer-2').cost;
+  assert.equal(previous.upgradeOutput('wafer-2').ok, true);
+  previous.update(0.17);
+  previous.selectLine('sandwich-square-2');
+  previous.setPage('factory');
+  const saved = previous.serialize();
+  const originalBytes = JSON.stringify(saved);
+  const restored = new GameModel(saved);
+  assert.equal(restored.recoveryRequired, false);
+  assert.equal(restored.state.lines.length, 12);
+  assertEquivalent(restored.serialize(), saved);
+  assert.equal(JSON.stringify(saved), originalBytes);
+  for (const product of PRODUCTION_CONFIG.products) {
+    assert.equal(restored.getLine(`${product}-3`), null);
+    assert.equal(restored.lineExpansionOffer(product).nextLineId, `${product}-3`);
+    assert.equal(restored.lineExpansionOffer(product).maxed, false);
+  }
 });

@@ -26,8 +26,8 @@ function bottleneckTarget(model, bottleneck) {
       label: bottleneck.kind === 'supply' ? '定位供料' : '定位包装' };
   }
   const affected = bottleneck.affectedLineIds || [], selected = model.getLine();
-  const lineId = affected.includes(selected?.id) ? selected.id : affected.find(id => model.getLine(id));
-  return { lineId: lineId || selected?.id, label: lineId ? '定位产线' : '回到产线' };
+  const lineId = affected.includes(selected == null ? undefined : selected.id) ? selected.id : affected.find(id => model.getLine(id));
+  return { lineId: lineId || (selected == null ? undefined : selected.id), label: lineId ? '定位产线' : '回到产线' };
 }
 
 function drawLineArrow(r, rect, direction, enabled) {
@@ -53,6 +53,30 @@ function drawProductAvailability(r, rect, construction) {
   c.restore();
 }
 
+function drawWorkshopLineSwitch(r, model, selected) {
+  if (r.factoryViewMode === 'overview' || r.factoryServiceFocus) return [];
+  const view = r.layout.factorySceneViewport, lines = model.state.lines
+    .filter(line => line.product === selected.product)
+    .sort((a, b) => Number(a.id.split('-').pop()) - Number(b.id.split('-').pop()));
+  const rect = r.layout.factoryService || { x: view.x + 8, y: view.y + 8, w: 246, h: 54 };
+  const gap = 4, width = (rect.w - gap * 2) / 3, entries = [];
+  for (let number = 1; number <= PRODUCTION_CONFIG.maxLinesPerProduct; number++) {
+    const line = lines.find(item => Number(item.id.split('-').pop()) === number);
+    const next = !line && number === lines.length + 1;
+    const target = { x: rect.x + (number - 1) * (width + gap), y: rect.y + 5, w: width, h: 44 };
+    const active = (line == null ? undefined : line.id) === selected.id;
+    r.roundRect(target.x, target.y, target.w, target.h, 9,
+      active ? '#d7efdf' : line ? '#fff7e8' : next ? '#f9eacb' : '#ebe6d6',
+      active ? '#4d987c' : next ? '#cbb274' : '#d4c6aa');
+    r.text(line ? number + '号线' : next ? '+ ' + number + '号线' : number + '号机位',
+      target.x + target.w / 2, target.y + 22, 13,
+      active ? COLORS.teal : line || next ? COLORS.text : '#aaa18c', 'center', active);
+    if (line || next) entries.push({ rect: target, lineId: line == null ? undefined : line.id,
+      product: selected.product, construction: next });
+  }
+  return entries;
+}
+
 // Fixed navigation uses design coordinates; scene movement and zoom never move
 // these controls. Only the model owns the currently selected production line.
 function drawFactoryNavigation(r, model, visual = {}) {
@@ -65,15 +89,19 @@ function drawFactoryNavigation(r, model, visual = {}) {
   const nextRect = { ...NEXT_LINE, ...layout.factoryNext };
   const lines = model.state.lines, nextProduct = model.nextProduct();
   const bottleneck = model.productionBottleneck(), target = bottleneckTarget(model, bottleneck);
-  const packaging = visual.factoryPresentation?.packaging || {};
+  const presentation = visual.factoryPresentation;
+  const packaging = (presentation == null ? undefined : presentation.packaging) || {};
   let bottleneckText = bottleneck.text;
   if (packaging.cleared) bottleneckText = '包装积压已消除，产线恢复流转';
   else if (packaging.recovering) bottleneckText = packaging.pending ? '本轮包装结束后提速' :
     '包装提速中 · 待包装 ' + bottleneck.queuedBatchCount + ' 批';
   const stripHeight = Math.min(32, bottleneckRect.h), stripY = bottleneckRect.y + (bottleneckRect.h - stripHeight) / 2;
   r.roundRect(bottleneckRect.x, stripY, bottleneckRect.w, stripHeight, 8, COLORS.cream, '#e6d8bf');
+  const context = r.ctx;
+  context.save(); context.beginPath(); context.rect(bottleneckRect.x + 8, stripY, bottleneckRect.w - 110, stripHeight); context.clip();
   r.text(bottleneckText, bottleneckRect.x + 9, bottleneckRect.y + bottleneckRect.h / 2, 13,
     ['supply', 'packaging'].includes(bottleneck.kind) || packaging.recovering || packaging.cleared ? COLORS.teal : COLORS.muted);
+  context.restore();
   r.text(target.label + ' ›', bottleneckRect.x + bottleneckRect.w - 10,
     bottleneckRect.y + bottleneckRect.h / 2, 13, COLORS.teal, 'right', true);
 
@@ -88,7 +116,7 @@ function drawFactoryNavigation(r, model, visual = {}) {
       active ? '#d7efdf' : built ? COLORS.cream : construction ? '#f8ecd1' : '#ece2d1',
       active ? '#3d9a80' : construction ? '#d4b771' : '#dacbb2');
     const recent = productLines.find(line => line.id === r.factoryRecentProductLines[product]) || productLines[0];
-    r.contain('product/' + product + '/' + (recent?.outputLevel || 1), rect.x + (rect.w - 22) / 2,
+    r.contain('product/' + product + '/' + ((recent == null ? undefined : recent.outputLevel) || 1), rect.x + (rect.w - 22) / 2,
       rect.y + 4, 22, 22, built || construction ? 1 : .35);
     r.text(PRODUCT_DEFINITIONS[product].name, rect.x + rect.w / 2, rect.y + rect.h - 13, 12,
       active ? COLORS.teal : built || construction ? COLORS.text : '#aa9b82', 'center', active);
@@ -101,17 +129,25 @@ function drawFactoryNavigation(r, model, visual = {}) {
   const next = selectedIndex + 1 < sceneLines.length ? sceneLines[selectedIndex + 1].id : null;
   drawLineArrow(r, previousRect, -1, !!previous);
   drawLineArrow(r, nextRect, 1, !!next);
+  const workshopLines = drawWorkshopLineSwitch(r, model, selected);
   r.factoryNavigationUI = { products, bottleneck, target, bottleneckRect, previousRect, nextRect,
-    selectedLineId: selected.id, previous, next };
+    selectedLineId: selected.id, previous, next, workshopLines };
 }
 
 function hitFactoryNavigation(r, point) {
   const ui = r.factoryNavigationUI;
   if (!ui || r.page !== 'factory') return null;
+  const lineTarget = rect => {
+    const padding = Math.max(0, (44 / (r.scale || 1) - rect.h) / 2);
+    return within(point, { ...rect, y: rect.y - padding, h: rect.h + padding * 2 });
+  };
   if (within(point, ui.bottleneckRect)) return { type: 'factory-bottleneck',
     kind: ui.bottleneck.kind, service: ui.target.service, lineId: ui.target.lineId };
   const item = ui.products.find(product => within(point, product.rect));
   if (item) return item.built || item.construction ? { type: 'factory-product', product: item.product } : null;
+  const line = (ui.workshopLines || []).find(item => lineTarget(item.rect));
+  if (line) return line.construction ? { type: 'factory-line-build', product: line.product } :
+    { type: 'factory-line-direct', lineId: line.lineId };
   if (ui.previous && within(point, ui.previousRect)) return { type: 'factory-line-prev',
     lineId: ui.previous, fromLineId: ui.selectedLineId };
   if (ui.next && within(point, ui.nextRect)) return { type: 'factory-line-next',
@@ -124,14 +160,20 @@ function focusSelectedLine(r, model, lineId) {
   if (!result.ok) return null;
   rememberSelection(r, model);
   r.factoryFollowCancelled = true;
+  r.factorySelectedPart = 'machine';
+  r.factoryServiceFocus = null;
   r.pendingFactoryServiceFocus = null;
   if (typeof r.focusLine === 'function') r.focusLine(lineId);
   return result;
 }
 
 function handleFactoryNavigation(r, model, hit) {
-  if (!hit || !hit.type?.startsWith('factory-')) return null;
+  if (!hit) return null;
+  const type = hit.type;
+  if (type == null || !type.startsWith('factory-')) return null;
   rememberSelection(r, model);
+  if (hit.type === 'factory-line-direct') return focusSelectedLine(r, model, hit.lineId);
+  if (hit.type === 'factory-line-build') return { ok: true, action: 'line-expansion-open', product: hit.product };
   if (hit.type === 'factory-product') {
     const lines = model.state.lines.filter(line => line.product === hit.product);
     if (lines.length) {
@@ -150,8 +192,9 @@ function handleFactoryNavigation(r, model, hit) {
   if (hit.type === 'factory-bottleneck') {
     // Keep the destination the player actually pressed even if production
     // advances to another phase between the pointer's down and up frames.
+    const targetLine = model.getLine(hit.lineId);
     const target = { service: ['supply', 'packaging'].includes(hit.service) ? hit.service : null,
-      lineId: model.getLine(hit.lineId)?.id };
+      lineId: targetLine == null ? undefined : targetLine.id };
     r.factoryFollowCancelled = true;
     if (target.service) {
       if (typeof r.stopFactoryScroll === 'function') r.stopFactoryScroll();

@@ -246,7 +246,7 @@ function drawFood(ctx, center, angle, scale, state, textures) {
     planeMatrix(angle, 39, 18, scale)));
   ctx.fillStyle = 'rgba(45, 23, 53, 0.20)'; ctx.fill(); ctx.restore();
   drawWafer(ctx, lower, angle, scale, 12 * scale, textures.top, false, 1, detail);
-  const compression = state.compression ?? (state.capProgress === 1 ? 1 : 0);
+  const compression = state.compression == null ? (state.capProgress === 1 ? 1 : 0) : state.compression;
   if (compression > 0) {
     drawWafer(ctx, [center[0], lower[1] - band * compression], angle,
       scale * (0.55 + 0.38 * compression), band * compression, null, true, 1, detail);
@@ -357,7 +357,8 @@ function rotaryOutputPort(renderer, machine) {
 
 function drawRotaryTransfer(renderer, machine, path, progress, line) {
   const meta = renderer.assets.meta('factory/rotary-sandwich-assembler');
-  if (!meta?.animation?.indexedTable || !path?.length) return;
+  const animation = meta == null ? undefined : meta.animation;
+  if (animation == null || !animation.indexedTable || path == null || !path.length) return;
   const source = meta.draw.sourceRect, k = Math.min(machine.w / source[2], machine.h / source[3]);
   const internal = rotaryOutputPath(meta);
   const length = points => points.slice(1).reduce((sum, p, i) => sum + Math.hypot(p[0] - points[i][0], p[1] - points[i][1]), 0);
@@ -416,7 +417,7 @@ function drawRotaryMachine(renderer, source, meta, phase, progress, line, option
   const clean = renderer.assets.get(table.blankAsset) || source;
   const textures = { top: renderer.assets.get(table.topTextureAsset), cap: renderer.assets.get(table.capTextureAsset),
     detail: screenDetail(renderer, meta, options.machineWidth, options.machineHeight), reducedMotion: options.reducedMotion === true };
-  const layers = nativeRig(meta), state = rotaryState(animation, phase, progress, rotaryView(line, phase), line?.factory.duration);
+  const layers = nativeRig(meta), state = rotaryState(animation, phase, progress, rotaryView(line, phase), line == null ? undefined : line.factory.duration);
   const active = animation.phases.some(entry => entry.id === phase);
   const local = active ? animation.phases.find(entry => entry.id === phase).seconds * progress : 0;
   const [sx, sy] = meta.scale, [cx, cy] = meta.sourceCrop;
@@ -458,7 +459,8 @@ function drawRotaryMachine(renderer, source, meta, phase, progress, line, option
     }
     ctx.save(); ctx.translate(dx, dy); polygon(ctx, layer.polygon); ctx.clip();
     drawSource(layer.role === 'foreground' ? clean : source); ctx.restore();
-    if (layer.id === 'left-magazine-fill' && state.supplyVisual?.receipt > 0) {
+    const supplyVisual = layer.id === 'left-magazine-fill' ? state.supplyVisual : undefined;
+    if ((supplyVisual == null ? undefined : supplyVisual.receipt) > 0) {
       ctx.save(); polygon(ctx, SUPPLY_APERTURE); ctx.clip();
       ctx.globalAlpha *= 0.3 * state.supplyVisual.receipt;
       ctx.fillStyle = '#fff5c6'; ctx.fillRect(380, 135, 112, 60); ctx.restore();

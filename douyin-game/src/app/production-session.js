@@ -38,13 +38,19 @@ class ProductionSession {
       return result;
     }
     if (!wasHealthy) this.onProductionRecovery();
-    if (!offline && result.producedByLine?.length) this.onProduced(result);
+    if (!offline) {
+      const producedByLine = result.producedByLine;
+      if (producedByLine == null ? undefined : producedByLine.length) this.onProduced(result);
+    }
     if (offline && result.seconds > 0) {
       this.pendingSummary = mergeOfflineSummary(this.pendingSummary, result);
-    } else if (!offline && result.firstStockedProducts?.length) {
-      this.pendingFirstStockedProducts = [...new Set([
-        ...this.pendingFirstStockedProducts, ...result.firstStockedProducts
-      ])];
+    } else if (!offline) {
+      const firstStockedProducts = result.firstStockedProducts;
+      if (firstStockedProducts == null ? undefined : firstStockedProducts.length) {
+        this.pendingFirstStockedProducts = [...new Set([
+          ...this.pendingFirstStockedProducts, ...result.firstStockedProducts
+        ])];
+      }
     }
     return result;
   }
@@ -121,7 +127,7 @@ function mergeOfflineSummary(previous, next) {
     capped: Boolean((previous && previous.capped) || next.capped),
     producedByLine: [...produced.values()],
     firstStockedProducts: [...new Set([
-      ...(previous?.firstStockedProducts || []), ...(next.firstStockedProducts || [])
+      ...((previous == null ? undefined : previous.firstStockedProducts) || []), ...(next.firstStockedProducts || [])
     ])],
     saveFailed: Boolean((previous && previous.saveFailed) || next.saveFailed),
   };

@@ -54,12 +54,14 @@ class Renderer {
     this.productConstructionProduct = null;
     this.productConstructionBuyEnabled = false;
     this.factoryScroll = 0;
-    this.factoryCamera = new FactoryCamera();
+    // Edge workshops need room below the fixed scene controls as well.
+    this.factoryCamera = new FactoryCamera({ minZoom: .1, padding: 72 });
     this.factoryPanVelocity = { x: 0, y: 0 };
     this.factoryDockExpanded = false;
     this.factoryOrderExpanded = false;
     this.factoryViewMode = 'detail';
     this.factoryServiceFocus = null;
+    this.factorySelectedPart = 'machine';
     this.upgradeTab = 'capacity';
     this.upgradeDetailsOpen = false;
     this.factoryScrollVelocity = 0;
@@ -177,6 +179,12 @@ class Renderer {
     });
     this.factoryCamera.setViewport(this.layout.factorySceneViewport);
     this.factoryPanVelocity = { x: 0, y: 0 };
+    if (this.factoryLayout) {
+      this.factoryCamera.minZoom = this.factoryOverviewZoom();
+      if (this.upgradeDialogOpen) this.frameFactoryUpgrade(this.upgradeLineId);
+      else if (this.factoryViewMode === 'overview') this.focusFactoryOverview(true);
+      else if (this.factoryFocusKind === 'group') this.focusLine(this.lastFactorySelection, true);
+    }
   }
 
   logicalPoint(x, y) { return { x: (x - this.offsetX) / this.scale, y: (y - this.offsetY) / this.scale }; }
@@ -287,7 +295,8 @@ class Renderer {
       if (navigationHit) return navigationHit;
       if (within(this.layout.factoryDockToggle)) return { type: 'factory-dock-toggle' };
       if (within(this.layout.factoryMode)) return { type: 'factory-view-toggle', mode: this.factoryViewMode === 'overview' ? 'detail' : 'overview' };
-      if (this.factoryViewMode === 'overview') return hitFactoryOverview(this, p);
+      if (this.factoryViewMode === 'overview') return hitFactoryOverview(this, p) ||
+        (within(this.layout.factorySceneViewport) ? { type: 'factory-scroll', scrollable: true } : null);
       if (within(this.layout.factoryHome)) return { type: 'factory-home' };
       if (this.factoryServiceFocus && within(this.layout.factoryService))
         return ['supply', 'packaging'].includes(this.factoryServiceFocus) ?
@@ -302,8 +311,16 @@ class Renderer {
           w: this.factoryLayout.packaging.w + 3, h: this.factoryLayout.packaging.h + 24 })) {
           return { type: 'shared-upgrade-open', service: 'packaging', scrollable: true };
         }
-        const scene = this.factoryLayout.scenes.find(scene => worldWithin(scene.hit));
-        if (scene) return { type: 'line', lineId: scene.lineId, scrollable: true };
+        if (worldWithin(this.factoryLayout.warehouse)) return { type: 'factory-overview-service', service: 'warehouse', scrollable: true };
+        const cacheHit = rect => {
+          const size = 44 / this.scale / this.factoryCamera.zoom;
+          return { x: rect.x + rect.w / 2 - Math.max(rect.w, size) / 2,
+            y: rect.y + rect.h / 2 - Math.max(rect.h, size) / 2, w: Math.max(rect.w, size), h: Math.max(rect.h, size) };
+        };
+        const cache = this.factoryLayout.scenes.find(scene => worldWithin(cacheHit(scene.cache)));
+        if (cache) return { type: 'line', lineId: cache.lineId, part: 'cache', scrollable: true };
+        const scene = [...this.factoryLayout.scenes].reverse().find(scene => worldWithin(scene.hit));
+        if (scene) return { type: 'line', lineId: scene.lineId, part: 'machine', scrollable: true };
         const construction = this.factoryLayout.construction;
         if (construction && worldWithin(construction.hit || construction)) {
           return { type: 'product-construction-open', product: construction.product, scrollable: true };
@@ -699,7 +716,7 @@ class Renderer {
   }
 
   factoryScrollEnabled() {
-    return this.page === 'factory' && this.factoryViewMode !== 'overview' && !this.entryOpen && !this.upgradeDialogOpen &&
+    return this.page === 'factory' && !this.entryOpen && !this.upgradeDialogOpen &&
       !this.sharedUpgradeDialogOpen && !this.lineExpansionDialogOpen &&
       !this.productConstructionDialogOpen && !this.offlineSummaryOpen && !this.factoryOrderExpanded;
   }
@@ -708,12 +725,14 @@ class Renderer {
 
   factoryScenePoint(x, y) {
     if (!this.factoryGestureEnabled()) return false;
-    return !!this.hitTest(x, y)?.scrollable;
+    const hit = this.hitTest(x, y);
+    return !!(hit && hit.scrollable);
   }
 
   panFactory(dx, dy) {
     if (!this.factoryGestureEnabled()) return;
     this.factoryFollowCancelled = true;
+    this.factoryFocusKind = 'free';
     this.pendingFactoryServiceFocus = null;
     this.factoryPanVelocity = { x: 0, y: 0 };
     this.factoryCamera.panBy(dx / this.scale, dy / this.scale);
@@ -733,17 +752,32 @@ class Renderer {
       x: baseline.world.x - (point.x - view.x - view.w / 2) / zoom,
       y: baseline.world.y - (point.y - view.y - view.h / 2) / zoom });
     this.factoryFollowCancelled = true;
+    this.factoryFocusKind = 'free';
     this.pendingFactoryServiceFocus = null;
     this.factoryScroll = camera.visibleBounds().top;
+    this.updateFactoryGestureMode();
   }
 
   zoomFactory(factor, x, y) {
     if (!this.factoryGestureEnabled()) return;
     this.stopFactoryScroll();
     this.factoryFollowCancelled = true;
+    this.factoryFocusKind = 'free';
     this.pendingFactoryServiceFocus = null;
     this.factoryCamera.zoomAt(factor, this.logicalPoint(x, y));
     this.factoryScroll = this.factoryCamera.visibleBounds().top;
+    this.updateFactoryGestureMode();
+  }
+
+  updateFactoryGestureMode() {
+    const enter = Math.min(.34, this.factoryOverviewZoom() * 1.6), leave = enter * 1.25;
+    const next = this.factoryViewMode === 'overview' ? this.factoryCamera.zoom >= leave ? 'detail' : 'overview' :
+      this.factoryCamera.zoom <= enter ? 'overview' : 'detail';
+    if (next === this.factoryViewMode) return;
+    this.factoryViewMode = next;
+    // A gesture already owns the camera. Only change labels and hit targets.
+    this.factoryModeApplied = next;
+    this.factoryServiceFocus = null;
   }
 
   scrollFactory(distance) {
@@ -780,7 +814,20 @@ class Renderer {
   focusFactoryRect(rect, immediate = false, zoom) {
     if (!rect) return;
     this.stopFactoryScroll();
+    this.factoryFocusKind = 'device';
     this.factoryCamera.focusRect(rect, { duration: immediate || this.reducedMotion ? 0 : .28, zoom });
+  }
+
+  factoryOverviewZoom() {
+    const bounds = this.factoryLayout && this.factoryLayout.bounds, view = this.layout.factorySceneViewport;
+    return bounds ? Math.min((view.w - 24) / bounds.w, Math.max(30, view.h - 116) / bounds.h) : .1;
+  }
+
+  focusFactoryOverview(immediate = true) {
+    if (!this.factoryLayout) return;
+    this.factoryCamera.minZoom = this.factoryOverviewZoom();
+    this.focusFactoryRect(this.factoryLayout.bounds, immediate, this.factoryCamera.minZoom);
+    this.factoryFocusKind = 'overview';
   }
 
   focusLine(lineId, immediate = false) {
@@ -790,10 +837,36 @@ class Renderer {
       this.pendingFactoryFocus = lineId;
       return;
     }
-    const visible = this.factoryCamera.visibleBounds(), hit = scene.hit;
-    if (hit.x < visible.left + 12 || hit.x + hit.w > visible.right - 12 ||
-        hit.y < visible.top + 12 || hit.y + hit.h > visible.bottom - 12 || immediate)
-      this.focusFactoryRect(hit, immediate);
+    const group = this.factoryLayout.groups.find(group => group.product === scene.product);
+    const bounds = group && group.bounds || scene.hit, view = this.layout.factorySceneViewport;
+    const zoom = Math.min(1.05, (view.w - 36) / bounds.w, Math.max(30, view.h - 92) / bounds.h);
+    const topInset = 48 / zoom;
+    this.focusFactoryRect({ ...bounds, y: bounds.y - topInset, h: bounds.h + topInset }, immediate, zoom);
+    this.factoryFocusKind = 'group';
+  }
+
+  captureFactoryView() {
+    const c = this.factoryCamera;
+    return { x: c.x, y: c.y, zoom: c.zoom, mode: this.factoryViewMode, service: this.factoryServiceFocus,
+      part: this.factorySelectedPart, kind: this.factoryFocusKind };
+  }
+
+  restoreFactoryView(state) {
+    if (!state) return;
+    this.factoryViewMode = state.mode; this.factoryServiceFocus = state.service;
+    this.factorySelectedPart = state.part; this.factoryFocusKind = state.kind;
+    if (state.mode === 'overview') this.focusFactoryOverview(true);
+    else if (state.kind === 'group') this.focusLine(this.lastFactorySelection, true);
+    else this.factoryCamera.setView(state);
+  }
+
+  frameFactoryUpgrade(lineId) {
+    const scene = this.factoryLayout && this.factoryLayout.scenes.find(scene => scene.lineId === lineId);
+    if (!scene) return;
+    const rect = scene.machine, view = this.layout.factorySceneViewport;
+    const zoom = Math.min(.72, 90 / rect.h), targetY = view.y + 50;
+    this.factoryCamera.setView({ zoom, x: rect.x + rect.w / 2,
+      y: rect.y + rect.h / 2 + (view.y + view.h / 2 - targetY) / zoom }, { clamp: false });
   }
 
   factory(model, visual) { drawFactoryView(this, model, visual); }
@@ -932,7 +1005,7 @@ class Renderer {
     this.text('建设费用 ' + offer.cost, 146, 524, 20, COLORS.text, 'left', true);
     this.text('余额 ' + displayStock(model.state.coins) + ' · 已投产 ' + offer.lineCount + '/' + offer.maxLines + ' 条线',
       195, 561, 14, COLORS.muted, 'center');
-    const explanation = offer.maxed ? '本轮两条线均已投产' : !offer.hasSpace ? '棋盘已满，先腾出一格再建设' :
+    const explanation = offer.maxed ? '本工坊' + offer.maxLines + '条产线均已投产' : !offer.hasSpace ? '棋盘已满，先腾出一格再建设' :
       !offer.affordable ? '还差 ' + (offer.cost - model.state.coins) + ' 金币' : '一级起步，现有流水线保留原规格';
     this.text(explanation, 195, 593, 14, offer.canBuy || offer.maxed ? COLORS.teal : COLORS.red, 'center');
     const label = offer.maxed ? '已投产' : !offer.hasSpace ? '先腾出棋盘空格' : !offer.affordable ? '金币不足' : '确认建设';
@@ -1124,12 +1197,13 @@ class Renderer {
     if (this.page === 'factory') this.button('ui/button-teal', '配套', this.layout.sharedUpgradeOpen);
     this.customerUnreadCount = model.customerCollection().filter(info => info.unread).length;
     this.customerResponseVisible = !!visual.customerResponse && this.page !== 'customers';
-    this.customerResponseId = visual.customerResponse?.customerId;
+    this.customerResponseId = visual.customerResponse == null ? undefined : visual.customerResponse.customerId;
     if (this.page === 'customers') drawCustomers(this, model, visual);
     else {
       if (this.page === 'factory') drawFactoryOrderSummary(this, model);
       else this.order(model, visual);
-      this.visibleCustomerId = model.getOrder()?.customerId;
+      const order = model.getOrder();
+      this.visibleCustomerId = order == null ? undefined : order.customerId;
       if (this.visibleCustomerId) this.customerLastOrders[this.visibleCustomerId] = this.visibleOrderId;
       if (this.page === 'factory') this.factory(model, visual);
       else { this.board(model, visual); this.effects(visual, model); }

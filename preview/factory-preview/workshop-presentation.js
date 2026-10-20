@@ -26,7 +26,7 @@ export class WorkshopPresentation {
     viewport.append(this.host);
   }
 
-  update({ nodes, selected, layout, camera, state, overview, levels, safeBottom, overviewLabels }) {
+  update({ nodes, selected, layout, camera, state, overview, workshopView, levels, safeBottom, overviewLabels }) {
     if (!camera || !state || !selected) { this.host.hidden = true; return; }
     this.host.hidden = overview;
     const owner = selected.type === 'cache' ? selected.lineId : selected.id;
@@ -51,7 +51,8 @@ export class WorkshopPresentation {
       const origin = camera.worldToViewport({ x: node.left, y: node.top });
       return { x: origin.x, y: origin.y, w: node.width * state.zoom, h: node.height * state.zoom };
     };
-    if (overview || state.zoom <= .56) this.showBadges = false;
+    if (workshopView && !overview) this.showBadges = true;
+    else if (overview || state.zoom <= .56) this.showBadges = false;
     else if (state.zoom >= .62) this.showBadges = true;
     const live = new Set();
     for (const node of nodes.values()) {
